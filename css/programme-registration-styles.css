@@ -1,0 +1,20 @@
+.w3-display-container {
+    position: relative;
+  }
+
+.w3-display-topleft {
+z-index: 1; /* Ensure text remains on top of the overlay */
+}
+
+.overlay img {
+width: 100%; /* Ensure image fills the container */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100, 99, 99, 0.5); /* Change color and opacity here */
+}
