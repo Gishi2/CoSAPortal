@@ -60,6 +60,69 @@ a {
      transition: all .3s ease-in-out;
 }
 
+.split-content {
+     width: 100vw;
+}
+
+.split-container {
+     background-color: #38c8a8;
+}
+
+.split-text {
+     text-align: center;
+}
+
+.split-text h1 {
+     color: white;
+     padding: 16px;
+     margin: 0;
+}
+
+.card {
+     --padding: 1rem;
+     background: white;
+     border: 1px solid #777;
+     border-radius: .5rem;
+     overflow: hidden;
+}
+
+.card:hover {
+     cursor: pointer;
+}
+
+.card:hover > .card-image img {
+     transform: scale(1.025);
+}
+
+.card-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+     gap: 2rem;
+     align-items: flex-start;
+     margin: 2rem;
+}
+
+.card-image {
+     padding: 0;
+     overflow: hidden;
+}
+
+.card-image img {
+     display: block;
+     width: 100%;
+     aspect-ratio: 16 / 9;
+     object-fit: cover;
+     object-position: center;
+     transition: 200ms transform ease-in-out;
+}
+
+.card-footer {
+     margin: 0;
+     padding: var(--padding);
+     padding: 1rem;
+     text-align: center;
+}
+
 h1,
 h2,
 h3,
