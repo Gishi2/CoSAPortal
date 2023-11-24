@@ -18,3 +18,9 @@ width: 100%; /* Ensure image fills the container */
     height: 100%;
     background-color: rgba(100, 99, 99, 0.5); /* Change color and opacity here */
 }
+
+.w3-sidebar a {
+    font-family: "Roboto", sans-serif
+}
+
+body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
