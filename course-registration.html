@@ -97,7 +97,8 @@
           <img src="images\Posters\WebDevelopmentBootCamp_Poster (12).png" style="width:100%">
           <span class="w3-tag w3-display-topleft">New</span>
           <div class="w3-display-middle w3-display-hover">
-            <button class="w3-button w3-black">Register now</button>
+            <!-- <button class="w3-button w3-black">Register now</button> -->
+            <a href="javascript:void(0)" class="w3-button w3-black" onclick="document.getElementById('newsletter').style.display='block'">Register Now</a> 
           </div>
         </div>
         <p><b>Web Development Bootcamp</b></p>
@@ -137,49 +138,36 @@
     </div>
   </div>
   
-  <!-- Footer -->
-  <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+  <footer class="w3-padding-32 w3-light-grey w3-center" id="footer">
     <div class="w3-row-padding">
-      <div class="w3-col s4">
-        <h4>Contact</h4>
-        <p>Questions? Go ahead.</p>
-        <form action="/action_page.php" target="_blank">
-          <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required></p>
-          <button type="submit" class="w3-button w3-block w3-black">Send</button>
-        </form>
-      </div>
-
-      <div class="w3-col s4">
-        <h4>About</h4>
-        <p><a href="#">About us</a></p>
-        <p><a href="#">We're hiring</a></p>
-        <p><a href="#">Support</a></p>
-        <p><a href="#">Find store</a></p>
-        <p><a href="#">Shipment</a></p>
-        <p><a href="#">Payment</a></p>
-        <p><a href="#">Gift card</a></p>
-        <p><a href="#">Return</a></p>
-        <p><a href="#">Help</a></p>
+      <div class="w3-col s4 w3-justify">
+        <div class ="w3-container">
+        <h4>Address</h4>
+        <p>
+            It is a long established fact that a reader will be distracted by the readable content of a page when 
+            looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution 
+            of letters, 
+        </p>
+        </div>
       </div>
 
       <div class="w3-col s4 w3-justify">
-        <h4>Store</h4>
-        <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
-        <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
-        <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
-        <h4>We accept</h4>
-        <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
-        <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
-        <br>
-        <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
-        <i class="fa fa-instagram w3-hover-opacity w3-large"></i>
-        <i class="fa fa-snapchat w3-hover-opacity w3-large"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity w3-large"></i>
-        <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
-        <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
+        <div class = "w3-container" style ="margin-left: 3rem;">
+        <h4>About</h4>
+        <p><a href="#">Home</a></p>
+        <p><a href="#">About</a></p>
+        <p><a href="#">Programme</a></p>
+        <p><a href="#">Merchandise</a></p>
+        <p><a href="#">E-Book Store</a></p>
+        </div>
+      </div>
+
+      <div class="w3-col s4 w3-justify">
+        <div class = "w3-container" style ="margin-left: 3rem;">
+        <h4>Follow Us</h4>
+        <p><i class="fa fa-facebook-official w3-hover-opacity w3-large"> Facebook </p></i>
+        <p><i class="fa fa-instagram w3-hover-opacity w3-large"> Instagram </p></i>
+        </div>
       </div>
     </div>
   </footer>
@@ -194,10 +182,14 @@
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
     <div class="w3-container w3-white w3-center">
       <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
-      <h2 class="w3-wide">NEWSLETTER</h2>
-      <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
+      <h2 class="w3-wide">Programme Name</h2>
+      <p>Programme Description lorem ipsum test power this is just some random words so bye</p>
+      <div>
+        <img src="images\Posters\IND4.0 Backdrop.png" alt="Programme Name" style="width:100%">
+        <p>Programme Description lorem ipsum test power this is just some random words so bye</p>
+      </div>
       <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
-      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
+      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Confirm Registration</button>
     </div>
   </div>
 </div>
