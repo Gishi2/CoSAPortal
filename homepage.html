@@ -15,15 +15,111 @@
 </html>
 <!-- body -->
 <body>
-    <div class="container-1">
-        <div class="header">
-            <img src="potoub-html/images/CoSAPortal_Logo.png">
+    <header>
+        <div class="header-logo">
+            <img src="images\CoSAPortal_Logo.png" alt="Your Logo">
         </div>
-        <div class="banner-container">
-            <div class="overlay"></div>
-            <div class="img-container">
-                <img src="images\CoSA Programme Group Pictures\Web Development.jpg">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bg-white"></div>
+            <div class="bg-white"></div>
+            <div class="bg-white"></div>
+            <!-- <i class="fas fa-bars"></i> -->
+          </div>
+    </header>
+
+    <div class="fullscreen-menu" id="fullscreenMenu">
+        <div class="menu-content">
+          <div class="close-icon" onclick="toggleMenu()">x</div>
+          <a href="signup.html">SIGN UP</a>
+          <a href="">MERCHANDISE</a>
+          <a href="CoSA E-Book\ebook.html">E-BOOK</a>
+          <a href="course-registration.html">PROGRAM</a>
+        </div>
+      </div>
+
+    <div class="main-banner">
+        <img src="images\CoSA Programme Group Pictures\Web Development.jpg">
+        <div class="overlay"></div>
+        <div class="text-content">
+            <p>WELCOME TO</h2>
+            <h2>COSA PORTAL</p>
+        </div>
+    </div>
+
+    <div class="split-text-container">
+        <div class="split-text">
+           <h1>PROGRAM</h1>
+        </div>
+     </div>
+    <div class="container">
+        <div class="slide-wrapper">
+            <a href="course-registration.html"><div class="slider">
+                <img id="slide-1" src="images\CoSA Programme Group Pictures\Web Development.jpg">
+                <img id="slide-2" src="images\CoSA Programme Group Pictures\IND4.0 Day CoSA.jpg">
+                <img id="slide-3" src="images\CoSA Programme Group Pictures\memperkasa_ukhuwah.jpeg">
+            </div></a>
+            <div class="slider-nav">
+                <a class="active" href="#slide-1"></a>
+                <a href="#slide-2"></a>
+                <a href="#slide-3"></a>
             </div>
         </div>
     </div>
+
+    <!-- Merchandise & E-Book -->
+    <div class="split-content">
+        <div class="split-text-container">
+           <div class="split-text">
+              <h1>MERCHANDISE & E-BOOK</h1>
+           </div>
+        </div>
+        <div class="grid-container">
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="signup.html">
+                            <img src="images\cosa-jersey.jpg" alt="Merchandise Store">
+                        </a>
+                    </div>
+                    <div class="card-footer">
+                        <h1>Merchandise Store</h1>
+                    </div>
+                </div>   
+                <div class="card">
+                    <div class="card-image">
+                        <a href="CoSA E-Book\ebook.html">
+                            <img src="images\itt300-book.jpg" alt="E-Book Store">
+                        </a>
+                    </div>
+                    <div class="card-footer">
+                        <h1>E-Book Store</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+     <div>
+
+    <div class="footer-container">
+        <div class="left-content">
+            <div class="link">
+                <h1>LINK</h1>
+            </div>
+            <div class="link-selection">
+                <ul>
+                    <li><a href="CoSA E-Book\ebook.html">E-Store</a></li>
+                    <li><a href="course-registration.html">Programme</a></li>
+                    <li><a href="">Merchandise</a></li>
+                </ul>
+            </div>
+            <div class="copyright">Copyright CoSA @ 2023</div>
+        </div>
+        <div class="right-content">
+            <div class="logo">
+                <img src="images\CoSAPortal_Logo.png">
+            </div>
+            <div class="social">
+                <a aria-label="Instagram"></a>
+            </div>
+        </div>
+    <script src="js\homepage.js"></script>
 </body>
