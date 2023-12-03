@@ -1,0 +1,1038 @@
+.nonsense-jp-by-html {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.nonsense-jp-by-html .overlap-wrapper {
+    width: 1920px;
+    height: 3959.28px;
+}
+
+.nonsense-jp-by-html .overlap {
+    position: relative;
+    height: 3959px;
+}
+
+.nonsense-jp-by-html .image {
+    /* position: absolute; */
+    width: 1920px;
+    height: 1080px;
+    top: 0;
+    left: 0;
+    opacity: 0.05;
+    background-image: url(./img/image.png);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .body-paints {
+    /* position: absolute; */
+    width: 1920px;
+    height: 3959px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+}
+
+.nonsense-jp-by-html .div-bg-black {
+    width: 1920px;
+    height: 80px;
+    top: 0;
+    background-color: #000000;
+    position: absolute;
+    left: 0;
+}
+
+.nonsense-jp-by-html .aside {
+    /* position: absolute; */
+    width: 1280px;
+    height: 44px;
+    top: 1036px;
+    left: 320px;
+}
+
+.nonsense-jp-by-html .details {
+    position: relative;
+    width: 320px;
+    height: 44px;
+    left: 944px;
+    background-color: #ff3a3a;
+    box-shadow: 0px 1px 2px -1px #0000001a, 0px 1px 3px #0000001a;
+}
+
+.nonsense-jp-by-html .slot-summary-heading {
+    /* position: absolute; */
+    width: 66px;
+    height: 28px;
+    top: 7px;
+    left: 8px;
+    font-family: "Space Grotesk-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .slot-summary-plus {
+    /* position: absolute; */
+    width: 17px;
+    height: 16px;
+    top: 14px;
+    left: 291px;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: red;
+}
+
+.nonsense-jp-by-html .section-link-1 {
+    width: 458px;
+    height: 655px;
+    top: 32px;
+    position: absolute;
+    left: 32px;
+    background-color: #3298ff;
+}
+
+.nonsense-jp-by-html .overlap-group {
+    position: absolute;
+    width: 458px;
+    height: 638px;
+    top: 0;
+    left: 0;
+}
+
+.nonsense-jp-by-html .text-wrapper {
+    width: 96px;
+    left: 181px;
+    position: absolute;
+    height: 28px;
+    top: 610px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .element-png {
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-image: url(./img/23081507842-png.png);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .div {
+    position: absolute;
+    width: 53px;
+    height: 16px;
+    top: 638px;
+    left: 203px;
+    font-family: "Segoe UI-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 16px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .section-link-2 {
+    top: 32px;
+    left: 498px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .text-wrapper-2 {
+    position: absolute;
+    width: 88px;
+    height: 28px;
+    top: 610px;
+    left: 185px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .element-png-2 {
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-image: url(./img/1-1-png.png);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-3 {
+    top: 32px;
+    left: 964px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .element-png-3 {
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-image: url(./img/23081507702-1-png.png);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .text-wrapper-3 {
+    width: 54px;
+    left: 202px;
+    position: absolute;
+    height: 16px;
+    top: 638px;
+    font-family: "Segoe UI-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 16px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .section-link-4 {
+    top: 32px;
+    left: 1430px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .p {
+    width: 200px;
+    left: 129px;
+    position: absolute;
+    height: 28px;
+    top: 610px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .element {
+    background-image: url(./img/230718-06933-750b0b47-e730-4e6d-9ceb-1628a4417e88-png.png);
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .text-wrapper-4 {
+    width: 44px;
+    left: 207px;
+    position: absolute;
+    height: 16px;
+    top: 638px;
+    font-family: "Segoe UI-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 16px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .section-link-5 {
+    top: 695px;
+    left: 32px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .element-png-4 {
+    background-image: url(./img/230718-06936-png.png);
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-6 {
+    top: 695px;
+    left: 498px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .element-2 {
+    background-image: url(./img/230506-03903-b407300f-454a-4aee-8752-d2da5cc7f8db-png.png);
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .text-wrapper-5 {
+    position: absolute;
+    width: 77px;
+    height: 16px;
+    top: 638px;
+    left: 191px;
+    font-family: "Segoe UI-Regular", Helvetica;
+    font-weight: 400;
+    color: #ff3a3a;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 16px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .section-link-7 {
+    top: 695px;
+    left: 964px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .text-wrapper-6 {
+    width: 64px;
+    left: 197px;
+    position: absolute;
+    height: 28px;
+    top: 610px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .element-bb-cc-df {
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-image: url(./img/1-3b15097b-c6c8-41df-a052-c741ceec5275-png.png);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-8 {
+    top: 695px;
+    left: 1430px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .text-wrapper-7 {
+    width: 168px;
+    left: 145px;
+    position: absolute;
+    height: 28px;
+    top: 610px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .element-dadaf-b-df {
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-image: url(./img/1-da3daf59-b696-44df-8d0a-4e257329e26d-png.png);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-9 {
+    top: 1357px;
+    left: 32px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .text-wrapper-8 {
+    width: 120px;
+    left: 169px;
+    position: absolute;
+    height: 28px;
+    top: 610px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .element-png-5 {
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-image: url(./img/23072807137-png.png);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-10 {
+    top: 1357px;
+    left: 498px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .text-wrapper-9 {
+    position: absolute;
+    width: 136px;
+    height: 28px;
+    top: 610px;
+    left: 161px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .element-png-6 {
+    background-image: url(./img/230718-07053-png.png);
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-11 {
+    top: 1357px;
+    left: 964px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .text-wrapper-10 {
+    position: absolute;
+    width: 192px;
+    height: 28px;
+    top: 610px;
+    left: 133px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .element-3 {
+    background-image: url(./img/230506-03910-d698c21c-99d5-4443-acfc-07ff2c1fd96f-png.png);
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-12 {
+    top: 1357px;
+    left: 1430px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .element-4 {
+    background-image: url(./img/230506-03903-5f320b2d-727f-4ea1-bf61-73527408fcf4-png.png);
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-13 {
+    top: 2020px;
+    left: 32px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .text-wrapper-11 {
+    position: absolute;
+    width: 152px;
+    height: 28px;
+    top: 610px;
+    left: 153px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .element-inf-png {
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-image: url(./img/230414-inf130522-png.png);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-14 {
+    top: 2020px;
+    left: 498px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .element-aec-a-f {
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-image: url(./img/1-588a4e4c-333a-44f8-a367-610ecfbdb3bb-png.png);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-15 {
+    top: 2020px;
+    left: 964px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .text-wrapper-12 {
+    position: absolute;
+    width: 128px;
+    height: 28px;
+    top: 610px;
+    left: 165px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .element-png-7 {
+    background-image: url(./img/230417-inf03553-png.png);
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-16 {
+    top: 2020px;
+    left: 1430px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .element-png-8 {
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-image: url(./img/1-png.png);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .section-link-17 {
+    top: 2683px;
+    left: 32px;
+    position: absolute;
+    width: 458px;
+    height: 655px;
+}
+
+.nonsense-jp-by-html .element-png-9 {
+    background-image: url(./img/230417-inf03547-png.png);
+    position: absolute;
+    width: 458px;
+    height: 611px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .footer {
+    position: absolute;
+    width: 1920px;
+    height: 510px;
+    top: 3449px;
+    left: 0;
+    background-color: transparent;
+}
+
+.nonsense-jp-by-html .section-image {
+    width: 1856px;
+    height: 32px;
+    top: 16px;
+    background-image: url(./img/section-image.png);
+    background-size: cover;
+    background-position: 50% 50%;
+    position: absolute;
+    left: 32px;
+}
+
+.nonsense-jp-by-html .section-heading {
+    position: absolute;
+    width: 325px;
+    height: 36px;
+    top: 79px;
+    left: 798px;
+    font-family: "0xA000-Monochrome-Monochrome", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .section-STAY-IN-THE {
+    position: absolute;
+    width: 545px;
+    height: 28px;
+    top: 115px;
+    left: 688px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .section-form {
+    width: 195px;
+    left: 806px;
+    border: 1px solid;
+    border-color: #000000;
+    position: absolute;
+    height: 30px;
+    top: 160px;
+}
+
+.nonsense-jp-by-html .div-placeholder {
+    position: relative;
+    width: 169px;
+    height: 20px;
+    top: 5px;
+    left: 13px;
+}
+
+.nonsense-jp-by-html .text-wrapper-13 {
+    position: absolute;
+    width: 88px;
+    height: 20px;
+    top: -1px;
+    left: 0;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #9ca3af;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .div-wrapper {
+    width: 104px;
+    left: 1010px;
+    background-color: #000000;
+    position: absolute;
+    height: 30px;
+    top: 160px;
+}
+
+.nonsense-jp-by-html .text-wrapper-14 {
+    position: absolute;
+    width: 56px;
+    height: 20px;
+    top: 4px;
+    left: 24px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .section {
+    position: absolute;
+    width: 1920px;
+    height: 288px;
+    top: 222px;
+    left: 0;
+    background-color: #000000;
+}
+
+.nonsense-jp-by-html .footer-webp {
+    position: absolute;
+    width: 717px;
+    height: 384px;
+    top: -96px;
+    left: 16px;
+    background-image: url(./img/footer-feb13805-webp.png);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.nonsense-jp-by-html .list-item-link-ABOUT {
+    position: absolute;
+    width: 64px;
+    height: 20px;
+    top: 51px;
+    left: 797px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .list-item-button {
+    position: absolute;
+    width: 104px;
+    height: 28px;
+    top: 75px;
+    left: 797px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .list-item-button-2 {
+    position: absolute;
+    width: 120px;
+    height: 28px;
+    top: 103px;
+    left: 797px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 28px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .link-logo-wide {
+    position: absolute;
+    width: 138px;
+    height: 20px;
+    top: 48px;
+    left: 1734px;
+    object-fit: cover;
+}
+
+.nonsense-jp-by-html .text-wrapper-15 {
+    position: absolute;
+    width: 199px;
+    height: 24px;
+    top: 215px;
+    left: 797px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .symbol {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 221px;
+    left: 1744px;
+    font-family: "Font Awesome 5 Brands-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 18px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .symbol-2 {
+    width: 16px;
+    left: 1782px;
+    font-family: "Font Awesome 5 Brands-Regular", Helvetica;
+    position: absolute;
+    height: 18px;
+    top: 221px;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 18px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .symbol-3 {
+    width: 16px;
+    left: 1818px;
+    font-family: "Font Awesome 5 Brands-Regular", Helvetica;
+    position: absolute;
+    height: 18px;
+    top: 221px;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 18px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .symbol-4 {
+    width: 18px;
+    left: 1854px;
+    font-family: "Font Awesome 5 Free-Solid", Helvetica;
+    position: absolute;
+    height: 18px;
+    top: 221px;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 18px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .nav {
+    position: absolute;
+    width: 1920px;
+    height: 84px;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+}
+
+.nonsense-jp-by-html .div-flex {
+    position: absolute;
+    width: 1920px;
+    height: 20px;
+    top: 0;
+    left: 0;
+    background-color: #3298ff;
+}
+
+.nonsense-jp-by-html .text-wrapper-16 {
+    position: absolute;
+    width: 212px;
+    height: 24px;
+    top: -3px;
+    left: 854px;
+    font-family: "VT323-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .img {
+    position: absolute;
+    width: 138px;
+    height: 20px;
+    top: 42px;
+    left: 32px;
+    object-fit: cover;
+}
+
+.nonsense-jp-by-html .list {
+    position: absolute;
+    width: 896px;
+    height: 64px;
+    top: 20px;
+    left: 992px;
+}
+
+.nonsense-jp-by-html .item {
+    position: absolute;
+    width: 58px;
+    height: 64px;
+    top: 0;
+    left: 790px;
+}
+
+.nonsense-jp-by-html .astro-island-button-wrapper {
+    position: relative;
+    width: 34px;
+    height: 28px;
+    top: 18px;
+    left: 12px;
+    background-image: url(./img/astro-island-button-open-cart-folder-cadd7334-svg.svg);
+    background-size: 100% 100%;
+}
+
+.nonsense-jp-by-html .astro-island-button {
+    position: absolute;
+    width: 11px;
+    height: 16px;
+    top: 9px;
+    left: 12px;
+    font-family: "Segoe UI-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 16px;
+    white-space: nowrap;
+}
+
+.nonsense-jp-by-html .item-button-open {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 16px;
+    left: 864px;
+}
+
+.nonsense-jp-by-html .div-bg-white {
+    width: 32px;
+    height: 3px;
+    top: 4px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 0;
+}
+
+.nonsense-jp-by-html .div-bg-white-2 {
+    top: 14px;
+    position: absolute;
+    width: 32px;
+    height: 3px;
+    left: 0;
+    background-color: #ffffff;
+}
+
+.nonsense-jp-by-html .div-bg-white-3 {
+    top: 25px;
+    position: absolute;
+    width: 32px;
+    height: 3px;
+    left: 0;
+    background-color: #ffffff;
+}
+
+/* @media (min-width: 768px) {
+    padding: 2rem;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+} */
