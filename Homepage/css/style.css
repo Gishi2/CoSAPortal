@@ -235,7 +235,8 @@
 }
 
 .page-header {
-    background: url(../img/header-page.jpg) top center no-repeat;
+    background: url(/Homepage/img/cosa/memperkasa_ukhuwah.jpeg) top center no-repeat;
+    background-position-y: -300px;
     background-size: cover;
     text-shadow: 0 0 30px rgba(0, 0, 0, .1);
 }
@@ -516,4 +517,31 @@
 
 .footer .copyright a:hover {
     color: var(--primary);
+}
+
+.sidenavbar{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 1875.45px;
+    left: 0;
+    background: #1B2C51;
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, .01);
+}
+
+.logo{
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease;
 }
