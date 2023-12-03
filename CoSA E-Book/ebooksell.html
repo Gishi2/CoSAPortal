@@ -22,8 +22,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <h3 class="w3-wide"><b>CoSA E-Book</b></h3>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    <a href="index.html" class="w3-bar-item w3-button">Home</a>
-    <a href="#" class="w3-bar-item w3-button">Programms</a>
+    <a href="#" class="w3-bar-item w3-button">Home</a>
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       E-Book <i class="fa fa-caret-down"></i>
     </a>
@@ -32,10 +31,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <a href="ebook2.html" class="w3-bar-item w3-button">Semester 2</a>
       <a href="ebook3.html" class="w3-bar-item w3-button">Semester 3</a>
       <a href="ebook4.html" class="w3-bar-item w3-button">Semester 4</a>
-      <a href="ebooksell.html" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Sell a Book</a>
+      <a href="ebooksell.html" class="w3-bar-item w3-button w3-light-grey"><i class="fa fa-caret-right w3-margin-right"></i>Sell a Book</i></a>
     </div>
-    <a href="#" class="w3-bar-item w3-button">Merchandise</a>
-    <a href="#" class="w3-bar-item w3-button">Placeholder</a>
+    <a href="#" class="w3-bar-item w3-button">CoSA Merchandise</a>
+    <a href="#" class="w3-bar-item w3-button">Programme Registration</a> 
   </div>
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a>
 </nav>
@@ -64,68 +63,77 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </p>
   </header>
 
-  <!-- Image header -->
-  <!-- <div class="w3-display-container w3-container">
-    <img src="/w3images/jeans.jpg" alt="Jeans" style="width:100%">
-    <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
-      <h1 class="w3-jumbo w3-hide-small">New arrivals</h1>
-      <h1 class="w3-hide-large w3-hide-medium">New arrivals</h1>
-      <h1 class="w3-hide-small">COLLECTION 2016</h1>
-      <p><a href="#jeans" class="w3-button w3-black w3-padding-large w3-large">SHOP NOW</a></p>
-    </div>
-  </div> -->
-
   <!-- Sell Form -->
   <div class="w3-row w3-grayscale">
-    <form>
+    <form action="/action_page.php" method="get">
         <h2>Sell Your Book</h2>
     
         <label for="title">Book Title:</label>
         <input type="text" id="title" name="title" required>
     
-        <label for="author">Semester:</label>
-        <input type="text" id="semester" name="author" required>
+        <label for="semester">Semester:</label>
+        <input list="semester" name="semester" id="semester">
+        <datalist id="semester">
+          <option value="Semester 1">
+          <option value="Semester 2">
+          <option value="Semester 3">
+          <option value="Semester 4">
+        </datalist>
+        
+        <div class="slidecontainer">
+          <label for="fader">Condition:</label>
+          <input type="range" min="0" max="100" value="50" class="slider" id="fader" step="20" list="conditionSlider">
+          <p>Value: <span id="demo"></span></p>
+
+          <script>
+            var slider = document.getElementById("conditionSlider");
+            var output = document.getElementById("demo");
+            output.innerHTML = slider.value;
+            
+            slider.oninput = function() {
+              output.innerHTML = this.value;
+            }
+          </script>
+
+          <datalist id="conditionSlider">
+            <option>Very Poor</option>
+            <option>Poor</option>
+            <option>Fair</option>
+            <option>Good</option>
+            <option>Very Good</option>
+            <option>Mint</option>
+          </datalist>
+        </div> 
     
         <label for="price">Price:</label>
         <input type="number" id="price" name="price" required>
-    
+
+        <h3>Upload the image for your book:</h3>
+        <label for="img">Select image:</label>
+        <input type="file" class="w3-button w3-black" id="img" name="img" accept="image/*">
         <button type="submit" class="w3-button w3-black">Submit</button>
       </form>
   </div>
 
-
-  <!-- Subscribe section -->
-  <!-- <div class="w3-container w3-black w3-padding-32">
-    <h1>Subscribe</h1>
-    <p>To get special offers and VIP treatment:</p>
-    <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
-    <button type="button" class="w3-button w3-red w3-margin-bottom">Subscribe</button>
-  </div> -->
-  
   <!-- Footer -->
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">
-        <h4>Contact</h4>
-        <p>Questions? Go ahead.</p>
+        <!-- <h4>Contact</h4>
+         <p>Questions? Go ahead.</p>
         <form action="/action_page.php" target="_blank">
           <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required></p>
           <button type="submit" class="w3-button w3-block w3-black">Send</button>
-        </form>
+        </form> -->
       </div>
 
       <div class="w3-col s4">
         <h4>About</h4>
         <p><a href="#">About us</a></p>
-        <!-- <p><a href="#">We're hiring</a></p> -->
-        <!-- <p><a href="#">Support</a></p> -->
-        <!-- <p><a href="#">Find store</a></p> -->
-        <!-- <p><a href="#">Shipment</a></p> -->
         <p><a href="#">Payment</a></p>
-        <!-- <p><a href="#">Gift card</a></p> -->
         <p><a href="#">Return</a></p>
         <p><a href="#">Help</a></p>
       </div>
@@ -154,18 +162,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <!-- End page content -->
 </div>
 
-<!-- Newsletter Modal -->
-<!-- <div id="newsletter" class="w3-modal">
-  <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
-    <div class="w3-container w3-white w3-center">
-      <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
-      <h2 class="w3-wide">NEWSLETTER</h2>
-      <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
-      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
-    </div>
-  </div>
-</div> -->
 
 <script>
 // Accordion 
@@ -201,7 +197,7 @@ function w3_close() {
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 300px;
+      width: 500px;
     }
 
     label {
@@ -215,6 +211,7 @@ function w3_close() {
       margin-bottom: 16px;
       box-sizing: border-box;
     }
+    
 
   </style>
 </html>
