@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root {
+    --primary: #0463FA;
+    --light: #EFF5FF;
+    --dark: #1B2C51;
+}
+
+.box-shadow {
+    box-shadow: 0px 0px 20px rgba(25, 25, 25, 0.5);
+}
+
+.flex-1 {
+    flex: 1 1 0%;
+}
+
+.padding-right-4 {
+    padding-right: 2.5rem;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    margin-left: auto;
+    margin-right: auto;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.section-a {
+    overflow: hidden;
+    width: moz-fit-content;
+    max-width: 672px;
+    margin-left: auto;
+    margin-right: auto;
+    color: inherit;
+    text-decoration: inherit;
+    transition: 0.5s;
+}
+
+.section-a:hover {
+    overflow: hidden;
+    width: moz-fit-content;
+    max-width: 672px;
+    margin-left: auto;
+    margin-right: auto;
+    color: inherit;
+    text-decoration: inherit;
+    box-shadow: 0px 0px 25px rgba(25, 25, 25, 0.1);
+    background-color: rgba(25, 25, 25, 0.1);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.section-link {
+    aspect-ratio: 3/4;
+    position: relative;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 0.5rem;
+    transition: 0.5s;
+}
+
+.section-link:hover {
+    aspect-ratio: 3/4;
+    position: relative;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 0.5rem;
+    transition: 0.5s;
+}
+
+.section-link > img {
+    aspect-ratio: 3/4;
+    object-position: center;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+}
+
+.section-link > img:hover {
+    aspect-ratio: 3/4;
+    object-position: center;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.025);
+    transition: 0.5s;
+}
+
+.section-text {
+    display: grid;
+    position: relative;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    bottom: 1.75rem;
+}
+
+.text-color {
+    color: black;
+}
+
+.shirt-name {
+    font-size: 3rem;
+    line-height: 3rem;
+    font-weight: 900;
+    padding-bottom: 1rem;
+    margin: 0;
+}
+
+.shirt-price {
+    font-size: 2.5rem;
+    line-height: 1rem;
+    font-weight: 900;
+    margin-top: 0;
+}
+
+.pop-up-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 3;
+    opacity: 0; /* Start with opacity 0 */
+    transition: opacity 1s ease; /* Add transition property */
+}
+
+.pop-up {
+    display: none;
+    position: relative;
+    width: 800px;
+    height: 500px;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 25px rgba(25, 25, 25, 0.5);
+}
+
+.pop-up > span {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+.pop-up .pop-up-image {
+    width: 50%;
+    border-right: 0.2rem solid rgb(100, 100, 100)
+}
+
+.pop-up .pop-up-image > img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.pop-up-description {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.pop-up-description > h2 {
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.pop-up-description > span.price {
+    padding-bottom: 1rem;
+    color:#1B2C51;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.pop-up-description > span.size {
+    padding-top: 1rem;
+    padding-bottom: 0.25rem;
+}
+
+.pop-up-description > span.quantity {
+    padding-bottom: 0.25rem;
+}
+
+.pop-up-quantity {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    border: 0.1rem solid #585858;
+    border-radius: 0.2rem;
+}
+
+.quantity-input {
+    width: 4rem;
+    text-align: center;
+    font-size: 1rem;
+    border: 0.1rem solid #585858;
+    border-top: none;
+    border-bottom: none;
+}
+
+.quantity-btn {
+    cursor: pointer;
+    padding: 0rem 0.4rem 0rem 0.4rem;
+    font-size: 1.25rem;
+    background-color: white;
+    color: #585858;
+    border: none;   
+    transition: 0.5s ease;
+}
+
+.quantity-btn:hover {
+    background-color: var(--primary);
+    color: var(--light);
+    transition: 0.5s ease;
+}
+
+.pop-up-size {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+}
+
+.pop-up-size > button {
+    padding: 0.5rem 2rem;
+    background: none;
+    border: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 1.5rem;
+    font-weight: bold;
+    color: #585858;
+    transition: 0.2s ease;
+}
+
+.pop-up-size > button:hover {
+    color: white;
+    background-color: var(--primary);
+    transition: 0.2s ease;
+}
+
+.pop-up-description .pop-up-btn {
+    position: relative;
+    color: #fff;
+    background: #585858;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.pop-up-description .pop-up-btn:hover {
+    background: var(--primary);
+    transition: 0.5s ease;
+}
