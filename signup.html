@@ -1,109 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>Sign In Page</title>
-  <!-- Add your existing stylesheet links here -->
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/plugins.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <style type="text/css">
-    /* Add the additional styles for the login page here */
-    body {
-      background-image: url('C:/Users/Vivobook/OneDrive/Documents/Diploma/Sem 4/CSC264/background6.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-attachment: fixed;
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    .login-form, .registration-form {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 30px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .btn-primary {
-      background-color: #11aeef;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In and Sign Up Page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="main-layout">
-  <!-- Existing content goes here -->
 
-  <!-- Sign In form -->
-  <div class="login-container">
-    <form class="login-form">
-      <h2>Sign In</h2>
-      <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" class="form-control" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+<body>
 
-    <!-- Sign Up form -->
-    <form class="registration-form">
-      <h2>Sign Up</h2>
-      <div class="form-group">
-        <label for="newFullName">First Name:</label>
-        <input type="text" id="newFullName" name="newFullName" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="newEmail">Email:</label>
-        <input type="text" id="newEmail" name="newEmail" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="newUsername">Username:</label>
-        <input type="text" id="newFUsername" name="newUsername" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="newPassword">Password:</label>
-        <input type="text" id="newPassword" name="newPassword" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="newConfirmPassword">Confirm Password:</label>
-        <input type="text" id="newConfirmPassword" name="newConfirmPassword" class="form-control" required>
-      </div>
-      <!-- Add additional registration fields as needed -->
-      <button type="submit" class="btn btn-primary">Register</button>
-    </form>
-  </div>
+    <header>
+        <h2 class="logo">Logo</h2>
+         <nav class="navigation">
+            <a href="#">Home</a>
+            <a href="#">Pages</a>
+            <a href="#">Activities</a>
+            <a href="#">Sign Up</a>
+            <button class="btnLogin-popup">Login</button>
+         </nav>
+    </header>
 
-  <!-- Your existing JavaScript and other content goes here -->
+    <div class="wrapper">
+        <span class="icon-close">
+            <ion-icon name="close"></ion-icon>
+        </span>
+        
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="#">
+                <div class="input.box">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <input type="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input.box">
+                    <span class="icon">
+                        <ion-icon name="lock"></ion-icon>
+                    </span>
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="btn">Register
+                </button>
+                <div class="login-register">
+                    <p>Already have an account?<a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
 
+        <div class="form-box register">
+            <h2>Register</h2>
+            <form action="#">
+                <div class="input.box">
+                    <span class="icon">
+                        <ion-icon name="contact"></ion-icon>
+                    </span>
+                    <input type="full name" required>
+                    <label>Full Name</label>
+                </div>
+                <div class="input.box">
+                    <span class="icon">
+                        <ion-icon name="key"></ion-icon>
+                    </span>
+                    <input type="matrix number" required>
+                    <label>Matrix Number</label>
+                </div>
+                <div class="input.box">
+                    <span class="icon">
+                        <ion-icon name="home"></ion-icon>
+                    </span>
+                    <input type="address" required>
+                    <label>Address</label>
+                </div>
+                <div class="input.box">
+                    <span class="icon">
+                        <ion-icon name="call"></ion-icon>
+                    </span>
+                    <input type="phone number" required>
+                    <label>Phone Number</label>
+                </div>
+                <div class="input.box">
+                    <span class="icon">
+                        <ion-icon name="school"></ion-icon>
+                    </span>
+                    <input type="semester" required>
+                    <label>Semester</label>
+                </div>
+                <div class="input.box">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <input type="text" required>
+                    <label>Username</label>
+                </div>
+                <div class="input.box">
+                    <span class="icon">
+                        <ion-icon name="lock"></ion-icon>
+                    </span>
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">Login
+                </button>
+                <div class="login-register">
+                    <p>Create a new account<a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
