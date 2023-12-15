@@ -169,14 +169,14 @@
                           <th> Delete <span class="icon-arrow">&UpArrow;</span></th>
                       </tr>
                   </thead>
-                  <tbody>
-                      <tr>
+                  <tbody id="programmeData">
+                        <!-- fetch data from fetch_programme.php to display dynamically-->
+                        <!-- <tr>
                           <td> 1 </td>
                           <td> <img src="/images/Posters/WebDevelopmentBootCamp_Poster (12).png" alt="">Web Development Bootcamp</td>
                           <td> 23 June 2023 </td>
                           <td> 25 June 2023 </td>
                           <td>
-                              <!-- <a class="popup-btn">Details</a> -->
                               8 AM - 5 PM
                           </td>
                           <td> <strong> 80 </strong> </td>
@@ -196,10 +196,9 @@
                               </div>
                             </div>
                           </div>
-                      </tr>
-                      <tr>
-
-                      </tr>
+                        </tr>
+                        <tr>
+                        </tr> -->
                   </tbody>
               </table>
           </section>
@@ -339,6 +338,24 @@
                 });
             });
             });
+        </script>
+
+        <!-- javascript/jQuery to get data from fetch_programme.php -->
+        <script>
+            // Fetch data from fetch_programme.php using AJAX
+            window.onload = function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'Homepage/php/fetch_programme.php', true);
+        
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        // Update the content of tbody with the fetched data
+                        document.getElementById('programmeData').innerHTML = xhr.responseText;
+                    }
+                };
+        
+                xhr.send();
+            };
         </script>
 </body>
 
