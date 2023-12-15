@@ -333,3 +333,135 @@ a.button3:hover{
     margin:0.2em auto;
     }
 }
+
+.popup-btn{
+    z-index: 2;
+    color: #fff;
+    background: #555;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .popup-view{
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+  }
+  
+  .popup-view.active{
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .popup-card{
+    position: relative;
+    display: flex;
+    width: 800px;
+    height: 500px;
+    margin: 20px;
+  }
+  
+  .product-img{
+    z-index: 2;
+    background: #1D212B;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 90%;
+    transform: translateY(25px);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  
+  .product-img img{
+    z-index: 2;
+    /* position: relative; */
+    width: 100%;
+    /* left: -50px; */
+  }
+  
+  .info{
+    z-index: 2;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 40px;
+    border-radius: 10px;
+  }
+  
+  .close-btn{
+    color: #555;
+    z-index: 3;
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+    margin: 20px;
+    cursor: pointer;
+  }
+  
+  .info h2{
+    font-size: 40px;
+    line-height: 40px;
+    margin: 10px;
+  }
+  
+  .info h2 span{
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .info p{
+    font-size: 15px;
+    margin: 10px;
+  }
+  
+  .info .price{
+    font-size: 45px;
+    font-weight: 300;
+    margin: 10px;
+  }
+  
+  .info .add-cart-btn{
+    color: #fff;
+    background: #009DD2;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 10px auto;
+    padding: 10px 50px;
+    border-radius: 20px;
+  }
+  
+  .info .add-wish{
+    color: #009DD2;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
