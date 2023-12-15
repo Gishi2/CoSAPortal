@@ -236,9 +236,9 @@
 }
 
 .page-header {
-    background: url(/potoub-html/Homepage/img/cosa/memperkasa_ukhuwah.jpeg) top center no-repeat;
+    background: url(/Homepage/img/cosa/memperkasa_ukhuwah.jpeg) top center no-repeat;
     background-position-y: -300px;
-    background-size: cover;
+    background-size: cover; 
     text-shadow: 0 0 30px rgba(0, 0, 0, .1);
 }
 
@@ -704,6 +704,7 @@
   background: #1d1b31;
   transition: all 0.5s ease;
   overflow: hidden;
+  align-items: center;
 }
 .sidebar.open li.profile{
   width: 250px;
@@ -726,6 +727,7 @@
   font-weight: 400;
   color: #fff;
   white-space: nowrap;
+  bottom: 50px;
 }
 .sidebar li.profile .job{
   font-size: 12px;
@@ -746,6 +748,9 @@
   width: 50px;
   background: none;
 }
+
+
+
 .home-section{
   position: relative;
   background: #E4E9F7;
@@ -780,11 +785,9 @@
 
 
 .programme-container{
-    min-height: 100vh;
-    display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
 .card-container{
   position: relative;
@@ -793,7 +796,6 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
 }
 
 /*Styles for product card*/
@@ -954,7 +956,7 @@
 
 .product .popup-card .info h2{
   font-size: 40px;
-  line-height: 20px;
+  line-height: 40px;
   margin: 10px;
 }
 
