@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Establish connection to the database
     $servername = "localhost"; // Change this to your server name if different
@@ -56,3 +57,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+=======
+
+$con = mysqli_connect('localhost', 'root', '',’cosaportal’);
+
+$programmeId = $_POST['programmeId'];
+$programmeName = $_POST['programmeName'];
+$programmeStartDate = $_POST['programmeStartDate'];
+$programmeEndDate = $_POST['programmeEndDate'];
+$programmeTime = $_POST['programmeTime'];
+$capacity = $_POST['capacity'];
+$programmeDesc = $_POST['programmeDesc'];
+$programmePoster = $_POST['programmePoster'];
+
+
+// database insert SQL code
+$sql = "INSERT INTO `programme` (`programmeId`, `programmeName`, `programmeStartDate`, `programmeEndDate`, `programmeTime`, `capacity`, 
+`programmeDesc`, `programmePoster`) VALUES ('0', '$programmeName', '$programmeStartDate', '$programmeEndDate', '$programmeTime', 
+'capacity', 'programmeDesc', 'programmePoster')";
+
+// insert in database 
+$rs = mysqli_query($con, $sql);
+
+if($rs)
+{
+	echo "Contact Records Inserted";
+}
+
+?>
+>>>>>>> 9ad8d6d6a7780b22a167fac474c5597396a7a0e3
