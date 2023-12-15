@@ -704,6 +704,7 @@
   background: #1d1b31;
   transition: all 0.5s ease;
   overflow: hidden;
+  align-items: center;
 }
 .sidebar.open li.profile{
   width: 250px;
@@ -726,6 +727,7 @@
   font-weight: 400;
   color: #fff;
   white-space: nowrap;
+  bottom: 50px;
 }
 .sidebar li.profile .job{
   font-size: 12px;
@@ -746,6 +748,9 @@
   width: 50px;
   background: none;
 }
+
+
+
 .home-section{
   position: relative;
   background: #E4E9F7;
