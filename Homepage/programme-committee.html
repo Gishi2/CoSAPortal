@@ -98,34 +98,36 @@
       </div>
       <section class="home-section">
           <!-- Top Navbar Start -->
-        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-        
-            <a href="homepage.html" class="navbar-brand d-flex align-items-center px-4">
-                <img src="img\cosa\cosa_logo_inBlue.png">
-            </a>
-            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.html" class="nav-item nav-link">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Service</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                            <a href="feature.html" class="dropdown-item">Feature</a>
-                            <a href="team.html" class="dropdown-item">Our Doctor</a>
-                            <a href="appointment.html" class="dropdown-item">Appointment</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
-                        </div>
+        <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+        <a href="homepage.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <img class="header-logo" src="img\cosa\cosa_logo_inBlue.png">
+            <!-- <h1 class="m-0 text-primary">PORTAL</h1> -->
+            <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="homepage.html" class="nav  -item nav-link active">Home</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <!-- <a href="service.html" class="nav-item nav-link">Service</a> -->
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                        <!-- <a href="about.html" class="dropdown-item">About Us</a> -->
+                        <a href="\potoub-html\course-registration.html" class="dropdown-item">Programme</a>
+                        <a href="\potoub-html\Merchandise\merchandise.html" class="dropdown-item">Merchandise</a>
+                        <a href="\potoub-html\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link active">Contact</a>
                 </div>
-                <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Mainpage<i class="fa fa-arrow-right ms-3"></i></a>
+                <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
             </div>
-        </nav>
+            <a href="homepage.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
         <!-- Top Navbar End -->
 
         <!-- Page Header Start -->
@@ -152,7 +154,7 @@
                   <img src="images/search.png" alt="">
               </div>
               <div class="add-button">
-                <a href="something" class="button3">Add a Programme</a>
+                <a href="\CoSAPortal\Homepage\programme-committee-addprogramme.html" class="button3">Add a Programme</a>
               </div>
           </section>
           <section class="table__body">
@@ -169,14 +171,12 @@
                           <th> Delete <span class="icon-arrow">&UpArrow;</span></th>
                       </tr>
                   </thead>
-                  <tbody>
-                      <tr>
+                        <tr>
                           <td> 1 </td>
                           <td> <img src="/images/Posters/WebDevelopmentBootCamp_Poster (12).png" alt="">Web Development Bootcamp</td>
                           <td> 23 June 2023 </td>
                           <td> 25 June 2023 </td>
                           <td>
-                              <!-- <a class="popup-btn">Details</a> -->
                               8 AM - 5 PM
                           </td>
                           <td> <strong> 80 </strong> </td>
@@ -196,10 +196,9 @@
                               </div>
                             </div>
                           </div>
-                      </tr>
-                      <tr>
-
-                      </tr>
+                        </tr>
+                        <tr>
+                        </tr>
                   </tbody>
               </table>
           </section>
@@ -339,6 +338,24 @@
                 });
             });
             });
+        </script>
+
+        <!-- javascript/jQuery to get data from fetch_programme.php -->
+        <script>
+            // Fetch data from fetch_programme.php using AJAX
+            window.onload = function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'Homepage/php/fetch_programme.php', true);
+        
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        // Update the content of tbody with the fetched data
+                        document.getElementById('programmeData').innerHTML = xhr.responseText;
+                    }
+                };
+        
+                xhr.send();
+            };
         </script>
 </body>
 
