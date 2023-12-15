@@ -229,6 +229,11 @@
     padding-bottom: 2rem;
 }
 
+.pop-up-size .size-btn.active {
+    background-color: var(--primary);
+    color: var(--light);
+}
+
 .pop-up-size > button {
     padding: 0.5rem 2rem;
     background: none;
@@ -263,4 +268,30 @@
 .pop-up-description .pop-up-btn:hover {
     background: var(--primary);
     transition: 0.5s ease;
+}
+
+.nav-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    padding-right: 3rem;
+}
+
+.nav-cart > i {
+    transform: scale(1.25);
+    cursor: pointer;
+    color: var(--dark);
+}
+
+.box-cart {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 24rem;
+    height: fit-content;
+    min-height: 16rem;
+    top: 100%;
+    border-radius: 0.2rem;
+    border: 0.2 rem 
 }
