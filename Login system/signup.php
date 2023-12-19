@@ -85,7 +85,6 @@ if(isset($_POST['submit'])){
             <input type="password" name="cpassword" required placeholder="Confirm Password">
             <select name="user_type">
                 <option value="User">User</option>
-                <option value="Admin">Admin</option>
              </select>
             <input type="submit" name="submit" value="sign up" class="form-btn"
             <p>Already have an account? <a href="login.php">Login</a></p>
