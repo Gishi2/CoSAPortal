@@ -21,7 +21,8 @@
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             echo '<tr>';
-            echo '<td>' . $row['programmeID'] . '</td>';
+            echo '<td>' . $row['programmeId'] . '</td>'; 
+            echo '<td>' .  . $row['programmeName']. '</td>';
             // Output other columns similarly...
             echo '</tr>';
         }

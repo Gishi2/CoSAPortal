@@ -1,3 +1,43 @@
+<?php
+
+@include 'config.php';
+
+if(isset($_POST['submit'])){
+
+   $name = mysqli_real_escape_string($conn, $_POST['name']);
+   $matrix = mysqli_real_escape_string($conn, $_POST['matrix']);
+   $address = mysqli_real_escape_string($conn, $_POST['address']);
+   $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+   $semester = mysqli_real_escape_string($conn, $_POST['semester']);
+   $username = mysqli_real_escape_string($conn, $_POST['username']);
+   $pass = md5($_POST['password']);
+   $cpass = md5($_POST['cpassword']);
+   $user_type = $_POST['user_type'];
+
+   $select = " SELECT * FROM user_form WHERE username = '$username' && password = '$pass' ";
+
+   $result = mysqli_query($conn, $select);
+
+   if(mysqli_num_rows($result) > 0){
+
+      $error[] = 'user already exist!';
+
+   }else{
+
+      if($pass != $cpass){
+         $error[] = 'password not matched!';
+      }else{
+         $insert = "INSERT INTO user_form(name, matrix, address, phone, semester, username, password, user_type) VALUES('$name','$matrix','$address','$phone','$semester','$username','$pass','$user_type')";
+         mysqli_query($conn, $insert);
+         header('location:login.php');
+      }
+   }
+
+};
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +68,13 @@
 
         <form action="" method="post">
             <h3>Sign Up</h3>
+            <?php
+            if(isset($error)) {
+                foreach($error as $error) {
+                    echo '<span class="error-msg">'.$error.'</span>';
+                }
+            }
+            ?>
             <input type="text" name="name" required placeholder="Full Name">
             <input type="number" name="matrix" required placeholder="Matrix Number">
             <input type="address" name="address" required placeholder="Address">
@@ -38,10 +85,9 @@
             <input type="password" name="cpassword" required placeholder="Confirm Password">
             <select name="user_type">
                 <option value="User">User</option>
-                <option value="Admin">Admin</option>
              </select>
             <input type="submit" name="submit" value="sign up" class="form-btn"
-            <p>Already have an account? <a href="login.html">Login</a></p>
+            <p>Already have an account? <a href="login.php">Login</a></p>
         </form>
     </div>
 
