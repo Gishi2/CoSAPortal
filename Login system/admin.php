@@ -1,3 +1,17 @@
+<?php
+
+@include 'config.php';
+
+session_start();
+
+if(!isset($_SESSION['admin_name'])){
+   header('location:login.php');
+}
+
+?>
+
+<h1>welcome <span><?php echo $_SESSION['admin_name'] ?></span></h1>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,9 +42,9 @@
    <div class="content">
       <h3>Hi, <span>Admin</span></h3>
       <p>This is an admin page</p>
-      <a href="login.html" class="btn">login</a>
-      <a href="signup.html" class="btn">sign up</a>
-      <a href="logout.html" class="btn">logout</a>
+      <a href="login.php" class="btn">login</a>
+      <a href="signup.php" class="btn">sign up</a>
+      <a href="logout.php" class="btn">logout</a>
    </div>
 
 </div>
