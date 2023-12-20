@@ -1,20 +1,15 @@
-const wrapper = document.querySelector('.wrapper');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
-const btnPopup = document.querySelector('.btnLogin-popup');
-const iconClose = document.querySelector('.icon-close');
-registerLink.addEventListener('click', ()=> {
-    wrapper.classList.add('active');
-});
+function login(event) {
+    event.preventDefault();
 
-loginLink.addEventListener('click', ()=> {
-    wrapper.classList.remove('active');
-});
+    // Get username and password from the form
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
 
-btnPopup.addEventListener('click', ()=> {
-    wrapper.classList.add('active-popup');
-});
-
-iconClose.addEventListener('click', ()=> {
-    wrapper.classList.remove('active-popup');
-});
+    // Perform a simple check (in a real application, use secure methods)
+    if (username === "username" && password === "password") {
+        alert("Login successful");
+        // Redirect to a new page or perform other actions
+    } else {
+        alert("Login failed. Check your username and password.");
+    }
+}
