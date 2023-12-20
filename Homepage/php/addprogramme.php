@@ -14,12 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Prepare and bind the SQL statement
-    $stmt = $conn->prepare("INSERT INTO programme (programmeName, programmeStartDate, programmeEndDate, programmeTime, capacity, programmeDesc, programmePoster) VALUES (?, ?, ?, ?, ?, ?, ?)");
-
-    // Bind parameters
-    $stmt->bind_param("ssssiss", $programmeName, $programmeStartDate, $programmeEndDate, $programmeTime, $capacity, $programmeDesc, $programmePoster);
-
     // Set parameters from the form
     $programmeName = $_POST['programmeName'];
     $programmeStartDate = $_POST['programmeStartDate'];
@@ -31,10 +25,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Handling file upload for programmePoster
     if (isset($_FILES['programmePoster']) && $_FILES['programmePoster']['error'] === UPLOAD_ERR_OK) {
-        $programmePoster = file_get_contents($_FILES['programmePoster']['tmp_name']);
+        $uploadDirectory = '/CoSAPortal/Homepage/php/uploads/'; // Directory where you want to store uploaded files
+        $uploadedFileName = $_FILES['programmePoster']['name'];
+        $uploadedFileTmpName = $_FILES['programmePoster']['tmp_name'];
+        $targetFilePath = $_SERVER['DOCUMENT_ROOT'] . $uploadDirectory .  $uploadedFileName;
+
+        if (move_uploaded_file($uploadedFileTmpName, $targetFilePath)) {
+        $posterPath = $targetFilePath;
+
+        echo "File uploaded successfully and path stored in the database: $targetFilePath";
+        } else {
+            echo "Error uploading file";
+        }
     } else {
-        $programmePoster = null; // If file upload fails or no file is selected
+        echo "No file uploaded or an error occurred during file upload";
     }
+
+    // Prepare and bind the SQL statement
+    $stmt = $conn->prepare("INSERT INTO programme (programmeName, programmeStartDate, programmeEndDate, programmeTime, capacity, programmeDesc, posterPath) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+    // Bind parameters
+    $stmt->bind_param("ssssiss", $programmeName, $programmeStartDate, $programmeEndDate, $programmeTime, $capacity, $programmeDesc, $posterPath);
 
     // Execute the prepared statement
     $stmt->execute();
