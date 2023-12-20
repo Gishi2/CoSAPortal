@@ -23,7 +23,7 @@ header {
    visibility: visible;
    animation-delay: 0.1s;
    animation-name: fadeIn;
-   top: -100px;
+   /* top: -100px; */
 }
 
 .navigation {
@@ -141,7 +141,7 @@ header {
  }
  
  .form-container form .form-btn{
-    background: darkblue;
+    background: #0463FA;
     color: white;
     text-transform: capitalize;
     font-size: 20px;
@@ -160,7 +160,7 @@ header {
  }
  
  .form-container form p a{
-    color: darkblue;
+    color: #0463FA
  }
  
  .form-container form .error-msg{
