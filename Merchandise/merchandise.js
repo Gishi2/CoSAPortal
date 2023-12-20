@@ -33,6 +33,10 @@ function toggleCart() {
   
 }
 
+function triggerFileInput() {
+  document.getElementById('fileInput').click();
+}
+
 // the hover effect on the product size
 document.addEventListener('DOMContentLoaded', () => {
   const sizeButtons = document.querySelectorAll('.size-btn'); 
