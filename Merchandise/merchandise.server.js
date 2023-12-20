@@ -63,3 +63,15 @@ function addToCartButton() {
         cartContainer.appendChild(cartItemElement);
     });
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'includes/updateCart.inc.php', true);
+
+    xhr.onload = () => {
+      if (xhr.status == 200) {
+          document.getElementById('cart-container').innerHTML = xhr.responseText;
+      }
+    };
+    xhr.send();
+  });
