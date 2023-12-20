@@ -25,19 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Handling file upload for programmePoster
     if (isset($_FILES['programmePoster']) && $_FILES['programmePoster']['error'] === UPLOAD_ERR_OK) {
-        $uploadDirectory = '/uploads'; // Directory where you want to store uploaded files
+        $uploadDirectory = '/CoSAPortal/Homepage/php/uploads/'; // Directory where you want to store uploaded files
         $uploadedFileName = $_FILES['programmePoster']['name'];
         $uploadedFileTmpName = $_FILES['programmePoster']['tmp_name'];
-        $targetFilePath = $_SERVER['DOCUMENT_ROOT'] . $uploadDirectory . $uploadedFileName;
+        $targetFilePath = $_SERVER['DOCUMENT_ROOT'] . $uploadDirectory .  $uploadedFileName;
 
-        // Move the uploaded file to the desired directory
         if (move_uploaded_file($uploadedFileTmpName, $targetFilePath)) {
-        // File uploaded successfully
-        // Now store the $targetFilePath in your database
-        // Perform database insertion here
-        // Example:
-        $posterPath = $uploadDirectory . $uploadedFileName;
-        // Execute the SQL query to save $targetFilePath in your database
+        $posterPath = $targetFilePath;
 
         echo "File uploaded successfully and path stored in the database: $targetFilePath";
         } else {
