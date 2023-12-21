@@ -1,48 +1,35 @@
 <?php
 
 @include 'config.php';
-session_start();
 
 if(isset($_POST['submit'])) {
    $username = mysqli_real_escape_string($conn, $_POST['username']);
-   $pass = $_POST['password'];
-   $email = mysqli_real_escape_string($conn, $_POST['username']);
-   $select = " SELECT * FROM user WHERE username ='$username' AND password = '$pass' AND email = '$email' ";
+   $pass = md5($_POST['password']);
+
+   $select = " SELECT * FROM user_form WHERE username ='$username' && password = '$pass' ";
    
-   $select = "SELECT * FROM user WHERE username = '$username' ";
    $result = mysqli_query($conn, $select);
 
-   if($result && mysqli_num_rows($result) > 0) {
+   if(mysqli_num_rows($result) > 0) {
     
-    $row = mysqli_fetch_assoc($result);
+    $row = mysqli_fetch_array($result);
 
-    if (password_verify($password, $row['userPassword'])) {
-        //Password is correct
+    if($row['user_type'] == 'admin') {
 
-        //Start a session and store user information
-        session_start();
-        if($row['user_type'] == 'admin') {
+        $_SESSION['admin _name'] = $row['name'];
+        header('location:admin.php');
 
-            $_SESSION['admin _name'] = $row['userName'];
-            header('location:admin.php');
-    
-        }elseif($row['user_type'] == 'user'){
-    
-            $_SESSION['user_name'] = $row['userName'];
-            header('location:user.php');
-    
-         }
+    }elseif($row['user_type'] == 'user'){
 
-         exit(); 
-    }else {
-        $error[] = 'Incorrect Email or Password!';  
-    }
-} else {
-    $error[] = 'User not found!';
+        $_SESSION['user_name'] = $row['name'];
+        header('location:user.php');
+
+     }
+      
+   }else {
+    $error[] = 'Incorrect Email or Password!';
+   }
 }
-
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +106,7 @@ if(isset($_POST['submit'])) {
 
 <div class="form-container" >
 
-    <form action="validate_login.php" method="post">
+    <form action="" method="post">
         <h3>Login</h3>
         <?php
         if(isset($error)) {
@@ -130,7 +117,6 @@ if(isset($_POST['submit'])) {
         ?>
         <input type="text" name="username" required placeholder="Username">
         <input type="password" name="password" required placeholder="Password">
-        <input type="email" name="email" required placeholder="Email">
         <input type="submit" name="submit" value="login" class="form-btn">
         <p>Don't have an an account? <a href="signup.php">Sign Up</a></p>
     </form>
