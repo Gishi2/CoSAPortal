@@ -206,8 +206,8 @@
 
                                         echo $relativePath; 
                                         ?>" alt=""><?php echo $row["programmeName"]; ?></td> 
-                                <td> <?php echo date("d F Y", strtotime("23 June 2023")); ?> </td> 
-                                <td> <?php echo date("d F Y", strtotime("25 June 2023")); ?> </td> 
+                                <td> <?php echo date("d F Y", strtotime($row["programmeStartDate"])); ?> </td> 
+                                <td> <?php echo date("d F Y", strtotime($row["programmeEndDate"])); ?> </td>
                                 <td>
                                 <?php echo $row["programmeTime"]; ?> 
                                 </td>
