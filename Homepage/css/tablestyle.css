@@ -465,3 +465,19 @@ a.button3:hover{
     font-weight: 600;
     text-transform: uppercase;
   }
+
+  .delete-btn{
+    z-index: 2;
+    color: #fff;
+    background: #dc3545;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+  }

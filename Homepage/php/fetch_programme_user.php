@@ -155,7 +155,7 @@
             }
 
             // SQL query to fetch data
-            $sql = "SELECT * FROM programme";
+            $sql = "SELECT * FROM programme WHERE status = 0";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {

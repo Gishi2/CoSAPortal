@@ -186,7 +186,7 @@
                     }
 
                     // SQL query to fetch data
-                    $sql = "SELECT * FROM programme";
+                    $sql = "SELECT * FROM programme WHERE status = 0";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -213,21 +213,9 @@
                                 </td>
                                 <td> <strong> <?php echo $row["capacity"]; ?> </strong> </td>
                                 <td> <a class="popup-btn">Details</a></td>
-                                <!-- <td> <a class="popup-btn">Details</a></td> -->
-                                <!-- <div class="popup-view">
-                                    <div class="popup-card">
-                                        <a><i class="fas fa-times close-btn"></i></a>
-                                        <div class="product-img">
-                                            <img src="/images/Posters/WebDevelopmentBootCamp_Poster (12).png" alt="">
-                                        </div>
-                                        <div class="info"> 
-                                            <h2>Web Development Bootcamp<br><span><?php echo date("d - d F Y", strtotime("23 June 2023")); ?></span></h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                            <a href="#" class="add-cart-btn">Update Details</a>
-                                            <a class="add-wish">Cancel Update</a>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                <!-- <td> <a class="delete-btn">Delete</a> </td> -->
+                                <td><a class="delete-btn" data-id="<?php echo $row['programmeId']; ?>" onclick="handleDeleteClick(<?php echo $row['programmeId']; ?>)">Delete</a></td>
+
                                 <div class="popup-view">
                                     <div class="popup-card">
                                         <a><i class="fas fa-times close-btn"></i></a>
@@ -278,34 +266,6 @@
                             }
                             $conn->close();
                         ?>
-                         <!-- <tr>
-                          <td> 1 </td> 
-                          <td> <img src="/images/Posters/WebDevelopmentBootCamp_Poster (12).png" alt="">Web Development Bootcamp</td> 
-                          <td> 23 June 2023 </td> 
-                          <td> 25 June 2023 </td> 
-                          <td>
-                              8 AM - 5 PM 
-                          </td>
-                          <td> <strong> 80 </strong> </td>
-                          <td> <a class="popup-btn">Details</a></td>
-                          <td> <a class="popup-btn">Details</a></td>
-                          <div class="popup-view">
-                            <div class="popup-card">
-                              <a><i class="fas fa-times close-btn"></i></a>
-                              <div class="product-img">
-                                <img src="/images/Posters/WebDevelopmentBootCamp_Poster (12).png" alt="">
-                              </div>
-                              <div class="info"> 
-                                <h2>Web Development Bootcamp<br><span>23 - 25 June</span></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <a href="#" class="add-cart-btn">Update Details</a>
-                                <a class="add-wish">Cancel Update</a>
-                              </div>
-                            </div>
-                          </div>
-                        </tr>
-                        <tr>
-                        </tr> -->
                   </tbody>
               </table>
           </section>
@@ -452,22 +412,33 @@
             });
         </script>
 
-        <!-- javascript/jQuery to get data from fetch_programme.php -->
         <script>
-            // Fetch data from fetch_programme.php using AJAX
-            window.onload = function () {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', '/Homepage/php/fetch_programme.php', true);
-        
-                xhr.onload = function () {
-                    if (xhr.status == 200) {
-                        // Update the content of tbody with the fetched data
-                        document.getElementById('programmeData').innerHTML = xhr.responseText;
-                    }
-                };
-        
-                xhr.send();
-            };
+            // Function to handle the delete button click
+            function handleDeleteClick(id) {
+                // Ask for confirmation before deleting
+                if (confirm('Are you sure you want to delete this programme?')) {
+                    // Make an AJAX request to update the status
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/Homepage/php/update_status.php', true);
+                    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                    xhr.onload = function() {
+                        if (xhr.status == 200) {
+                            // If the request is successful, update the UI or perform necessary actions
+                            console.log('Status updated successfully 1');
+                            // You can perform UI updates here if needed
+                            // For example, reload the page: 
+                            window.location.reload();
+                        } else {
+                            console.error('Error updating status');
+                        }
+                    };
+                    xhr.onerror = function() {
+                        console.error('Request failed');
+                    };
+                    // Send the ID of the item to update and the new status (1 for 'deleted')
+                    xhr.send('id=' + id + '&status=1');
+                }
+            }
         </script>
 
 </body>

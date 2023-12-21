@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 
     // Redirect after successful submission (change the URL as needed)
-    header("Location: /Homepage/success.php");
+    header("Location: /Homepage/php/fetch_programme_admin.php");
     exit();
 }
 ?>
