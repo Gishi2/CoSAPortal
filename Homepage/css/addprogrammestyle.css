@@ -549,7 +549,7 @@ table {
 }
 
 .nice-form-group > input[type=file]::-webkit-file-upload-button {
-  background: var(--nf-input-focus-border-color);
+  background: #0463FA;
   border: 0;
   -webkit-appearance: none;
   appearance: none;

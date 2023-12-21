@@ -172,7 +172,113 @@
                       </tr>
                   </thead>
                   <tbody>
-                         <tr>
+                    <?php
+                    // Database connection
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "cosaportal";
+
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    // SQL query to fetch data
+                    $sql = "SELECT * FROM programme";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+                            <tr>
+                                <td> <?php echo $row["programmeId"]; ?> </td> 
+                                <td> <img src="<?php 
+                                        // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+                                        $posterPath = $row["posterPath"];
+                                        $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
+
+                                        // Remove the server-specific part from the path
+                                        $relativePath = str_replace($basePath, '', $posterPath);
+
+                                        // Now $relativePath will contain something like "/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+
+                                        echo $relativePath; 
+                                        ?>" alt=""><?php echo $row["programmeName"]; ?></td> 
+                                <td> <?php echo date("d F Y", strtotime("23 June 2023")); ?> </td> 
+                                <td> <?php echo date("d F Y", strtotime("25 June 2023")); ?> </td> 
+                                <td>
+                                <?php echo $row["programmeTime"]; ?> 
+                                </td>
+                                <td> <strong> <?php echo $row["capacity"]; ?> </strong> </td>
+                                <td> <a class="popup-btn">Details</a></td>
+                                <!-- <td> <a class="popup-btn">Details</a></td> -->
+                                <!-- <div class="popup-view">
+                                    <div class="popup-card">
+                                        <a><i class="fas fa-times close-btn"></i></a>
+                                        <div class="product-img">
+                                            <img src="/images/Posters/WebDevelopmentBootCamp_Poster (12).png" alt="">
+                                        </div>
+                                        <div class="info"> 
+                                            <h2>Web Development Bootcamp<br><span><?php echo date("d - d F Y", strtotime("23 June 2023")); ?></span></h2>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                            <a href="#" class="add-cart-btn">Update Details</a>
+                                            <a class="add-wish">Cancel Update</a>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="popup-view">
+                                    <div class="popup-card">
+                                        <a><i class="fas fa-times close-btn"></i></a>
+                                        <div class="product-img">
+                                            <img src="<?php 
+                                            // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+                                            $posterPath = $row["posterPath"];
+                                            $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
+
+                                            // Remove the server-specific part from the path
+                                            $relativePath = str_replace($basePath, '', $posterPath);
+
+                                            // Now $relativePath will contain something like "/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+
+                                            echo $relativePath;
+
+                                            //echo $row["posterPath"]; 
+                                            ?>" alt="">
+                                        </div>
+                                        <div class="info"> 
+                                            <h2><?php
+                                            echo $row["programmeName"]; ?>
+                                            <br>
+                                            <span><?php 
+
+                                            // Assuming $row["programmeStartDate"] and $row["programmeEndDate"] are in the format 'Y-m-d' like '2018-07-22'
+                                            $startDate = date("d", strtotime($row["programmeStartDate"])); // Get day (e.g., '22')
+                                            $endDate = date("d F Y", strtotime($row["programmeEndDate"])); // Get day, month, and year (e.g., '25 July 2018')
+
+                                            // Now you can use $startDate and $endDate in your HTML
+
+                                            echo $startDate; ?> - <?php echo $endDate;
+                                            //echo $row["programmeStartDate"] . ' - ' . $row["programmeEndDate"]; 
+                                            ?>
+                                            </span>
+                                            </h2>
+                                            <p><?php echo $row["programmeDesc"]; ?></p>
+                                            <a href="#" class="add-cart-btn">Add to Cart</a>
+                                            <a href="#" class="add-wish">Add to Wishlist</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tr>
+                            <?php
+                                }
+                            } else {
+                                echo "<div>No results found</div>";
+                            }
+                            $conn->close();
+                        ?>
+                         <!-- <tr>
                           <td> 1 </td> 
                           <td> <img src="/images/Posters/WebDevelopmentBootCamp_Poster (12).png" alt="">Web Development Bootcamp</td> 
                           <td> 23 June 2023 </td> 
@@ -199,7 +305,7 @@
                           </div>
                         </tr>
                         <tr>
-                        </tr>
+                        </tr> -->
                   </tbody>
               </table>
           </section>

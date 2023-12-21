@@ -7,7 +7,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -34,11 +33,6 @@
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-
-    <!-- Template Table Stylesheet-->
-    <link rel="stylesheet" href="/Homepage/css/tablestyle.css">
-
-    
 </head>
 
 <body>
@@ -53,81 +47,81 @@
     <!-- Side Bar Test Start-->
 
     <div class="sidebar">
-      <div class="logo-details">
-        <i class='bx bx-menu' id="btn" ></i>
-    </div>
-    <ul class="nav-list" style="padding: 0;">
-      <li>
-         <i class='bx bx-search' ></i>
-         <input type="text" placeholder="Search...">
-         <span class="tooltip">Search</span>
-      </li>
-      <li>
-        <a href="programme-registration-user.html">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Programme Registration</span>
-        </a>
-         <span class="tooltip">Programme</span>
-      </li>
-      <li>
-       <a href="#">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">User</span>
-       </a>
-       <span class="tooltip">User</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-folder' ></i>
-         <span class="links_name">E-Book Shop</span>
-       </a>
-       <span class="tooltip">E-Book Shop</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-cart-alt' ></i>
-         <span class="links_name">Merchandise</span>
-       </a>
-       <span class="tooltip">Merchandise</span>
-     </li>
+        <div class="logo-details">
+            <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav-list" style="padding: 0;">
+          <li>
+             <i class='bx bx-search' ></i>
+             <input type="text" placeholder="Search...">
+             <span class="tooltip">Search</span>
+          </li>
+          <li>
+            <a href="programme-registration-user.html">
+              <i class='bx bx-grid-alt'></i>
+              <span class="links_name">Programme Registration</span>
+            </a>
+             <span class="tooltip">Programme</span>
+          </li>
+          <li>
+           <a href="#">
+             <i class='bx bx-user' ></i>
+             <span class="links_name">User</span>
+           </a>
+           <span class="tooltip">User</span>
+         </li>
+         <li>
+           <a href="#">
+             <i class='bx bx-folder' ></i>
+             <span class="links_name">E-Book Shop</span>
+           </a>
+           <span class="tooltip">E-Book Shop</span>
+         </li>
+         <li>
+           <a href="#">
+             <i class='bx bx-cart-alt' ></i>
+             <span class="links_name">Merchandise</span>
+           </a>
+           <span class="tooltip">Merchandise</span>
+         </li>
 
-     <li class="profile">
-         <i class='bx bx-log-out' id="log_out" ></i>
-     </li>
-    </ul>
+         <li class="profile">
+             <i class='bx bx-log-out' id="log_out" ></i>
+         </li>
+        </ul>
       </div>
       <section class="home-section">
           <!-- Top Navbar Start -->
         <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-        <a href="homepage.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
-            <!-- <h1 class="m-0 text-primary">PORTAL</h1> -->
-            <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="homepage.html" class="nav  -item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <!-- <a href="service.html" class="nav-item nav-link">Service</a> -->
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 30px;">Pages</a>
-                    <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <!-- <a href="about.html" class="dropdown-item">About Us</a> -->
-                        <a href="\potoub-html\course-registration.html" class="dropdown-item">Programme</a>
-                        <a href="\potoub-html\Merchandise\merchandise.html" class="dropdown-item">Merchandise</a>
-                        <a href="\potoub-html\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
-                    </div>
-                </div>
-                <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
-            </div>
-            <a href="homepage.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+      <a href="homepage.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+          <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
+          <!-- <h1 class="m-0 text-primary">PORTAL</h1> -->
+          <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
+      </a>
+      <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav ms-auto p-4 p-lg-0">
+              <a href="homepage.html" class="nav  -item nav-link active">Home</a>
+              <a href="about.html" class="nav-item nav-link">About</a>
+              <!-- <a href="service.html" class="nav-item nav-link">Service</a> -->
+              <div class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                  <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                      <!-- <a href="about.html" class="dropdown-item">About Us</a> -->
+                      <a href="\potoub-html\course-registration.html" class="dropdown-item">Programme</a>
+                      <a href="\potoub-html\Merchandise\merchandise.html" class="dropdown-item">Merchandise</a>
+                      <a href="\potoub-html\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
+                  </div>
+              </div>
+              <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+          </div>
+          <a href="homepage.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
+      </div>
+  </nav>
+  <!-- Navbar End -->
         <!-- Top Navbar End -->
 
         <!-- Page Header Start -->
@@ -143,73 +137,122 @@
     </div>
     <!-- Page Header End -->
 
+
     <!-- Programme Cards Start -->
+    <div class="programme-container">
+        <div class="container card-container" id="programmeData">
+            <?php
+            // Database connection
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "cosaportal";
 
-    <div class="programme-table">
-        <main class="table">
-          <section class="table__header">
-              <h1>List of Programmes</h1>
-              <div class="input-group">
-                  <input type="search" placeholder="Search Data...">
-                  <!-- <img src="/images/search.png" alt=""> -->
-              </div>
-              <div class="add-button">
-                <a href="/Homepage/Programme/programme-committee-addprogramme.html" class="button3">Add a Programme</a>
-              </div>
-          </section>
-          <section class="table__body">
-              <table>
-                  <thead>
-                      <tr>
-                          <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> Programme Name <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> Start Date <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> End Date <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> Time <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> Capacity <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> Details <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> Delete <span class="icon-arrow">&UpArrow;</span></th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                         <tr>
-                          <td> 1 </td> 
-                          <td> <img src="/images/Posters/WebDevelopmentBootCamp_Poster (12).png" alt="">Web Development Bootcamp</td> 
-                          <td> 23 June 2023 </td> 
-                          <td> 25 June 2023 </td> 
-                          <td>
-                              8 AM - 5 PM 
-                          </td>
-                          <td> <strong> 80 </strong> </td>
-                          <td> <a class="popup-btn">Details</a></td>
-                          <td> <a class="popup-btn">Details</a></td>
-                          <div class="popup-view">
-                            <div class="popup-card">
-                              <a><i class="fas fa-times close-btn"></i></a>
-                              <div class="product-img">
-                                <img src="/images/Posters/WebDevelopmentBootCamp_Poster (12).png" alt="">
-                              </div>
-                              <div class="info"> 
-                                <h2>Web Development Bootcamp<br><span>23 - 25 June</span></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <a href="#" class="add-cart-btn">Update Details</a>
-                                <a class="add-wish">Cancel Update</a>
-                              </div>
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // SQL query to fetch data
+            $sql = "SELECT * FROM programme";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    ?>
+                    <div class="product">
+                        <div class="product-card">
+                            <div class="product-overlay"></div>
+                            <div class="product-description">
+                                <h2 class="name"><?php echo $row["programmeName"]; ?></h2>
+                                <span class="price">
+                                    <?php 
+
+                                    // Assuming $row["programmeStartDate"] and $row["programmeEndDate"] are in the format 'Y-m-d' like '2018-07-22'
+                                    $startDate = date("d", strtotime($row["programmeStartDate"])); // Get day (e.g., '22')
+                                    $endDate = date("d F Y", strtotime($row["programmeEndDate"])); // Get day, month, and year (e.g., '25 July 2018')
+
+                                    // Now you can use $startDate and $endDate in your HTML
+
+                                    echo $startDate; ?> - <?php echo $endDate;
+
+                                    //echo $row["programmeStartDate"]; 
+                                    ?>
+                                </span>
+                                <a class="popup-btn">Quick View</a>
                             </div>
-                          </div>
-                        </tr>
-                        <tr>
-                        </tr>
-                  </tbody>
-              </table>
-          </section>
-      </main>
-    </div>
+                            <div class="product-image">
+                                <img src="<?php 
+                                // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+                                $posterPath = $row["posterPath"];
+                                $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
 
-    <!-- Contact End -->
-    
+                                // Remove the server-specific part from the path
+                                $relativePath = str_replace($basePath, '', $posterPath);
+
+                                // Now $relativePath will contain something like "/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+
+                                echo $relativePath; 
+                                ?>" class="product-img" alt="">
+                            </div>
+                        </div>
+                        <div class="popup-view">
+                            <div class="popup-card">
+                                <a><i class="fas fa-times close-btn"></i></a>
+                                <div class="product-img">
+                                    <img src="<?php 
+                                    // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+                                    $posterPath = $row["posterPath"];
+                                    $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
+
+                                    // Remove the server-specific part from the path
+                                    $relativePath = str_replace($basePath, '', $posterPath);
+
+                                    // Now $relativePath will contain something like "/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+
+                                    echo $relativePath;
+
+                                    //echo $row["posterPath"]; 
+                                    ?>" alt="">
+                                </div>
+                                <div class="info"> 
+                                    <h2><?php
+                                     echo $row["programmeName"]; ?>
+                                     <br>
+                                     <span><?php 
+
+                                    // Assuming $row["programmeStartDate"] and $row["programmeEndDate"] are in the format 'Y-m-d' like '2018-07-22'
+                                    $startDate = date("d", strtotime($row["programmeStartDate"])); // Get day (e.g., '22')
+                                    $endDate = date("d F Y", strtotime($row["programmeEndDate"])); // Get day, month, and year (e.g., '25 July 2018')
+
+                                    // Now you can use $startDate and $endDate in your HTML
+
+                                    echo $startDate; ?> - <?php echo $endDate;
+                                    //echo $row["programmeStartDate"] . ' - ' . $row["programmeEndDate"]; 
+                                    ?>
+                                    </span>
+                                    </h2>
+                                    <p><?php echo $row["programmeDesc"]; ?></p>
+                                    <a href="#" class="add-cart-btn">Add to Cart</a>
+                                    <a href="#" class="add-wish">Add to Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <?php
+                }
+            } else {
+                echo "<div>No results found</div>";
+            }
+            $conn->close();
+            ?>
+        </div>
+    </div>
+    <!-- Programme Cards End -->
+
     <!-- Navbar End -->
-    </section>
+      </section>
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -288,7 +331,6 @@
 
     <!-- Template Javascript -->
     <script src="/Homepage/js/main.js"></script>
-    <!-- <script src="programme.js"></script> -->
 
     <!-- Side Navigation Bar-->
     <script>
@@ -316,9 +358,7 @@
         }
         </script>
 
-        <script>
-             // Wait for the document to be fully loaded
-            document.addEventListener("DOMContentLoaded", function() {
+        <script type="text/javascript">
             var popupViews = document.querySelectorAll('.popup-view');
             var popupBtns = document.querySelectorAll('.popup-btn');
             var closeBtns = document.querySelectorAll('.close-btn');
@@ -326,7 +366,6 @@
             //javascript for quick view button
             var popup = function(popupClick){
             popupViews[popupClick].classList.add('active');
-            console.log('hello');
             }
 
             popupBtns.forEach((popupBtn, i) => {
@@ -343,27 +382,9 @@
                 });
             });
             });
-            });
         </script>
 
         <!-- javascript/jQuery to get data from fetch_programme.php -->
-        <script>
-            // Fetch data from fetch_programme.php using AJAX
-            window.onload = function () {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', '/Homepage/php/fetch_programme.php', true);
-        
-                xhr.onload = function () {
-                    if (xhr.status == 200) {
-                        // Update the content of tbody with the fetched data
-                        document.getElementById('programmeData').innerHTML = xhr.responseText;
-                    }
-                };
-        
-                xhr.send();
-            };
-        </script>
-
 </body>
 
 </html>

@@ -21,9 +21,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="/Homepage/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/Homepage/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/Homepage/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="/Homepage/css/bootstrap.min.css" rel="stylesheet">
@@ -95,7 +95,7 @@
         <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
       <a href="homepage.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-          <img class="header-logo" src="img\cosa\cosa_logo_inBlue.png">
+          <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
           <!-- <h1 class="m-0 text-primary">PORTAL</h1> -->
           <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
       </a>
@@ -140,12 +140,9 @@
 
     <!-- Programme Cards Start -->
     <div class="programme-container">
-        <div class="card-header">
-            <h1>Title</h1>
-        </div>
-        <div class="container card-container">
-            <div class="product">
-              <div class="product-card">
+        <div class="container card-container" id="programmeData">
+            <!-- <div class="product">
+            <div class="product-card">
               <div class="product-overlay"></div>
                 <div class="product-description">
                   <h2 class="name">Web Development<br>Bootcamp</h2>
@@ -225,9 +222,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
     </div>
-    <!-- Contact End -->
+    <!-- Programme Cards End -->
 
     <!-- Navbar End -->
       </section>
@@ -361,6 +358,24 @@
             });
             });
         </script>
+
+        <!-- javascript/jQuery to get data from fetch_programme.php -->
+        <script>
+          // Fetch data from fetch_programme_user.php using AJAX
+          window.onload = function () {
+              var xhr = new XMLHttpRequest();
+              xhr.open('GET', '/Homepage/php/fetch_programme.php', true);
+      
+              xhr.onload = function () {
+                  if (xhr.status == 200) {
+                      // Update the content of tbody with the fetched data
+                      document.getElementById('programmeData').innerHTML = xhr.responseText;
+                  }
+              };
+      
+              xhr.send();
+          };
+      </script>
 </body>
 
 </html>
