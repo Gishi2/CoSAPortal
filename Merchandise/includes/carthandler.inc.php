@@ -6,19 +6,20 @@ error_log('PHP script executed successfully');
 try {
     if ($decodedData === null) {
         echo "Error decoding JSON data";
+        die();
     } 
 
     $merchandiseId = $decodedData['merchandiseId'];
-    $price = $decodedData['price'];
-    $quantity = $decodedData['quantity'];
-    $sizes = $decodedData['sizes'];
+    $price = (float)$decodedData['price'];
+    $quantity = (int)$decodedData['quantity']; 
+    $sizes = $decodedData['sizes']; 
 
     $totalPrice = $price * $quantity;
 
     require_once "dbh.inc.php";
 
-    $query = "INSERT INTO cart (merchandise_id, total_price, quantity, sizes) VALUES
-    (:merchanduiseId, :totalPrice, :quantity, :sizes);";
+    $query = "INSERT INTO cart (merchandise_id, quantity, total_price, size) VALUES
+    (:merchandiseId, :quantity, :totalPrice, :sizes);";
 
     $stmt = $pdo->prepare($query);
 

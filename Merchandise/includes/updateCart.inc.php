@@ -20,8 +20,8 @@ try {
                     echo '<img src="'. $item['image_url'] . '">';
                 echo '</div>';
                 echo '<div class="text">' . htmlspecialchars($item['name']) . '</div>';
-                echo '<div class="price">' . htmlspecialchars($item['price']) .'</div>';
-                echo '<div class="btn-delete">Delete</div>';
+                echo '<div class="price">RM' . htmlspecialchars($item['total_price']) .'</div>';
+                echo '<div class="btn-delete" onclick="deleteCart()">Delete</div>';
             echo '</div>';
         }
     } 
