@@ -240,7 +240,7 @@
 }
 
 .page-header {
-    background: url(/CoSAPortal/Homepage/img/cosa/memperkasa_ukhuwah.jpeg) top center no-repeat;
+    background: url('/Homepage/img/cosa/memperkasa_ukhuwah.jpeg') top center no-repeat;
     background-position-y: -300px;
     background-size: cover; 
     text-shadow: 0 0 30px rgba(0, 0, 0, .1);
@@ -863,7 +863,7 @@
   width: 100%;
   text-align: center;
   bottom: 80px;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 300;
 }
 
