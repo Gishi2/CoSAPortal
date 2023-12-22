@@ -65,21 +65,26 @@
     <!-- Navbar End -->
     <!-- END COPY FOR HEADER -->
 
-    <div class="form-container" >
+    <div class="form-container">
 
-        <form action="" method="post">
+        <form action="signup.php" method="post">
             <h3>Sign Up</h3>
-            <input type="text" name="studName" required placeholder="Student Name">
-            <input type="number" name="matrixId" required placeholder="Matrix ID">
+            <input type="text" name="name" required placeholder="Student Name">
+            <input type="number" name="matrix" required placeholder="Matrix ID">
             <input type="address" name="address" required placeholder="Address">
-            <input type="phone" name="phone" required placeholder="Phone Number">
-            <input type="semester" name="semester" required placeholder="Semester">
+            <input type="number" name="phone" required placeholder="Phone Number">
+            <select name="semester" required>
+                <option value="" disabled selected>Semester</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              
             <input type="text" name="username" required placeholder="Username">
+            <input type="text" name="email" required placeholder="Email">
             <input type="password" name="password" required placeholder="Password">
             <input type="password" name="cpassword" required placeholder="Confirm Password">
-            <select name="user_type">
-                <option value="User">User</option>
-             </select>
             <input type="submit" name="submit" value="sign up" class="form-btn">
             <p>Already have an account? <a href="login.php">Login</a></p>
         </form>
