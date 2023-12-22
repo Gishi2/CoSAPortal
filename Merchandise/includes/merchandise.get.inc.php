@@ -29,7 +29,7 @@
     <link href="\Merchandise\merchandise.css" rel="stylesheet">    
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg box-shadow bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+    <nav class="navbar navbar-expand-lg box-shadow bg-white navbar-light fixed-top p-0 wow fadeIn" data-wow-delay="0.1s">
         <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="\Homepage\img\cosa\cosa_logo_inBlue.png">
         </a>
