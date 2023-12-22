@@ -8,22 +8,24 @@ try {
         echo "Error decoding JSON data";
     } 
 
-    $name = $decodedData['name'];
+    $merchandiseId = $decodedData['merchandiseId'];
     $price = $decodedData['price'];
     $quantity = $decodedData['quantity'];
-    $size = $decodedData['size'];
+    $sizes = $decodedData['sizes'];
+
+    $totalPrice = $price * $quantity;
 
     require_once "dbh.inc.php";
 
-    $query = "INSERT INTO cart (name, price, quantity, size) VALUES
-    (:name, :price, :quantity, :size);";
+    $query = "INSERT INTO cart (merchandise_id, total_price, quantity, sizes) VALUES
+    (:merchanduiseId, :totalPrice, :quantity, :sizes);";
 
     $stmt = $pdo->prepare($query);
 
-    $stmt->bindParam(":name", $name);
-    $stmt->bindParam(":price", $price);
+    $stmt->bindParam(":merchandiseId", $merchandiseId);
+    $stmt->bindParam(":totalPrice", $totalPrice);
     $stmt->bindParam(":quantity", $quantity);
-    $stmt->bindParam(":size", $size);
+    $stmt->bindParam(":sizes", $sizes);
 
     $stmt->execute();
 
