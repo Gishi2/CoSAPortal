@@ -1,9 +1,5 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-
 include 'config.php';
 
 if (isset($_POST['submit'])) {
@@ -22,54 +18,42 @@ if (isset($_POST['submit'])) {
 
     // Prepare the statement for inserting into the 'user' table
     $stmtUser = $conn->prepare("INSERT INTO user (userName, userPassword, userEmail, userTypeId) VALUES (?, ?, ?, ?)");
-
-    // Bind parameters
-    $stmtUser->bind_param("sssi", $name, $pass, $email, $user_type);
-
-    // Execute the statement
+    $stmtUser->bind_param("sssi", $username, $pass, $email, $user_type);
     $stmtUser->execute();
+    $stmtUser->close();
 
-    // Check for duplicate users
+    // Check for duplicate users in 'user' table
     $stmtSelect = $conn->prepare("SELECT * FROM user WHERE userName = ?");
-    $stmtSelect->bind_param("s", $name);
+    $stmtSelect->bind_param("s", $username);
     $stmtSelect->execute();
-
-    // Store the result
     $result = $stmtSelect->get_result();
 
-    // Check if a user with the same name already exists
+    // Check if a user with the same name already exists in 'user' table
     if ($result->num_rows > 0) {
         $error[] = 'User already exists!';
     } else {
         if ($pass != $cpass) {
             $error[] = 'Passwords do not match!';
         } else {
-            // Get the last inserted ID
+            // Get the last inserted ID from 'user' table
             $lastInsertId = mysqli_insert_id($conn);
 
-            // Assuming studUserId is generated from another table
-            $insertUserForm = "INSERT INTO student (studUserId, name, matrix, address, phone, semester, username, password) VALUES ('$lastInsertId','$name','$matrix','$address','$phone','$semester','$username','$pass')";
-            mysqli_query($conn, $insertUserForm);
-
-            // Close the statements
-            $stmtUser->close();
-            $stmtSelect->close();
+            // Insert into 'student' table
+            $insertStudent = "INSERT INTO student (studUserId, name, matrix, address, phone, semester) VALUES ('$lastInsertId','$name','$matrix','$address','$phone','$semester')";
+            mysqli_query($conn, $insertStudent);
 
             // Redirect to login.php
-            header('Location: /Login-system/login.php');
+            header('Location: login.php');
             exit();
         }
     }
 
-    // Close the statements
-    $stmtUser->close();
     $stmtSelect->close();
 
     // Handle errors if any
     if (!empty($error)) {
         // Handle errors, such as displaying an error message or logging them
-        // Example: 
-        echo implode("<br>", $error);
+        // Example: echo implode("<br>", $error);
     }
 }
 
