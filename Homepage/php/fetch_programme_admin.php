@@ -63,7 +63,7 @@
          <span class="tooltip">Search</span>
       </li>
       <li>
-        <a href="programme-registration-user.html">
+        <a href="fetch_programme_user.php">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Programme Registration</span>
         </a>
@@ -84,7 +84,7 @@
        <span class="tooltip">E-Book Shop</span>
      </li>
      <li>
-       <a href="#">
+       <a href="/Merchandise/includes/merchandise.get.inc.php">
          <i class='bx bx-cart-alt' ></i>
          <span class="links_name">Merchandise</span>
        </a>
@@ -100,7 +100,7 @@
           <!-- Top Navbar Start -->
         <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-        <a href="homepage.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
             <!-- <h1 class="m-0 text-primary">PORTAL</h1> -->
             <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
@@ -110,21 +110,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="homepage.html" class="nav  -item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="homepage.html" class="nav  -item nav-link ">Home</a>
+                <!-- <a href="about.html" class="nav-item nav-link">About</a> -->
                 <!-- <a href="service.html" class="nav-item nav-link">Service</a> -->
-                <div class="nav-item dropdown">
+                <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 30px;">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <!-- <a href="about.html" class="dropdown-item">About Us</a> -->
+                         <a href="about.html" class="dropdown-item">About Us</a> 
                         <a href="\potoub-html\course-registration.html" class="dropdown-item">Programme</a>
                         <a href="\potoub-html\Merchandise\merchandise.html" class="dropdown-item">Merchandise</a>
                         <a href="\potoub-html\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
                     </div>
-                </div>
+                </div> -->
                 <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
             </div>
-            <a href="homepage.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
+            <a href="/index.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -253,8 +253,8 @@
                                             </span>
                                             </h2>
                                             <p><?php echo $row["programmeDesc"]; ?></p>
-                                            <a href="#" class="add-cart-btn">Add to Cart</a>
-                                            <a href="#" class="add-wish">Add to Wishlist</a>
+                                            <a href="#" class="add-cart-btn">Confirm Update</a>
+                                            <!-- <a href="#" class="add-wish">Add to Wishlist</a> -->
                                         </div>
                                     </div>
                                 </div>

@@ -40,11 +40,11 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/index.php" class="nav-item nav-link">Home</a>
-                <a href="" class="nav-item nav-link">About</a>
+                <!-- <a href="" class="nav-item nav-link">About</a> -->
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="\Homepage\programme-registration-user.html" class="dropdown-item">Programme</a>
+                        <a href="\Homepage\php\fetch_programme_user.php" class="dropdown-item">Programme</a>
                         <a href="\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
                     </div>
                 </div>
