@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
             mysqli_query($conn, $insertStudent);
 
             // Redirect to login.php
-            header('Location: login.php');
+            
             exit();
         }
     }
@@ -56,5 +56,6 @@ if (isset($_POST['submit'])) {
         // Example: echo implode("<br>", $error);
     }
 }
+header('Location: login.php');
 
 ?>
