@@ -6,7 +6,7 @@ if(isset($_POST['submit'])) {
    $username = mysqli_real_escape_string($conn, $_POST['username']);
    $pass = md5($_POST['password']);
 
-   $select = " SELECT * FROM user_form WHERE username ='$username' && password = '$pass' ";
+   $select = "SELECT * FROM user WHERE username ='$username' && userPassword = '$pass' ";
    
    $result = mysqli_query($conn, $select);
 
@@ -15,19 +15,15 @@ if(isset($_POST['submit'])) {
     $row = mysqli_fetch_array($result);
 
     if($row['user_type'] == 'admin') {
-
         $_SESSION['admin _name'] = $row['name'];
         header('location:admin.php');
-
-    }elseif($row['user_type'] == 'user'){
-
+    } elseif ($row['user_type'] == 'user'){
         $_SESSION['user_name'] = $row['name'];
         header('location:user.php');
-
      }
       
-   }else {
-    $error[] = 'Incorrect Email or Password!';
+   } else {
+    $error[] = 'Incorrect Username or Password!';
    }
 }
 ?>
@@ -54,16 +50,16 @@ if(isset($_POST['submit'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="/CoSAPortal/Homepage/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="/CoSAPortal/Homepage/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="/CoSAPortal/Homepage/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet"/>
+    <link href="/Homepage/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/Homepage/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/Homepage/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet"/>
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="/CoSAPortal/Homepage/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Homepage/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <!-- <link href="css/homepage2.css" rel="stylesheet"> -->
-    <link href="/CoSAPortal/Homepage/css/homepage.css" rel="stylesheet">
+    <link href="/Homepage/css/homepage.css" rel="stylesheet">
     <link rel="stylesheet" href="signup.css">
 </head>
 
@@ -74,8 +70,8 @@ if(isset($_POST['submit'])) {
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-        <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <img class="header-logo" src="/CoSAPortal/Homepage/img/cosa/cosa_logo_inBlue.png">
+        <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
             <!-- <h1 class="m-0 text-primary">PORTAL</h1> -->
             <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
         </a>
@@ -84,21 +80,21 @@ if(isset($_POST['submit'])) {
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.php" class="nav  -item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="/index.php" class="nav  -item nav-link active">Home</a>
+                <!-- <a href="about.html" class="nav-item nav-link">About</a> -->
                 <!-- <a href="service.html" class="nav-item nav-link">Service</a> -->
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <!-- <a href="about.html" class="dropdown-item">About Us</a> -->
-                        <a href="\Homepage\programme-registration-user.html" class="dropdown-item">Programme</a>
-                        <a href="\Merchandise\merchandise.html" class="dropdown-item">Merchandise</a>
+                        <a href="\Homepage\php\fetch_programme_user.php" class="dropdown-item">Programme</a>
+                        <a href="\Merchandise\includes\merchandise.get.inc.php" class="dropdown-item">Merchandise</a>
                         <a href="\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
                     </div>
                 </div>
                 <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
             </div>
-            <a href="/sign-up/signup.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a>
+            <a href="/Login-system/signup.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -118,24 +114,24 @@ if(isset($_POST['submit'])) {
         <input type="text" name="username" required placeholder="Username">
         <input type="password" name="password" required placeholder="Password">
         <input type="submit" name="submit" value="login" class="form-btn">
-        <p>Don't have an an account? <a href="signup.php">Sign Up</a></p>
+        <p>Don't have an an account? <a href="signup.html">Sign Up</a></p>
     </form>
 </div>
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/CoSAPortal/Homepage/lib/wow/wow.min.js"></script>
-    <script src="/CoSAPortal/Homepage/lib/easing/easing.min.js"></script>
-    <script src="/CoSAPortal/Homepage/lib/waypoints/waypoints.min.js"></script>
-    <script src="/CoSAPortal/Homepage/lib/counterup/counterup.min.js"></script>
-    <script src="/CoSAPortal/Homepage/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="/CoSAPortal/Homepage/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="/CoSAPortal/Homepage/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="/CoSAPortal/Homepage/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="/Homepage/lib/wow/wow.min.js"></script>
+    <script src="/Homepage/lib/easing/easing.min.js"></script>
+    <script src="/Homepage/lib/waypoints/waypoints.min.js"></script>
+    <script src="/Homepage/lib/counterup/counterup.min.js"></script>
+    <script src="/Homepage/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/Homepage/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/Homepage/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/Homepage/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="/CoSAPortal/Homepage/js/main.js"></script>
+    <script src="/Homepage/js/main.js"></script>
 
 </body>
 </html>
