@@ -3,9 +3,14 @@
         $file = $_FILES['file'];
         $name = $_POST['name'];
         $stock = $_POST['stock'];
-        $sizes = explode(',', $_POST['size']);
+        $size_S = isset($_POST['size_S']) ? 'S' : '';
+        $size_M = isset($_POST['size_M']) ? 'M' : '';
+        $size_L = isset($_POST['size_L']) ? 'L' : '';
+        $size_XL = isset($_POST['size_XL']) ? 'XL' : '';
         $price = $_POST['price'];
         $description = $_POST['description'];
+
+        $sizes = implode(',', array_filter([$size_S, $size_M, $size_L, $size_XL]));
 
         $fileName = $_FILES['file']['name'];
         $fileTmpName = $_FILES['file']['tmp_name'];
@@ -17,15 +22,14 @@
         $fileActualExt = strtolower(end($fileExt));
 
         $allowed = array('jpg', 'jpeg', 'png');
-        $allowedSizes = ['S', 'M', 'L', 'XL'];
 
         if (in_array($fileActualExt, $allowed)) {
             if ($fileError === 0) {
                 if ($fileSize < 1000000) {
-                    $fileNameNew = uniqid('', true).".".$fileActualExt;
-                    $fileDestination = 'CoSAPortal/Merchandise/images/'.$fileNameNew;
+                    // $fileNameNew = uniqid('', true).".".$fileActualExt;
+                    $fileNamePath = '/Merchandise/images/' . $fileName;
+                    $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/Merchandise/images/' .$fileName;
                     move_uploaded_file($fileTmpName, $fileDestination);
-                    // header("Location: /Merchandise/merchandise.html?uploadsuccessful");
                 } else {
                     echo "Your file is too big!";
                 }
@@ -36,19 +40,10 @@
             echo "Cannot upload this type of file!";
         }
 
-        foreach ($sizes as $size) {
-            if (!is_array($size, $allowedSizes)) {
-                echo "Invalid size value!";
-                exit();
-            }
-        }
-
-        $url_image = $fileNameNew;
+        $url_image = $fileNamePath;
 
         try {
             require_once "merchandisedb.inc.php";
-
-            // var_dump($name, $description, $size, $price, $stock, $url_image);
 
             $query = "INSERT INTO merchandise (name, description, size, price, stock, image_url) VALUES
             (:name, :description, :sizes, :price, :stock, :url_image);";

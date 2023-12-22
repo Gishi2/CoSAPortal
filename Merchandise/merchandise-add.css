@@ -55,6 +55,21 @@ body {
     margin-left: 3rem;
 }
 
+.checkbox-size {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.checkbox {
+    display: flex;
+    padding-left: 0.5rem;
+}
+
+.checkbox > label {
+    padding-left: 0.5rem;
+}
+
 .product-image {
     align-items: flex-start;
 }
@@ -103,6 +118,65 @@ body {
 .insert-image > span {
     font-size: 0.725rem;
     padding-top: 6px;
+}
+
+.imagePreview {
+    display: none;
+    max-width: 80px;
+    min-height: 80px;
+    max-width: 80px;
+    min-width: 80px;
+    border: 1px dashed #333;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+.imagePreview > img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.previewMessage {
+    display: none;
+    margin-top: 0.5rem;
+}
+
+.overlay {
+    display: none;
+    position: absolute;
+    z-index: 1200;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    transition: opacity 1s ease;
+    cursor: pointer;
+}
+
+.pop-up-preview {
+    display: none;
+    position: absolute;
+    z-index: 1201;
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.250rem;
+}
+
+.pop-up-preview > img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
 }
 
 [class^="product-"] > input {
@@ -187,21 +261,32 @@ body {
     gap: 1rem;
 }
 
-.button > button {
+.button .button-div {
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid var(--dark);
+    border-radius: 0.2rem;
+    padding: 0.25rem;
+    transition: 0.3s ease;
+    cursor: pointer;
+    color: var(--dark);
+}
+
+.button .button-div:hover {
+    color: var(--primary);
+    transition: 0.3s ease;
+}
+
+.button .button-link > button {
     min-width: 140px;
     font-size: 0.875rem;
 }
 
-.button .cancel-btn {
-    background-color:#fff;
-    border-radius: 0.2rem;
-    padding: 0.25rem;
-    transition: 0.3s ease;
-}
-
-.button .cancel-btn:hover {
-    background-color: #e5e5e5;
-    transition: 0.3s ease;
+.button > button:disabled {
+    opacity: 0.5;
 }
 
 .button .save-btn {
@@ -209,6 +294,6 @@ body {
     border-color: var(--primary);
     color: #fff;
     border-radius: 0.2rem;
-    padding: 0.25rem;
+    padding: 0.25rem 0.625rem 0.25rem 0.625rem;
     transition: 0.3s ease;
 }

@@ -57,63 +57,64 @@
                 </div>
                 <div class="box-cart" id="cart-container">
                     <!-- <h3>Recently added Product</h3> -->
-                    <!-- Merchandise Items Here! -->
-                    <!-- <div class="cart-item">
+                    <div class="cart-item">
                         <div class="box">
                             <img src="\images\cosa-merchandise\cosa-corporate.png">
                         </div>
                         <div class="text">CoSA Corporate Shirt</div>
                         <div class="price">RM90.00</div>
-                        <div class="btn-delete" onclick="deleteCartButton()">Delete</div>
-                    </div> -->
+                        <div class="btn-delete">Delete</div>
+                    </div>
                     <!-- Merchandise will be added to the cart here -->
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="flex-1">
-        <section class="main">
-            <a class="section-a" onclick="openPopUp()">
-                <div class="section-link">
-                    <img src="\images\cosa-merchandise\cosa-corporate.png" alt="">
-                    <span class="text-color section-text">
-                        <p class="shirt-name">COSA CORPORATE</p>
-                        <p class="shirt-price">RM90.00</p>
-                    </span>
-                </div>
-            </a>
-            
-        
-            <div id="overlay" class="pop-up-overlay">
-                <div id="pop-up" class="pop-up">
-                    <div class="pop-up-image">
-                        <img src="\images\cosa-merchandise\cosa-corporate.png" alt="">
-                    </div>
-                    <span class="fa-solid fa-xmark" onclick="closePopUp()"></span>
-                    <div class="pop-up-description">
-                        <h2 class="name">CoSA Corporate</h2>
-                        <span class="price">RM90.00</span>
-                        <span class="quantity">QUANTITY:</span>
-                        <div class="pop-up-quantity">
-                            <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
-                            <input type="text" name="quantity" class="quantity-input" value="1" readonly>
-                            <button class="quantity-btn" onclick="increaseQuantity()">+</button>
-                        </div>
-                        <span class="size">SIZE:</span>
-                        <div class="pop-up-size">
-                            <button class="size-btn">S</button>
-                            <button class="size-btn">M</button>
-                            <button class="size-btn">L</button>
-                            <button class="size-btn">XL</button>
-                        </div>
-                        <div class="pop-up-btn" onclick="addToCartButton()">Add to Cart</div>
-                    </div>
-                </div>
-            </div>
+    <!-- <main class="flex-1">
+        <section class="main"> -->
 
-        
-            <a class="section-a">
+            <form id="merchandise-section">
+                
+                <!-- <a class="section-a" onclick="openPopUp()">
+                    <div class="section-link">
+                        <img src="\images\cosa-merchandise\cosa-corporate.png" alt="">
+                        <span class="text-color section-text">
+                            <p class="shirt-name">COSA CORPORATE</p>
+                            <p class="shirt-price">RM90.00</p>
+                        </span>
+                    </div>
+                </a>
+            
+                <div id="overlay" class="pop-up-overlay">
+                    <div id="pop-up" class="pop-up">
+                        <div class="pop-up-image">
+                            <img src="\images\cosa-merchandise\cosa-corporate.png" alt="">
+                        </div>
+                        <span class="fa-solid fa-xmark" onclick="closePopUp()"></span>
+                        <div class="pop-up-description">
+                            <h2 class="name">CoSA Corporate</h2>
+                            <span class="price">RM90.00</span>
+                            <span class="quantity">QUANTITY:</span>
+                            <div class="pop-up-quantity">
+                                <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                                <input type="text" name="quantity" class="quantity-input" value="1" readonly>
+                                <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                            </div>
+                            <span class="size">SIZE:</span>
+                            <div class="pop-up-size">
+                                <button class="size-btn">S</button>
+                                <button class="size-btn">M</button>
+                                <button class="size-btn">L</button>
+                                <button class="size-btn">XL</button>
+                            </div>
+                            <div class="pop-up-btn" onclick="addToCartButton()">Add to Cart</div>
+                        </div>
+                    </div>
+                </div> -->
+            </form>
+            
+            <!-- <a class="section-a">
                 <div class="section-link">
                     <img src="\images\cosa-merchandise\cosa-jersey.jpg" alt="">
                     <span class="text-color section-text">
@@ -131,7 +132,7 @@
                         <p class="shirt-price">RM85.00</p>
                     </span>
                 </div>
-            </a>
+            </a> -->
 
             <!-- <a class="section-a">
                 <div class="section-link">
@@ -160,8 +161,8 @@
                     <div class="text-wrapper-4">$9.99</div>
                 </div> -->
 
-        </section>
-    </main>
+        <!-- </section>
+    </main> -->
     <script src="merchandise.js"></script>
     <script src="merchandise.server.js"></script>
 </body>

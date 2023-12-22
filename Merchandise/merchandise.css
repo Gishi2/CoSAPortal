@@ -236,6 +236,10 @@
     color: var(--light);
 }
 
+.pop-up-size .size-btn:disabled {
+    opacity: 0.5;
+}
+
 .pop-up-size > button {
     padding: 0.5rem 2rem;
     background: none;
