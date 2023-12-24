@@ -1,3 +1,7 @@
+<?php
+    require_once '../config/config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,11 +48,11 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="\Homepage\php\fetch_programme_user.php" class="dropdown-item">Programme</a>
-                        <a href="\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
+                        <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
+                        <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
                     </div>
                 </div>
-                <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.html"><div>Add New Merchandise</div></a>
+                <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>
                 <div class="nav-cart">
                     <i class="fa-solid fa-cart-shopping" onclick="toggleCart()"></i>
                 </div>

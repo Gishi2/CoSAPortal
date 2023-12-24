@@ -10,9 +10,9 @@
     // 1. Applied to Homepage.php
 
     // How to use? 
-    // *Can refer to Homepage.php in Homepage Folder*
+    // *Can refer to Homepage.php and merchandise.php for reference*
     // First, change your HTML file to PHP file.
-    // Then, add config.php to the top of your file.
+    // Then, add config.php to the top of your file. (../config/config.php)
     // put the name of the variable in the href.
 
     /* 

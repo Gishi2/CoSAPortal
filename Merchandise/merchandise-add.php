@@ -1,3 +1,7 @@
+<?php
+    require_once '../config/config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="\Homepage\css\style.css" rel="stylesheet">
-    <link href="merchandise-add.css" rel="stylesheet">    
+    <link href="\Merchandise\css\merchandise-add.css" rel="stylesheet">    
 </head>
 
 <body>
@@ -46,12 +50,12 @@
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: #1B2C51;">PAGES</a>
             <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                <a href="\Homepage\php\fetch_programme_user.php" class="dropdown-item">Programme</a>
-                <a href="\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
-                <a href="\Merchandise\includes\merchandise.get.inc.php" class="dropdown-item">Merchandise</a>
+                <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
+                <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
+                <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
             </div>
         </div>
-        <a href="/sign-up/signup.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log out<i class="fa fa-arrow-right ms-3"></i></a>
+        <a href="<?php echo SIGN_UP_PAGE; ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a>
     </nav>
     <!-- Navbar End -->
 
@@ -159,6 +163,6 @@
         </div>
     </form>
 
-    <script src="merchandise.js"></script>
-    <script src="merchandise.add.field.js"></script>
+    <script src="/Merchandise/js/merchandise.js"></script>
+    <script src="/Merchandise/js/merchandise.add.field.js"></script>
 </body>
