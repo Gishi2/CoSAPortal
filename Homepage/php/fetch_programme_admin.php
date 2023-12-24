@@ -38,6 +38,8 @@
     <!-- Template Table Stylesheet-->
     <link rel="stylesheet" href="/Homepage/css/tablestyle.css">
 
+    <!-- Template Form Style-->
+    <link rel="stylesheet" href="/Homepage/css/addprogrammestyle.css">
     
 </head>
 
@@ -236,25 +238,33 @@
                                             ?>" alt="">
                                         </div>
                                         <div class="info"> 
-                                            <h2><?php
-                                            echo $row["programmeName"]; ?>
-                                            <br>
-                                            <span><?php 
+                                            <h2>Details</h2>
+                                            <fieldset>
+                                            <form method="post" action="update_programme.php"> <!-- Form for updating program details -->
+                                                <input type="hidden" name="programmeId" value="<?php echo $row['programmeId']; ?>">
+                                                <div class="nice-form-group">
+                                                    <label>Programme Name</label>
+                                                    <input type="text" name="updatedName" value="<?php echo $row['programmeName']; ?>">
+                                                </div>
+                                
+                                                <div class="nice-form-group">
+                                                <label>Programme Start Date</label>
+                                                <input type="date" name="updatedStartDate" value="<?php echo $row['programmeStartDate']; ?>">
+                                                </div>
 
-                                            // Assuming $row["programmeStartDate"] and $row["programmeEndDate"] are in the format 'Y-m-d' like '2018-07-22'
-                                            $startDate = date("d", strtotime($row["programmeStartDate"])); // Get day (e.g., '22')
-                                            $endDate = date("d F Y", strtotime($row["programmeEndDate"])); // Get day, month, and year (e.g., '25 July 2018')
+                                                <div class="nice-form-group">
+                                                <label>Programme End Date</label>
+                                                <input type="date" name="updatedEndDate" value="<?php echo $row['programmeEndDate']; ?>">
+                                                </div>
 
-                                            // Now you can use $startDate and $endDate in your HTML
+                                                <div class="nice-form-group">
+                                                    <label>Programme Description</label>
+                                                    <textarea rows="5" name="updatedDescription"><?php echo $row['programmeDesc']; ?></textarea>
+                                                </div>
 
-                                            echo $startDate; ?> - <?php echo $endDate;
-                                            //echo $row["programmeStartDate"] . ' - ' . $row["programmeEndDate"]; 
-                                            ?>
-                                            </span>
-                                            </h2>
-                                            <p><?php echo $row["programmeDesc"]; ?></p>
-                                            <a href="#" class="add-cart-btn">Confirm Update</a>
-                                            <!-- <a href="#" class="add-wish">Add to Wishlist</a> -->
+                                                <input type="submit" class="add-cart-btn" value="Confirm Update"> <!-- Using the existing button class -->
+                                            </form>
+                                            </fieldset>
                                         </div>
                                     </div>
                                 </div>
