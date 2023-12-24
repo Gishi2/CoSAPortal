@@ -26,7 +26,7 @@
 
     <!-- Template Stylesheet -->
     <link href="\Homepage\css\style.css" rel="stylesheet">
-    <link href="\Merchandise\merchandise.css" rel="stylesheet">    
+    <link href="\Merchandise\css\merchandise.css" rel="stylesheet">    
 </head>
 <body>
     <nav class="navbar navbar-expand-lg box-shadow bg-white navbar-light fixed-top p-0 wow fadeIn" data-wow-delay="0.1s">
@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/index.php" class="nav-item nav-link">Home</a>
-                <!-- <a href="" class="nav-item nav-link">About</a> -->
+                <a href="" class="nav-item nav-link">About</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="box-cart" id="cart-container">
                     <?php
-                        require_once 'updateCart.inc.php';
+                        require_once 'includes/updatecart.inc.php';
                     ?>
                 </div>
             </div>
@@ -66,7 +66,7 @@
 
 <?php
 try {
-    require_once "merchandisedb.inc.php";
+    require_once "includes/merchandisedb.inc.php";
 
     $query = "SELECT * FROM merchandise";
 
@@ -131,8 +131,8 @@ try {
     </section>
 </main>
 
-<script src="/Merchandise/merchandise.js"></script>'
-<script src="/Merchandise/merchandise.server.js"></script>
+<script src="/Merchandise/js/merchandise.js"></script>'
+<script src="/Merchandise/js/merchandise.server.js"></script>
 
 </body>
 </html>

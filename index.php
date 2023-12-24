@@ -1,3 +1,3 @@
 <?php
-    include __DIR__ . '\Homepage\homepage.html';
+    include __DIR__ . '\Homepage\homepage.php';
 ?>

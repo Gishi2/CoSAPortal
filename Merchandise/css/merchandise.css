@@ -3,6 +3,7 @@
 :root {
     --primary: #0463FA;
     --light: #EFF5FF;
+    --grey: #f8f8f8;
     --dark: #1B2C51;
     --danger: #dc3545;
     --disabled: #adb5bd;
@@ -325,12 +326,11 @@
 }
 
 .box-cart {
-    display: none;
+    display: flex;
     position: absolute;
     background-color: white;
     width: 24rem;
     height: fit-content;
-    min-height: 16rem;
     top: 100%;
     right: 1rem;
     border-radius: 0.2rem;
@@ -354,6 +354,10 @@
     height: fit-content;
     width: 100%;
     padding: 0.625rem;
+}
+
+.cart-item:hover {
+    background-color: var(--grey);
 }
 
 .cart-item .box {
@@ -399,3 +403,24 @@
     display: flex;
 }
 
+.shopping-cart-button {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: flex-end;
+    margin-top: auto;
+    padding: 0.625rem;
+}
+
+.shopping-cart-button > button {
+    padding: 0px 15px;
+    color: #fff;
+    height: 34px;
+    font-size: 14px;
+    background-color: var(--primary);
+    border: none;
+}
+
+.shopping-cart-button > button:hover {
+    opacity: 1.5;
+}
