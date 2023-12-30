@@ -61,7 +61,7 @@
 
             $pdo = null; $stmt = null;
 
-            header("Location: /Merchandise/merchandise.html?uploadsuccessful");
+            header("Location: /Merchandise/includes/merchandise.get.inc.php?uploadsuccessful");
             die();
         } catch (PDOException $e) {
             die("Query failed: " . $e->getMessage());

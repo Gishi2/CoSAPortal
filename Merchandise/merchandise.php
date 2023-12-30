@@ -1,3 +1,7 @@
+<?php
+    require_once '../config/config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,10 +30,10 @@
 
     <!-- Template Stylesheet -->
     <link href="\Homepage\css\style.css" rel="stylesheet">
-    <link href="\Merchandise\merchandise.css" rel="stylesheet">    
+    <link href="\Merchandise\css\merchandise.css" rel="stylesheet">    
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg box-shadow bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+    <nav class="navbar navbar-expand-lg box-shadow bg-white navbar-light fixed-top p-0 wow fadeIn" data-wow-delay="0.1s">
         <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="\Homepage\img\cosa\cosa_logo_inBlue.png">
         </a>
@@ -44,17 +48,17 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="\Homepage\programme-registration-user.html" class="dropdown-item">Programme</a>
-                        <a href="\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
+                        <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
+                        <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
                     </div>
                 </div>
-                <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.html"><div>Add New Merchandise</div></a>
+                <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>
                 <div class="nav-cart">
                     <i class="fa-solid fa-cart-shopping" onclick="toggleCart()"></i>
                 </div>
                 <div class="box-cart" id="cart-container">
                     <?php
-                        require_once 'updateCart.inc.php';
+                        require_once 'includes/updatecart.inc.php';
                     ?>
                 </div>
             </div>
@@ -66,7 +70,7 @@
 
 <?php
 try {
-    require_once "merchandisedb.inc.php";
+    require_once "includes/merchandisedb.inc.php";
 
     $query = "SELECT * FROM merchandise";
 
@@ -131,8 +135,8 @@ try {
     </section>
 </main>
 
-<script src="/Merchandise/merchandise.js"></script>'
-<script src="/Merchandise/merchandise.server.js"></script>
+<script src="/Merchandise/js/merchandise.js"></script>'
+<script src="/Merchandise/js/merchandise.server.js"></script>
 
 </body>
 </html>

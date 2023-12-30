@@ -1,11 +1,9 @@
 <?php
+    session_start();
 
-@include 'config.php';
+    session_unset(); // unset all variables registered
+    session_destroy(); // destroy the session 
+    $_SESSION = array(); // empty session
 
-session_start();
-session_unset();
-session_destroy();
-
-header('location:login.php');
-
+    header('Location: login.php');
 ?>

@@ -45,21 +45,17 @@ function triggerLink() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  
-});
+  const sizeButtons = document.querySelectorAll('.size-btn'); 
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const sizeButtons = document.querySelectorAll('.size-btn'); 
+  sizeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          sizeButtons.forEach(btn => btn.classList.remove('active'));
 
-    sizeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            sizeButtons.forEach(btn => btn.classList.remove('active'));
-
-            if (!button.disabled) {
-                button.classList.add('active');
-            } else {
-                button.title = 'Unavailable';
-            }
-        });
-    });
+          if (!button.disabled) {
+              button.classList.add('active');
+          } else {
+              button.title = 'Unavailable';
+          }
+      });
   });
+});

@@ -25,6 +25,7 @@ function addToCartButton(counter) {
     };
   
     console.log(selectedProduct);
+    closePopUp(counter);
     sendProductToServer(selectedProduct);
   }
   
