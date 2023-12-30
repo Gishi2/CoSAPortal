@@ -10,15 +10,15 @@ if (isset($_POST['submit'])) {
     $semester = mysqli_real_escape_string($conn, $_POST['semester']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $pass = md5($_POST['password']);
-    $cpass = md5($_POST['cpassword']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $cpass = md5($_POST['cpassword']); // Keeping this for now, but should be updated for consistency
 
     // Assuming $user_type is defined somewhere in your code
     $user_type = 1;  // Replace with the actual value or logic to determine user type
 
     // Prepare the statement for inserting into the 'user' table
     $stmtUser = $conn->prepare("INSERT INTO user (userName, userPassword, userEmail, userTypeId) VALUES (?, ?, ?, ?)");
-    $stmtUser->bind_param("sssi", $username, $pass, $email, $user_type);
+    $stmtUser->bind_param("sssi", $username, $password, $email, $user_type);
     $stmtUser->execute();
     $stmtUser->close();
 
@@ -41,10 +41,6 @@ if (isset($_POST['submit'])) {
             // Insert into 'student' table
             $insertStudent = "INSERT INTO student (studUserId, name, matrix, address, phone, semester) VALUES ('$lastInsertId','$name','$matrix','$address','$phone','$semester')";
             mysqli_query($conn, $insertStudent);
-
-            // Redirect to login.php
-            
-            exit();
         }
     }
 
@@ -57,5 +53,4 @@ if (isset($_POST['submit'])) {
     }
 }
 header('Location: login.php');
-
 ?>
