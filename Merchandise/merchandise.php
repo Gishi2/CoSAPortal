@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once '../config/config.php';
 ?>
 
@@ -34,7 +35,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg box-shadow bg-white navbar-light fixed-top p-0 wow fadeIn" data-wow-delay="0.1s">
-        <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="<?php echo HOME_PAGE; ?>" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="\Homepage\img\cosa\cosa_logo_inBlue.png">
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -43,7 +44,7 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="/index.php" class="nav-item nav-link">Home</a>
+                <a href="<?php echo HOME_PAGE; ?>" class="nav-item nav-link">Home</a>
                 <a href="" class="nav-item nav-link">About</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -52,6 +53,11 @@
                         <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
                     </div>
                 </div>
+                <?php
+                    // if ($_SESSION['access_level'] === 'committee') {
+                    //     echo '<a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>';
+                    // }
+                ?>
                 <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>
                 <div class="nav-cart">
                     <i class="fa-solid fa-cart-shopping" onclick="toggleCart()"></i>
@@ -107,6 +113,7 @@ try {
                 echo '<div class="pop-up-description">';
                     echo '<h2 class="name">' .$merchandise['name']. '</h2>';
                     echo '<span class="price">RM' .$merchandise['price']. '</span>';
+                    echo '<span class="description">' .$merchandise['description']. '</span>';
                     echo '<span class="quantity">QUANTITY:</span>';
                     echo '<div class="pop-up-quantity">';
                         echo '<button class="quantity-btn" onclick="decreaseQuantity(\'pop-up-' .$counter. '\')">-</button>';
@@ -120,7 +127,16 @@ try {
                         echo '<button class="size-btn"' .(strpos($merchandise['size'], 'L') !== false ? '' : 'disabled'). '>L</button>';
                         echo '<button class="size-btn"' .(strpos($merchandise['size'], 'XL') !== false ? '' : 'disabled'). '>XL</button>';
                     echo '</div>';
-                    echo '<div class="pop-up-btn" onclick="addToCartButton(' .$counter. ')">Add to Cart</div>';
+                    echo '<div class="pop-up-btn">';
+                        echo '<div class="button cart-btn" onclick="addToCartButton(' .$counter. ')">';
+                            echo '<button>';
+                                echo '<i class="fa-solid fa-cart-plus"></i>';
+                            echo 'Add to Cart</button>';
+                        echo '</div>';
+                        echo '<div class="button buy-btn" onclick="buyNowButton(' .$counter. ')">';
+                        echo '<button>Buy Now</button>';
+                        echo '</div>'; 
+                    echo '</div>';
                 echo '</div>';
             echo '</div>';
         }
@@ -131,7 +147,12 @@ try {
     die("Query failed: " . $e->getMessage());
 }    
 ?>
-
+        <div class="success-cart" id="successPopup">
+            <div class="circle-cart">
+                <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <span>Item has been added to your shopping cart</span>
+        </div>
     </section>
 </main>
 

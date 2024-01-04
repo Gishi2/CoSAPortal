@@ -23,10 +23,12 @@ try {
                 echo '<div class="price">RM' . htmlspecialchars($item['total_price']) .'</div>';
                 echo '<div class="btn-delete" onclick="deleteCart()">Delete</div>';
             echo '</div>';
-            echo '<a href="merchandise.cart.php" class="shopping-cart-button">';
+        }
+        echo '<div class="shopping-cart-button">';
+            echo '<a href="merchandise.cart.php" class="shopping-cart-link">';
                 echo '<button>View My Shopping Cart</button>';
             echo '</a>';
-        }
+        echo '</div>';
     } else {
 
     }

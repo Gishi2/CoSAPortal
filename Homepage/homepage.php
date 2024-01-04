@@ -1,5 +1,5 @@
 <?php
-    require_once '/config/config.php';
+    require_once 'config/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +30,6 @@
     <link href="Homepage/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <!-- <link href="css/homepage2.css" rel="stylesheet"> -->
     <link href="Homepage/css/homepage.css" rel="stylesheet">
 </head>
 
@@ -45,7 +44,7 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-        <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="<?php echo HOME_PAGE; ?>" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="Homepage/img/cosa/cosa_logo_inBlue.png">
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -53,7 +52,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.php" class="nav  -item nav-link active">Home</a>
+                <a href="<?php echo HOME_PAGE; ?>" class="nav  -item nav-link active">Home</a>
                 <a href="about.html" class="nav-item nav-link">About</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -63,7 +62,6 @@
                         <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
                     </div>
                 </div>
-                <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
             </div>
             <a href="<?php echo SIGN_UP_PAGE; ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
@@ -88,12 +86,6 @@
                             <p class="text-light mb-0">Faculty Members</p>
                         </div>
                     </div>
-                    <!-- <div class="col-sm-4">
-                        <div class="border-start border-light ps-4">
-                            <h2 class="text-white mb-1" data-toggle="counter-up">12345</h2>
-                            <p class="text-light mb-0">Total Patients</p>
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
@@ -132,8 +124,8 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="d-flex flex-column">
-                        <img class="img-fluid rounded w-75 align-self-end" src="/Homepage\img\cosa\cosa-group.jpg" alt="">
-                        <img class="img-fluid rounded w-40 bg-white pt-3 pe-3" src="/Homepage\img\cosa\CoSALogo_2480_BLACKBG.jpg" alt="" style="margin-top: -20%;">
+                        <img class="img-fluid rounded w-100 align-self-end" src="/Homepage\img\cosa\cosa-group.jpg" alt="">
+                        <!-- <img class="img-fluid rounded w-40 bg-white pt-3 pe-3" src="/Homepage\img\cosa\CoSALogo_2480_BLACKBG.jpg" alt="" style="margin-top: -20%;"> -->
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
@@ -161,9 +153,9 @@
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item bg-light rounded h-100 p-5">
+                    <div class="service-item rounded h-100 p-5" style="background-color: #ebf5fa;">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-lightbulb text-primary fs-4"></i>
+                            <i class="fa fa-lightbulb fs-4" style="color: #7fb3d5;"></i>
                         </div>
                         <h4 class="mb-3">INNOVATION</h4>
                         <p class="mb-4">At CoSA, we cultivate an environment that sparks innovation. We provide a hub for creative minds, providing a platform for members to explore and collaborate on projects.</p>
@@ -171,9 +163,9 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item bg-light rounded h-100 p-5">
+                    <div class="service-item rounded h-100 p-5" style="background-color: #f0fdf4;">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-users text-primary fs-4"></i>
+                            <i class="fa fa-users fs-4" style="color: #a2cfb9;"></i>
                         </div>
                         <h4 class="mb-3">MENTORSHIP</h4>
                         <p class="mb-4">Nurturing the growth of its members through mentorship. Our Mentorship connects experienced individuals with those eagers to learn.</p>
@@ -181,9 +173,9 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item bg-light rounded h-100 p-5">
+                    <div class="service-item rounded h-100 p-5" style="background-color: #fdf2e3;">
                         <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
-                            <i class="fa fa-hand-holding-heart text-primary fs-4"></i>
+                            <i class="fa fa-hand-holding-heart fs-4" style="color: #f4b350;"></i>
                         </div>
                         <h4 class="mb-3">CHARITY WORK</h4>
                         <p class="mb-4">We channel our collective energy and resources to make a positive impact on the community.</p>
@@ -236,6 +228,7 @@
                         <h1 class="text-white mb-4">OUR ACTIVITIES</h1>
                         <p class="text-white mb-4 pb-2" style="text-align: justify;">Explore the diverse range of programs offered by CoSA that cater to both academic and extracurricular interests. From tech-centric workshops and seminars to engaging social events, our Programs Segment is designed to enrich your academic journey and foster a sense of belonging within the CoSA community. Dive into a world of opportunities and make the most of your university experience with CoSA Programs.
                         </p>
+                        <a class="btn btn-activity rounded-pill py-3 px-5 mt-3" href="about.html">Read More</a>
                         <!-- <div class="row g-4">
                             <div class="col-6">
                                 <div class="d-flex align-items-center">
@@ -427,47 +420,47 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="bg-light rounded h-100 d-flex align-items-center p-5">
-                        <form>
+                        <form method="post" action="Homepage/engagement.inc.php">
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;">
+                                    <input type="text" name="name" class="form-control border-0" placeholder="Your Name" style="height: 55px;" required>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
+                                    <input type="email" name="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;" required>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Mobile" style="height: 55px;">
+                                    <input type="text" name="mobile_number" class="form-control border-0" placeholder="Your Mobile" style="height: 55px;" required>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Choose Faculty</option>
-                                        <option value="1">FACULTY OF ACCOUNTING</option>
-                                        <option value="2">FACULTY OF MANAGEMENT AND BUSINESS</option>
-                                        <option value="3">FACULTY OF HOTEL AND TOURISM MANAGEMENT</option>
-                                        <option value="4">FACULTY OF APPLIED SCIENCES</option>
-                                        <option value="5">FACULTY OF PLANTATION AND AGROTECHNOLOGY</option>
-                                        <option value="6">FACULTY OF ADMINISTRATIVE SCIENCE AND POLICY STUDIES</option>
+                                    <select class="form-select border-0" name="faculty" style="height: 55px;" required>
+                                        <option disabled selected>Choose Faculty</option>
+                                        <option value="FACULTY OF ACCOUNTING">FACULTY OF ACCOUNTING</option>
+                                        <option value="FACULTY OF MANAGEMENT AND BUSINESS">FACULTY OF MANAGEMENT AND BUSINESS</option>
+                                        <option value="FACULTY OF HOTEL AND TOURISM MANAGEMENT">FACULTY OF HOTEL AND TOURISM MANAGEMENT</option>
+                                        <option value="FACULTY OF APPLIED SCIENCES">FACULTY OF APPLIED SCIENCES</option>
+                                        <option value="FACULTY OF PLANTATION AND AGROTECHNOLOGY">FACULTY OF PLANTATION AND AGROTECHNOLOGY</option>
+                                        <option value="FACULTY OF ADMINISTRATIVE SCIENCE AND POLICY STUDIES">FACULTY OF ADMINISTRATIVE SCIENCE AND POLICY STUDIES</option>
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date" data-target-input="nearest">
                                         <input type="text"
-                                            class="form-control border-0 datetimepicker-input"
-                                            placeholder="Choose Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
+                                            class="form-control border-0 datetimepicker-input" name="date"
+                                            placeholder="Choose Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="time" id="time" data-target-input="nearest">
                                         <input type="text"
-                                            class="form-control border-0 datetimepicker-input"
-                                            placeholder="Choose Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
+                                            class="form-control border-0 datetimepicker-input" name="time"
+                                            placeholder="Choose Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control border-0" rows="5" placeholder="What would you like to do?"></textarea>
+                                    <textarea class="form-control border-0" name="description" rows="5" placeholder="What would you like to do?" required></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Book Engagement</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit" onclick="openEmailClient()">Book Engagement</button>
                                 </div>
                             </div>
                         </form>
@@ -488,7 +481,7 @@
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                 <div class="testimonial-item text-center">
-                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="/Homepage\img\cosa\cosa-members\01\Muiz.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="/Homepage\img\cosa\cosa-members\01\Muiz.jpg" style="width: 160px; height: 160px; object-fit: cover;">
                     <div class="testimonial-text rounded text-center p-4">
                         <!-- <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p> -->
                         <h5 class="mb-1">PRESIDENT</h5>
@@ -496,7 +489,7 @@
                     </div>
                 </div>
                 <div class="testimonial-item text-center">
-                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="/Homepage\img\cosa\cosa-members\02\IMG_7183.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="/Homepage\img\cosa\cosa-members\02\IMG_7183.jpg" style="width: 160px; height: 160px; object-fit: cover;">
                     <div class="testimonial-text rounded text-center p-4">
                         <!-- <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p> -->
                         <h5 class="mb-1">VICE-PRESIDENT</h5>
@@ -504,7 +497,7 @@
                     </div>
                 </div>
                 <div class="testimonial-item text-center">
-                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="/Homepage\img\cosa\cosa-members\01\aylne.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="/Homepage\img\cosa\cosa-members\01\aylne.jpg" style="width: 160px; height: 160px; object-fit: cover;">
                     <div class="testimonial-text rounded text-center p-4">
                         <!-- <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p> -->
                         <h5 class="mb-1">SECRETARY 1</h5>
@@ -512,7 +505,7 @@
                     </div>
                 </div>
                 <div class="testimonial-item text-center">
-                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="/Homepage\img\cosa\cosa-members\01\liana.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="/Homepage\img\cosa\cosa-members\01\liana.jpg" style="width: 160px; height: 160px; object-fit: cover;">
                     <div class="testimonial-text rounded text-center p-4">
                         <!-- <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p> -->
                         <h5 class="mb-1">SECRETARY 2</h5>
@@ -520,7 +513,7 @@
                     </div>
                 </div>
                 <div class="testimonial-item text-center">
-                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="/Homepage\img\cosa\cosa-members\01\fatin.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="/Homepage\img\cosa\cosa-members\01\fatin.jpg" style="width: 160px; height: 160px; object-fit: cover;">
                     <div class="testimonial-text rounded text-center p-4">
                         <!-- <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p> -->
                         <h5 class="mb-1">TREASURER</h5>

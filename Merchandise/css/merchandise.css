@@ -2,6 +2,7 @@
 
 :root {
     --primary: #0463FA;
+    --light-primary: #2579ff;
     --light: #EFF5FF;
     --grey: #f8f8f8;
     --dark: #1B2C51;
@@ -23,7 +24,7 @@
 
 .main {
     display: grid;
-    grid-template-columns: repeat(3,minmax(0,1fr));
+    grid-template-columns: repeat(3, minmax(0,1fr));
     margin-left: auto;
     margin-right: auto;
     gap: 2rem;
@@ -33,38 +34,22 @@
 
 .section-a {
     overflow: hidden;
-    width: moz-fit-content;
     max-width: 672px;
     margin-left: auto;
     margin-right: auto;
-    color: inherit;
     text-decoration: inherit;
-    transition: 0.5s;
+    color: inherit;
+    transition: 0.5s ease;
 }
 
 .section-a:hover {
-    overflow: hidden;
-    width: moz-fit-content;
-    max-width: 672px;
-    margin-left: auto;
-    margin-right: auto;
-    color: inherit;
-    text-decoration: inherit;
     box-shadow: 0px 0px 25px rgba(25, 25, 25, 0.1);
     background-color: rgba(25, 25, 25, 0.1);
-    transition: 0.5s;
+    transition: 0.5s ease;
     cursor: pointer;
 }
 
 .section-link {
-    aspect-ratio: 3/4;
-    position: relative;
-    border: 2px solid rgb(100, 100, 100);
-    border-radius: 0.5rem;
-    transition: 0.5s;
-}
-
-.section-link:hover {
     aspect-ratio: 3/4;
     position: relative;
     border: 2px solid rgb(100, 100, 100);
@@ -85,8 +70,6 @@
     aspect-ratio: 3/4;
     object-position: center;
     object-fit: contain;
-    width: 100%;
-    height: 100%;
     transform: scale(1.025);
     transition: 0.5s;
 }
@@ -129,7 +112,7 @@
     justify-content: center;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
-    z-index: 3;
+    z-index: 1040; /* navbar is 1030 */
     opacity: 0; /* Start with opacity 0 */
     transition: opacity 1s ease; /* Add transition property */
 }
@@ -180,10 +163,13 @@
 }
 
 .pop-up-description > span.price {
-    padding-bottom: 1rem;
     color:#1B2C51;
     font-size: 1.4rem;
     font-weight: 600;
+}
+
+.pop-up-description > span.description {
+    padding-bottom: 1rem;
 }
 
 .pop-up-description > span.size {
@@ -219,13 +205,11 @@
     background-color: white;
     color: #585858;
     border: none;   
-    transition: 0.5s ease;
 }
 
 .quantity-btn:hover {
     background-color: var(--primary);
     color: var(--light);
-    transition: 0.5s ease;
 }
 
 .pop-up-size {
@@ -251,32 +235,57 @@
     border-radius: 1.5rem;
     font-weight: bold;
     color: #585858;
-    transition: 0.2s ease;
 }
 
-.pop-up-size > button:hover {
+.pop-up-size > button:not(:disabled):hover {
     color: white;
     background-color: var(--primary);
-    transition: 0.2s ease;
 }
 
 .pop-up-description .pop-up-btn {
+    margin-top: auto;
+}
+
+.pop-up-description .pop-up-btn .button > button {
+    display: flex;
     position: relative;
-    color: #fff;
-    background: #585858;
     font-size: 14px;
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 1px;
     padding: 10px 15px;
-    border-radius: 20px;
+    border-radius: 0.25rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    transition: 0.5s ease;
+    transition: 0.2s ease;
 }
 
-.pop-up-description .pop-up-btn:hover {
+.pop-up-description .pop-up-btn .button.cart-btn > button {
+    border-color: var(--primary);
+    background: rgba(4, 99, 250, 0.3);
+    color: var(--primary);
+    transition: 0.2s ease;
+}
+
+.pop-up-description .pop-up-btn .button.cart-btn > button:hover {
+    background: var(--light);
+    transition: 0.2s ease;
+}
+
+.pop-up-description .pop-up-btn .button.buy-btn > button {
+    border-color: var(--primary);
     background: var(--primary);
-    transition: 0.5s ease;
+    color: var(--light);
+    transition: 0.2s ease;
+}
+
+.pop-up-description .pop-up-btn .button.buy-btn > button:hover {
+    background: var(--light-primary);
+    transition: 0.2s ease;
 }
 
 .add-merchandise-btn {
@@ -289,16 +298,16 @@
     margin-left: 1rem;
     background-color: var(--primary);
     color: var(--light);
-    border-radius: 0.3rem;
+    border-radius: 0.25rem;
     height: 2.625rem;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.2s ease;
 }
 
 .add-merchandise-btn:hover {
-    background-color: var(--disabled);
-    color: var(--dark);
-    transition: 0.3s ease;
+    background-color: var(--light-primary);
+    color: var(--light);
+    transition: 0.2s ease;
 }
 
 .nav-cart {
@@ -321,12 +330,12 @@
 }
 
 .nav-cart > i:hover{
-    color: var(--primary);
+    /* color: var(--primary); */
     transition: 0.5s ease;
 }
 
 .box-cart {
-    display: flex;
+    display: none;
     position: absolute;
     background-color: white;
     width: 24rem;
@@ -334,9 +343,9 @@
     top: 100%;
     right: 1rem;
     border-radius: 0.2rem;
-    border: 0.2 rem;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     flex-direction: column;
+    z-index: 1;
 }
 
 .box-cart > h3 {
@@ -412,15 +421,51 @@
     padding: 0.625rem;
 }
 
-.shopping-cart-button > button {
+.shopping-cart-link > button {
     padding: 0px 15px;
     color: #fff;
     height: 34px;
     font-size: 14px;
     background-color: var(--primary);
     border: none;
+    border-radius: 0.25rem;
 }
 
-.shopping-cart-button > button:hover {
-    opacity: 1.5;
+.shopping-cart-link > button:hover {
+    background-color: var(--light-primary);
+}
+
+.success-cart {
+    display: none;
+    position: fixed;
+    justify-self: center;
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(25, 25, 25, 0.8);
+    z-index: 1000;
+    padding: 2rem;
+    color: var(--light);
+    height: fit-content;
+    gap: 1rem;
+}
+
+.success-cart .circle-cart {
+    transform: scale(2);
+}
+
+.success-cart .circle-cart > i {
+    color: #198754;
+}
+
+@media only screen and (max-width: 768px) {
+    .main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .main {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

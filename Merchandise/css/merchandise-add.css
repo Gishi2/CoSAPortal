@@ -108,7 +108,7 @@ body {
 .insert-image:hover {
     border: 1px dashed var(--primary);
     transition: 0.5s ease;
-    background-color: rgba(4, 99, 250, 0.4)
+    background-color: rgba(4, 99, 250, 0.4);
 }
 
 .insert-image > i {

@@ -140,6 +140,11 @@
     transition: .5s;
 }
 
+.btn.btn-activity {
+    background-color: #FFFFFF;
+    color: var(--dark);
+}
+
 .btn.btn-primary,
 .btn.btn-secondary {
     color: #FFFFFF;
@@ -527,7 +532,7 @@
 .testimonial-carousel .owl-nav {
     position: absolute;
     width: 350px;
-    top: 15px;
+    top: 45px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;

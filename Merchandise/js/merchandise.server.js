@@ -24,42 +24,36 @@ function addToCartButton(counter) {
       sizes: productSize,
     };
   
-    console.log(selectedProduct);
     closePopUp(counter);
-    sendProductToServer(selectedProduct);
+    successCart();
+    sendProductToServer(selectedProduct, refreshCartContent);
   }
   
-  function sendProductToServer(product) {
-    fetch('carthandler.inc.php', {
+  function sendProductToServer(product, callback) {
+    fetch('includes/carthandler.inc.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(product),
     })
+    .then(response => response.json())
+    .then(data => {
+        if (callback && typeof callback === 'function') {
+            callback(data);
+        }
+    })
     .catch(error => {
         console.error('Error:', error);
     });
-  }
-  
-  // function addToCart(product) { // display cart box item
-  //   cart.push(product);
-  //   updateCart();
-  // }
-  
-  // function updateCart() {
-  //   const cartContainer = document.getElementById('cart-container');
-  
-  //   cartContainer.innerHTML = '';
+}
 
-  //   const header = document.createElement('h3');
-  //   header.textContent = `Recently added Product`;
-  //   cartContainer.appendChild(header);
+function refreshCartContent(data) {
+    const cartContentElement = document.getElementById('cart-container');
+    
+    if (cartContentElement) {
+        cartContentElement.innerHTML = data.cartContent;
+    }
+}
+
   
-  //   cart.forEach((item, index) => {
-  //       const cartItemElement = document.createElement('div');
-  //       cartItemElement.className = `cart-item-${index + 1}`;
-  //       cartItemElement.textContent = `${item.name} - ${item.size} - $${item.price.toFixed(2)}`;
-  //       cartContainer.appendChild(cartItemElement);
-  //   });
-  // }
