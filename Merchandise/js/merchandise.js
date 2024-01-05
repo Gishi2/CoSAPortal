@@ -39,9 +39,30 @@ function triggerFileInput() {
   document.getElementById('fileInput').click();
 }
 
+function buyNowButton(counter) {
+  const popUp = document.getElementById('pop-up-' + counter);
+  const selectedSizeButton = popUp.querySelector('.pop-up-size .size-btn.active');
+  if (!selectedSizeButton) {
+    alert('Please select a size before adding to the cart.');
+    return;
+  } else {
+    window.location.href = 'payment.php';
+  }
+}
+
 function triggerLink() {
   var merchandiseLink = document.getElementById('button-link');
   merchandiseLink.click();
+}
+
+function successCart() {
+  var successPopup = document.getElementById('successPopup');
+
+  successPopup.style.display = 'flex';
+
+  setTimeout(function () {
+      successPopup.style.display = 'none';
+  }, 3000);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -53,8 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (!button.disabled) {
               button.classList.add('active');
-          } else {
-              button.title = 'Unavailable';
           }
       });
   });
