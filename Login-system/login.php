@@ -1,42 +1,58 @@
 <?php
 
-session_start();
-
 include 'config.php';
 
 if (isset($_POST['submit'])) {
-   $username = mysqli_real_escape_string($conn, $_POST['username']);
-   $password = $_POST['password'];
+    $enteredUsername = mysqli_real_escape_string($conn, $_POST['username']);
+    $enteredPassword = $_POST['password'];
 
+    // Check if the entered username exists
+    $stmtCheckUser = $conn->prepare("SELECT userName, userPassword FROM student WHERE userName = ?");
+    $stmtCheckUser->bind_param("s", $enteredUsername);
+    $stmtCheckUser->execute();
+    $result = $stmtCheckUser->get_result();
 
-   $select = "SELECT * FROM user WHERE username = ?";
+    if ($result->num_rows === 1) {
+        // Username exists, verify the password
+        $row = $result->fetch_assoc();
+        $storedPassword = $row['userPassword'];
 
-   $stmt = $conn->prepare($select);
-   $stmt->bind_param("s", $username);
-   $stmt->execute();
-   $result = $stmt->get_result();
+        // For debugging: Print entered password and stored hashed password
+        echo "<script>console.log('Entered Password: $enteredPassword')</script>";
+        echo "<script>console.log('Entered Password: $storedPassword')</script>";
 
-   if ($result->num_rows > 0) {
-      $row = $result->fetch_assoc();
+        if (password_verify($enteredPassword, $storedPassword)) {
+            // Password is correct, set session or redirect to logged-in page
+            session_start();
+            // $_SESSION['username'] = $enteredUsername; // Set session variable for logged-in user
+            // header('Location: welcome.php'); // Redirect to welcome page or dashboard
+            // exit();
+            $_SESSION['username'] = $enteredUsername; // Set session variable for logged-in user
+            if ($userType == 1) {
+                $_SESSION['userType'] = 'normalUser';
+                header('Location: normal_user_interface.php'); // Redirect to normal user interface
+                exit();
+            } elseif ($userType == 2) {
+                $_SESSION['userType'] = 'admin';
+                header('Location: admin_interface.php'); // Redirect to admin interface
+                exit();
 
-      if (password_verify($password, $row['userPassword'])) {
-         if ($row['user_type'] == 'admin') {
-            $_SESSION['admin_name'] = $row['name'];
-            header('location: admin.php');
+        } else {
+            // Password is incorrect
+            echo "<script>alert('Incorrect password!');</script>";
+            echo "<script>window.location = 'login.html';</script>";
             exit();
-         } elseif ($row['user_type'] == 'user') {
-            $_SESSION['user_name'] = $row['name'];
-            header('location: user.php');
-            exit();
-         }
-      } else {
-         $error[] = 'Incorrect Username or Password!';
-      }
-   } else {
-      $error[] = 'Incorrect Username or Password!';
-   }
+        }
+    } else {
+        // Username doesn't exist
+        echo "<script>alert('Username not found!');</script>";
+        echo "<script>window.location = 'login.html';</script>";
+        exit();
+    }
 
-   $stmt->close();
+    $stmtCheckUser->close();
 }
 
+// Redirect if form wasn't submitted
+header('Location: login.html');
 ?>

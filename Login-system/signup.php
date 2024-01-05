@@ -16,41 +16,35 @@ if (isset($_POST['submit'])) {
     // Assuming $user_type is defined somewhere in your code
     $user_type = 1;  // Replace with the actual value or logic to determine user type
 
-    // Prepare the statement for inserting into the 'user' table
-    $stmtUser = $conn->prepare("INSERT INTO user (userName, userPassword, userEmail, userTypeId) VALUES (?, ?, ?, ?)");
-    $stmtUser->bind_param("sssi", $username, $password, $email, $user_type);
-    $stmtUser->execute();
-    $stmtUser->close();
+    // Check if the matrixId already exists
+    $stmtCheck = $conn->prepare("SELECT matrixId FROM student WHERE matrixId = ?");
+    $stmtCheck->bind_param("s", $matrix);
+    $stmtCheck->execute();
+    $stmtCheck->store_result();
 
-    // Check for duplicate users in 'user' table
-    $stmtSelect = $conn->prepare("SELECT * FROM user WHERE userName = ?");
-    $stmtSelect->bind_param("s", $username);
-    $stmtSelect->execute();
-    $result = $stmtSelect->get_result();
-
-    // Check if a user with the same name already exists in 'user' table
-    if ($result->num_rows > 0) {
-        $error[] = 'User already exists!';
+    if ($stmtCheck->num_rows > 0) {
+        // MatrixId already exists, display error and refresh the page
+        echo "<script>alert('MatrixId already exists!');</script>";
+        echo "<script>window.location = 'signup.html';</script>";
+        exit();
     } else {
-        if ($pass != $cpass) {
-            $error[] = 'Passwords do not match!';
-        } else {
-            // Get the last inserted ID from 'user' table
-            $lastInsertId = mysqli_insert_id($conn);
+        // Prepare the statement for inserting into the 'student' table
+        $stmtUser = $conn->prepare("INSERT INTO student (matrixId, studName, phoneNum, address, semester, userName, userPassword, userEmail, userType) VALUES (?,?,?,?,?,?, ?, ?, ?)");
+        $stmtUser->bind_param("ssssissss", $matrix, $name, $phone, $address, $semester, $username, $password, $email, $user_type);
 
-            // Insert into 'student' table
-            $insertStudent = "INSERT INTO student (studUserId, name, matrix, address, phone, semester) VALUES ('$lastInsertId','$name','$matrix','$address','$phone','$semester')";
-            mysqli_query($conn, $insertStudent);
+        if ($stmtUser->execute()) {
+            // Data inserted successfully
+            header('Location: login.html');
+            exit();
+        } else {
+            // Handle insertion failure
+            header('Location: signup.html');
+            exit();
         }
     }
-
-    $stmtSelect->close();
-
-    // Handle errors if any
-    if (!empty($error)) {
-        // Handle errors, such as displaying an error message or logging them
-        // Example: echo implode("<br>", $error);
-    }
+    // Close the statement after execution if necessary
+    $stmtUser->close();
 }
-header('Location: login.php');
+// Redirect if form wasn't submitted
+header('Location: login.html');
 ?>
