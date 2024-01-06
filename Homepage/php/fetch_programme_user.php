@@ -234,8 +234,8 @@
                                     </span>
                                     </h2>
                                     <p><?php echo $row["programmeDesc"]; ?></p>
-                                    <a href="#" class="add-cart-btn">Add to Cart</a>
-                                    <a href="#" class="add-wish">Add to Wishlist</a>
+                                    <a href="#" class="add-cart-btn">Register Program</a>
+                                    <a href="#" class="add-wish">Drop Program</a>
                                 </div>
                             </div>
                         </div>
