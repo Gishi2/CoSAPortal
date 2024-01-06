@@ -36,6 +36,7 @@ if (isset($_POST['submit'])) {
                 $_SESSION['userType'] = 'admin';
                 header('Location: admin_interface.php'); // Redirect to admin interface
                 exit();
+            }
 
         } else {
             // Password is incorrect
