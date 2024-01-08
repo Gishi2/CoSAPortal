@@ -26,34 +26,19 @@ function addToCartButton(counter) {
   
     closePopUp(counter);
     successCart();
-    sendProductToServer(selectedProduct, refreshCartContent);
+    sendProductToServer(selectedProduct);
   }
   
-  function sendProductToServer(product, callback) {
-    fetch('includes/carthandler.inc.php', {
+  function sendProductToServer(product) {
+    fetch('includes/insertCart.inc.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(product),
     })
-    .then(response => response.json())
-    .then(data => {
-        if (callback && typeof callback === 'function') {
-            callback(data);
-        }
-    })
     .catch(error => {
         console.error('Error:', error);
     });
 }
-
-function refreshCartContent(data) {
-    const cartContentElement = document.getElementById('cart-container');
-    
-    if (cartContentElement) {
-        cartContentElement.innerHTML = data.cartContent;
-    }
-}
-
   

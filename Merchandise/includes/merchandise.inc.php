@@ -43,7 +43,7 @@
         $url_image = $fileNamePath;
 
         try {
-            require_once "merchandisedb.inc.php";
+            require_once "dbh.inc.php";
 
             $query = "INSERT INTO merchandise (name, description, size, price, stock, image_url) VALUES
             (:name, :description, :sizes, :price, :stock, :url_image);";
@@ -61,7 +61,7 @@
 
             $pdo = null; $stmt = null;
 
-            header("Location: /Merchandise/includes/merchandise.get.inc.php?uploadsuccessful");
+            header("Location: /Merchandise/merchandise.php?uploadsuccessful");
             die();
         } catch (PDOException $e) {
             die("Query failed: " . $e->getMessage());

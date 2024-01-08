@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+    // if (!isset($_SESSION['username'])) {
+    //     header("Location: ../Login-system/login.html");
+    //     exit();
+    // }
+
     require_once '../config/config.php';
 ?>
 
@@ -58,13 +64,14 @@
                     //     echo '<a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>';
                     // }
                 ?>
+                <a class="add-merchandise-btn" href="/Merchandise/merchandise-edit.php"><div>Merchandise Overview</div></a>
                 <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>
                 <div class="nav-cart">
                     <i class="fa-solid fa-cart-shopping" onclick="toggleCart()"></i>
                 </div>
                 <div class="box-cart" id="cart-container">
                     <?php
-                        require_once 'includes/updatecart.inc.php';
+                        require_once 'includes/updateCart.inc.php';
                     ?>
                 </div>
             </div>
@@ -147,11 +154,13 @@ try {
     die("Query failed: " . $e->getMessage());
 }    
 ?>
-        <div class="success-cart" id="successPopup">
-            <div class="circle-cart">
-                <i class="fa-regular fa-circle-check"></i>
+        <div class="success-cart-container"  id="successPopup">
+            <div class="success-cart">
+                <div class="circle-cart">
+                    <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <span>Item has been added to your shopping cart</span>
             </div>
-            <span>Item has been added to your shopping cart</span>
         </div>
     </section>
 </main>

@@ -48,14 +48,14 @@
             </div>
         </div>
         <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: #1B2C51;">PAGES</a>
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: #1B2C51; margin-right: 2rem;">PAGES</a>
             <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                 <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
                 <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
                 <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
             </div>
         </div>
-        <a href="<?php echo SIGN_UP_PAGE; ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a>
+        <!-- <a href="<?php //echo SIGN_UP_PAGE; ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a> -->
     </nav>
     <!-- Navbar End -->
 

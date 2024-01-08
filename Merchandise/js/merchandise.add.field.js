@@ -67,7 +67,6 @@ function showImagePreview() {
                 }
             };
 
-            // Read the selected file as a data URL
         reader.readAsDataURL(fileInput.files[0]);
     }
 }
