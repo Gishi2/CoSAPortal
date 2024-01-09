@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $enteredPassword = $_POST['password'];
 
     // Check if the entered username exists
-    $stmtCheckUser = $conn->prepare("SELECT userName, userPassword FROM student WHERE userName = ?");
+    $stmtCheckUser = $conn->prepare("SELECT userName, userPassword, userType FROM student WHERE userName = ?");
     $stmtCheckUser->bind_param("s", $enteredUsername);
     $stmtCheckUser->execute();
     $result = $stmtCheckUser->get_result();
@@ -16,6 +16,7 @@ if (isset($_POST['submit'])) {
         // Username exists, verify the password
         $row = $result->fetch_assoc();
         $storedPassword = $row['userPassword'];
+        $userType = $row['userType'];
 
         // For debugging: Print entered password and stored hashed password
         echo "<script>console.log('Entered Password: $enteredPassword')</script>";
@@ -30,11 +31,11 @@ if (isset($_POST['submit'])) {
             $_SESSION['username'] = $enteredUsername; // Set session variable for logged-in user
             if ($userType == 1) {
                 $_SESSION['userType'] = 'normalUser';
-                header('Location: normal_user_interface.php'); // Redirect to normal user interface
+                header('Location: /Homepage/php/fetch_programme_user.php'); // Redirect to normal user interface
                 exit();
             } elseif ($userType == 2) {
                 $_SESSION['userType'] = 'admin';
-                header('Location: admin_interface.php'); // Redirect to admin interface
+                header('Location: /Homepage/php/fetch_programme_admin.php'); // Redirect to admin interface
                 exit();
             }
 
