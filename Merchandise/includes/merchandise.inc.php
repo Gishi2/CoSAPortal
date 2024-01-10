@@ -7,10 +7,11 @@
         $size_M = isset($_POST['size_M']) ? 'M' : '';
         $size_L = isset($_POST['size_L']) ? 'L' : '';
         $size_XL = isset($_POST['size_XL']) ? 'XL' : '';
+        $size_NONE = isset($_POST['size_NONE']) ? 'None' : '';
         $price = $_POST['price'];
         $description = $_POST['description'];
 
-        $sizes = implode(',', array_filter([$size_S, $size_M, $size_L, $size_XL]));
+        $sizes = implode(',', array_filter([$size_S, $size_M, $size_L, $size_XL, $size_NONE]));
 
         $fileName = $_FILES['file']['name'];
         $fileTmpName = $_FILES['file']['tmp_name'];

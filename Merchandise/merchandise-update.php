@@ -58,7 +58,37 @@
     </nav>
     <!-- Navbar End -->
 
-    <form action="includes/merchandise.inc.php" method="POST" enctype="multipart/form-data">
+    <?php
+        require_once 'includes/dbh.inc.php';
+
+        if (isset($_GET['id'])) {
+            $merchandiseId = $_GET['id'];
+
+            $query = "SELECT * FROM merchandise WHERE id = $merchandiseId";
+
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                $merchandiseName = $result['name'];
+                $merchandiseStock = $result['stock'];
+                $merchandisePrice = $result['price'];
+                $merchandiseDesc = $result['description'];
+                $merchandiseSizes = $result['size'];
+                $merchandiseImageURL = $result['image_url'];
+            }
+
+            $sizeToArray = explode(",", $merchandiseSizes);
+            $checkedSizes = array_fill_keys($sizeToArray, true);
+
+            $pdo = null; $stmt = null;
+        }
+    ?>
+
+    <!-- Form Start -->
+    <form action="includes/updateMerchandise.inc.php?id=<?php echo $merchandiseId; ?>" method="POST" enctype="multipart/form-data">
         <div class="main-page">
             <div class="product-edit-container">
                 <h3>Basic Information</h3>
@@ -74,15 +104,15 @@
                         <div class="insert-image" onclick="triggerFileInput()">
                             <input type="file" name="file" accept="image/*" multiple="false" aspect="1" id="fileInput"> 
                             <i class="fa-regular fa-image"></i>
-                            <span>Add Image</span>
+                            <span>Edit Image</span>
                         </div>
                         <div class="imagePreview" id="imagePreviewContainer" onclick="previewImage()">
-                            <!-- <img src="\Merchandise\images\cosa-bomber.png"> -->
+                           <!-- img -->
                         </div>
-                        <span class="previewMessage" id="previewMessage"></span>
+                        <span style="display:block;" class="previewMessage" id="previewMessage"></span>
                         <div id="overlay" class="overlay" onclick="closePreview()"></div>
                         <div id="pop-up-preview" class="pop-up-preview">
-                            <!-- <img src="\Merchandise\images\cosa-bomber.png"> -->
+                            <!--img  -->
                         </div>
                     </div>
                 </div>
@@ -91,40 +121,41 @@
                         <span class="mandatory-icon">*</span>
                         <span>Product Name</span>
                     </div>  
-                    <input name="name" id="name" type="text" placeholder="Name" size="large" resize="none">
+                    <input name="name" id="name" type="text" placeholder="Name" size="large" resize="none"
+                        value="<?php echo isset($merchandiseName) ? $merchandiseName : ''; ?>">
                 </div>
                 <div class="product-stock">
                     <div class="edit-label">
                         <span class="mandatory-icon">*</span>
                         <span>Product Stock</span>
                     </div>
-                    <input name="stock" id="stock" type="text" placeholder="Stock" size="large" resize="none">
+                    <input name="stock" id="stock" type="text" placeholder="Stock" size="large" resize="none"
+                        value="<?php echo isset($merchandiseStock) ? $merchandiseStock : ''; ?>">
                 </div>
                 <div class="product-size">
                     <div class="edit-label">
                         <span class="mandatory-icon">*</span>
                         <span>Product Size</span>
                     </div>
-                    <!-- <input name="size" type="text" placeholder="Size" size="large" resize="none"> -->
                     <div class="checkbox-size">
                         <div class="checkbox">
-                            <input type="checkbox" name="size_S">
+                            <input type="checkbox" name="size_S" <?php echo isset($checkedSizes['S']) ? 'checked' : ''; ?>>
                             <label>S</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_M">
+                            <input type="checkbox" name="size_M" <?php echo isset($checkedSizes['M']) ? 'checked' : ''; ?>>
                             <label>M</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_L">
+                            <input type="checkbox" name="size_L" <?php echo isset($checkedSizes['L']) ? 'checked' : ''; ?>>
                             <label>L</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_XL">
+                            <input type="checkbox" name="size_XL" <?php echo isset($checkedSizes['XL']) ? 'checked' : ''; ?>>
                             <label>XL</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_NONE">
+                            <input type="checkbox" name="size_NONE" <?php echo isset($checkedSizes['None']) ? 'checked' : ''; ?>>
                             <label>None</label>
                         </div>
                     </div>
@@ -138,7 +169,8 @@
                         <div class="input-box">
                             <span class="prefix" style="padding-left: 12px;">RM</span>
                             <span class="prefix" style="padding-left: 12px;">|</span>
-                            <input name="price" id="price" type="text" placeholder="Enter amount">
+                            <input name="price" id="price" type="text" placeholder="Enter amount"
+                                value="<?php echo isset($merchandisePrice) ? $merchandisePrice : ''; ?>">
                         </div>
                     </div>
                 </div>
@@ -148,7 +180,8 @@
                         <span>Product Description</span>
                     </div>
                     <textarea name="description" id="description" type="textarea" resize="none" rows="2" minrows="9" maxrows="26" autosize="true"
-                    maxlength="Infinity" restrictiontype="input" style="resize: none; min-height: 210px; height: 210px;"></textarea>
+                        maxlength="Infinity" restrictiontype="input" style="resize: none; min-height: 210px; height: 210px;"
+                        ><?php echo isset($merchandiseDesc) ? $merchandiseDesc : ''; ?></textarea>
                 </div>
             </div>
         </div>
@@ -156,7 +189,7 @@
         <div class="button-container">
             <div class="button">
                 <div class="button-div" onclick="triggerLink()">
-                    <a id="button-link" class="button-link" href="includes/merchandise.inc.php"></a>
+                    <a id="button-link" class="button-link" href="/Merchandise/merchandise-edit.php"></a>
                     <span>Cancel</span>
                 </div>
                 <button class="save-btn" type="submit" id="submit" name="submit" disabled>
@@ -167,5 +200,28 @@
     </form>
 
     <script src="/Merchandise/js/merchandise.js"></script>
-    <script src="/Merchandise/js/merchandise.add.field.js"></script>
+    <script src="/Merchandise/js/merchandise.edit.field.js"></script>
+    <script>
+        var imageUrl = "<?php echo $merchandiseImageURL; ?>";
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkField(true);
+
+            imagePreviewContainer.innerHTML = '';
+            previewMessage.textContent = '';
+            popupPreview.innerHTML = '';
+
+            var previewImage = document.createElement('img');
+            imagePreviewContainer.style.display = 'flex';
+
+            var popupImage = document.createElement('img');
+            previewMessage.style.display = 'block';
+
+            previewImage.src = imageUrl;
+            popupImage.src = imageUrl;
+
+            imagePreviewContainer.appendChild(previewImage);
+            popupPreview.appendChild(popupImage);
+        });
+    </script>
 </body>

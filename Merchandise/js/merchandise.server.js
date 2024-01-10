@@ -29,7 +29,7 @@ function addToCartButton(counter) {
     sendProductToServer(selectedProduct);
   }
   
-  function sendProductToServer(product) {
+function sendProductToServer(product) {
     fetch('includes/insertCart.inc.php', {
         method: 'POST',
         headers: {

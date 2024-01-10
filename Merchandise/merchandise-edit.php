@@ -25,17 +25,57 @@
     <link href="/Homepage/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="/Homepage/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet"/>
 
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
     <!-- Customized Bootstrap Stylesheet -->
     <link href="\Homepage\css\bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="\Merchandise\css\merchandise-edit.css" rel="stylesheet">  
-    <!-- <link href="\Homepage\css\style.css" rel="stylesheet"> -->
 </head>
 
 <body>
+    <!-- Sidebar Start -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav-list">
+            <!-- <li>
+                <i class='bx bx-search' ></i>
+                <input type="text" placeholder="Search...">
+                <span class="tooltip">Search</span>
+            </li> -->
+            <li>
+                <a href="fetch_programme_user.php">
+                <i class='bx bx-clipboard'></i>
+                    <span class="links_name">Order</span>
+                </a>
+                <span class="tooltip">Order</span>
+            </li>
+            <li>
+            <a href="/Merchandise/includes/merchandise.get.inc.php">
+                <i class='bx bx-cart-alt' ></i>
+                <span class="links_name">Merchandise</span>
+            </a>
+            <span class="tooltip">Merchandise</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-book' ></i>
+                    <span class="links_name">Book</span>
+                </a>
+                <span class="tooltip">Book</span>
+            </li>
+         </ul>
+    </div>
+    <!-- Sidebar End -->
+
+    <section class="content-section">
+
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" style="box-shadow: 0 1px 4px 0 rgba(74,74,78,.12);" data-wow-delay="0.1s">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
         <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
         </a>
@@ -48,7 +88,7 @@
             </div>
         </div>
         <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: #1B2C51; margin-right: 2rem;">PAGES</a>
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 2rem;">PAGES</a>
             <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                 <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
                 <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
@@ -57,49 +97,89 @@
         </div>
     </nav>
     <!-- Navbar End -->
-
-    <div class="sidebar-container-edit">
-        <div class="sidebar-edit">
-            <div class="sidebar-menu-edit">
-                <ul>
-                    <li class="sidebar-menu-box">
-                        <div class="sidebar-menu-item">
-                            <i class="fa-solid fa-shirt"></i>
-                            <span class="text">
-                                Merchandise
-                            </span>
-                            <span class="space"></span>
-                        </div>
-                        <ul class="sidebar-submenu">
-                            <li >
-                                <div class="sidebar-submenu-item"></div>
-                                <a>
-                                    <span>My Merchandise</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="page-container has-sidebar">
+    
+    <!-- Page Content -->
+    <div class="page-container">
         <div class="page-wrapper-content">
             <div class="page-content-main">
                 <div class="page-header">
-                    <span>10 Products</span>
+                    <?php
+                        require_once "includes/merchandiseAmount.inc.php";
+                    ?>
                 </div>
                 <div class="content-list-section">
                     <div class="content-list-container">
                         <div class="content-table">
                             <table>
-                                <colgroup>
-                                    <col width="40">
-                                    <col width="232">
-                                    <col width="606">
-                                    <col width="96">
-                                    <col width="88">
-                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center">ID</th>
+                                        <th>Product Name</th>
+                                        <th>Description</span></th>
+                                        <th>Available Size</span></th>
+                                        <th>Stock</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        try {
+                                            require_once "includes/dbh.inc.php";
+
+                                            $query = "SELECT * FROM merchandise";
+
+                                            $stmt = $pdo->prepare($query);
+                                            $stmt->execute();
+
+                                            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                                            if ($results > 0) {
+                                                foreach ($results as $merchandise) {
+                                                    echo '<tr>';
+                                                        echo '<td>';
+                                                            echo '<div style="text-align: center">' . $merchandise['id'] . '</div>';
+                                                        echo '</td>';
+                                                        echo '<td>';
+                                                        echo '<div class="name-container">';
+                                                            echo '<div class="img-container">';
+                                                                echo '<img src="' . $merchandise['image_url']. '">';
+                                                            echo '</div>';
+                                                            echo '<div class="text-container">';
+                                                                echo '<span>'. $merchandise['name'] .'</span>';
+                                                            echo '</div>';
+                                                        echo '</div>';
+                                                        echo '<td>';
+                                                            echo '<div>' . $merchandise['description'] . '</div>';
+                                                        echo '</td>';
+                                                        echo '<td>';
+                                                            echo '<div>' . $merchandise['size'] . '</div>';
+                                                        echo '</td>';
+                                                        echo '<td>';
+                                                            if ($merchandise['stock'] != 0) {
+                                                                echo '<div>' . $merchandise['stock'] . '</div>';
+                                                            } else {
+                                                                echo '<div class="red-text">Out of Stock</div>';
+                                                            }
+                                                        echo '</td>';
+                                                        echo '<td>';
+                                                            echo '<div class="table-btn">';
+                                                                echo '<button onclick="redirectToEditPage('. $merchandise['id'] .')">';
+                                                                    echo '<span>Edit</span>';
+                                                                echo '</button>';
+                                                                echo '<button onclick="deleteProduct('. $merchandise['id'] .')">';
+                                                                    echo '<span>Delete</span>';
+                                                                echo '</button>';
+                                                            echo '</div>';
+                                                        echo '</td>';
+                                                    echo '</tr>';
+                                                }
+                                            }
+                                            $pdo = null; $stmt = null;
+                                        } catch (PDOException $e) {
+                                            die("Query failed: " . $e->getMessage());
+                                        }   
+                                    ?>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -107,7 +187,30 @@
             </div>
         </div>
     </div>
+    </section>
     
-    <script src="/Merchandise/js/merchandise.js"></script>
-    <script src="/Merchandise/js/merchandise.add.field.js"></script>
+    <script src="js/merchandise.edit.js"></script>
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+        let searchBtn = document.querySelector(".bx-search");
+      
+        closeBtn.addEventListener("click", ()=>{
+          sidebar.classList.toggle("open");
+          menuBtnChange();
+        });
+      
+        searchBtn.addEventListener("click", ()=>{
+          sidebar.classList.toggle("open");
+          menuBtnChange();
+        });
+      
+        function menuBtnChange() {
+         if(sidebar.classList.contains("open")){
+           closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+         }else {
+           closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+         }
+        }
+    </script>
 </body>

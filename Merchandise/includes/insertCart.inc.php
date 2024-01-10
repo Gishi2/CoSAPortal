@@ -1,5 +1,4 @@
 <?php
-var_dump("hi");
 $rawData = file_get_contents('php://input');
 $decodedData = json_decode($rawData, true);
 error_log('PHP script executed successfully');
@@ -28,7 +27,6 @@ try {
     $stmt->bindParam(":totalPrice", $totalPrice);
     $stmt->bindParam(":quantity", $quantity);
     $stmt->bindParam(":sizes", $sizes);
-    var_dump("hi");
     $stmt->execute();
 
     $pdo = null; $stmt = null;
@@ -39,5 +37,4 @@ try {
     http_response_code(500);
     echo "Error inserting item.";
 }    
-var_dump("hi");
 ?>
