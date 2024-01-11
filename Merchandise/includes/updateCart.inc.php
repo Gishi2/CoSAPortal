@@ -3,7 +3,7 @@
 try {
     require_once "dbh.inc.php";
 
-    $query = "SELECT cart.total_price, merchandise.name, merchandise.image_url FROM cart 
+    $query = "SELECT cart.cart_id, cart.total_price, merchandise.name, merchandise.image_url FROM cart 
     INNER JOIN merchandise ON cart.merchandise_id = merchandise.id;";
 
     $stmt = $pdo->prepare($query);
@@ -21,7 +21,10 @@ try {
                 echo '</div>';
                 echo '<div class="text">' . htmlspecialchars($item['name']) . '</div>';
                 echo '<div class="price">RM' . htmlspecialchars($item['total_price']) .'</div>';
-                echo '<div class="btn-delete" onclick="deleteCart()">Delete</div>';
+                echo '<form action="includes/deleteCart.inc.php" method="post">';
+                    echo '<input type="hidden" name="itemId" value="'. $item['cart_id'] .'">';
+                    echo '<button type="submit" class="btn-delete">Delete</button>';
+                echo '</form>';
             echo '</div>';
         }
         echo '<div class="shopping-cart-button">';

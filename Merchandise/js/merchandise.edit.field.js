@@ -25,13 +25,14 @@ checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', checkField);
 });
 
-function checkField() {
+function checkField(fileStatus) {
     var name = nameInput.value.trim() !== '';
     var stock = stockInput.value.trim() !== '';
     var price = priceInput.value.trim() !== '';
     var desc = descInput.value.trim() !== '';
 
     var fileSelected = fileInput.files.length > 0;
+    fileSelected = fileStatus;
 
     var atLeastOneChecked = Array.from(checkboxes).some((checkbox) => {
         return checkbox.checked;

@@ -27,13 +27,14 @@ try {
     $stmt->bindParam(":totalPrice", $totalPrice);
     $stmt->bindParam(":quantity", $quantity);
     $stmt->bindParam(":sizes", $sizes);
-
     $stmt->execute();
 
     $pdo = null; $stmt = null;
-
+    header("Location: /Merchandise/merchandise.php?insertsuccessful");
     die();
 } catch (PDOException $e) {
     die("Query failed: " . $e->getMessage());
+    http_response_code(500);
+    echo "Error inserting item.";
 }    
 ?>
