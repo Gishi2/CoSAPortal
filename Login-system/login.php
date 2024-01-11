@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $enteredPassword = $_POST['password'];
 
     // Check if the entered username exists
-    $stmtCheckUser = $conn->prepare("SELECT userName, userPassword FROM student WHERE userName = ?");
+    $stmtCheckUser = $conn->prepare("SELECT userName, userPassword, userType, matrixId FROM student WHERE userName = ?");
     $stmtCheckUser->bind_param("s", $enteredUsername);
     $stmtCheckUser->execute();
     $result = $stmtCheckUser->get_result();
@@ -16,25 +16,24 @@ if (isset($_POST['submit'])) {
         // Username exists, verify the password
         $row = $result->fetch_assoc();
         $storedPassword = $row['userPassword'];
-
-        // For debugging: Print entered password and stored hashed password
-        echo "<script>console.log('Entered Password: $enteredPassword')</script>";
-        echo "<script>console.log('Entered Password: $storedPassword')</script>";
+        $userType = $row['userType'];
+        $matrixId = $row['matrixId'];
 
         if (password_verify($enteredPassword, $storedPassword)) {
             // Password is correct, set session or redirect to logged-in page
             session_start();
-            // $_SESSION['username'] = $enteredUsername; // Set session variable for logged-in user
-            // header('Location: welcome.php'); // Redirect to welcome page or dashboard
-            // exit();
             $_SESSION['username'] = $enteredUsername; // Set session variable for logged-in user
-            if ($userType == 1) {
+            $_SESSION['matrixId'] = $matrixId;
+            // // For debugging: Print entered password and stored hashed password
+            // echo "<script>console.log('Entered Password: $enteredPassword')</script>";
+            // echo "<script>console.log('Entered Password: $storedPassword')</script>";
+            if ($userType == "1") {
                 $_SESSION['userType'] = 'normalUser';
-                header('Location: normal_user_interface.php'); // Redirect to normal user interface
+                header('Location: /Homepage/php/fetch_programme_user.php'); // Redirect to normal user interface
                 exit();
-            } elseif ($userType == 2) {
+            } elseif ($userType == "2") {
                 $_SESSION['userType'] = 'admin';
-                header('Location: admin_interface.php'); // Redirect to admin interface
+                header('Location: /Homepage/php/fetch_programme_admin.php'); // Redirect to admin interface
                 exit();
             }
 

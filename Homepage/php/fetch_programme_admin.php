@@ -86,7 +86,7 @@
        <span class="tooltip">E-Book Shop</span>
      </li>
      <li>
-       <a href="/Merchandise/includes/merchandise.get.inc.php">
+       <a href="/Merchandise/merchandise.php">
          <i class='bx bx-cart-alt' ></i>
          <span class="links_name">Merchandise</span>
        </a>

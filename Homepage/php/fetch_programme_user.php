@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,7 +83,7 @@
            <span class="tooltip">E-Book Shop</span>
          </li>
          <li>
-           <a href="/Merchandise/includes/merchandise.get.inc.php">
+           <a href="/Merchandise/merchandise.php">
              <i class='bx bx-cart-alt' ></i>
              <span class="links_name">Merchandise</span>
            </a>
@@ -234,7 +239,7 @@
                                     </span>
                                     </h2>
                                     <p><?php echo $row["programmeDesc"]; ?></p>
-                                    <a href="#" class="add-cart-btn">Register Program</a>
+                                    <a href="#" class="add-cart-btn" data-program-id= "<?php echo $row['programmeId']; ?>" >Register Program</a>
                                     <a href="#" class="add-wish">Drop Program</a>
                                 </div>
                             </div>
@@ -326,7 +331,34 @@
             });
         </script>
 
-        <!-- javascript/jQuery to get data from fetch_programme.php -->
+        <script>
+            $(document).ready(function() {
+                $('.add-cart-btn').click(function(event) {
+                    event.preventDefault(); // Prevent the default form submission behavior
+
+                    // Retrieve the program ID associated with the clicked button
+                    var programId = $(this).data('program-id'); // Assuming 'data-program-id' attribute holds the program ID
+                    console.log("Program ID:", programId);
+
+                    // AJAX request to the PHP endpoint
+                    $.ajax({
+                        type: 'POST',
+                        url: 'register_programme.php', // Replace with your PHP endpoint URL
+                        data: { programId: programId },
+                        success: function(response) {
+                            // Handle the response from the server after registration
+                            alert('Successfully registered to the program!');
+                            // You might want to refresh the page or update UI accordingly
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error cases here
+                            alert('Error occurred while registering to the program');
+                            console.error(error);
+                        }
+                    });
+                });
+            });
+        </script>
 </body>
 
 </html>
