@@ -1,5 +1,5 @@
 <?php
-// register_program.php
+// drop_programme.php
 
 // Ensure the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,44 +24,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmtCheckRegistration->execute();
     $resultCheckRegistration = $stmtCheckRegistration->get_result();
 
+    // if ($resultCheckRegistration->num_rows > 0) {
+    //     // User is registered for the program; update status to indicate dropping
+    //     $stmtUpdateStatus = $conn->prepare("UPDATE attendance SET status = 1 WHERE matrixId = ? AND programmeId = ?");
+    //     $stmtUpdateStatus->bind_param("ss", $matrixId, $programId);
+
+    //     if ($stmtUpdateStatus->execute()) {
+    //         // Drop successful
+    //         echo "Program dropped successfully";
+    //     } else {
+    //         // Drop failed
+    //         echo "Error updating status: " . $conn->error;
+    //     }
+
+    //     // Close the update statement
+    //     $stmtUpdateStatus->close();
+    // } else {
+    //     // User is not registered for the program
+    //     echo "You are not registered for this programme";
+    // }
     if ($resultCheckRegistration->num_rows > 0) {
         $row = $resultCheckRegistration->fetch_assoc();
         $currentStatus = $row['status'];
-
+    
         if ($currentStatus == 1) {
-            // User has dropped from the program; update status to indicate registration again
-            $stmtUpdateStatus = $conn->prepare("UPDATE attendance SET status = 0 WHERE matrixId = ? AND programmeId = ?");
+            // User is registered for the program but already dropped
+            echo "You have already dropped from this programme";
+        } else {
+            // User is registered for the program; update status to indicate dropping
+            $stmtUpdateStatus = $conn->prepare("UPDATE attendance SET status = 1 WHERE matrixId = ? AND programmeId = ?");
             $stmtUpdateStatus->bind_param("ss", $matrixId, $programId);
-
+    
             if ($stmtUpdateStatus->execute()) {
-                // Registration back to the program successful
-                echo "Successfully registered back to the program!";
+                // Drop successful
+                echo "Program dropped successfully";
             } else {
-                // Update status failed
+                // Drop failed
                 echo "Error updating status: " . $conn->error;
             }
-
+    
             // Close the update statement
             $stmtUpdateStatus->close();
-        } else {
-            // User is already registered for the program
-            echo "You are already registered for this programme!";
         }
     } else {
-        // User is not registered for the program; proceed with registration logic
-        $stmtInsertRegistration = $conn->prepare("INSERT INTO attendance (matrixId, programmeId, status) VALUES (?, ?, 1)");
-        $stmtInsertRegistration->bind_param("ss", $matrixId, $programId);
-
-        if ($stmtInsertRegistration->execute()) {
-            // Registration successful
-            echo "Registration successful";
-        } else {
-            // Registration failed
-            echo "Error: " . $conn->error;
-        }
-
-        // Close the insert statement
-        $stmtInsertRegistration->close();
+        // User is not registered for the program
+        echo "You are not registered for this programme";
     }
 
     // Close the check registration statement and connection

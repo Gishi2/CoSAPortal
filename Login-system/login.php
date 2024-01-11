@@ -16,6 +16,8 @@ if (isset($_POST['submit'])) {
         // Username exists, verify the password
         $row = $result->fetch_assoc();
         $storedPassword = $row['userPassword'];
+        $userType = $row['userType'];
+        $matrixId = $row['matrixId']; // Add this line to fetch matrixId
 
         // For debugging: Print entered password and stored hashed password
         echo "<script>console.log('Entered Password: $enteredPassword')</script>";

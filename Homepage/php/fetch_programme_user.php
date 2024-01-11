@@ -1,5 +1,7 @@
 <?php
 session_start();
+$matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the session
+echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
 ?>
 
 
@@ -240,7 +242,7 @@ session_start();
                                     </h2>
                                     <p><?php echo $row["programmeDesc"]; ?></p>
                                     <a href="#" class="add-cart-btn" data-program-id= "<?php echo $row['programmeId']; ?>" >Register Program</a>
-                                    <a href="#" class="add-wish">Drop Program</a>
+                                    <a href="#" class="add-wish" data-program-id= "<?php echo $row['programmeId']; ?>" >Drop Program</a>
                                 </div>
                             </div>
                         </div>
@@ -347,8 +349,16 @@ session_start();
                         data: { programId: programId },
                         success: function(response) {
                             // Handle the response from the server after registration
-                            alert('Successfully registered to the program!');
-                            // You might want to refresh the page or update UI accordingly
+                            if (response === "Registration successful") {
+                                alert('Successfully registered to the program!');
+                                // You might want to refresh the page or update UI accordingly
+                            } else if (response === "Successfully registered back to the program!") {
+                                alert('Successfully registered back to the program!');
+                            } else if (response === "You are already registered for this programme!") {
+                                alert('You are already registered to this programme!');
+                            } else {
+                                alert('Unexpected response from the server' + response);
+                            }
                         },
                         error: function(xhr, status, error) {
                             // Handle error cases here
@@ -359,6 +369,45 @@ session_start();
                 });
             });
         </script>
+        
+        <script>
+            $(document).ready(function() {
+                // Click event for "Drop Program" button
+                $('.add-wish').click(function(event) {
+                    event.preventDefault(); // Prevent the default link behavior
+
+                    // Retrieve the program ID associated with the clicked button
+                    var programId = $(this).data('program-id'); // Assuming 'data-program-id' attribute holds the program ID
+                    console.log("Program ID:", programId);
+
+                    // AJAX request to the PHP endpoint for dropping a program
+                    $.ajax({
+                        type: 'POST',
+                        url: 'drop_programme.php', // Create a new PHP file for handling drop program logic
+                        data: { programId: programId },
+                        success: function(response) {
+                            // Handle the response from the server after dropping the program
+                            if (response === "Program dropped successfully") {
+                                alert('Program dropped successfully!');
+                                // You might want to refresh the page or update UI accordingly
+                            } else if (response === "You are not registered for this programme") {
+                                alert('You are not registered for this programme');
+                            } else if (response === "You have already dropped from this programme") {
+                                alert('You have already dropped from this programme');
+                            } else {
+                                alert('Unexpected response from the server' + programId);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error cases here
+                            alert('Error occurred while dropping the program');
+                            console.error(error);
+                        }
+                    });
+                });
+            });
+        </script>
+
 </body>
 
 </html>
