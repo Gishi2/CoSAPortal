@@ -55,6 +55,7 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
 
     <div class="sidebar">
         <div class="logo-details">
+            
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list" style="padding: 0;">
@@ -93,6 +94,10 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
          </li>
 
          <li class="profile">
+         <div class="name-job">
+            <div class="profile_name">Prem Shahi</div>
+            <div class="job">Web Desginer</div>
+        </div>
              <i class='bx bx-log-out' id="log_out" ></i>
          </li>
         </ul>
