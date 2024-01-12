@@ -2,8 +2,8 @@
 // session_start();
 // $matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the session
 // echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
-echo "Current File: " . __FILE__ . "<br>";
-echo "Current Directory: " . __DIR__ . "<br>";
+// echo "Current File: " . __FILE__ . "<br>";
+// echo "Current Directory: " . __DIR__ . "<br>";
 session_start();
 
     // Check if the user is not logged in
@@ -16,7 +16,7 @@ session_start();
     }
 
     // Now, include other necessary files or perform actions for the logged-in user
-    require_once '../config/config.php';
+    // require_once '/../config/config.php';
 ?>
 
 
@@ -113,7 +113,7 @@ session_start();
             <div class="profile_name">Prem Shahi</div>
             <div class="job">Web Desginer</div>
         </div>
-             <i class='bx bx-log-out' id="log_out" ></i>
+             <i class='bx bx-log-out' id="log_out"></i>
          </li>
         </ul>
       </div>
@@ -145,7 +145,7 @@ session_start();
               </div> -->
               <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
           </div>
-          <a href="/index.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
+          <a href="/Login-system/logout.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
       </div>
   </nav>
   <!-- Navbar End -->

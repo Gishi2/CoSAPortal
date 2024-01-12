@@ -66,18 +66,18 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
 
     <!-- Side Bar Test Start-->
 
-    <div class="sidebar">
-        <div class="logo-details">
+    <!-- <div class="sidebar"> -->
+        <!-- <div class="logo-details">
             
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list" style="padding: 0;">
-          <!-- <li>
+          <li>
              <i class='bx bx-search' ></i>
              <input type="text" placeholder="Search...">
              <span class="tooltip">Search</span>
           </li>
-          <li> -->
+          <li>
             <li>
                 <a href="#">
                     <i class='bx bx-home' ></i>
@@ -92,13 +92,13 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
             </a>
              <span class="tooltip">Programme</span>
           </li>
-          <!-- <li>
+          <li>
            <a href="#">
              <i class='bx bx-user' ></i>
              <span class="links_name">User</span>
            </a>
            <span class="tooltip">User</span>
-         </li> -->
+         </li>
          <li>
            <a href="#">
              <i class='bx bx-folder' ></i>
@@ -126,8 +126,8 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
              <i class='bx bx-log-out' id="log_out" ></i>
          </li>
         </ul>
-      </div>
-      <section class="home-section">
+      </div> -->
+      <!-- <section class="home-section"> -->
           <!-- Top Navbar Start -->
         <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
@@ -175,11 +175,11 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
     <section class="grid margin text-center">
           <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-red">
             <i class="bx bx-cart-alt text-size-60 text-white center margin-bottom-15"></i>
-            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Unlimited Color Variants</h3>
+            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Merchandise</h3>
           </a>
           <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-blue">
             <i class="bx bx-grid-alt text-size-60 text-white center margin-bottom-15"></i>
-            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Many Reusable Elements</h3>
+            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">E-Book Shop</h3>
           </a>
           
           <!-- Image-->
@@ -187,17 +187,17 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
           
           <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-orange">
             <i class="icon-sli-diamond text-size-60 text-white center margin-bottom-15"></i>
-            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Responsive Layoute</h3>
+            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Programme Registration</h3>
           </a>
           <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-aqua">
             <i class="icon-sli-share text-size-60 text-white center margin-bottom-15"></i>
-            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Clean Modern Code</h3>
+            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Account Details</h3>
           </a>
         </section>
     <!-- Programme Cards End -->
 
     <!-- Navbar End -->
-      </section>
+      <!-- </section> -->
 
 
     <!-- Back to Top -->

@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
             // echo "<script>console.log('Entered Password: $storedPassword')</script>";
             if ($userType == "1") {
                 $_SESSION['userType'] = 'normalUser';
-                header('Location: /Homepage/php/fetch_programme_user.php'); // Redirect to normal user interface
+                header('Location: /Login-system/mainpage/mainpage_user.php'); // Redirect to normal user interface
                 exit();
             } elseif ($userType == "2") {
                 $_SESSION['userType'] = 'admin';

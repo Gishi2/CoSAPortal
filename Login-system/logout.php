@@ -5,5 +5,5 @@
     session_destroy(); // destroy the session 
     $_SESSION = array(); // empty session
 
-    header('Location: login.php');
+    header('Location: ../index.php');
 ?>
