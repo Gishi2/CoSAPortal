@@ -1,7 +1,22 @@
 <?php
+// session_start();
+// $matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the session
+// echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
+// echo "Current File: " . __FILE__ . "<br>";
+// echo "Current Directory: " . __DIR__ . "<br>";
 session_start();
-$matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the session
-echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
+
+    // Check if the user is not logged in
+    if (!isset($_SESSION['matrixId'])) {
+        // Redirect to the login page
+        header("Location: /Login-system/login.html");
+        exit(); // Ensure that the script stops here
+    } else {
+        $matrixId = $_SESSION['matrixId'];
+    }
+
+    // Now, include other necessary files or perform actions for the logged-in user
+    // require_once '/../config/config.php';
 ?>
 
 
@@ -41,18 +56,8 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-    <!-- Mainpage Css Link -->
-    <link rel="stylesheet" href="css/components.css">
-      <link rel="stylesheet" href="css/icons.css">
-      <link rel="stylesheet" href="css/responsee.css">
-      <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
-      <link rel="stylesheet" href="owl-carousel/owl.theme.css">
-
-      <!-- Mainpage2 Css Link  -->
-      <link rel="stylesheet" href="css/template-style.css">
-      <link href="https://fonts.googleapis.com/css?family=Barlow:100,300,400,700,800&amp;subset=latin-ext" rel="stylesheet">  
-      <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-      <script type="text/javascript" src="js/jquery-ui.min.js"></script>   
+    <!-- Bootstrap account details -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -66,8 +71,8 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
 
     <!-- Side Bar Test Start-->
 
-    <!-- <div class="sidebar"> -->
-        <!-- <div class="logo-details">
+    <div class="sidebar">
+        <div class="logo-details">
             
             <i class='bx bx-menu' id="btn" ></i>
         </div>
@@ -78,27 +83,19 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
              <span class="tooltip">Search</span>
           </li>
           <li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-home' ></i>
-                    <span class="links_name">Home</span>
-                </a>
-                <span class="tooltip">Home</span>
-            </li>
-            <li>
             <a href="fetch_programme_user.php">
               <i class='bx bx-grid-alt'></i>
               <span class="links_name">Programme Registration</span>
             </a>
              <span class="tooltip">Programme</span>
           </li>
-          <li>
+          <!-- <li>
            <a href="#">
              <i class='bx bx-user' ></i>
              <span class="links_name">User</span>
            </a>
            <span class="tooltip">User</span>
-         </li>
+         </li> -->
          <li>
            <a href="#">
              <i class='bx bx-folder' ></i>
@@ -116,18 +113,14 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
 
          <li class="profile">
          <div class="name-job">
-            <div class="profile_name"><?php 
-            echo $_SESSION['username']; 
-            ?></div>
-            <div class="job"><?php 
-            echo $_SESSION['matrixId'];
-            ?></div>
+            <div class="profile_name">Prem Shahi</div>
+            <div class="job">Web Desginer</div>
         </div>
-             <i class='bx bx-log-out' id="log_out" ></i>
+             <i class='bx bx-log-out' id="log_out"></i>
          </li>
         </ul>
-      </div> -->
-      <!-- <section class="home-section"> -->
+      </div>
+      <section class="home-section">
           <!-- Top Navbar Start -->
         <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
@@ -142,62 +135,105 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
       <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto p-4 p-lg-0">
               <a href="homepage.html" class="nav  -item nav-link">Home</a>
+              <!-- <a href="about.html" class="nav-item nav-link">About</a> -->
+              <!-- <a href="service.html" class="nav-item nav-link">Service</a> -->
+              <!-- <div class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                  <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                      <a href="about.html" class="dropdown-item">About Us</a>
+                      <a href="\potoub-html\course-registration.html" class="dropdown-item">Programme</a>
+                      <a href="\potoub-html\Merchandise\merchandise.html" class="dropdown-item">Merchandise</a>
+                      <a href="\potoub-html\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
+                  </div>
+              </div> -->
+              <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
           </div>
-          <a href="/index.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
+          <a href="/Login-system/logout.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
       </div>
   </nav>
   <!-- Navbar End -->
-        <!-- Top Navbar End -->
+    <!-- Top Navbar End -->
 
     <!-- Page Header Start -->
-    <!-- TOP SECTION -->
-    <section class="grid">
-          <!-- Main Carousel -->
-          <div class="s-12 margin-bottom carousel-fade-transition owl-carousel carousel-main carousel-nav-white carousel-hide-arrows background-dark">
-          <div class="item background-image" style="background-image:url(img/img-07.jpg); background-position-y: -400px;">
-              <p class="text-padding text-strong text-white text-s-size-30 text-size-60 text-uppercase background-blue">We are Future System Developers</p><br>
-              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Con nonummy sem integer interdum volutpat dis eget eligendi aliquip dolorum magnam.</p>
-            </div>
-            <div class="item background-image" style="background-image:url(img/img-07.jpg); background-position-y: -400px;">
-              <p class="text-padding text-strong text-white text-s-size-30 text-size-60 text-uppercase background-blue">Promoveo Ut Tech</p><br>
-              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Con nonummy sem integer interdum volutpat dis eget eligendi aliquip dolorum magnam.</p>
-            </div>
-            <div class="item background-image" style="background-image:url(img/img-07.jpg); background-position-y: -400px;">
-              <p class="text-padding text-strong text-white text-s-size-30 text-size-60 text-uppercase background-blue">For the Future, CoSA Forever</p><br>
-              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Con nonummy sem integer interdum volutpat dis eget eligendi aliquip dolorum magnam.</p>
-            </div>
-          </div>  
-    </section>
+    
     <!-- Page Header End -->
 
 
     <!-- Programme Cards Start -->
-    <section class="grid margin text-center">
-          <a href="/Merchandise/merchandise.php" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-red">
-            <i class="bx bx-cart-alt text-size-60 text-white center margin-bottom-15"></i>
-            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Merchandise</h3>
-          </a>
-          <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-blue">
-            <i class="bx bx-grid-alt text-size-60 text-white center margin-bottom-15"></i>
-            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">E-Book Shop</h3>
-          </a>
-          
-          <!-- Image-->
-          <img class="m-12 l-6 l-row-2 margin-bottom" src="img/img-08.jpg">
-          
-          <a href="/Homepage/php/fetch_programme_user.php" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-orange">
-            <i class="icon-sli-diamond text-size-60 text-white center margin-bottom-15"></i>
-            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Programme Registration</h3>
-          </a>
-          <a href="/Login-system/useraccount/details.php" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-aqua">
-            <i class="icon-sli-share text-size-60 text-white center margin-bottom-15"></i>
-            <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Account Details</h3>
-          </a>
-        </section>
+    <div class="container-xl px-4 mt-4">
+        <nav class="nav nav-borders">
+            <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
+            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-billing-page" target="__blank">Billing</a>
+            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Security</a>
+            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page" target="__blank">Notifications</a>
+        </nav>
+        <hr class="mt-0 mb-4">
+        <div class="row">
+            <!-- <div class="col-xl-4">
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header">Profile Picture</div>
+                    <div class="card-body text-center">
+                        <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt>
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                        <button class="btn btn-primary" type="button">Upload new image</button>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="col-xl-8" style="width: 100%">
+                <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username">
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputFirstName">First name</label>
+                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLastName">Last name</label>
+                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna">
+                                </div>
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputOrgName">Organization name</label>
+                                    <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLocation">Location</label>
+                                    <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
+                            </div>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputPhone">Phone number</label>
+                                    <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
+                                </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputBirthday">Birthday</label>
+                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                            </div>
+                    </div>
+                            <button class="btn btn-primary" type="button">Save changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Programme Cards End -->
 
     <!-- Navbar End -->
-      <!-- </section> -->
+      </section>
 
 
     <!-- Back to Top -->
@@ -346,10 +382,10 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
             });
         </script>
 
-        <!-- Script for mainpage only -->
-        <script type="text/javascript" src="js/responsee.js"></script>
-        <script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>
-        <script type="text/javascript" src="js/template-scripts.js"></script>
+            <!-- Account Details Scripts -->
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript"></script>
 
 </body>
 
