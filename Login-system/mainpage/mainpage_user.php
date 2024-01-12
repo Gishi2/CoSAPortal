@@ -72,12 +72,20 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list" style="padding: 0;">
-          <li>
+          <!-- <li>
              <i class='bx bx-search' ></i>
              <input type="text" placeholder="Search...">
              <span class="tooltip">Search</span>
           </li>
-          <li>
+          <li> -->
+            <li>
+                <a href="#">
+                    <i class='bx bx-home' ></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
             <a href="fetch_programme_user.php">
               <i class='bx bx-grid-alt'></i>
               <span class="links_name">Programme Registration</span>
@@ -108,8 +116,12 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
 
          <li class="profile">
          <div class="name-job">
-            <div class="profile_name">Prem Shahi</div>
-            <div class="job">Web Desginer</div>
+            <div class="profile_name"><?php 
+            echo $_SESSION['username']; 
+            ?></div>
+            <div class="job"><?php 
+            echo $_SESSION['matrixId'];
+            ?></div>
         </div>
              <i class='bx bx-log-out' id="log_out" ></i>
          </li>

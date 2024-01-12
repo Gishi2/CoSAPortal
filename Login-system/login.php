@@ -28,6 +28,7 @@ if (isset($_POST['submit'])) {
             session_start();
             $_SESSION['username'] = $enteredUsername; // Set session variable for logged-in user
             $_SESSION['matrixId'] = $matrixId;
+            $_SESSION['userType'] = $userType;
             // // For debugging: Print entered password and stored hashed password
             // echo "<script>console.log('Entered Password: $enteredPassword')</script>";
             // echo "<script>console.log('Entered Password: $storedPassword')</script>";

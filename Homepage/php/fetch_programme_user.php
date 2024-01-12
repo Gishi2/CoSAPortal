@@ -1,7 +1,22 @@
 <?php
+// session_start();
+// $matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the session
+// echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
+echo "Current File: " . __FILE__ . "<br>";
+echo "Current Directory: " . __DIR__ . "<br>";
 session_start();
-$matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the session
-echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
+
+    // Check if the user is not logged in
+    if (!isset($_SESSION['matrixId'])) {
+        // Redirect to the login page
+        header("Location: /Login-system/login.html");
+        exit(); // Ensure that the script stops here
+    } else {
+        $matrixId = $_SESSION['matrixId'];
+    }
+
+    // Now, include other necessary files or perform actions for the logged-in user
+    require_once '../config/config.php';
 ?>
 
 
