@@ -1,5 +1,17 @@
 let cart = [];
 
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('#sizeButtons .size-btn');
+    const sizeDiv = document.getElementById('sizeButtons');
+
+    var allDisabled = Array.from(buttons).every(function(button) {
+        return button.disabled;
+    });
+    
+    console.log('All buttons disabled:', allDisabled);
+    sizeDiv.style.display = allDisabled ? 'none' : 'flex';
+});
+
 function addToCartButton(counter) {
 
     const popUp = document.getElementById('pop-up-' + counter);
@@ -9,7 +21,7 @@ function addToCartButton(counter) {
     const productPrice = parseFloat(popUp.querySelector('.price').innerText.replace('RM', ''));
     const productQuantity = parseInt(popUp.querySelector('.quantity-input').value, 10);
     const selectedSizeButton = popUp.querySelector('.pop-up-size .size-btn.active');
-  
+
     if (!selectedSizeButton) {
         alert('Please select a size before adding to the cart.');
         return;
@@ -25,17 +37,34 @@ function addToCartButton(counter) {
     };
   
     closePopUp(counter);
-    successCart();
-    sendProductToServer(selectedProduct);
+    sendProductToServer(selectedProduct)
+        .then(() => {
+            successCart();
+            setTimeout(() => {
+                redirectToInsertSuccess();
+            }, 500);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
   }
+
+function redirectToInsertSuccess() {
+    window.location.href = '/Merchandise/merchandise.php?insertsuccessful';
+}
   
 function sendProductToServer(product) {
-    fetch('includes/insertCart.inc.php', {
+    return fetch('includes/insertCart.inc.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(product),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
     })
     .catch(error => {
         console.error('Error:', error);

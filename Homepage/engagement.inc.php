@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Query failed: " . $e->getMessage());
     } 
     
-    header("Location: mailto:Cosabatch01@gmail.com");   
+    header("Location: /index.php?engagementsuccess");   
 }
 
 ?>

@@ -64,7 +64,7 @@
                     //     echo '<a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>';
                     // }
                 ?>
-                <a class="add-merchandise-btn" href="/Merchandise/merchandise-edit.php"><div>Merchandise Overview</div></a>
+                <a class="add-merchandise-btn" href="/Merchandise/merchandise-list.php"><div>Merchandise Overview</div></a>
                 <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>
                 <div class="nav-cart">
                     <i class="fa-solid fa-cart-shopping" onclick="toggleCart()"></i>
@@ -128,7 +128,7 @@ try {
                         echo '<button class="quantity-btn" onclick="increaseQuantity(\'pop-up-' .$counter. '\')">+</button>';
                     echo '</div>';
                     echo '<span class="size">SIZE:</span>';
-                    echo '<div class="pop-up-size">';
+                    echo '<div id="sizeButtons" class="pop-up-size">';
                         echo '<button class="size-btn"' .(strpos($merchandise['size'], 'S') !== false ? '' : 'disabled'). '>S</button>';
                         echo '<button class="size-btn"' .(strpos($merchandise['size'], 'M') !== false ? '' : 'disabled'). '>M</button>';
                         echo '<button class="size-btn"' .(strpos($merchandise['size'], 'L') !== false ? '' : 'disabled'). '>L</button>';
@@ -167,6 +167,5 @@ try {
 
 <script src="/Merchandise/js/merchandise.js"></script>'
 <script src="/Merchandise/js/merchandise.server.js"></script>
-
 </body>
 </html>

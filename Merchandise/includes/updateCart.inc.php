@@ -12,7 +12,7 @@ try {
 
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($results > 0) {
+    if (!empty($results)) {
         echo '<h3>Recently added Product</h3>';
         foreach ($results as $item) {
             echo '<div class="cart-item">';
@@ -33,7 +33,9 @@ try {
             echo '</a>';
         echo '</div>';
     } else {
-
+        echo '<div class="empty-cart">';
+        echo '<i class="fa-regular fa-face-meh"></i>';
+        echo 'Your Shopping Cart is empty</div>';
     }
 
     $pdo = null; $stmt = null;

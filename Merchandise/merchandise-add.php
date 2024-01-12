@@ -108,23 +108,23 @@
                     <!-- <input name="size" type="text" placeholder="Size" size="large" resize="none"> -->
                     <div class="checkbox-size">
                         <div class="checkbox">
-                            <input type="checkbox" name="size_S">
+                            <input type="checkbox" name="size_S" id="size_S">
                             <label>S</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_M">
+                            <input type="checkbox" name="size_M" id="size_M">
                             <label>M</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_L">
+                            <input type="checkbox" name="size_L" id="size_L">
                             <label>L</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_XL">
+                            <input type="checkbox" name="size_XL" id="size_XL">
                             <label>XL</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_NONE">
+                            <input type="checkbox" name="size_NONE" id="size_NONE">
                             <label>None</label>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
         <div class="button-container">
             <div class="button">
                 <div class="button-div" onclick="triggerLink()">
-                    <a id="button-link" class="button-link" href="includes/merchandise.inc.php"></a>
+                    <a id="button-link" class="button-link" href="/Merchandise/merchandise.php"></a>
                     <span>Cancel</span>
                 </div>
                 <button class="save-btn" type="submit" id="submit" name="submit" disabled>
@@ -167,5 +167,5 @@
     </form>
 
     <script src="/Merchandise/js/merchandise.js"></script>
-    <script src="/Merchandise/js/merchandise.add.field.js"></script>
+    <script src="/Merchandise/js/merchandise.field.js"></script>
 </body>

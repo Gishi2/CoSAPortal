@@ -200,7 +200,7 @@
     </form>
 
     <script src="/Merchandise/js/merchandise.js"></script>
-    <script src="/Merchandise/js/merchandise.edit.field.js"></script>
+    <script src="/Merchandise/js/merchandise.field.js"></script>
     <script>
         var imageUrl = "<?php echo $merchandiseImageURL; ?>";
 

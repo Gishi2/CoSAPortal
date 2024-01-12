@@ -46,7 +46,7 @@ function buyNowButton(counter) {
     alert('Please select a size before adding to the cart.');
     return;
   } else {
-    window.location.href = 'payment.php';
+    window.location.href = 'shopping-cart.php';
   }
 }
 

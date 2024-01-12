@@ -3,6 +3,7 @@
 
 :root {
     --primary: #0463FA;
+    --dark-primary: #0057e2;
     --light: #EFF5FF;
     --dark: #1B2C51;
     --danger: #dc3545;
@@ -413,9 +414,38 @@ ul, li {
 }
 
 .page-header {
+    display: flex;
     width: 100%;
     padding: 24px;
     overflow: auto;
+    justify-content: space-between;
+}
+
+.page-header .add-merchandise-btn {
+    display: flex;
+    position: relative;
+    align-items: center;
+    align-self: center;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    margin-left: 1rem;
+    background-color: var(--primary);
+    color: var(--light);
+    border-radius: 0.25rem;
+    height: 2.625rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.page-header .add-merchandise-btn > i {
+    padding-right: 0.5rem;
+    transform: scale(1.3);
+}
+
+.page-header .add-merchandise-btn:hover {
+    background-color: var(--dark-primary);
+    color: var(--light);
+    transition: 0.2s ease;
 }
 
 .content-list-section {
@@ -505,6 +535,14 @@ td {
 }
 
 .table-btn > button {
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.delete-btn {
     background: none;
     border: none;
     padding: 0;

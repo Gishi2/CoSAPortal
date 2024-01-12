@@ -1,7 +1,7 @@
 <?php
-$rawData = file_get_contents('php://input');
-$decodedData = json_decode($rawData, true);
-error_log('PHP script executed successfully');
+    $rawData = file_get_contents('php://input');
+    $decodedData = json_decode($rawData, true);
+    error_log('PHP script executed successfully');
 
 try {
     if ($decodedData === null) {
@@ -30,11 +30,11 @@ try {
     $stmt->execute();
 
     $pdo = null; $stmt = null;
-    header("Location: /Merchandise/merchandise.php?insertsuccessful");
     die();
 } catch (PDOException $e) {
-    die("Query failed: " . $e->getMessage());
+    error_log("Query failed: " . $e->getMessage());
     http_response_code(500);
     echo "Error inserting item.";
+    die();
 }    
 ?>

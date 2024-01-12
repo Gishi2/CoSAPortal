@@ -7,11 +7,13 @@
         $stmt = $pdo->prepare($query);
         $stmt->execute();
 
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $results = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($results > 1) {
             echo '<span>'. count($results) .' Merchandises</span>';
-        } else {
+        } else if ($results == 0) {
+            echo '<span> No Available Merchandise</span>';
+        } else if ($results == 1) {
             echo '<span>'. count($results) .' Merchandise</span>';
         }
 
