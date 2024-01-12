@@ -10,6 +10,7 @@
     --disabled: #adb5bd;
 }
 
+
 .box-shadow {
     box-shadow: 0px 0px 20px rgba(25, 25, 25, 0.5);
 }
@@ -346,6 +347,20 @@
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     flex-direction: column;
     z-index: 1;
+}
+
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    width: 24rem;
+    min-height: 20rem;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.empty-cart > i {
+    transform: scale(3);
 }
 
 .box-cart > h3 {

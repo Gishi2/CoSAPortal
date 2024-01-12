@@ -1,6 +1,32 @@
 var fileInput = document.getElementById('fileInput');
 var checkboxes = document.querySelectorAll('.checkbox-size input[type="checkbox"]');
 
+var sizeS = document.getElementById('size_S');
+var sizeM = document.getElementById('size_M');
+var sizeL = document.getElementById('size_L');
+var sizeXL = document.getElementById('size_XL');
+var sizeNone = document.getElementById('size_NONE');
+
+sizeNone.addEventListener('change', function() {
+    sizeS.disabled = sizeM.disabled = sizeL.disabled = sizeXL.disabled = sizeNone.checked;
+});
+
+sizeS.addEventListener('change', function () {
+    sizeNone.disabled = sizeS.checked || sizeM.checked || sizeL.checked || sizeXL.checked;
+});
+
+sizeM.addEventListener('change', function () {
+    sizeNone.disabled = sizeS.checked || sizeM.checked || sizeL.checked || sizeXL.checked;
+});
+
+sizeL.addEventListener('change', function () {
+    sizeNone.disabled = sizeS.checked || sizeM.checked || sizeL.checked || sizeXL.checked;
+});
+
+sizeXL.addEventListener('change', function () {
+    sizeNone.disabled = sizeS.checked || sizeM.checked || sizeL.checked || sizeXL.checked;
+});
+
 var nameInput = document.getElementById('name');
 var stockInput = document.getElementById('stock');
 var priceInput = document.getElementById('price');

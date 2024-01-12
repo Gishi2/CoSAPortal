@@ -43,26 +43,28 @@
         </div>
         <ul class="nav-list">
             <!-- <li>
-                <i class='bx bx-search' ></i>
-                <input type="text" placeholder="Search...">
-                <span class="tooltip">Search</span>
+                <a href="<?php echo HOME_PAGE; ?>">
+                <i class='bx bx-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
             </li> -->
             <li>
-                <a href="fetch_programme_user.php">
+                <a href="order-list.php">
                 <i class='bx bx-clipboard'></i>
                     <span class="links_name">Order</span>
                 </a>
                 <span class="tooltip">Order</span>
             </li>
             <li>
-            <a href="/Merchandise/includes/merchandise.get.inc.php">
+            <a href="merchandise-list.php">
                 <i class='bx bx-cart-alt' ></i>
                 <span class="links_name">Merchandise</span>
             </a>
             <span class="tooltip">Merchandise</span>
             </li>
             <li>
-                <a href="#">
+                <a href="book-list.php">
                     <i class='bx bx-book' ></i>
                     <span class="links_name">Book</span>
                 </a>
@@ -106,6 +108,9 @@
                     <?php
                         require_once "includes/merchandiseAmount.inc.php";
                     ?>
+
+                    <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php">
+                    <i class='bx bx-plus'></i>Add a New Merchandise</a>
                 </div>
                 <div class="content-list-section">
                     <div class="content-list-container">
@@ -166,9 +171,12 @@
                                                                 echo '<button onclick="redirectToEditPage('. $merchandise['id'] .')">';
                                                                     echo '<span>Edit</span>';
                                                                 echo '</button>';
-                                                                echo '<button onclick="deleteProduct('. $merchandise['id'] .')">';
-                                                                    echo '<span>Delete</span>';
-                                                                echo '</button>';
+                                                                echo '<form action="includes/deleteMerchandise.inc.php" method="post">';
+                                                                    echo '<input type="hidden" name="merchandiseId" value="'. $merchandise['id'] .'">';
+                                                                    echo '<button class="delete-btn" type="submit">';
+                                                                        echo '<span>Delete</span>';
+                                                                    echo '</button>';
+                                                                echo '</form>';
                                                             echo '</div>';
                                                         echo '</td>';
                                                     echo '</tr>';
@@ -189,28 +197,6 @@
     </div>
     </section>
     
-    <script src="js/merchandise.edit.js"></script>
-    <script>
-        let sidebar = document.querySelector(".sidebar");
-        let closeBtn = document.querySelector("#btn");
-        let searchBtn = document.querySelector(".bx-search");
-      
-        closeBtn.addEventListener("click", ()=>{
-          sidebar.classList.toggle("open");
-          menuBtnChange();
-        });
-      
-        searchBtn.addEventListener("click", ()=>{
-          sidebar.classList.toggle("open");
-          menuBtnChange();
-        });
-      
-        function menuBtnChange() {
-         if(sidebar.classList.contains("open")){
-           closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
-         }else {
-           closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
-         }
-        }
-    </script>
+    <script src="js/merchandise.list.js"></script>
+    <script src="js/sidebar.js"></script>
 </body>
