@@ -3,8 +3,8 @@
 try {
     require_once "dbh.inc.php";
 
-    $query = "SELECT cart.cart_id, cart.total_price, merchandise.name, merchandise.image_url FROM cart 
-    INNER JOIN merchandise ON cart.merchandise_id = merchandise.id;";
+    $query = "SELECT cart.cart_id, cart.price, merchandise.name, merchandise.image_url FROM cart 
+    INNER JOIN merchandise ON cart.product_id = merchandise.id;";
 
     $stmt = $pdo->prepare($query);
 
@@ -20,7 +20,7 @@ try {
                     echo '<img src="'. $item['image_url'] . '">';
                 echo '</div>';
                 echo '<div class="text">' . htmlspecialchars($item['name']) . '</div>';
-                echo '<div class="price">RM' . htmlspecialchars($item['total_price']) .'</div>';
+                echo '<div class="price">RM' . htmlspecialchars($item['price']) .'</div>';
                 echo '<form action="includes/deleteCart.inc.php" method="post">';
                     echo '<input type="hidden" name="itemId" value="'. $item['cart_id'] .'">';
                     echo '<button type="submit" class="btn-delete">Delete</button>';
@@ -28,7 +28,7 @@ try {
             echo '</div>';
         }
         echo '<div class="shopping-cart-button">';
-            echo '<a href="merchandise.cart.php" class="shopping-cart-link">';
+            echo '<a href="/Shopping/shopping-cart.php" class="shopping-cart-link">';
                 echo '<button>View My Shopping Cart</button>';
             echo '</a>';
         echo '</div>';

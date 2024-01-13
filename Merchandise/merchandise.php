@@ -1,10 +1,9 @@
 <?php
     session_start();
 
-    // if (!isset($_SESSION['username'])) {
-    //     header("Location: ../Login-system/login.html");
-    //     exit();
-    // }
+    if (!isset($_SESSION['matrixId'])) {
+        header("Location: /Login-system/login.html");
+    }
 
     require_once '../config/config.php';
 ?>
@@ -51,7 +50,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="<?php echo HOME_PAGE; ?>" class="nav-item nav-link">Home</a>
-                <a href="" class="nav-item nav-link">About</a>
+                <!-- <a href="" class="nav-item nav-link">About</a> -->
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
@@ -60,14 +59,12 @@
                     </div>
                 </div>
                 <?php
-                    // if ($_SESSION['access_level'] === 'committee') {
-                    //     echo '<a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>';
-                    // }
+                    if ($_SESSION['userType'] != 'normalUser') {
+                        echo '<a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>';
+                    }
                 ?>
-                <a class="add-merchandise-btn" href="/Merchandise/merchandise-list.php"><div>Merchandise Overview</div></a>
-                <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>
                 <div class="nav-cart">
-                    <i class="fa-solid fa-cart-shopping" onclick="toggleCart()"></i>
+                    <i id="nav-cart-icon" class="fa-solid fa-cart-shopping" onclick="redirectToShopping()"></i>
                 </div>
                 <div class="box-cart" id="cart-container">
                     <?php
@@ -92,7 +89,7 @@ try {
 
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($results > 0) {
+    if (count($results) > 0) {
         $counter = 0;
         foreach ($results as $merchandise) {
             $counter++;
@@ -148,6 +145,9 @@ try {
             echo '</div>';
         }
         echo '</div>';
+    } else {
+        echo '<div class="no-merchandise-message">';
+        echo 'There are currently no available merchandise.</div>';
     }
     $pdo = null; $stmt = null;
 } catch (PDOException $e) {

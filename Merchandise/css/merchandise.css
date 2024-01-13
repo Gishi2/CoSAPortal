@@ -483,6 +483,17 @@
     color: #198754;
 }
 
+.no-merchandise-message {
+    display: flex;
+    position: fixed;
+    top: 20px;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    width: 100vh;
+    height: 100vh;
+}
+
 @media only screen and (max-width: 768px) {
     .main {
         grid-template-columns: repeat(2, 1fr);
