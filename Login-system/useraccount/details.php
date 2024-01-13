@@ -77,25 +77,32 @@ session_start();
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list" style="padding: 0;">
-          <li>
+          <!-- <li>
              <i class='bx bx-search' ></i>
              <input type="text" placeholder="Search...">
              <span class="tooltip">Search</span>
+          </li> -->
+          <li>
+            <a href="/Login-system/mainpage/mainpage_user.php">
+              <i class='bx bx-home'></i>
+              <span class="links_name">Mainpage</span>
+            </a>
+             <span class="tooltip">Mainpage</span>
           </li>
           <li>
-            <a href="fetch_programme_user.php">
+            <a href="/Homepage/php/fetch_programme_user.php">
               <i class='bx bx-grid-alt'></i>
               <span class="links_name">Programme Registration</span>
             </a>
              <span class="tooltip">Programme</span>
           </li>
-          <!-- <li>
-           <a href="#">
+          <li>
+           <a href="/Login-system/useraccount/details.php">
              <i class='bx bx-user' ></i>
              <span class="links_name">User</span>
            </a>
            <span class="tooltip">User</span>
-         </li> -->
+         </li>
          <li>
            <a href="#">
              <i class='bx bx-folder' ></i>
@@ -113,8 +120,8 @@ session_start();
 
          <li class="profile">
          <div class="name-job">
-            <div class="profile_name">Prem Shahi</div>
-            <div class="job">Web Desginer</div>
+            <div class="profile_name" style="color: #8D8E92">User's Name</div>
+            <div class="job">Matrix Id</div>
         </div>
              <i class='bx bx-log-out' id="log_out"></i>
          </li>
@@ -163,9 +170,9 @@ session_start();
     <div class="container-xl px-4 mt-4">
         <nav class="nav nav-borders">
             <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
-            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-billing-page" target="__blank">Billing</a>
-            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Security</a>
-            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page" target="__blank">Notifications</a>
+            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-billing-page" target="__blank">Programme Registered History</a>
+            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Merchandise History</a>
+            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page" target="__blank">E-Book Shop History</a>
         </nav>
         <hr class="mt-0 mb-4">
         <div class="row">
@@ -180,54 +187,85 @@ session_start();
                 </div>
             </div> -->
 
-            <div class="col-xl-8" style="width: 100%">
-                <div class="card mb-4">
-                <div class="card-header">Account Details</div>
-                <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                            <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username">
-                            </div>
-                            <div class="row gx-3 mb-3">
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputFirstName">First name</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie">
+            <?php
+            // Database connection
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "cosaportal";
+
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // SQL query to fetch data
+            $stmt = $conn->prepare("SELECT studName, phoneNum, address, semester, userName, userPassword, userEmail FROM student WHERE matrixId = ?");
+            $stmt -> bind_param("s", $matrixId);
+            $stmt->execute();
+            $stmt->bind_result($studName, $phoneNum, $address, $semester, $userName, $userPassword, $userEmail);
+            if ($stmt->fetch()) {
+                // Now, the variables $studName, $phoneNum, $address, $semester, $userName, $userPassword, $userEmail
+                // contain the values from the student table for the logged-in user
+            }
+            $stmt->close();
+            ?>
+                <div class="col-xl-8" style="width: 100%">
+                    <div class="card mb-4">
+                        <div class="card-header">Account Details</div>
+                        <div class="card-body">
+                            <form>
+                                <div class="mb-3">
+                                <label class="small mb-1" for="inputUsername">Username</label>
+                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="<?php echo $userName; ?>">
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputLastName">Last name</label>
-                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna">
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label class="small mb-1" for="inputName">Name</label>
+                                        <input class="form-control" id="inputName" type="text" placeholder="Enter your first name" value="<?php echo $studName; ?>">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="small mb-1" for="inputMatrixId">Matrix ID</label>
+                                        <input class="form-control" id="inputMatrixId" type="number" placeholder="Enter your last name" value="<?php echo $matrixId; ?>">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row gx-3 mb-3">
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputOrgName">Organization name</label>
-                                    <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap">
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label class="small mb-1" for="inputSemester">Semester</label>
+                                        <!-- <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="4"> -->
+                                        <select class="form-control" name="semester" id="inputSemester">
+                                            <option value="" disabled <?php echo ($semester == '') ? 'selected' : ''; ?>>Semester</option>
+                                            <option value="1" <?php echo ($semester == '1') ? 'selected' : ''; ?>>1</option>
+                                            <option value="2" <?php echo ($semester == '2') ? 'selected' : ''; ?>>2</option>
+                                            <option value="3" <?php echo ($semester == '3') ? 'selected' : ''; ?>>3</option>
+                                            <option value="4" <?php echo ($semester == '4') ? 'selected' : ''; ?>>4</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="small mb-1" for="inputAddress">Address</label>
+                                        <input class="form-control" id="inputAddress" type="text" placeholder="Enter your Address" value="<?php echo $address; ?>">
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputLocation">Location</label>
-                                    <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA">
+                                <div class="mb-3">
+                                    <label class="small mb-1" for="inputUserEmail">Email address</label>
+                                    <input class="form-control" id="inputUserEmail" type="email" placeholder="Enter your email address" value="<?php echo $userEmail; ?>">
                                 </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
-                            </div>
-                            <div class="row gx-3 mb-3">
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputPhone">Phone number</label>
-                                    <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label class="small mb-1" for="inputPhoneNum">Phone number</label>
+                                        <input class="form-control" id="inputPhoneNum" type="tel" placeholder="Enter your phone number" value="<?php echo $phoneNum; ?>">
+                                    </div>
+                                    <!-- <div class="col-md-6">
+                                        <label class="small mb-1" for="inputBirthday">Birthday</label>
+                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                                    </div> -->
                                 </div>
-                            <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
-                            </div>
-                    </div>
-                            <button class="btn btn-primary" type="button">Save changes</button>
-                        </form>
+                                <button class="btn btn-primary" type="button">Save changes</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
     <!-- Programme Cards End -->

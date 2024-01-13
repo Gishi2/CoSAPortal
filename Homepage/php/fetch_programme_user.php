@@ -74,25 +74,32 @@ session_start();
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list" style="padding: 0;">
-          <li>
+          <!-- <li>
              <i class='bx bx-search' ></i>
              <input type="text" placeholder="Search...">
              <span class="tooltip">Search</span>
-          </li>
+          </li> -->
           <li>
+            <a href="/Login-system/mainpage/mainpage_user.php">
+              <i class='bx bx-home'></i>
+              <span class="links_name">Mainpage</span>
+            </a>
+             <span class="tooltip">Mainpage</span>
+          </li>
+          <li> 
             <a href="fetch_programme_user.php">
               <i class='bx bx-grid-alt'></i>
               <span class="links_name">Programme Registration</span>
             </a>
              <span class="tooltip">Programme</span>
           </li>
-          <!-- <li>
-           <a href="#">
+          <li>
+           <a href="/Login-system/useraccount/details.php">
              <i class='bx bx-user' ></i>
              <span class="links_name">User</span>
            </a>
            <span class="tooltip">User</span>
-         </li> -->
+         </li>
          <li>
            <a href="#">
              <i class='bx bx-folder' ></i>
