@@ -60,7 +60,7 @@
                 </div>
                 <?php
                     if ($_SESSION['userType'] != 'normalUser') {
-                        echo '<a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Merchandise Overview</div></a>';
+                        echo '<a class="add-merchandise-btn" href="/Merchandise/merchandise-list.php"><div>Merchandise Overview</div></a>';
                     }
                 ?>
                 <div class="nav-cart">
