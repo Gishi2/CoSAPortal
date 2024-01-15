@@ -173,7 +173,7 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
 
     <!-- Programme Cards Start -->
     <section class="grid margin text-center">
-          <a href="/Merchandise/merchandise.php" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-red">
+          <a href="/Merchandise/merchandise-list.php" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-red">
             <i class="bx bx-cart-alt text-size-60 text-white center margin-bottom-15"></i>
             <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Merchandise Management</h3>
           </a>

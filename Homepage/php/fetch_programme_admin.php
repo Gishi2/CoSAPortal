@@ -59,17 +59,17 @@
         <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list" style="padding: 0;">
-      <li>
+      <!-- <li>
          <i class='bx bx-search' ></i>
          <input type="text" placeholder="Search...">
          <span class="tooltip">Search</span>
-      </li>
+      </li> -->
       <li>
         <a href="fetch_programme_user.php">
           <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Programme Registration</span>
+          <span class="links_name">Programme Management</span>
         </a>
-         <span class="tooltip">Programme</span>
+         <span class="tooltip">Programme Management</span>
       </li>
       <li>
        <a href="#">
@@ -88,14 +88,20 @@
      <li>
        <a href="/Merchandise/merchandise.php">
          <i class='bx bx-cart-alt' ></i>
-         <span class="links_name">Merchandise</span>
+         <span class="links_name">Merchandise Management</span>
        </a>
-       <span class="tooltip">Merchandise</span>
+       <span class="tooltip">Merchandise Management</span>
      </li>
-
      <li class="profile">
-         <i class='bx bx-log-out' id="log_out" ></i>
+         <div class="name-job">
+            <div class="profile_name">Prem Shahi</div>
+            <div class="job">Web Desginer</div>
+         </div>
+             <i class='bx bx-log-out' id="log_out"></i>
      </li>
+     <!-- <li class="profile">
+         <i class='bx bx-log-out' id="log_out" ></i>
+     </li> -->
     </ul>
       </div>
       <section class="home-section">
