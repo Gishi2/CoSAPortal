@@ -48,14 +48,13 @@
             </div>
         </div>
         <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: #1B2C51;">PAGES</a>
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: #1B2C51; margin-right: 2rem;">PAGES</a>
             <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                 <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
                 <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
                 <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
             </div>
         </div>
-        <a href="<?php echo SIGN_UP_PAGE; ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a>
     </nav>
     <!-- Navbar End -->
 
@@ -109,20 +108,24 @@
                     <!-- <input name="size" type="text" placeholder="Size" size="large" resize="none"> -->
                     <div class="checkbox-size">
                         <div class="checkbox">
-                            <input type="checkbox" name="size_S">
+                            <input type="checkbox" name="size_S" id="size_S" <?php echo isset($checkedSizes['S']) ? 'checked' : ''; ?>>
                             <label>S</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_M">
+                            <input type="checkbox" name="size_M" id="size_M" <?php echo isset($checkedSizes['M']) ? 'checked' : ''; ?>>
                             <label>M</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_L">
+                            <input type="checkbox" name="size_L" id="size_L" <?php echo isset($checkedSizes['L']) ? 'checked' : ''; ?>>
                             <label>L</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_XL">
+                            <input type="checkbox" name="size_XL" id="size_XL" <?php echo isset($checkedSizes['XL']) ? 'checked' : ''; ?>>
                             <label>XL</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" name="size_NONE" id="size_NONE" <?php echo isset($checkedSizes['None']) ? 'checked' : ''; ?>>
+                            <label>None</label>
                         </div>
                     </div>
                 </div>
@@ -153,7 +156,7 @@
         <div class="button-container">
             <div class="button">
                 <div class="button-div" onclick="triggerLink()">
-                    <a id="button-link" class="button-link" href="includes/merchandise.get.inc.php"></a>
+                    <a id="button-link" class="button-link" href="/Merchandise/merchandise.php"></a>
                     <span>Cancel</span>
                 </div>
                 <button class="save-btn" type="submit" id="submit" name="submit" disabled>
@@ -164,5 +167,5 @@
     </form>
 
     <script src="/Merchandise/js/merchandise.js"></script>
-    <script src="/Merchandise/js/merchandise.add.field.js"></script>
+    <script src="/Merchandise/js/merchandise.field.js"></script>
 </body>

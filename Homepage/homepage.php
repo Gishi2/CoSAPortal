@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once 'config/config.php';
 ?>
 
@@ -31,6 +32,8 @@
 
     <!-- Template Stylesheet -->
     <link href="Homepage/css/homepage.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -76,13 +79,65 @@
                 <div class="row g-4">
                     <div class="col-sm-4">
                         <div class="border-start border-light ps-4">
-                            <h2 class="text-white mb-1" data-toggle="counter-up">24</h2>
+                            <h2 class="text-white mb-1" data-toggle="counter-up">
+                            <?php 
+                            // Connect to your database (modify this part according to your database configuration)
+                            $conn = new mysqli('localhost', 'root', '', 'cosaportal');
+
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+
+                            // Perform a query to get the number of registered students
+                            $sql = "SELECT COUNT(*) as studentCount FROM student WHERE userType = '2'";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                $studentCount = $row['studentCount'];
+                            } else {
+                                $studentCount = 0; // Default value if no students are found
+                                // die("Error executing the query: " . $conn->error);
+                            }
+
+                            echo $studentCount;
+
+                            // Close the database connection
+                            $conn->close();
+                            ?>
+                            </h2>
                             <p class="text-light mb-0">Committee Members</p>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="border-start border-light ps-4">
-                            <h2 class="text-white mb-1" data-toggle="counter-up">94</h2>
+                            <h2 class="text-white mb-1" data-toggle="counter-up">
+                            <?php 
+                            // Connect to your database (modify this part according to your database configuration)
+                            $conn = new mysqli('localhost', 'root', '', 'cosaportal');
+
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+
+                            // Perform a query to get the number of registered students
+                            $sql = "SELECT COUNT(*) as studentCount FROM student WHERE userType = '1'";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                $studentCount = $row['studentCount'];
+                            } else {
+                                $studentCount = 0; // Default value if no students are found
+                                // die("Error executing the query: " . $conn->error);
+                            }
+
+                            echo $studentCount;
+
+                            // Close the database connection
+                            $conn->close();
+                            ?>
+                            </h2>
                             <p class="text-light mb-0">Faculty Members</p>
                         </div>
                     </div>
@@ -229,52 +284,6 @@
                         <p class="text-white mb-4 pb-2" style="text-align: justify;">Explore the diverse range of programs offered by CoSA that cater to both academic and extracurricular interests. From tech-centric workshops and seminars to engaging social events, our Programs Segment is designed to enrich your academic journey and foster a sense of belonging within the CoSA community. Dive into a world of opportunities and make the most of your university experience with CoSA Programs.
                         </p>
                         <a class="btn btn-activity rounded-pill py-3 px-5 mt-3" href="about.html">Read More</a>
-                        <!-- <div class="row g-4">
-                            <div class="col-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
-                                        <i class="fa fa-user-md text-primary"></i>
-                                    </div>
-                                    <div class="ms-4">
-                                        <p class="text-white mb-2">Experience</p>
-                                        <h5 class="text-white mb-0">Doctors</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
-                                        <i class="fa fa-check text-primary"></i>
-                                    </div>
-                                    <div class="ms-4">
-                                        <p class="text-white mb-2">Quality</p>
-                                        <h5 class="text-white mb-0">Services</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
-                                        <i class="fa fa-comment-medical text-primary"></i>
-                                    </div>
-                                    <div class="ms-4">
-                                        <p class="text-white mb-2">Positive</p>
-                                        <h5 class="text-white mb-0">Consultation</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
-                                        <i class="fa fa-headphones text-primary"></i>
-                                    </div>
-                                    <div class="ms-4">
-                                        <p class="text-white mb-2">24 Hours</p>
-                                        <h5 class="text-white mb-0">Support</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 pe-lg-0 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
@@ -312,85 +321,6 @@
     </div>
     <!-- Feature End -->
 
-
-    <!-- Team Start -->
-    <!-- <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p class="d-inline-block border rounded-pill py-1 px-4">Doctors</p>
-                <h1>Our Experience Doctors</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item position-relative rounded overflow-hidden">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
-                        </div>
-                        <div class="team-text bg-light text-center p-4">
-                            <h5>Doctor Name</h5>
-                            <p class="text-primary">Department</p>
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Team End -->
-
-
     <!-- Appointment Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -420,7 +350,7 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="bg-light rounded h-100 d-flex align-items-center p-5">
-                        <form method="post" action="Homepage/engagement.inc.php">
+                        <form method="post" action="Homepage/engagement.inc.php" id="engagementForm">
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
                                     <input type="text" name="name" class="form-control border-0" placeholder="Your Name" style="height: 55px;" required>
@@ -460,7 +390,7 @@
                                     <textarea class="form-control border-0" name="description" rows="5" placeholder="What would you like to do?" required></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit" onclick="openEmailClient()">Book Engagement</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit" id="submitButton">Book Engagement</button>
                                 </div>
                             </div>
                         </form>
@@ -610,6 +540,9 @@
 
     <!-- Template Javascript -->
     <script src="Homepage/js/main.js"></script>
+    <script>
+        document.querySelector('button[type="button"]').addEventListener('click', openEmailClient);
+    </script>
 </body>
 
 </html>

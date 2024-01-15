@@ -96,20 +96,8 @@
     
 })(jQuery);
 
-function openEmailClient() {
-    var email = 'Cosabatch01@gmail.com';
-    var subject = 'Engagement Inquiry';
-    var body = document.getElementById('description').value;
-
-    var mailtoURI = 'mailto:' + encodeURIComponent(email) +
-                    '?subject=' + encodeURIComponent(subject) +
-                    '&body=' + encodeURIComponent(body);
-
-    var mailtoLink = document.createElement('a');
-    window.location.href = mailtoURI;
-
-    document.body.appendChild(mailtoLink);
-    mailtoLink.click();
-    document.body.removeChild(mailtoLink);
+function openEmailClient(event) {
+    event.preventDefault();
+    document.getElementById('engagementForm').reset();
 }
 

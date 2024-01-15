@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    if (!isset($_SESSION['matrixId'])) {
+        header("Location: /Login-system/login.html");
+    }
+
     require_once '../config/config.php';
 ?>
 
@@ -45,7 +50,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="<?php echo HOME_PAGE; ?>" class="nav-item nav-link">Home</a>
-                <a href="" class="nav-item nav-link">About</a>
+                <!-- <a href="" class="nav-item nav-link">About</a> -->
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
@@ -54,17 +59,16 @@
                     </div>
                 </div>
                 <?php
-                    // if ($_SESSION['access_level'] === 'committee') {
-                    //     echo '<a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>';
-                    // }
+                    if ($_SESSION['userType'] != 'normalUser') {
+                        echo '<a class="add-merchandise-btn" href="/Merchandise/merchandise-list.php"><div>Merchandise Overview</div></a>';
+                    }
                 ?>
-                <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php"><div>Add New Merchandise</div></a>
                 <div class="nav-cart">
-                    <i class="fa-solid fa-cart-shopping" onclick="toggleCart()"></i>
+                    <i id="nav-cart-icon" class="fa-solid fa-cart-shopping" onclick="redirectToShopping()"></i>
                 </div>
                 <div class="box-cart" id="cart-container">
                     <?php
-                        require_once 'includes/updatecart.inc.php';
+                        require_once 'includes/updateCart.inc.php';
                     ?>
                 </div>
             </div>
@@ -85,7 +89,7 @@ try {
 
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($results > 0) {
+    if (count($results) > 0) {
         $counter = 0;
         foreach ($results as $merchandise) {
             $counter++;
@@ -121,7 +125,7 @@ try {
                         echo '<button class="quantity-btn" onclick="increaseQuantity(\'pop-up-' .$counter. '\')">+</button>';
                     echo '</div>';
                     echo '<span class="size">SIZE:</span>';
-                    echo '<div class="pop-up-size">';
+                    echo '<div id="sizeButtons" class="pop-up-size">';
                         echo '<button class="size-btn"' .(strpos($merchandise['size'], 'S') !== false ? '' : 'disabled'). '>S</button>';
                         echo '<button class="size-btn"' .(strpos($merchandise['size'], 'M') !== false ? '' : 'disabled'). '>M</button>';
                         echo '<button class="size-btn"' .(strpos($merchandise['size'], 'L') !== false ? '' : 'disabled'). '>L</button>';
@@ -141,23 +145,27 @@ try {
             echo '</div>';
         }
         echo '</div>';
+    } else {
+        echo '<div class="no-merchandise-message">';
+        echo 'There are currently no available merchandise.</div>';
     }
     $pdo = null; $stmt = null;
 } catch (PDOException $e) {
     die("Query failed: " . $e->getMessage());
 }    
 ?>
-        <div class="success-cart" id="successPopup">
-            <div class="circle-cart">
-                <i class="fa-regular fa-circle-check"></i>
+        <div class="success-cart-container"  id="successPopup">
+            <div class="success-cart">
+                <div class="circle-cart">
+                    <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <span>Item has been added to your shopping cart</span>
             </div>
-            <span>Item has been added to your shopping cart</span>
         </div>
     </section>
 </main>
 
 <script src="/Merchandise/js/merchandise.js"></script>'
 <script src="/Merchandise/js/merchandise.server.js"></script>
-
 </body>
 </html>

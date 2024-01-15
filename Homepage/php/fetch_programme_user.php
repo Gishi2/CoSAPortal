@@ -1,3 +1,25 @@
+<?php
+// session_start();
+// $matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the session
+// echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
+// echo "Current File: " . __FILE__ . "<br>";
+// echo "Current Directory: " . __DIR__ . "<br>";
+session_start();
+
+    // Check if the user is not logged in
+    if (!isset($_SESSION['matrixId'])) {
+        // Redirect to the login page
+        header("Location: /Login-system/login.html");
+        exit(); // Ensure that the script stops here
+    } else {
+        $matrixId = $_SESSION['matrixId'];
+    }
+
+    // Now, include other necessary files or perform actions for the logged-in user
+    // require_once '/../config/config.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,28 +70,36 @@
 
     <div class="sidebar">
         <div class="logo-details">
+            
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list" style="padding: 0;">
-          <li>
+          <!-- <li>
              <i class='bx bx-search' ></i>
              <input type="text" placeholder="Search...">
              <span class="tooltip">Search</span>
-          </li>
+          </li> -->
           <li>
+            <a href="/Login-system/mainpage/mainpage_user.php">
+              <i class='bx bx-home'></i>
+              <span class="links_name">Mainpage</span>
+            </a>
+             <span class="tooltip">Mainpage</span>
+          </li>
+          <li> 
             <a href="fetch_programme_user.php">
               <i class='bx bx-grid-alt'></i>
               <span class="links_name">Programme Registration</span>
             </a>
              <span class="tooltip">Programme</span>
           </li>
-          <!-- <li>
-           <a href="#">
+          <li>
+           <a href="/Login-system/useraccount/details.php">
              <i class='bx bx-user' ></i>
              <span class="links_name">User</span>
            </a>
            <span class="tooltip">User</span>
-         </li> -->
+         </li>
          <li>
            <a href="#">
              <i class='bx bx-folder' ></i>
@@ -78,7 +108,7 @@
            <span class="tooltip">E-Book Shop</span>
          </li>
          <li>
-           <a href="/Merchandise/includes/merchandise.get.inc.php">
+           <a href="/Merchandise/merchandise.php">
              <i class='bx bx-cart-alt' ></i>
              <span class="links_name">Merchandise</span>
            </a>
@@ -86,7 +116,11 @@
          </li>
 
          <li class="profile">
-             <i class='bx bx-log-out' id="log_out" ></i>
+         <div class="name-job">
+            <div class="profile_name">Prem Shahi</div>
+            <div class="job">Web Desginer</div>
+         </div>
+             <i class='bx bx-log-out' id="log_out"></i>
          </li>
         </ul>
       </div>
@@ -118,7 +152,7 @@
               </div> -->
               <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
           </div>
-          <a href="/index.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
+          <a href="/Login-system/logout.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
       </div>
   </nav>
   <!-- Navbar End -->
@@ -234,8 +268,8 @@
                                     </span>
                                     </h2>
                                     <p><?php echo $row["programmeDesc"]; ?></p>
-                                    <a href="#" class="add-cart-btn">Register Program</a>
-                                    <a href="#" class="add-wish">Drop Program</a>
+                                    <a href="#" class="add-cart-btn" data-program-id= "<?php echo $row['programmeId']; ?>" >Register Program</a>
+                                    <a href="#" class="add-wish" data-program-id= "<?php echo $row['programmeId']; ?>" >Drop Program</a>
                                 </div>
                             </div>
                         </div>
@@ -326,7 +360,81 @@
             });
         </script>
 
-        <!-- javascript/jQuery to get data from fetch_programme.php -->
+        <script>
+            $(document).ready(function() {
+                $('.add-cart-btn').click(function(event) {
+                    event.preventDefault(); // Prevent the default form submission behavior
+
+                    // Retrieve the program ID associated with the clicked button
+                    var programId = $(this).data('program-id'); // Assuming 'data-program-id' attribute holds the program ID
+                    console.log("Program ID:", programId);
+
+                    // AJAX request to the PHP endpoint
+                    $.ajax({
+                        type: 'POST',
+                        url: 'register_programme.php', // Replace with your PHP endpoint URL
+                        data: { programId: programId },
+                        success: function(response) {
+                            // Handle the response from the server after registration
+                            if (response === "Registration successful") {
+                                alert('Successfully registered to the program!');
+                                // You might want to refresh the page or update UI accordingly
+                            } else if (response === "Successfully registered back to the program!") {
+                                alert('Successfully registered back to the program!');
+                            } else if (response === "You are already registered for this programme!") {
+                                alert('You are already registered to this programme!');
+                            } else {
+                                alert('Unexpected response from the server' + response);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error cases here
+                            alert('Error occurred while registering to the program');
+                            console.error(error);
+                        }
+                    });
+                });
+            });
+        </script>
+        
+        <script>
+            $(document).ready(function() {
+                // Click event for "Drop Program" button
+                $('.add-wish').click(function(event) {
+                    event.preventDefault(); // Prevent the default link behavior
+
+                    // Retrieve the program ID associated with the clicked button
+                    var programId = $(this).data('program-id'); // Assuming 'data-program-id' attribute holds the program ID
+                    console.log("Program ID:", programId);
+
+                    // AJAX request to the PHP endpoint for dropping a program
+                    $.ajax({
+                        type: 'POST',
+                        url: 'drop_programme.php', // Create a new PHP file for handling drop program logic
+                        data: { programId: programId },
+                        success: function(response) {
+                            // Handle the response from the server after dropping the program
+                            if (response === "Program dropped successfully") {
+                                alert('Program dropped successfully!');
+                                // You might want to refresh the page or update UI accordingly
+                            } else if (response === "You are not registered for this programme") {
+                                alert('You are not registered for this programme');
+                            } else if (response === "You have already dropped from this programme") {
+                                alert('You have already dropped from this programme');
+                            } else {
+                                alert('Unexpected response from the server' + programId);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error cases here
+                            alert('Error occurred while dropping the program');
+                            console.error(error);
+                        }
+                    });
+                });
+            });
+        </script>
+
 </body>
 
 </html>
