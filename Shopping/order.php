@@ -58,7 +58,7 @@
 
     <div class="container-0">
         <main class="content">
-            <form method="POST" action="includes/order.inc.php">
+            <form method="POST" action="includes/order.inc.php" onsubmit="return validateForm()">
             <section class="content-box-0">
 
                 <div class="content-box-header">
@@ -77,10 +77,14 @@
                 </div>
                 <?php
                     try {
+                        $cartIDsString = $_COOKIE['cartIDs'];
+                        $cartIDs = json_decode(urldecode($cartIDsString), true);
+                        $cartIDArray = implode(',', $cartIDs);
+
                         require_once 'includes/dbh.inc.php';
 
-                        $query = "SELECT cart.cart_id, cart.price, cart.quantity, merchandise.name, cart.size, merchandise.image_url FROM cart
-                        INNER JOIN merchandise ON cart.product_id = merchandise.id";
+                        $query = "SELECT cart.cart_id, cart.product_id, cart.price, cart.quantity, merchandise.name, cart.size, merchandise.image_url FROM cart
+                        INNER JOIN merchandise ON cart.product_id = merchandise.id WHERE cart.cart_id IN ($cartIDArray)";
 
                         $stmt = $pdo->prepare($query);
                         $stmt->execute();
@@ -112,11 +116,15 @@
                                             echo '</div>';
                                         echo '</div>';
                                     echo '</div>';
+                                    $orderTotal += (float)$formattedTotalPrice;
+                                    echo '<input type="hidden" name="productId[]" value="'.$product['product_id'].'">';
+                                    echo '<input type="hidden" name="size[]" value="'.$product['size'].'">';
+                                    echo '<input type="hidden" name="quantity[]" value="'.$product['quantity'].'">';
                                 echo '</div>';
-                                $orderTotal += (float)$formattedTotalPrice;
                             }
                         }
                         $formattedOrderPrice = number_format($orderTotal, 2, '.', '');
+                        echo '<input type="hidden" name="orderTotal" value="'.$formattedOrderPrice.'">';
                     } catch (PDOException $e) {
                         die("Query failed: " . $e->getMessage());
                     }    
@@ -125,11 +133,11 @@
 
             <section class="content-box-1">
                 <div class="content-box-product">
-                    <div class="product-child-padding">
+                    <div class="product-child-padding" style="padding-top: 15px;">
                         <div class="product-box">
                             <div class="message">
                                 <span>Message for us:</span>
-                                <input type="text" placeholder="Please leave a message." id="message">
+                                <input type="text" placeholder="Please leave a message." id="message" name="message">
                             </div>
                             <div class="order-price justify-right">
                                 <span>Order Total: RM</span>
@@ -142,7 +150,7 @@
             
             <section class="content-box-2">
                 <div class="content-box-product">
-                    <div class="product-child-padding">
+                    <div class="product-child-padding" style="padding-top: 15px;">
                         <div class="product-box">
                             <div id="payment" class="payment">
                                 <span>Payment Method</span>
@@ -158,7 +166,8 @@
             <section class="content-box-3">
                 <div class="content-box-product">
                     <div class="footer">
-                        <button type="submit" onclick="orderCheck()">Place Order</button>
+                        <button class="cancel-btn" type="button" onclick="goBack()">Back</button>
+                        <button type="submit" name="submit" onclick="orderCheck()">Place Order</button>
                     </div>
                 </div>
             </section>

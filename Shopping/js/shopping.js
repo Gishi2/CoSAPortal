@@ -1,15 +1,27 @@
-function redirectToOrder(cartID) {
+function redirectToOrder(cartIDs) {
     var checkboxes = document.querySelectorAll('.product-checkbox');
 
     var atLeastOneChecked = Array.from(checkboxes).some(function (checkbox) {
         return checkbox.checked;
     });
 
+    document.cookie = "cartIDs=" + encodeURIComponent(JSON.stringify(cartIDs)) + "; path=/Shopping/order.php";
+
     if (atLeastOneChecked) {
-        window.location.href = 'order.php?id=' + cartID;
+        window.location.href = 'order.php';
     } else {
         alert('Please select at least one product before proceeding.');
     }
+}
+
+function orderNow() {
+    var checkedCheckboxes = document.querySelectorAll('.product-box input[type="checkbox"]:checked');
+
+    var cartIds = Array.from(checkedCheckboxes).map((checkbox) => {
+        return checkbox.value;
+    });
+
+    redirectToOrder(cartIds);
 }
 
 window.onload = () => {
