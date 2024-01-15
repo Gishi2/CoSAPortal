@@ -156,7 +156,7 @@
                         //             echo '<span id="total-price"></span>';
                         //         } 
                         // echo '</div>';
-                        echo '<button onclick="redirectToOrder(' . $product['cart_id'] . ')">';
+                        echo '<button onclick="orderNow()">';
                             echo '<span>Order Now</span>';
                         echo '</button>';
                     echo '</div>;';

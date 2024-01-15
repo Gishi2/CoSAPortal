@@ -32,7 +32,7 @@
     <link href="\Homepage\css\bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="\Merchandise\css\merchandise-edit.css" rel="stylesheet">  
+    <link href="\Shopping\css\order-list.css" rel="stylesheet">  
 </head>
 
 <body>
@@ -92,17 +92,15 @@
         </div>
     </nav>
     <!-- Navbar End -->
-    
+
     <!-- Page Content -->
     <div class="page-container">
         <div class="page-wrapper-content">
             <div class="page-content-main">
                 <div class="page-header">
-                    <?php
-                        require_once "includes/merchandiseAmount.inc.php";
-                    ?>
-                    <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php">
-                    <i class='bx bx-plus'></i>Add a New Merchandise</a>
+                <?php
+                    // require_once "includes/orderAmount.inc.php"; 
+                ?>
                 </div>
                 <div class="content-list-section">
                     <div class="content-list-container">
@@ -110,12 +108,13 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center">ID</th>
-                                        <th>Product Name</th>
-                                        <th>Description</span></th>
-                                        <th>Available Size</span></th>
-                                        <th>Stock</th>
-                                        <th>Actions</th>
+                                        <th>Product(s)</th>
+                                        <th>User ID</th>
+                                        <th>Order Total</th>
+                                        <th>Status</span></th>
+                                        <!-- <th>Actions</span></th> -->
+                                        <!-- <th>Stock</th>
+                                        <th>Actions</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -123,58 +122,69 @@
                                         try {
                                             require_once "includes/dbh.inc.php";
 
-                                            $query = "SELECT * FROM merchandise";
+                                            $queryOrder = "SELECT 
+                                                orders.order_totalPrice AS totalPrice,
+                                                orders.order_status AS status,
+                                                orders.user_id AS user,
+                                                merchandise.name AS name,
+                                                merchandise.image_url AS image_url
+                                                FROM orders
+                                                JOIN orders_items ON orders.order_id = orders_items.order_id
+                                                LEFT JOIN merchandise ON orders_items.product_id = merchandise.id
+                                                ORDER BY orders.order_id DESC";
 
-                                            $stmt = $pdo->prepare($query);
-                                            $stmt->execute();
+                                            $stmtOrder = $pdo->prepare($queryOrder);
+                                            $stmtOrder->execute();
 
-                                            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                            $results = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
 
                                             if ($results > 0) {
-                                                foreach ($results as $merchandise) {
+                                                foreach ($results as $order) {
                                                     echo '<tr>';
-                                                        echo '<td>';
-                                                            echo '<div style="text-align: center">' . $merchandise['id'] . '</div>';
-                                                        echo '</td>';
                                                         echo '<td>';
                                                         echo '<div class="name-container">';
                                                             echo '<div class="img-container">';
-                                                                echo '<img src="' . $merchandise['image_url']. '">';
+                                                                echo '<img src="' . $order['image_url']. '">';
                                                             echo '</div>';
                                                             echo '<div class="text-container">';
-                                                                echo '<span>'. $merchandise['name'] .'</span>';
+                                                                echo '<span>'. $order['name'] .'</span>';
                                                             echo '</div>';
                                                         echo '</div>';
                                                         echo '<td>';
-                                                            echo '<div>' . $merchandise['description'] . '</div>';
+                                                            echo '<div>' . $order['user'] . '</div>';
                                                         echo '</td>';
                                                         echo '<td>';
-                                                            echo '<div>' . $merchandise['size'] . '</div>';
+                                                            echo '<div>RM' . $order['totalPrice'] . '</div>';
                                                         echo '</td>';
                                                         echo '<td>';
-                                                            if ($merchandise['stock'] != 0) {
-                                                                echo '<div>' . $merchandise['stock'] . '</div>';
-                                                            } else {
-                                                                echo '<div class="red-text">Out of Stock</div>';
+                                                            if ($order['status'] === '1') {
+                                                                echo '<div>Pending</div>';
                                                             }
                                                         echo '</td>';
-                                                        echo '<td>';
-                                                            echo '<div class="table-btn">';
-                                                                echo '<button onclick="redirectToEditPage('. $merchandise['id'] .')">';
-                                                                    echo '<span>Edit</span>';
-                                                                echo '</button>';
-                                                                echo '<form action="includes/deleteMerchandise.inc.php" method="post">';
-                                                                    echo '<input type="hidden" name="merchandiseId" value="'. $merchandise['id'] .'">';
-                                                                    echo '<button class="delete-btn" type="submit">';
-                                                                        echo '<span>Delete</span>';
-                                                                    echo '</button>';
-                                                                echo '</form>';
-                                                            echo '</div>';
-                                                        echo '</td>';
+                                                        // echo '<td>';
+                                                        //     if ($merchandise['stock'] != 0) {
+                                                        //         echo '<div>' . $merchandise['stock'] . '</div>';
+                                                        //     } else {
+                                                        //         echo '<div class="red-text">Out of Stock</div>';
+                                                        //     }
+                                                        // echo '</td>';
+                                                        // echo '<td>';
+                                                        //     echo '<div class="table-btn">';
+                                                        //         echo '<button onclick="redirectToEditPage('. $merchandise['id'] .')">';
+                                                        //             echo '<span>Edit</span>';
+                                                        //         echo '</button>';
+                                                        //         echo '<form action="includes/deleteMerchandise.inc.php" method="post">';
+                                                        //             echo '<input type="hidden" name="merchandiseId" value="'. $merchandise['id'] .'">';
+                                                        //             echo '<button class="delete-btn" type="submit">';
+                                                        //                 echo '<span>Delete</span>';
+                                                        //             echo '</button>';
+                                                        //         echo '</form>';
+                                                        //     echo '</div>';
+                                                        // echo '</td>';
                                                     echo '</tr>';
                                                 }
                                             }
-                                            $pdo = null; $stmt = null;
+                                            $pdo = null; $stmtOrder = null;
                                         } catch (PDOException $e) {
                                             die("Query failed: " . $e->getMessage());
                                         }   
