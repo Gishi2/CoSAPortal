@@ -32,6 +32,8 @@
 
     <!-- Template Stylesheet -->
     <link href="Homepage/css/homepage.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -77,13 +79,65 @@
                 <div class="row g-4">
                     <div class="col-sm-4">
                         <div class="border-start border-light ps-4">
-                            <h2 class="text-white mb-1" data-toggle="counter-up">24</h2>
+                            <h2 class="text-white mb-1" data-toggle="counter-up">
+                            <?php 
+                            // Connect to your database (modify this part according to your database configuration)
+                            $conn = new mysqli('localhost', 'root', '', 'cosaportal');
+
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+
+                            // Perform a query to get the number of registered students
+                            $sql = "SELECT COUNT(*) as studentCount FROM student WHERE userType = '2'";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                $studentCount = $row['studentCount'];
+                            } else {
+                                $studentCount = 0; // Default value if no students are found
+                                // die("Error executing the query: " . $conn->error);
+                            }
+
+                            echo $studentCount;
+
+                            // Close the database connection
+                            $conn->close();
+                            ?>
+                            </h2>
                             <p class="text-light mb-0">Committee Members</p>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="border-start border-light ps-4">
-                            <h2 class="text-white mb-1" data-toggle="counter-up">94</h2>
+                            <h2 class="text-white mb-1" data-toggle="counter-up">
+                            <?php 
+                            // Connect to your database (modify this part according to your database configuration)
+                            $conn = new mysqli('localhost', 'root', '', 'cosaportal');
+
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+
+                            // Perform a query to get the number of registered students
+                            $sql = "SELECT COUNT(*) as studentCount FROM student WHERE userType = '1'";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                $studentCount = $row['studentCount'];
+                            } else {
+                                $studentCount = 0; // Default value if no students are found
+                                // die("Error executing the query: " . $conn->error);
+                            }
+
+                            echo $studentCount;
+
+                            // Close the database connection
+                            $conn->close();
+                            ?>
+                            </h2>
                             <p class="text-light mb-0">Faculty Members</p>
                         </div>
                     </div>

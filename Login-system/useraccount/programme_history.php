@@ -58,6 +58,12 @@ session_start();
 
     <!-- Bootstrap account details -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Table Stylesheet-->
+    <link rel="stylesheet" href="/Homepage/css/tablestyle.css">
+
+    <!-- Template Form Style-->
+    <link rel="stylesheet" href="/Homepage/css/addprogrammestyle.css">
 </head>
 
 <body>
@@ -176,100 +182,137 @@ session_start();
         </nav>
         <hr class="mt-0 mb-4">
         <div class="row">
-            <!-- <div class="col-xl-4">
-                <div class="card mb-4 mb-xl-0">
-                    <div class="card-header">Profile Picture</div>
-                    <div class="card-body text-center">
-                        <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt>
-                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
-                        <button class="btn btn-primary" type="button">Upload new image</button>
-                    </div>
-                </div>
-            </div> -->
+            <div class="programme-table">
+                <main class="table">
+                    <section class="table__header">
+                        <h1>List of Programmes Joined</h1>
+                    </section>
+                    <section class="table__body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th> Id <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> Programme Name <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> Start Date <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> End Date <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> Time <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> Capacity <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> Details <span class="icon-arrow">&UpArrow;</span></th>
+                                    <!-- <th> Delete <span class="icon-arrow">&UpArrow;</span></th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                // Database connection
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $dbname = "cosaportal";
 
-            <?php
-            // Database connection
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "cosaportal";
+                                $conn = new mysqli($servername, $username, $password, $dbname);
 
-            $conn = new mysqli($servername, $username, $password, $dbname);
+                                if ($conn->connect_error) {
+                                    die("Connection failed: " . $conn->connect_error);
+                                }
 
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+                                // SQL query to fetch data
+                                // $sql = "SELECT * FROM attedance WHERE matrixId = ? && status = 0"
 
-            // SQL query to fetch data
-            $stmt = $conn->prepare("SELECT studName, phoneNum, address, semester, userName, userPassword, userEmail FROM student WHERE matrixId = ?");
-            $stmt -> bind_param("s", $matrixId);
-            $stmt->execute();
-            $stmt->bind_result($studName, $phoneNum, $address, $semester, $userName, $userPassword, $userEmail);
-            if ($stmt->fetch()) {
-                // Now, the variables $studName, $phoneNum, $address, $semester, $userName, $userPassword, $userEmail
-                // contain the values from the student table for the logged-in user
-            }
-            $stmt->close();
-            ?>
-                <div class="col-xl-8" style="width: 100%">
-                    <div class="card mb-4">
-                        <div class="card-header">Account Details</div>
-                        <div class="card-body">
-                            <form onsubmit="updateUserData(); return false;">
-                                <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername">Username</label>
-                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="<?php echo $userName; ?>">
-                                </div>
-                                <div class="row gx-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputName">Name</label>
-                                        <input class="form-control" id="inputName" type="text" placeholder="Enter your Name" value="<?php echo $studName; ?>">
-                                    </div>
-                                    <!-- <div class="col-md-6">
-                                        <label class="small mb-1" for="inputMatrixId">Matrix ID</label>
-                                        <input class="form-control" id="inputMatrixId" type="number" placeholder="Enter your Matrix Id" value="<?php echo $matrixId; ?>">
-                                    </div> -->
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputPhoneNum">Phone number</label>
-                                        <input class="form-control" id="inputPhoneNum" type="tel" placeholder="Enter your phone number" value="<?php echo $phoneNum; ?>">
-                                    </div>
-                                </div>
-                                <div class="row gx-3 mb-3">
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputSemester">Semester</label>
-                                        <!-- <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="4"> -->
-                                        <select class="form-control" name="semester" id="inputSemester">
-                                            <option value="" disabled <?php echo ($semester == '') ? 'selected' : ''; ?>>Semester</option>
-                                            <option value="1" <?php echo ($semester == '1') ? 'selected' : ''; ?>>1</option>
-                                            <option value="2" <?php echo ($semester == '2') ? 'selected' : ''; ?>>2</option>
-                                            <option value="3" <?php echo ($semester == '3') ? 'selected' : ''; ?>>3</option>
-                                            <option value="4" <?php echo ($semester == '4') ? 'selected' : ''; ?>>4</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="inputAddress">Address</label>
-                                        <input class="form-control" id="inputAddress" type="text" placeholder="Enter your Address" value="<?php echo $address; ?>">
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputUserEmail">Email address</label>
-                                    <input class="form-control" id="inputUserEmail" type="email" placeholder="Enter your email address" value="<?php echo $userEmail; ?>">
-                                </div>
-                                <div class="row gx-3 mb-3">
-                                    <!-- <div class="col-md-6">
-                                        <label class="small mb-1" for="inputPhoneNum">Phone number</label>
-                                        <input class="form-control" id="inputPhoneNum" type="tel" placeholder="Enter your phone number" value="<?php echo $phoneNum; ?>">
-                                    </div> -->
-                                    <!-- <div class="col-md-6">
-                                        <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
-                                    </div> -->
-                                </div>
-                                <button class="btn btn-primary" type="submit">Save changes</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                                // $sql = "SELECT * FROM programme WHERE status = 0";
+                                // $result = $conn->query($sql);
+                                $sql = "SELECT p.*, a.status
+                                        FROM programme p
+                                        JOIN attendance a ON p.programmeId = a.programmeId
+                                        WHERE a.matrixId = ? AND a.status = 0";
+
+                                $stmt = $conn->prepare($sql);
+                                $stmt->bind_param("s", $_SESSION['matrixId']);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        ?>
+                                        <tr>
+                                            <td> <?php echo $row["programmeId"]; ?> </td> 
+                                            <td> <img src="<?php 
+                                                    // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+                                                    $posterPath = $row["posterPath"];
+                                                    $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
+
+                                                    // Remove the server-specific part from the path
+                                                    $relativePath = str_replace($basePath, '', $posterPath);
+
+                                                    // Now $relativePath will contain something like "/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+
+                                                    echo $relativePath; 
+                                                    ?>" alt=""><?php echo $row["programmeName"]; ?></td> 
+                                            <td> <?php echo date("d F Y", strtotime($row["programmeStartDate"])); ?> </td> 
+                                            <td> <?php echo date("d F Y", strtotime($row["programmeEndDate"])); ?> </td>
+                                            <td>
+                                            <?php echo $row["programmeTime"]; ?> 
+                                            </td>
+                                            <td> <strong> <?php echo $row["capacity"]; ?> </strong> </td>
+                                            <td> <a class="popup-btn">Details</a></td>
+                                            <!-- <td> <a class="delete-btn">Delete</a> </td> -->
+                                            <!-- <td><a class="delete-btn" data-id="<?php echo $row['programmeId']; ?>" onclick="handleDeleteClick(<?php echo $row['programmeId']; ?>)">Delete</a></td> -->
+
+                                            <div class="popup-view">
+                                                <div class="popup-card">
+                                                    <a><i class="fas fa-times close-btn"></i></a>
+                                                    <div class="product-img">
+                                                        <img src="<?php 
+                                                        // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+                                                        $posterPath = $row["posterPath"];
+                                                        $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
+
+                                                        // Remove the server-specific part from the path
+                                                        $relativePath = str_replace($basePath, '', $posterPath);
+
+                                                        // Now $relativePath will contain something like "/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
+
+                                                        echo $relativePath;
+
+                                                        //echo $row["posterPath"]; 
+                                                        ?>" alt="">
+                                                    </div>
+                                                    <div class="info"> 
+                                                        <h2><?php
+                                                        echo $row["programmeName"]; ?>
+                                                        <br>
+                                                        <span><?php 
+
+                                                        // Assuming $row["programmeStartDate"] and $row["programmeEndDate"] are in the format 'Y-m-d' like '2018-07-22'
+                                                        $startDate = date("d", strtotime($row["programmeStartDate"])); // Get day (e.g., '22')
+                                                        $endDate = date("d F Y", strtotime($row["programmeEndDate"])); // Get day, month, and year (e.g., '25 July 2018')
+
+                                                        // Now you can use $startDate and $endDate in your HTML
+
+                                                        echo $startDate; ?> - <?php echo $endDate;
+                                                        //echo $row["programmeStartDate"] . ' - ' . $row["programmeEndDate"]; 
+                                                        ?>
+                                                        </span>
+                                                        </h2>
+                                                        <p><?php echo $row["programmeDesc"]; ?></p>
+                                                        <!-- <a href="#" class="add-cart-btn" data-program-id= "<?php echo $row['programmeId']; ?>" >Register Program</a>
+                                                        <a href="#" class="add-wish" data-program-id= "<?php echo $row['programmeId']; ?>" >Drop Program</a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tr>
+                                        <?php
+                                            }
+                                        } else {
+                                            echo "<div>No results found</div>";
+                                        }
+                                        $stmt->close();
+                                        $conn->close();
+                                    ?>
+                            </tbody>
+                        </table>
+                    </section>
+                </main>
+            </div>
         </div>
     </div>
     <!-- Programme Cards End -->
