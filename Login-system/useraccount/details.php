@@ -171,8 +171,8 @@ session_start();
         <nav class="nav nav-borders">
             <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
             <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-billing-page" target="__blank">Programme Registered History</a>
-            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Merchandise History</a>
-            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page" target="__blank">E-Book Shop History</a>
+            <!-- <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Merchandise History</a>
+            <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page" target="__blank">E-Book Shop History</a> -->
         </nav>
         <hr class="mt-0 mb-4">
         <div class="row">
@@ -215,7 +215,7 @@ session_start();
                     <div class="card mb-4">
                         <div class="card-header">Account Details</div>
                         <div class="card-body">
-                            <form>
+                            <form onsubmit="updateUserData(); return false;">
                                 <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">Username</label>
                                 <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="<?php echo $userName; ?>">
@@ -223,11 +223,15 @@ session_start();
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="inputName">Name</label>
-                                        <input class="form-control" id="inputName" type="text" placeholder="Enter your first name" value="<?php echo $studName; ?>">
+                                        <input class="form-control" id="inputName" type="text" placeholder="Enter your Name" value="<?php echo $studName; ?>">
                                     </div>
-                                    <div class="col-md-6">
+                                    <!-- <div class="col-md-6">
                                         <label class="small mb-1" for="inputMatrixId">Matrix ID</label>
-                                        <input class="form-control" id="inputMatrixId" type="number" placeholder="Enter your last name" value="<?php echo $matrixId; ?>">
+                                        <input class="form-control" id="inputMatrixId" type="number" placeholder="Enter your Matrix Id" value="<?php echo $matrixId; ?>">
+                                    </div> -->
+                                    <div class="col-md-6">
+                                        <label class="small mb-1" for="inputPhoneNum">Phone number</label>
+                                        <input class="form-control" id="inputPhoneNum" type="tel" placeholder="Enter your phone number" value="<?php echo $phoneNum; ?>">
                                     </div>
                                 </div>
                                 <div class="row gx-3 mb-3">
@@ -252,16 +256,16 @@ session_start();
                                     <input class="form-control" id="inputUserEmail" type="email" placeholder="Enter your email address" value="<?php echo $userEmail; ?>">
                                 </div>
                                 <div class="row gx-3 mb-3">
-                                    <div class="col-md-6">
+                                    <!-- <div class="col-md-6">
                                         <label class="small mb-1" for="inputPhoneNum">Phone number</label>
                                         <input class="form-control" id="inputPhoneNum" type="tel" placeholder="Enter your phone number" value="<?php echo $phoneNum; ?>">
-                                    </div>
+                                    </div> -->
                                     <!-- <div class="col-md-6">
                                         <label class="small mb-1" for="inputBirthday">Birthday</label>
                                         <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
                                     </div> -->
                                 </div>
-                                <button class="btn btn-primary" type="button">Save changes</button>
+                                <button class="btn btn-primary" type="submit">Save changes</button>
                             </form>
                         </div>
                     </div>
@@ -383,41 +387,36 @@ session_start();
         </script>
         
         <script>
-            $(document).ready(function() {
-                // Click event for "Drop Program" button
-                $('.add-wish').click(function(event) {
-                    event.preventDefault(); // Prevent the default link behavior
+        function updateUserData() {
+            // Gather form data
+            var username = document.getElementById('inputUsername').value;
+            var name = document.getElementById('inputName').value;
+            var semester = document.getElementById('inputSemester').value;
+            var address = document.getElementById('inputAddress').value;
+            var userEmail = document.getElementById('inputUserEmail').value;
+            var phoneNum = document.getElementById('inputPhoneNum').value;
 
-                    // Retrieve the program ID associated with the clicked button
-                    var programId = $(this).data('program-id'); // Assuming 'data-program-id' attribute holds the program ID
-                    console.log("Program ID:", programId);
-
-                    // AJAX request to the PHP endpoint for dropping a program
-                    $.ajax({
-                        type: 'POST',
-                        url: 'drop_programme.php', // Create a new PHP file for handling drop program logic
-                        data: { programId: programId },
-                        success: function(response) {
-                            // Handle the response from the server after dropping the program
-                            if (response === "Program dropped successfully") {
-                                alert('Program dropped successfully!');
-                                // You might want to refresh the page or update UI accordingly
-                            } else if (response === "You are not registered for this programme") {
-                                alert('You are not registered for this programme');
-                            } else if (response === "You have already dropped from this programme") {
-                                alert('You have already dropped from this programme');
-                            } else {
-                                alert('Unexpected response from the server' + programId);
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            // Handle error cases here
-                            alert('Error occurred while dropping the program');
-                            console.error(error);
-                        }
-                    });
-                });
+            // AJAX request
+            $.ajax({
+                type: 'POST',
+                url: 'update_user_data.php', // Create a new PHP file for handling the update logic
+                data: {
+                    username: username,
+                    name: name,
+                    semester: semester,
+                    address: address,
+                    userEmail: userEmail,
+                    phoneNum: phoneNum
+                },
+                success: function(response) {
+                    alert('Changes saved successfully!');
+                },
+                error: function(xhr, status, error) {
+                    alert('Error occurred while saving changes');
+                    console.error(error);
+                }
             });
+        }
         </script>
 
             <!-- Account Details Scripts -->
