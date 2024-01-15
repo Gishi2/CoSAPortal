@@ -119,7 +119,7 @@ session_start();
          <div class="name-job">
             <div class="profile_name">Prem Shahi</div>
             <div class="job">Web Desginer</div>
-        </div>
+         </div>
              <i class='bx bx-log-out' id="log_out"></i>
          </li>
         </ul>
