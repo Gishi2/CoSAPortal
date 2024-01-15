@@ -108,23 +108,23 @@
                     <!-- <input name="size" type="text" placeholder="Size" size="large" resize="none"> -->
                     <div class="checkbox-size">
                         <div class="checkbox">
-                            <input type="checkbox" name="size_S" id="size_S">
+                            <input type="checkbox" name="size_S" id="size_S" <?php echo isset($checkedSizes['S']) ? 'checked' : ''; ?>>
                             <label>S</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_M" id="size_M">
+                            <input type="checkbox" name="size_M" id="size_M" <?php echo isset($checkedSizes['M']) ? 'checked' : ''; ?>>
                             <label>M</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_L" id="size_L">
+                            <input type="checkbox" name="size_L" id="size_L" <?php echo isset($checkedSizes['L']) ? 'checked' : ''; ?>>
                             <label>L</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_XL" id="size_XL">
+                            <input type="checkbox" name="size_XL" id="size_XL" <?php echo isset($checkedSizes['XL']) ? 'checked' : ''; ?>>
                             <label>XL</label>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="size_NONE" id="size_NONE">
+                            <input type="checkbox" name="size_NONE" id="size_NONE" <?php echo isset($checkedSizes['None']) ? 'checked' : ''; ?>>
                             <label>None</label>
                         </div>
                     </div>

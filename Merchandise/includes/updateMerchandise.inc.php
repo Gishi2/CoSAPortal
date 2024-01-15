@@ -4,7 +4,6 @@
     }
 
     if (isset($_POST['submit'])) {
-
         $file = $_FILES['file'];
         $name = $_POST['name'];
         $stock = $_POST['stock'];
@@ -89,7 +88,7 @@
             $stmt->execute();
 
             $pdo = null; $stmt = null;
-            header("Location: /Merchandise/merchandise-edit.php?updatesuccessful");
+            header("Location: /Merchandise/merchandise-list.php?updatesuccessful");
             die();
         } catch (PDOException $e) {
             die("Query failed: " . $e->getMessage());

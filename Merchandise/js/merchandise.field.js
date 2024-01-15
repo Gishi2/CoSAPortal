@@ -51,13 +51,16 @@ checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', checkField);
 });
 
-function checkField() {
+function checkField(status) {
     var name = nameInput.value.trim() !== '';
     var stock = stockInput.value.trim() !== '';
     var price = priceInput.value.trim() !== '';
     var desc = descInput.value.trim() !== '';
 
     var fileSelected = fileInput.files.length > 0;
+    if (status) {
+        fileSelected = status;
+    }
 
     var atLeastOneChecked = Array.from(checkboxes).some((checkbox) => {
         return checkbox.checked;

@@ -17,7 +17,16 @@ try {
     }
 
     $pdo = null; $stmt = null;
-    header("Location: /Merchandise/merchandise.php?deletesuccessful");
+
+    $currentPhpSelf = basename($_SERVER['HTTP_REFERER']);
+    if ($currentPhpSelf === 'merchandise.php') {
+        header("Location: /Merchandise/merchandise.php?deletesuccessful");
+    } else if ($currentPhpSelf === 'shopping-cart.php') {
+        header("Location: /Shopping/shopping-cart.php?deletesuccessful");
+    } else {
+        echo 'Error: Path name ('. $currentPhpSelf .') is not recognizable';
+    }
+
     die();
 } catch (PDOException $e) {
     error_log("Query failed: " . $e->getMessage());

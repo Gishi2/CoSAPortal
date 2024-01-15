@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root {
+    --primary: #0463FA;
+    --light-primary: #2579ff;
+    --opac-primary: rgba(226, 237, 255, 0.3);
+    --light: #EFF5FF;
+    --grey: #f8f8f8;
+    --dark: #1B2C51;
+    --danger: #dc3545;
+    --disabled: #adb5bd;
+    --box-shadow: box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
+}
+
+body {
+    background: #f6f6f6;
+}
+
+.container-0 {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1200px;
+    top: 75px;
+    margin-top: 1rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    color: rgba(0,0,0,.8);
+    padding-top: 20px;
+    margin-bottom: 0px;
+}
+
+.content-box-0 {
+    box-shadow: var(--box-shadow);
+    border-radius: .125rem;
+    overflow: hidden;
+    background: #fff;
+    overflow: visible
+}
+
+.content-box-1 {
+    margin-top: 0.5rem;
+    box-shadow: var(--box-shadow);
+    border-radius: .125rem;
+    overflow: hidden;
+    background: #fff;
+    overflow: visible
+}
+
+.content-box-2 {
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    border-radius: .125rem;
+    overflow: hidden;
+    background: #fff;
+    overflow: visible
+}
+
+.content-box-3 {
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    border-radius: .125rem;
+    overflow: hidden;
+    background: #fff;
+    overflow: visible
+}
+
+.content-box-header {
+    display: flex;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    border-radius: .125rem;
+    overflow: hidden;
+    border-radius: 3px;
+    height: 55px;
+    font-size: 16px;
+    background: #fff;
+    margin-bottom: 12px;
+    color: #888;
+    padding: 0 20px;
+    gap: 2%;
+}
+
+.content-box-header .price {
+    display: flex;
+    justify-content: right;
+}
+
+.justify-right {
+    display: flex;
+    justify-content: right;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-box-header > div {
+    display: flex;
+    flex: 1;
+}
+
+.content-box-header .product {
+    flex: 3;
+    color: var(--dark);
+    font-size: 1.25rem;
+}
+
+.content-box-product {
+    position: relative;
+    padding-bottom: 1px;
+}
+
+.product-child-padding {
+    text-decoration: none;
+    color: rgba(0,0,0,.87);
+    display: block;
+    padding: 0 20px 15px;
+    margin-top: 15px;
+}
+
+.product-child-padding:last-child {
+    padding-bottom: 20px;
+}
+
+.product-child-padding:first-child {
+    padding-bottom: 15px;
+}
+
+.product-box > div {
+    display: flex;
+    flex: 1;
+}
+
+.product-box {
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    transition: 0.5s ease;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.product-box .product-details {
+    display: flex;
+    flex-direction: row;
+    flex: 3;
+}
+
+.product-box .product-details > img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.product-box .product-details > span {
+    line-height: 16px;
+    overflow: hidden;   
+    display: flex;
+    align-self: center;
+    /* justify-self: center; */
+    padding: 0 20px 0 10px;
+    font-size: 14px;
+}
+
+.product-box .message {
+    flex: 3;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.product-box .order-price {
+    display: flex;
+    flex: 1;
+}
+
+.product-box .message > input {
+    padding: 4px 12px;
+    width: 360px;
+    height: 40px;
+    font-size: 14px;
+}
+
+.product-box .payment {
+    font-size: 1.25rem;
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.product-box .payment > button {
+    border: 1px solid #c0c0c0;
+    background: none;
+    font-weight: 500;
+    border-radius: 2px;
+    height: 2.5rem;
+    font-size: 1rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.product-box .payment > button.active {
+    border: 1px solid #0463FA;
+    color: var(--primary);
+}
+
+.footer {
+    display: flex;
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    background-color: #fff;
+    padding: 12px 0;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.footer > button {
+    display: flex;
+    height: 2.5rem;
+    padding: 13px 36px;
+    margin: 0 22px 0 15px;
+    font-weight: 400;
+    font-size: .875rem;
+    border-radius: 2px;
+    width: 13.125rem;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: var(--light);
+    background-color: var(--primary);
+}
