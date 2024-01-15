@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Form</title>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Admin Page</title>
 
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
 
@@ -59,50 +58,25 @@
                 </div>
                 <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
             </div>
+            <a href="/sign-up/signup.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
     <!-- END COPY FOR HEADER -->
 
-    <div class="form-container">
+   
+<div class="container">
 
-        <form action="signup.php" method="post">
-            <h3>Sign Up</h3>
-            <input type="text" name="name" required placeholder="Student Name">
-            <input type="number" name="matrix" required placeholder="Matrix ID">
-            <input type="text" name="address" required placeholder="Address">
-            <input type="number" name="phone" required placeholder="Phone Number">
-            <select name="semester" required>
-                <option value="" disabled selected>Semester</label>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-              
-            <input type="text" name="username" required placeholder="Username">
-            <input type="text" name="email" required placeholder="Email">
-            <input type="password" name="password" required placeholder="Password">
-            <input type="password" name="cpassword" required placeholder="Confirm Password">
-            <input type="submit" name="submit" value="sign up" class="form-btn">
-            <p>Already have an account? <a href="login.html" style="text-decoration: underline;">Login</a></p>
-        </form>
-    </div>
+   <div class="content">
+      <h3>Welcome, Admin<span></h3>
+      <p>This is an admin page</p>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/Homepage/lib/wow/wow.min.js"></script>
-    <script src="/Homepage/lib/easing/easing.min.js"></script>
-    <script src="/Homepage/lib/waypoints/waypoints.min.js"></script>
-    <script src="/Homepage/lib/counterup/counterup.min.js"></script>
-    <script src="/Homepage/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="/Homepage/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="/Homepage/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="/Homepage/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+      <a href="student_list.html" class="btn">View Student List</a>
+      
+      <a href="logout.php" class="btn">Logout</a>
+   </div>
 
-    <!-- Template Javascript -->
-    <script src="/Homepage/js/main.js"></script>
+</div>
 
 </body>
 </html>
