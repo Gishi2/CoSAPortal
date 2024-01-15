@@ -37,8 +37,12 @@ if (isset($_POST['submit'])) {
                 header('Location: /Login-system/mainpage/mainpage_user.php'); // Redirect to normal user interface
                 exit();
             } elseif ($userType == "2") {
+                $_SESSION['userType'] = 'committeeMember';
+                header('Location: /Login-system/mainpage/mainpage_committee.php'); // Redirect to Committee interface
+                exit();
+            } elseif ($userType == "3") {
                 $_SESSION['userType'] = 'admin';
-                header('Location: /Homepage/php/fetch_programme_admin.php'); // Redirect to admin interface
+                header('Location: /Homepage/php/fetch_programme_admin.php'); // Redirect to Admin interface
                 exit();
             }
 
