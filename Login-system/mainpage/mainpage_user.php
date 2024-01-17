@@ -156,15 +156,15 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
           <div class="s-12 margin-bottom carousel-fade-transition owl-carousel carousel-main carousel-nav-white carousel-hide-arrows background-dark">
           <div class="item background-image" style="background-image:url(img/img-07.jpg); background-position-y: -400px;">
               <p class="text-padding text-strong text-white text-s-size-30 text-size-60 text-uppercase background-blue">We are Future System Developers</p><br>
-              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Con nonummy sem integer interdum volutpat dis eget eligendi aliquip dolorum magnam.</p>
+              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Welcome back! <?php echo $_SESSION['username'];?></p>
             </div>
             <div class="item background-image" style="background-image:url(img/img-07.jpg); background-position-y: -400px;">
               <p class="text-padding text-strong text-white text-s-size-30 text-size-60 text-uppercase background-blue">Promoveo Ut Tech</p><br>
-              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Con nonummy sem integer interdum volutpat dis eget eligendi aliquip dolorum magnam.</p>
+              <p class="text-padding text-size-20 text-dark text-uppercase background-white">What would you like to do today?</p>
             </div>
             <div class="item background-image" style="background-image:url(img/img-07.jpg); background-position-y: -400px;">
               <p class="text-padding text-strong text-white text-s-size-30 text-size-60 text-uppercase background-blue">For the Future, CoSA Forever</p><br>
-              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Con nonummy sem integer interdum volutpat dis eget eligendi aliquip dolorum magnam.</p>
+              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Explore more with us!</p>
             </div>
           </div>  
     </section>
