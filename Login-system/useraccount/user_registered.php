@@ -230,11 +230,21 @@ session_start();
                                             <td> <?php echo $row["semester"]; ?> </td>
                                             <td> <?php echo $row["userEmail"]; ?> </td>
                                             <td> <?php 
-                                            if($row["userType"] == 1){
-                                                echo "Normal Member";
-                                            } else if ($row["userType"] == 2){
-                                                echo "Committee Member";
-                                            } else if ($row["userType"] == 3){
+                                            // if($row["userType"] == 1){
+                                            //     echo "Normal Member";
+                                            // } else if ($row["userType"] == 2){
+                                            //     echo "Committee Member";
+                                            // } else if ($row["userType"] == 3){
+                                            //     echo "Admin";
+                                            // }
+                                            if ($row["userType"] != 3) {
+                                                echo '<select class="type-dropdown" data-id="' . $row['matrixId'] . '" onchange="handleChangeType(' . $row['matrixId'] . ', this.value)">';
+                                                
+                                                $userType = $row["userType"];
+                                                echo '<option value="1" ' . ($userType == 1 ? 'selected' : '') . '>Normal Member</option>';
+                                                echo '<option value="2" ' . ($userType == 2 ? 'selected' : '') . '>Committee Member</option>';
+                                                echo '</select>';
+                                            } else {
                                                 echo "Admin";
                                             }
                                             ?> </td>
@@ -399,6 +409,23 @@ session_start();
             });
         }
         </script>
+
+    <script>
+        function handleChangeType(matrixId, newType) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Reload the page after successful update
+                    location.reload();
+                }
+            };
+
+            // Make an AJAX request to update the user type in the database
+            xhr.open('POST', 'update_user_type.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send('matrixId=' + matrixId + '&newType=' + newType);
+        }
+    </script>
 
             <!-- Account Details Scripts -->
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

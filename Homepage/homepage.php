@@ -121,7 +121,7 @@
                             }
 
                             // Perform a query to get the number of registered students
-                            $sql = "SELECT COUNT(*) as studentCount FROM student WHERE userType = '1'";
+                            $sql = "SELECT COUNT(*) as studentCount FROM student WHERE userType IN ('1', '2')";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
