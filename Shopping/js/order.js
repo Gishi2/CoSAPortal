@@ -20,9 +20,15 @@ function validateForm() {
         alert('Please select a payment method.');
         return false;
     }
+    var confirmation = window.confirm("You've successfully placed an order!");
 
-    return true;
+    if (confirmation) {
+        window.location.href = '/Shopping/purchase-list.php';
+    }
+
+    return confirmation;
 }
+
 function goBack() {
     history.back();
 }

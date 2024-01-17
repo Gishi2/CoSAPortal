@@ -5,9 +5,8 @@ function redirectToOrder(cartIDs) {
         return checkbox.checked;
     });
 
-    document.cookie = "cartIDs=" + encodeURIComponent(JSON.stringify(cartIDs)) + "; path=/Shopping/order.php";
-
     if (atLeastOneChecked) {
+        document.cookie = "cartIDs=" + encodeURIComponent(JSON.stringify(cartIDs)) + "; path=/Shopping/order.php";
         window.location.href = 'order.php';
     } else {
         alert('Please select at least one product before proceeding.');
@@ -55,8 +54,6 @@ function checkboxParentState() {
         return checkbox.checked;
     });
 
-    console.log(allChecked);
-
     if (allChecked) {
         parentCheckBox.checked = true;
     } else {
@@ -64,17 +61,43 @@ function checkboxParentState() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    var checkboxes = document.querySelectorAll('.product-checkbox');
+    var parentCheckBox = document.getElementById('parent-checkbox');
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateTotalPrice);
+    })
+
+    parentCheckBox.addEventListener('change', updateTotalPrice);
+});
+
 function updateTotalPrice() {
     var checkboxes = document.querySelectorAll('.product-checkbox');
+    var subTotals = document.querySelectorAll('[id^="itemSubTotal"');
     var totalPriceText = document.getElementById('total-price');
 
     var total = 0;
 
-    checkboxes.forEach(function (checkbox) {
+    checkboxes.forEach(function (checkbox, index) {
         if (checkbox.checked) {
-            total += parseFloat(checkbox.value);
+            var checkboxNumber = checkbox.id.replace('checkbox', '');
+
+            if (document.getElementById('itemSubTotal' + checkboxNumber)) {
+                total += parseFloat(subTotals[index].value);
+            }
         }
     });
 
     totalPriceText.innerText = 'RM' + total.toFixed(2);
+}
+
+function confirmSubmit() {
+    var confirmation = window.confirm("Are you sure you want to delete this cart?");
+    
+    return confirmation;
+}
+
+function goBack() {
+    history.back();
 }

@@ -18,7 +18,10 @@ try {
 
     $pdo = null; $stmt = null;
 
-    $currentPhpSelf = basename($_SERVER['HTTP_REFERER']);
+    $referer = $_SERVER['HTTP_REFERER'];
+    $parsedUrl = parse_url($referer);
+    $currentPhpSelf = basename($parsedUrl['path']);
+    // $currentPhpSelf = basename($_SERVER['HTTP_REFERER']);
     if ($currentPhpSelf === 'merchandise.php') {
         header("Location: /Merchandise/merchandise.php?deletesuccessful");
     } else if ($currentPhpSelf === 'shopping-cart.php') {

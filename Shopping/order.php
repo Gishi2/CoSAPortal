@@ -83,17 +83,16 @@
 
                         require_once 'includes/dbh.inc.php';
 
-                        $query = "SELECT cart.cart_id, cart.product_id, cart.price, cart.quantity, merchandise.name, cart.size, merchandise.image_url FROM cart
+                        $query = "SELECT cart.cart_id, cart.quantity, cart.product_id, cart.price, cart.quantity, merchandise.name, cart.size, merchandise.image_url FROM cart
                         INNER JOIN merchandise ON cart.product_id = merchandise.id WHERE cart.cart_id IN ($cartIDArray)";
 
                         $stmt = $pdo->prepare($query);
                         $stmt->execute();
 
                         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                        $counter = count($results);
                         $orderTotal = 0;
 
-                        if ($counter > 0) {
+                        if (!empty($results)) {
                             foreach ($results as $product) {
                                 $totalPrice = (float)$product['price'] * (float)$product['quantity'];
                                 $formattedTotalPrice = number_format($totalPrice, 2, '.', '');
@@ -109,7 +108,7 @@
                                                 echo '<span>RM' .$product['price']. '</span>';
                                             echo '</div>';
                                             echo '<div class="quantity justify-right">';
-                                                echo '<span>1</span>';
+                                                echo '<span>' .$product['quantity']. '</span>';
                                             echo '</div>';
                                             echo '<div class="price justify-right">';
                                                 echo '<span>RM' .$formattedTotalPrice. '</span>';
@@ -122,6 +121,8 @@
                                     echo '<input type="hidden" name="quantity[]" value="'.$product['quantity'].'">';
                                 echo '</div>';
                             }
+                        } else {
+                            echo '<div style="text-align: center; font-weight: 500; padding: 1rem; font-size: 1rem;">There are currently no orders!</div>';
                         }
                         $formattedOrderPrice = number_format($orderTotal, 2, '.', '');
                         echo '<input type="hidden" name="orderTotal" value="'.$formattedOrderPrice.'">';
