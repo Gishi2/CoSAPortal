@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
                 exit();
             } elseif ($userType == "3") {
                 $_SESSION['userType'] = 'admin';
-                header('Location: /Homepage/php/fetch_programme_admin.php'); // Redirect to Admin interface
+                header('Location: /Login-system/mainpage/mainpage_admin.php'); // Redirect to Admin interface
                 exit();
             }
 
