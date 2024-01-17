@@ -136,13 +136,13 @@
                             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             $counter = count($results);
 
-                            if ($counter > 0) {
+                            if (!empty($results)) {
                                 foreach ($results as $product) {
                                     $totalPrice = (float)$product['price'] * (float)$product['quantity'];
                                     $formattedTotalPrice = number_format($totalPrice, 2, '.', '');
                                     echo '<div class="product-box" data-cart-id="' . $product['cart_id'] . '">';
                                         echo '<div class="checkbox">';
-                                            echo '<input type="checkbox" class="product-checkbox" value="' . $product['cart_id'] . '">';
+                                            echo '<input type="checkbox" class="product-checkbox" value="' .$product['cart_id']. '">';
                                         echo '</div>';
                                         echo '<div class="product-details">'; 
                                             echo '<img src="'. $product['image_url'] . '">';
@@ -158,10 +158,11 @@
                                             echo '<span>' .$product['quantity']. '</span>';
                                         echo '</div>';
                                         echo '<div class="price">';
+                                            echo '<input type="hidden" id="itemSubTotal" value="'.$formattedTotalPrice.'">';
                                             echo '<span>RM' .$formattedTotalPrice. '</span>';
                                         echo '</div>';
                                         echo '<div class="action">';
-                                        echo '<form action="/Merchandise/includes/deleteCart.inc.php" method="post">'; 
+                                        echo '<form action="/Merchandise/includes/deleteCart.inc.php" method="post" onsubmit="return confirmSubmit();">'; 
                                             echo '<input type="hidden" name="itemId" value="'. $product['cart_id'] .'">';
                                             echo '<button type="submit">Delete</button>';
                                         echo '</div>';
@@ -183,17 +184,20 @@
             <?php 
                 if ($counter != 0) {
                     echo '<div class="footer">';
-                        // echo '<div class="total">';
-                        //         if ($counter != 1 && $counter != 0) {
-                        //             $text = $counter . ' items';
-                        //             echo '<span>Total ('. $text .'): </span>';
-                        //             echo '<span id="total-price"></span>';
-                        //         } else if ($counter === 1) {
-                        //             $text = $counter . ' item';
-                        //             echo '<span>Total ('. $text .'): </span>';
-                        //             echo '<span id="total-price"></span>';
-                        //         } 
-                        // echo '</div>';
+                        echo '<div class="total">';
+                                if ($counter != 1 && $counter != 0) {
+                                    $text = $counter . ' items';
+                                    echo '<span>Total ('. $text .'): </span>';
+                                    echo '<span id="total-price"></span>';
+                                } else if ($counter === 1) {
+                                    $text = $counter . ' item';
+                                    echo '<span>Total ('. $text .'): </span>';
+                                    echo '<span id="total-price"></span>';
+                                } 
+                        echo '</div>';
+                        echo '<button class="cancel-btn" onclick="goBack()">';
+                            echo '<span>Back</span>';
+                        echo '</button>';
                         echo '<button onclick="orderNow()">';
                             echo '<span>Order Now</span>';
                         echo '</button>';

@@ -50,13 +50,13 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <?php  
-                    if ($_SESSION['userType'] === 1) {
+                    if ($_SESSION['userType'] === 'normalUser') {
                         echo '<a href="'.NORMAL_USER_PAGE.'" class="nav-item nav-link">Home</a>';
-                    } else if ($_SESSION['userType'] === 2) {
+                    } else if ($_SESSION['userType'] === 'committeeMember') {
                         echo '<a href="'.COMMITTEE_USER_PAGE.'" class="nav-item nav-link">Home</a>';
-                    } else if ($_SESSION['userType'] === 3) {
+                    } else if ($_SESSION['userType'] === 'admin') {
                         echo '<a href="'.ADMIN_USER_PAGE.'" class="nav-item nav-link">Home</a>';
-                    }
+                    } 
                 ?>
                 <!-- <a href="" class="nav-item nav-link">About</a> -->
                 <div class="nav-item dropdown">

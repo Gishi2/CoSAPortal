@@ -90,10 +90,9 @@
                         $stmt->execute();
 
                         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                        $counter = count($results);
                         $orderTotal = 0;
 
-                        if ($counter > 0) {
+                        if (!empty($results)) {
                             foreach ($results as $product) {
                                 $totalPrice = (float)$product['price'] * (float)$product['quantity'];
                                 $formattedTotalPrice = number_format($totalPrice, 2, '.', '');
@@ -122,6 +121,8 @@
                                     echo '<input type="hidden" name="quantity[]" value="'.$product['quantity'].'">';
                                 echo '</div>';
                             }
+                        } else {
+                            echo '<div style="text-align: center; font-weight: 500; padding: 1rem; font-size: 1rem;">There are currently no orders!</div>';
                         }
                         $formattedOrderPrice = number_format($orderTotal, 2, '.', '');
                         echo '<input type="hidden" name="orderTotal" value="'.$formattedOrderPrice.'">';
