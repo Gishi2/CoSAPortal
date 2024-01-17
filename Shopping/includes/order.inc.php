@@ -47,6 +47,11 @@
             $stmtItems->execute();
         }   
 
+        // $queryDeleteCart = "DELETE FROM cart WHERE user_id = :userId AND order";
+        // $stmtDeleteCart = $pdo->prepare($queryDeleteCart);
+        // $stmtDeleteCart->bindParam(":userId", $userId);
+        // $stmtDeleteCart->execute();
+
         $pdo = null; $stmtOrder = null; $stmtItems = null;
         header("Location: /Merchandise/merchandise.php");
         die();

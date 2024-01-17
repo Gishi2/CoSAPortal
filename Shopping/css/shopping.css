@@ -37,7 +37,7 @@ body {
     border-radius: .125rem;
     overflow: hidden;
     background: #fff;
-    overflow: visible
+    overflow: visible;
 }
 
 .content-box-header {

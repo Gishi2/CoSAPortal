@@ -5,7 +5,10 @@
     define('MERCHANDISE_PAGE', '/Merchandise/merchandise.php');
     define('BOOK_PAGE', '/E-Book/book.php');
     define('SIGN_UP_PAGE', '/Login-system/signup.html');
-    define('SHOPPING-CART_PAGE', '/Shopping/shopping-cart.php')
+    define('SHOPPING-CART_PAGE', '/Shopping/shopping-cart.php');
+    define('NORMAL_USER_PAGE', '/Login-system/mainpage_user.php');
+    define('COMMITTEE_USER_PAGE', '/Login-system/mainpage_committee.php');
+    define('ADMIN_USER_PAGE', '/Login-system/mainpage_admin.php');
 
     // Only need to Change the link here if u want to change the nav bar href
     // 1. Applied to Homepage.php

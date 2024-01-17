@@ -32,6 +32,8 @@
     <link href="\Homepage\css\bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
+    <link href="\Shopping\css\sidebar.css" rel="stylesheet">
+    <link href="\Shopping\css\navbar.css" rel="stylesheet"> 
     <link href="\Shopping\css\order-list.css" rel="stylesheet">  
 </head>
 
@@ -98,99 +100,113 @@
         <div class="page-wrapper-content">
             <div class="page-content-main">
                 <div class="page-header">
-                <?php
-                    // require_once "includes/orderAmount.inc.php"; 
-                ?>
+                    <?php
+                        require_once "includes/dbh.inc.php";
+
+                        $query = "SELECT * from orders";
+                        $stmt = $pdo->prepare($query);
+                        $stmt->execute();
+
+                        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                        echo '<h3>'. count($results) .' Orders</h3>';
+
+                        $stmt = null;
+                    ?>
                 </div>
                 <div class="content-list-section">
                     <div class="content-list-container">
+                        <div style="margin-bottom: 1rem;">
+                        <table class="header-box">
+                            <thead>
+                                <tr>
+                                    <th width="40%">Product(s)</th>
+                                    <th width="20%">Order Total</th>
+                                    <th width="20%">Status</th>
+                                    <th width="20%">Actions</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        </div>
                         <div class="content-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Product(s)</th>
-                                        <th>User ID</th>
-                                        <th>Order Total</th>
-                                        <th>Status</span></th>
-                                        <!-- <th>Actions</span></th> -->
-                                        <!-- <th>Stock</th>
-                                        <th>Actions</th> -->
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        try {
-                                            require_once "includes/dbh.inc.php";
+                        <?php
+                            
+                                try {
+                                    $queryOrder = "SELECT 
+                                        orders.order_id AS id,
+                                        orders.order_totalPrice AS totalPrice,
+                                        orders.order_status AS status,
+                                        orders.user_id AS user,
+                                        orders_items.order_quantity AS quantity,
+                                        merchandise.name AS name,
+                                        merchandise.image_url AS image_url
+                                        FROM orders
+                                        JOIN orders_items ON orders.order_id = orders_items.order_id
+                                        LEFT JOIN merchandise ON orders_items.product_id = merchandise.id
+                                        ORDER BY orders.order_id DESC";
 
-                                            $queryOrder = "SELECT 
-                                                orders.order_totalPrice AS totalPrice,
-                                                orders.order_status AS status,
-                                                orders.user_id AS user,
-                                                merchandise.name AS name,
-                                                merchandise.image_url AS image_url
-                                                FROM orders
-                                                JOIN orders_items ON orders.order_id = orders_items.order_id
-                                                LEFT JOIN merchandise ON orders_items.product_id = merchandise.id
-                                                ORDER BY orders.order_id DESC";
+                                    $stmtOrder = $pdo->prepare($queryOrder);
+                                    $stmtOrder->execute();
 
-                                            $stmtOrder = $pdo->prepare($queryOrder);
-                                            $stmtOrder->execute();
+                                    $results = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
 
-                                            $results = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
+                                    if (!empty($results)) {
+                                        $currentOrderId = null;
+                                        foreach ($results as $order) {
+                                            
+                                            if ($order['id'] != $currentOrderId) {
+                                                if ($currentOrderId !== null) {
+                                                    echo '</tbody></table>';
+                                                }
 
-                                            if ($results > 0) {
-                                                foreach ($results as $order) {
+                                                echo '<table class="content-box">';
+                                                echo '<thead>';
                                                     echo '<tr>';
-                                                        echo '<td>';
-                                                        echo '<div class="name-container">';
-                                                            echo '<div class="img-container">';
-                                                                echo '<img src="' . $order['image_url']. '">';
+                                                        echo '<th colspan="2"><i class="bx bxs-user-circle"></i>'. $order['user'] .'</th>';
+                                                        echo '<th colspan="4" style="text-align: right;">Order ID: '. $order['id'] .'</th>';
+                                                    echo '</tr>';
+                                                echo '</thead>';
+                                            }
+                                                echo '<tbody>';
+                                                    echo '<tr>';
+                                                        echo '<td width="40%">';
+                                                            echo '<div class="name-container">';
+                                                                echo '<div class="img-container">';
+                                                                    echo '<img src="' . $order['image_url']. '">';
+                                                                echo '</div>';
+                                                                echo '<div class="text-container">';
+                                                                    echo '<span>'. $order['name'] .'</span>';
+                                                                    echo '<span>x'. $order['quantity'] .'</span>';
+                                                                echo '</div>';
                                                             echo '</div>';
-                                                            echo '<div class="text-container">';
-                                                                echo '<span>'. $order['name'] .'</span>';
-                                                            echo '</div>';
-                                                        echo '</div>';
-                                                        echo '<td>';
-                                                            echo '<div>' . $order['user'] . '</div>';
-                                                        echo '</td>';
+                                                        echo '</td width="20%">';
                                                         echo '<td>';
                                                             echo '<div>RM' . $order['totalPrice'] . '</div>';
-                                                        echo '</td>';
+                                                        echo '</td width="20%">';
                                                         echo '<td>';
                                                             if ($order['status'] === '1') {
                                                                 echo '<div>Pending</div>';
                                                             }
                                                         echo '</td>';
-                                                        // echo '<td>';
-                                                        //     if ($merchandise['stock'] != 0) {
-                                                        //         echo '<div>' . $merchandise['stock'] . '</div>';
-                                                        //     } else {
-                                                        //         echo '<div class="red-text">Out of Stock</div>';
-                                                        //     }
-                                                        // echo '</td>';
-                                                        // echo '<td>';
-                                                        //     echo '<div class="table-btn">';
-                                                        //         echo '<button onclick="redirectToEditPage('. $merchandise['id'] .')">';
-                                                        //             echo '<span>Edit</span>';
-                                                        //         echo '</button>';
-                                                        //         echo '<form action="includes/deleteMerchandise.inc.php" method="post">';
-                                                        //             echo '<input type="hidden" name="merchandiseId" value="'. $merchandise['id'] .'">';
-                                                        //             echo '<button class="delete-btn" type="submit">';
-                                                        //                 echo '<span>Delete</span>';
-                                                        //             echo '</button>';
-                                                        //         echo '</form>';
-                                                        //     echo '</div>';
-                                                        // echo '</td>';
+                                                        echo '<td width="20%">';
+                                                            echo '<div class="table-btn">';
+                                                                echo '<a href="">View Details</a>';
+                                                            echo '</div>';
+                                                        echo '</td>';
                                                     echo '</tr>';
-                                                }
+
+                                                    $currentOrderId = $order['id'];
                                             }
-                                            $pdo = null; $stmtOrder = null;
-                                        } catch (PDOException $e) {
-                                            die("Query failed: " . $e->getMessage());
-                                        }   
-                                    ?>
-                                </tbody>
-                            </table>
+                                                echo '</tbody>';
+                                            echo '</table>';
+                                    } else {
+                                        echo '<div>There are currently no orders</div>';
+                                    }
+                                    $pdo = null; $stmtOrder = null;
+                                } catch (PDOException $e) {
+                                    die("Query failed: " . $e->getMessage());
+                                }   
+                            ?>
                         </div>
                     </div>
                 </div>

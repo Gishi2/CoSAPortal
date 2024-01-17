@@ -25,15 +25,53 @@
     <link href="/Homepage/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="/Homepage/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet"/>
 
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
     <!-- Customized Bootstrap Stylesheet -->
     <link href="\Homepage\css\bootstrap.min.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="\Homepage\css\style.css" rel="stylesheet">
-    <link href="\Shopping\css\shopping.css" rel="stylesheet">    
+    <!-- Stylesheet -->
+    <link href="\Shopping\css\sidebar.css" rel="stylesheet">
+    <link href="\Shopping\css\navbar.css" rel="stylesheet"> 
+    <link href="\Shopping\css\shopping.css" rel="stylesheet"> 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg box-shadow bg-white navbar-light fixed-top p-0 wow fadeIn" data-wow-delay="0.1s" style="box-shadow: 0 1px 4px 0 rgba(74,74,78,.12);">
+<!-- Sidebar Start -->
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="book-list.php">
+                    <i class='bx bx-book'></i> 
+                    <span class="links_name">My Account</span>
+                </a>
+                <span class="tooltip">Account</span>
+            </li>
+            <li>
+                <a href="/Shopping/purchase-list.php">
+                <i class='bx bx-clipboard'></i>
+                    <span class="links_name">My Purchase</span>
+                </a>
+                <span class="tooltip">Purchase</span>
+            </li>
+            <li>
+            <a href="/Shopping/shopping-cart.php">
+                <i class='bx bx-cart-alt'></i>
+                <span class="links_name">Shopping Cart</span>
+            </a>
+            <span class="tooltip">Shopping Cart</span>
+            </li>
+         </ul>
+    </div>
+    <!-- Sidebar End -->
+
+<section class="content-section">
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg box-shadow bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s" style="box-shadow: 0 1px 4px 0 rgba(74,74,78,.12);">
         <a href="<?php echo HOME_PAGE; ?>" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="\Homepage\img\cosa\cosa_logo_inBlue.png">
         </a>
@@ -164,6 +202,8 @@
             ?>
         </main>
     </div>
-</body>
+</section>
 
-<script src="js/shopping.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/shopping.js"></script>
+</body>

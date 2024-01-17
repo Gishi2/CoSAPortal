@@ -83,7 +83,7 @@
 
                         require_once 'includes/dbh.inc.php';
 
-                        $query = "SELECT cart.cart_id, cart.product_id, cart.price, cart.quantity, merchandise.name, cart.size, merchandise.image_url FROM cart
+                        $query = "SELECT cart.cart_id, cart.quantity, cart.product_id, cart.price, cart.quantity, merchandise.name, cart.size, merchandise.image_url FROM cart
                         INNER JOIN merchandise ON cart.product_id = merchandise.id WHERE cart.cart_id IN ($cartIDArray)";
 
                         $stmt = $pdo->prepare($query);
@@ -109,7 +109,7 @@
                                                 echo '<span>RM' .$product['price']. '</span>';
                                             echo '</div>';
                                             echo '<div class="quantity justify-right">';
-                                                echo '<span>1</span>';
+                                                echo '<span>' .$product['quantity']. '</span>';
                                             echo '</div>';
                                             echo '<div class="price justify-right">';
                                                 echo '<span>RM' .$formattedTotalPrice. '</span>';
