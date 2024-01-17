@@ -4,7 +4,7 @@ include 'config.php';
 
 if (isset($_POST['submit'])) {
     $enteredUsername = mysqli_real_escape_string($conn, $_POST['username']);
-    $enteredPassword = $_POST['password'];
+    $enteredPassword = $_POST['password']; // Password from input
 
     // Check if the entered username exists
     $stmtCheckUser = $conn->prepare("SELECT userName, userPassword, userType, matrixId FROM student WHERE userName = ?");
@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
     if ($result->num_rows === 1) {
         // Username exists, verify the password
         $row = $result->fetch_assoc();
-        $storedPassword = $row['userPassword'];
+        $storedPassword = $row['userPassword']; // Password from the database
         $userType = $row['userType'];
         $matrixId = $row['matrixId']; // Add this line to fetch matrixId
 

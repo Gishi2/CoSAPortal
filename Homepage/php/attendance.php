@@ -156,133 +156,32 @@
     <div class="programme-table">
         <main class="table">
           <section class="table__header">
-              <h1>List of Programmes</h1>
-              <!-- <div class="input-group">
-                  <input type="search" placeholder="Search Data...">
-                  <img src="/images/search.png" alt="">
-              </div> -->
-              <div class="add-button">
-                <a href="/Homepage/Programme/programme-committee-addprogramme.html" class="button3">Add a Programme</a>
-                <a href="/Homepage/php/attendance.php" class="button3">Attendance Check</a>
+                <h1>List of Attendance</h1>
+                <div class="input-group">
+                    <!-- <input type="search" placeholder="Enter Programme ID"> -->
+                    <input type="search" id="programmeIdInput" placeholder="Enter Programme ID">
+                </div>
+                <div class="add-button">
+                <a href="/Homepage/php/fetch_programme_admin.php" class="button3">Back To List Of Programmes</a>
               </div>
           </section>
           <section class="table__body">
               <table>
                   <thead>
                       <tr>
-                          <th> Id <span class="icon-arrow">&UpArrow;</span></th>
+                          <th> No. <span class="icon-arrow">&UpArrow;</span></th>
+                          <th> Programme Id <span class="icon-arrow">&UpArrow;</span></th>
                           <th> Programme Name <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> Start Date <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> End Date <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> Time <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> Capacity <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> Details <span class="icon-arrow">&UpArrow;</span></th>
-                          <th> Delete <span class="icon-arrow">&UpArrow;</span></th>
+                          <th> Matrix Id <span class="icon-arrow">&UpArrow;</span></th>
+                          <th> Student Name <span class="icon-arrow">&UpArrow;</span></th>
+                          <!-- <th> Semester <span class="icon-arrow">&UpArrow;</span></th>
+                          <th> Email <span class="icon-arrow">&UpArrow;</span></th> -->
+                          <!-- <th> Details <span class="icon-arrow">&UpArrow;</span></th>
+                          <th> Delete <span class="icon-arrow">&UpArrow;</span></th> -->
                       </tr>
                   </thead>
-                  <tbody>
-                    <?php
-                    // Database connection
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "cosaportal";
-
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
-
-                    // SQL query to fetch data
-                    $sql = "SELECT * FROM programme WHERE status = 0";
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            ?>
-                            <tr>
-                                <td> <?php echo $row["programmeId"]; ?> </td> 
-                                <td> <img src="<?php 
-                                        // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
-                                        $posterPath = $row["posterPath"];
-                                        $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
-
-                                        // Remove the server-specific part from the path
-                                        $relativePath = str_replace($basePath, '', $posterPath);
-
-                                        // Now $relativePath will contain something like "/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
-
-                                        echo $relativePath; 
-                                        ?>" alt=""><?php echo $row["programmeName"]; ?></td> 
-                                <td> <?php echo date("d F Y", strtotime($row["programmeStartDate"])); ?> </td> 
-                                <td> <?php echo date("d F Y", strtotime($row["programmeEndDate"])); ?> </td>
-                                <td>
-                                <?php echo $row["programmeTime"]; ?> 
-                                </td>
-                                <td> <strong> <?php echo $row["capacity"]; ?> </strong> </td>
-                                <td> <a class="popup-btn">Details</a></td>
-                                <!-- <td> <a class="delete-btn">Delete</a> </td> -->
-                                <td><a class="delete-btn" data-id="<?php echo $row['programmeId']; ?>" onclick="handleDeleteClick(<?php echo $row['programmeId']; ?>)">Delete</a></td>
-
-                                <div class="popup-view">
-                                    <div class="popup-card">
-                                        <a><i class="fas fa-times close-btn"></i></a>
-                                        <div class="product-img">
-                                            <img src="<?php 
-                                            // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
-                                            $posterPath = $row["posterPath"];
-                                            $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
-
-                                            // Remove the server-specific part from the path
-                                            $relativePath = str_replace($basePath, '', $posterPath);
-
-                                            // Now $relativePath will contain something like "/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
-
-                                            echo $relativePath;
-
-                                            //echo $row["posterPath"]; 
-                                            ?>" alt="">
-                                        </div>
-                                        <div class="info"> 
-                                            <h2>Details</h2>
-                                            <fieldset>
-                                            <form method="post" action="update_programme.php"> <!-- Form for updating program details -->
-                                                <input type="hidden" name="programmeId" value="<?php echo $row['programmeId']; ?>">
-                                                <div class="nice-form-group">
-                                                    <label>Programme Name</label>
-                                                    <input type="text" name="updatedName" value="<?php echo $row['programmeName']; ?>">
-                                                </div>
-                                
-                                                <div class="nice-form-group">
-                                                <label>Programme Start Date</label>
-                                                <input type="date" name="updatedStartDate" value="<?php echo $row['programmeStartDate']; ?>">
-                                                </div>
-
-                                                <div class="nice-form-group">
-                                                <label>Programme End Date</label>
-                                                <input type="date" name="updatedEndDate" value="<?php echo $row['programmeEndDate']; ?>">
-                                                </div>
-
-                                                <div class="nice-form-group">
-                                                    <label>Programme Description</label>
-                                                    <textarea rows="5" name="updatedDescription"><?php echo $row['programmeDesc']; ?></textarea>
-                                                </div>
-
-                                                <input type="submit" class="add-cart-btn" value="Confirm Update"> <!-- Using the existing button class -->
-                                            </form>
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                </div>
-                            </tr>
-                            <?php
-                                }
-                            } else {
-                                echo "<div>No results found</div>";
-                            }
-                            $conn->close();
-                        ?>
+                  <tbody id="programmeTableBody">
+                    
                   </tbody>
               </table>
           </section>
@@ -360,14 +259,14 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="Homepage/lib/wow/wow.min.js"></script>
-    <script src="Homepage/lib/easing/easing.min.js"></script>
-    <script src="Homepage/lib/waypoints/waypoints.min.js"></script>
-    <script src="Homepage/lib/counterup/counterup.min.js"></script>
-    <script src="Homepage/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="Homepage/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="Homepage/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="Homepage/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="/Homepage/lib/wow/wow.min.js"></script>
+    <script src="/Homepage/lib/easing/easing.min.js"></script>
+    <script src="/Homepage/lib/waypoints/waypoints.min.js"></script>
+    <script src="/Homepage/lib/counterup/counterup.min.js"></script>
+    <script src="/Homepage/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/Homepage/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/Homepage/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/Homepage/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="/Homepage/js/main.js"></script>
@@ -384,10 +283,10 @@
           menuBtnChange();//calling the function(optional)
         });
       
-        searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
-          sidebar.classList.toggle("open");
-          menuBtnChange(); //calling the function(optional)
-        });
+        // searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+        //   sidebar.classList.toggle("open");
+        //   menuBtnChange(); //calling the function(optional)
+        // });
       
         // following are the code to change sidebar button(optional)
         function menuBtnChange() {
@@ -397,66 +296,74 @@
            closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
          }
         }
-        </script>
+    </script>
 
-        <script>
-             // Wait for the document to be fully loaded
-            document.addEventListener("DOMContentLoaded", function() {
-            var popupViews = document.querySelectorAll('.popup-view');
-            var popupBtns = document.querySelectorAll('.popup-btn');
-            var closeBtns = document.querySelectorAll('.close-btn');
+    <script>
+            // Wait for the document to be fully loaded
+        document.addEventListener("DOMContentLoaded", function() {
+        var popupViews = document.querySelectorAll('.popup-view');
+        var popupBtns = document.querySelectorAll('.popup-btn');
+        var closeBtns = document.querySelectorAll('.close-btn');
 
-            //javascript for quick view button
-            var popup = function(popupClick){
-            popupViews[popupClick].classList.add('active');
-            console.log('hello');
+        //javascript for quick view button
+        var popup = function(popupClick){
+        popupViews[popupClick].classList.add('active');
+        console.log('hello');
+        }
+
+        popupBtns.forEach((popupBtn, i) => {
+        popupBtn.addEventListener("click", () => {
+            popup(i);
+        });
+        });
+
+        //javascript for close button
+        closeBtns.forEach((closeBtn) => {
+        closeBtn.addEventListener("click", () => {
+            popupViews.forEach((popupView) => {
+            popupView.classList.remove('active');
+            });
+        });
+        });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Script is executed!");
+
+            // JavaScript function to handle real-time filtering
+            function filterProgrammes() {
+                var input = document.getElementById('programmeIdInput').value;
+
+                console.log("Making AJAX request with input: " + input);
+
+                // Make an AJAX request to fetch filtered data
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById('programmeTableBody').innerHTML = xhr.responseText;
+                    }
+                };
+
+                // Use a different PHP script (filter.php) for filtering
+                var phpScript = 'filter.php?programmeId=' + input;
+
+                xhr.open('GET', phpScript, true);
+                xhr.send();
             }
 
-            popupBtns.forEach((popupBtn, i) => {
-            popupBtn.addEventListener("click", () => {
-                popup(i);
-            });
-            });
+            // Attach the function to the input field's "input" event
+            document.getElementById('programmeIdInput').addEventListener('input', filterProgrammes);
 
-            //javascript for close button
-            closeBtns.forEach((closeBtn) => {
-            closeBtn.addEventListener("click", () => {
-                popupViews.forEach((popupView) => {
-                popupView.classList.remove('active');
-                });
-            });
-            });
-            });
-        </script>
+            // Trigger the initial load without input
+            filterProgrammes();
+        });
+    </script>
 
-        <script>
-            // Function to handle the delete button click
-            function handleDeleteClick(id) {
-                // Ask for confirmation before deleting
-                if (confirm('Are you sure you want to delete this programme?')) {
-                    // Make an AJAX request to update the status
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('POST', '/Homepage/php/update_status.php', true);
-                    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                    xhr.onload = function() {
-                        if (xhr.status == 200) {
-                            // If the request is successful, update the UI or perform necessary actions
-                            console.log('Status updated successfully 1');
-                            // You can perform UI updates here if needed
-                            // For example, reload the page: 
-                            window.location.reload();
-                        } else {
-                            console.error('Error updating status');
-                        }
-                    };
-                    xhr.onerror = function() {
-                        console.error('Request failed');
-                    };
-                    // Send the ID of the item to update and the new status (1 for 'deleted')
-                    xhr.send('id=' + id + '&status=1');
-                }
-            }
-        </script>
+
+
+        
 
 </body>
 
