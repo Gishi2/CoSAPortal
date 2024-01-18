@@ -42,7 +42,7 @@
 <body>
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-        <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="<?php echo HOME_PAGE; ?>" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -50,7 +50,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="/index.php" class="nav-item nav-link">Home</a>
+                <?php  
+                    if ($_SESSION['userType'] === 'normalUser') {
+                        echo '<a href="'.NORMAL_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } else if ($_SESSION['userType'] === 'committeeMember') {
+                        echo '<a href="'.COMMITTEE_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } else if ($_SESSION['userType'] === 'admin') {
+                        echo '<a href="'.ADMIN_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } 
+                ?>
             </div>
         </div>
         <div class="nav-item dropdown">
@@ -60,9 +68,9 @@
                     if ($_SESSION['userType'] === 'normalUser') {
                         echo '<a href="'.PROGRAMME_PAGE.'" class="dropdown-item">Programme</a>';
                     } else if ($_SESSION['userType'] === 'committeeMember') {
-                        echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="nav-item nav-link">Home</a>';
+                        echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
                     } else if ($_SESSION['userType'] === 'admin') {
-                        echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="nav-item nav-link">Home</a>';
+                        echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
                     } 
                 ?>
                 <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>

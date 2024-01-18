@@ -62,8 +62,16 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
-                        <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
+                        <?php  
+                            if ($_SESSION['userType'] === 'normalUser') {
+                                echo '<a href="'.PROGRAMME_PAGE.'" class="dropdown-item">Programme</a>';
+                            } else if ($_SESSION['userType'] === 'committeeMember') {
+                                echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                            } else if ($_SESSION['userType'] === 'admin') {
+                                echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                            } 
+                        ?>
+                        <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
                     </div>
                 </div>
                 <?php if($_SESSION['userType'] !== 'normalUser') {

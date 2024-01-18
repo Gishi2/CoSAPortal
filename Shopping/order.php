@@ -1,4 +1,10 @@
 <?php
+    session_start();
+
+    if (!isset($_SESSION['matrixId'])) {
+        header("Location: /Login-system/login.html");
+    }
+
     require_once '../config/config.php';
 ?>
 
@@ -43,11 +49,27 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="<?php echo HOME_PAGE; ?>" class="nav-item nav-link">Home</a>
+                <?php  
+                    if ($_SESSION['userType'] === 'normalUser') {
+                        echo '<a href="'.NORMAL_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } else if ($_SESSION['userType'] === 'committeeMember') {
+                        echo '<a href="'.COMMITTEE_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } else if ($_SESSION['userType'] === 'admin') {
+                        echo '<a href="'.ADMIN_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } 
+                ?>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 50px;">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0" style="right: 1rem; box-shadow: 0 1px 4px 0 rgba(74,74,78,.12);">
-                        <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
+                        <?php  
+                            if ($_SESSION['userType'] === 'normalUser') {
+                                echo '<a href="'.PROGRAMME_PAGE.'" class="dropdown-item">Programme</a>';
+                            } else if ($_SESSION['userType'] === 'committeeMember') {
+                                echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                            } else if ($_SESSION['userType'] === 'admin') {
+                                echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                            } 
+                        ?>
                         <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
                         <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
                     </div>

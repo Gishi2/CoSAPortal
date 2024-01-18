@@ -1,4 +1,10 @@
 <?php
+    session_start();
+
+    if (!isset($_SESSION['matrixId'])) {
+        header("Location: /Login-system/login.html");
+    }
+
     if (isset($_GET['id'])) {
         $bookId = $_GET['id'];
     }

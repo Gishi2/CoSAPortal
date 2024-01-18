@@ -62,9 +62,9 @@
                     if ($_SESSION['userType'] === 'normalUser') {
                         echo '<a href="'.PROGRAMME_PAGE.'" class="dropdown-item">Programme</a>';
                     } else if ($_SESSION['userType'] === 'committeeMember') {
-                        echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="nav-item nav-link">Home</a>';
+                        echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
                     } else if ($_SESSION['userType'] === 'admin') {
-                        echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="nav-item nav-link">Home</a>';
+                        echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
                     } 
                 ?>
                 <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
