@@ -183,16 +183,25 @@ body {
     background-color: var(--light-primary);
 }
 
+html {
+    overflow-x: hidden;
+}
+
 .wrapper {
     width: 100vw;
     height: 100vh;
     /* background-color: rebeccapurple; */
 }
 
+main {
+    overflow-x: hidden;
+}
+
 main.container {
     width: 1400px;
     height: inherit;
     margin-top: 6rem;
+    overflow-x: hidden;
     /* background-color: red; */
 }
 
@@ -201,6 +210,7 @@ section.content {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 20px;
+    overflow-x: hidden;
 }
 
 .content-container {

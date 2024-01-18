@@ -1,8 +1,10 @@
 <?php
     session_start();
 
-    if (!isset($_SESSION['matrixId'])) {
-        header("Location: /Login-system/login.html");
+    if (isset($_SESSION['matrixId'])) {
+        $USER = $_SESSION['matrixId'];
+    } else {
+        header("Location: /Login-system/loginup.html");
     }
 
     require_once '../config/config.php';
@@ -12,7 +14,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MERCHANDISE - CoSA</title>
+    <title>E-BOOK - CoSA</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -36,7 +38,7 @@
 
     <!-- Template Stylesheet -->
     <link href="\Homepage\css\style.css" rel="stylesheet">
-    <link href="\Merchandise\css\merchandise-add.css" rel="stylesheet">    
+    <link href="\Book\css\book-add.css" rel="stylesheet">    
 </head>
 
 <body>
@@ -56,15 +58,7 @@
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: #1B2C51; margin-right: 2rem;">PAGES</a>
             <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                <?php  
-                    if ($_SESSION['userType'] === 'normalUser') {
-                        echo '<a href="'.PROGRAMME_PAGE.'" class="dropdown-item">Programme</a>';
-                    } else if ($_SESSION['userType'] === 'committeeMember') {
-                        echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="nav-item nav-link">Home</a>';
-                    } else if ($_SESSION['userType'] === 'admin') {
-                        echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="nav-item nav-link">Home</a>';
-                    } 
-                ?>
+                <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
                 <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
                 <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
             </div>
@@ -72,7 +66,34 @@
     </nav>
     <!-- Navbar End -->
 
-    <form action="includes/merchandise.inc.php" method="POST" enctype="multipart/form-data">
+    <?php
+        require_once 'includes/dbh.inc.php';
+
+        if (isset($_GET['id'])) {
+            $bookId = $_GET['id'];
+
+            $query = "SELECT * FROM book WHERE book_id = $bookId";
+
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                $bookTitle = $result['book_title'];
+                $bookSubject = $result['book_subject'];
+                $bookPrice = $result['book_price'];
+                $bookDesc = $result['book_desc'];
+                $bookCondition = $result['book_condition'];
+                $bookImageURL = $result['url_image'];
+            }
+
+            $pdo = null; $stmt = null;
+        }
+    ?>
+
+    <!-- Form Start -->
+    <form action="includes/updateBook.inc.php?id=<?php echo $bookId; ?>" method="POST" enctype="multipart/form-data">
         <div class="main-page">
             <div class="product-edit-container">
                 <h3>Basic Information</h3>
@@ -88,60 +109,70 @@
                         <div class="insert-image" onclick="triggerFileInput()">
                             <input type="file" name="file" accept="image/*" multiple="false" aspect="1" id="fileInput"> 
                             <i class="fa-regular fa-image"></i>
-                            <span>Add Image</span>
+                            <span>Edit Image</span>
                         </div>
                         <div class="imagePreview" id="imagePreviewContainer" onclick="previewImage()">
-                            <!-- <img src="\Merchandise\images\cosa-bomber.png"> -->
+                           <!-- img -->
                         </div>
-                        <span class="previewMessage" id="previewMessage"></span>
+                        <span style="display:block;" class="previewMessage" id="previewMessage"></span>
                         <div id="overlay" class="overlay" onclick="closePreview()"></div>
                         <div id="pop-up-preview" class="pop-up-preview">
-                            <!-- <img src="\Merchandise\images\cosa-bomber.png"> -->
+                            <!--img  -->
                         </div>
                     </div>
                 </div>
                 <div class="product-name">
                     <div class="edit-label">
                         <span class="mandatory-icon">*</span>
-                        <span>Product Name</span>
+                        <span>Book Title</span>
                     </div>  
-                    <input name="name" id="name" type="text" placeholder="Name" size="large" resize="none">
+                    <input name="title" id="title" type="text" placeholder="Name" size="large" resize="none"
+                        value="<?php echo isset($bookTitle) ? $bookTitle : ''; ?>">
                 </div>
                 <div class="product-stock">
                     <div class="edit-label">
                         <span class="mandatory-icon">*</span>
-                        <span>Product Stock</span>
+                        <span>Product Subject</span>
                     </div>
-                    <input name="stock" id="stock" type="text" placeholder="Stock" size="large" resize="none">
+                    <input name="subject" id="subject" type="text" placeholder="Stock" size="large" resize="none"
+                        value="<?php echo isset($bookSubject) ? $bookSubject : ''; ?>">
                 </div>
-                <div class="product-size">
+                <div class="product-condition">
                     <div class="edit-label">
                         <span class="mandatory-icon">*</span>
-                        <span>Product Size</span>
+                        <span>Condition</span>
                     </div>
-                    <!-- <input name="size" type="text" placeholder="Size" size="large" resize="none"> -->
-                    <div class="checkbox-size">
-                        <div class="checkbox">
-                            <input type="checkbox" name="size_S" id="size_S" <?php echo isset($checkedSizes['S']) ? 'checked' : ''; ?>>
-                            <label>S</label>
-                        </div>
-                        <div class="checkbox">
-                            <input type="checkbox" name="size_M" id="size_M" <?php echo isset($checkedSizes['M']) ? 'checked' : ''; ?>>
-                            <label>M</label>
-                        </div>
-                        <div class="checkbox">
-                            <input type="checkbox" name="size_L" id="size_L" <?php echo isset($checkedSizes['L']) ? 'checked' : ''; ?>>
-                            <label>L</label>
-                        </div>
-                        <div class="checkbox">
-                            <input type="checkbox" name="size_XL" id="size_XL" <?php echo isset($checkedSizes['XL']) ? 'checked' : ''; ?>>
-                            <label>XL</label>
-                        </div>
-                        <div class="checkbox">
-                            <input type="checkbox" name="size_NONE" id="size_NONE" <?php echo isset($checkedSizes['None']) ? 'checked' : ''; ?>>
-                            <label>None</label>
-                        </div>
-                    </div>
+                    <?php
+                        $condition = $bookCondition;
+
+                        function cleanAndLowercase($value) {
+                            return strtolower(str_replace('_', '', $value));
+                        }
+                        
+                        echo '<select id="condition" name="condition">
+                            <option value="" disabled>Select Condition</option>
+                            <option value="like_new"';
+                        if (cleanAndLowercase($condition) == cleanAndLowercase("like_new")) {
+                            echo ' selected';
+                        }
+                        echo '>Like New</option>
+                            <option value="very_good"';
+                        if (cleanAndLowercase($condition) == cleanAndLowercase("very_good")) {
+                            echo ' selected';
+                        }
+                        echo '>Very Good</option>
+                            <option value="good"';
+                        if (cleanAndLowercase($condition) == cleanAndLowercase("good")) {
+                            echo ' selected';
+                        }
+                        echo '>Good</option>
+                            <option value="acceptable"';
+                        if (cleanAndLowercase($condition) == cleanAndLowercase("acceptable")) {
+                            echo ' selected';
+                        }
+                        echo '>Acceptable</option>
+                        </select>';
+                    ?>
                 </div>
                 <div class="product-price">
                     <div class="edit-label">
@@ -152,25 +183,26 @@
                         <div class="input-box">
                             <span class="prefix" style="padding-left: 12px;">RM</span>
                             <span class="prefix" style="padding-left: 12px;">|</span>
-                            <input name="price" id="price" type="text" placeholder="Enter amount">
+                            <input name="price" id="price" type="text" placeholder="Enter amount"
+                                value="<?php echo isset($bookPrice) ? $bookPrice : ''; ?>">
                         </div>
                     </div>
                 </div>
                 <div class="product-description">
                     <div class="edit-label">
-                        <span class="mandatory-icon">*</span>
+                        <!-- <span class="mandatory-icon">*</span> -->
                         <span>Product Description</span>
                     </div>
                     <textarea name="description" id="description" type="textarea" resize="none" rows="2" minrows="9" maxrows="26" autosize="true"
-                    maxlength="Infinity" restrictiontype="input" style="resize: none; min-height: 210px; height: 210px;"></textarea>
+                        maxlength="Infinity" restrictiontype="input" style="resize: none; min-height: 210px; height: 210px;"
+                        ><?php echo isset($bookDesc) ? $bookDesc : ''; ?></textarea>
                 </div>
             </div>
         </div>
 
         <div class="button-container">
             <div class="button">
-                <div class="button-div" onclick="triggerLink()">
-                    <a id="button-link" class="button-link" href="/Merchandise/merchandise.php"></a>
+                <div class="button-div" onclick="goBack()">
                     <span>Cancel</span>
                 </div>
                 <button class="save-btn" type="submit" id="submit" name="submit" disabled>
@@ -180,6 +212,29 @@
         </div>
     </form>
 
-    <script src="/Merchandise/js/merchandise.js"></script>
-    <script src="/Merchandise/js/merchandise.field.js"></script>
+    <script src="/Book/js/book.js"></script>
+    <script src="/Book/js/book.field.js"></script>
+    <script>
+        var imageUrl = "<?php echo $bookImageURL; ?>";
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkField(true);
+
+            imagePreviewContainer.innerHTML = '';
+            previewMessage.textContent = '';
+            popupPreview.innerHTML = '';
+
+            var previewImage = document.createElement('img');
+            imagePreviewContainer.style.display = 'flex';
+
+            var popupImage = document.createElement('img');
+            previewMessage.style.display = 'block';
+
+            previewImage.src = imageUrl;
+            popupImage.src = imageUrl;
+
+            imagePreviewContainer.appendChild(previewImage);
+            popupPreview.appendChild(popupImage);
+        });
+    </script>
 </body>

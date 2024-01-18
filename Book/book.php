@@ -66,6 +66,9 @@
                         <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
                     </div>
                 </div>
+                <?php if($_SESSION['userType'] !== 'normalUser') {
+                    echo '<a class="sell-book-btn" href="/Book/book-list.php"><div>Book Overview</div></a>';
+                } ?>
                 <a class="sell-book-btn" href="/Book/book-add.php"><div>Sell your Book</div></a>
                 <div class="nav-cart">
                     <i id="nav-cart-icon" class="fa-solid fa-cart-shopping" onclick="redirectToShopping()"></i>
@@ -126,7 +129,7 @@
                                         echo '<h2 class="name">' .$book['book_title']. '</h2>';
                                         echo '<span class="price">RM' .$book['book_price']. '</span>';
                                         echo '<span class="description">' .$book['book_desc']. '</span>';
-                                        echo '<span class="description">' .$book['book_desc']. '</span>';
+                                        // echo '<span class="description">' .$book['book_desc']. '</span>';
                                         echo '<div class="pop-up-btn">';
                                             // echo '<div class="button cart-btn" onclick="addToCartButton(' .$counter. ')">';
                                             //     echo '<button>';
@@ -135,14 +138,14 @@
                                             // echo '</div>';
                                             echo '<div class="button buy-btn" onclick="buyNowButton(' .$counter. ')">';
                                             echo '<button>Buy Now</button>';
-                                            echo '</div>'; 
+                                            echo '</div>';
                                         echo '</div>';
                                     echo '</div>';
                                 echo '</div>';
                             }
                             echo '</div>';                            
                         } else {
-                            echo '<div>There are currently no available books.</div>';
+                            echo '<div style="position: absolute; height: 100%; width: 100%; text-align: center;">There are currently no available books.</div>';
                         }
                     } catch (PDOException $e) {
                         error_log("Query failed: " . $e->getMessage());

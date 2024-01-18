@@ -24,7 +24,7 @@ ul, li {
 }
 
 .content-section {
-    position: fixed;
+    position: relative;
     min-height: 100vh;
     top: 0;
     left: 78px;

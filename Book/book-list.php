@@ -32,7 +32,7 @@
     <link href="\Homepage\css\bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="\Merchandise\css\merchandise-edit.css" rel="stylesheet">  
+    <link href="\Book\css\book-list.css" rel="stylesheet">  
 </head>
 
 <body>
@@ -57,7 +57,7 @@
             <span class="tooltip">Merchandise</span>
             </li>
             <li>
-                <a href="/Book/book-list.php">
+                <a href="book-list.php">
                     <i class='bx bx-book' ></i>
                     <span class="links_name">Book</span>
                 </a>
@@ -99,72 +99,81 @@
             <div class="page-content-main">
                 <div class="page-header">
                     <?php
-                        require_once "includes/merchandiseAmount.inc.php";
-                    ?>
-                    <a class="add-merchandise-btn" href="/Merchandise/merchandise-add.php">
-                    <i class='bx bx-plus'></i>Add a New Merchandise</a>
-                </div>
-                <div class="content-list-section">
-                    <div class="content-list-container">
-                        <div class="content-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="text-align: center">ID</th>
-                                        <th>Product Name</th>
-                                        <th>Description</span></th>
-                                        <th>Available Size</span></th>
-                                        <th>Stock</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
+                       require_once "includes/dbh.inc.php";
+
+                       $query = "SELECT * FROM book";
+
+                        $stmt = $pdo->prepare($query);
+                        $stmt->execute();
+
+                        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        $counter = count($results);
+
+                        if ($counter !== 0 && $counter !== 1) {
+                            echo '<h3>'.$counter.' Books</h3>';
+                        } else {
+                            echo '<h3>'.$counter.' Book</h3>';
+                        }
+                        
+                    
+                    echo '
+                        </div>
+                        <div class="content-list-section">
+                            <div class="content-list-container">
+                                <div class="content-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center">ID</th>
+                                                <th>Title</th>
+                                                <th>Subject</th>
+                                                <th>Description</th>
+                                                <th>Price</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>';
                                         try {
-                                            require_once "includes/dbh.inc.php";
+                                            
 
-                                            $query = "SELECT * FROM merchandise";
-
-                                            $stmt = $pdo->prepare($query);
-                                            $stmt->execute();
-
-                                            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                                            if ($results > 0) {
-                                                foreach ($results as $merchandise) {
+                                            if (!empty($results)) {
+                                                foreach ($results as $book) {
                                                     echo '<tr>';
                                                         echo '<td>';
-                                                            echo '<div style="text-align: center">' . $merchandise['id'] . '</div>';
+                                                            echo '<div style="text-align: center">' . $book['book_id'] . '</div>';
                                                         echo '</td>';
                                                         echo '<td>';
                                                         echo '<div class="name-container">';
                                                             echo '<div class="img-container">';
-                                                                echo '<img src="' . $merchandise['image_url']. '">';
+                                                                echo '<img src="' . $book['url_image']. '">';
                                                             echo '</div>';
                                                             echo '<div class="text-container">';
-                                                                echo '<span>'. $merchandise['name'] .'</span>';
+                                                                echo '<span>'. $book['book_title'] .'</span>';
                                                             echo '</div>';
                                                         echo '</div>';
                                                         echo '<td>';
-                                                            echo '<div>' . $merchandise['description'] . '</div>';
+                                                            echo '<div>' . $book['book_subject'] . '</div>';
                                                         echo '</td>';
                                                         echo '<td>';
-                                                            echo '<div>' . $merchandise['size'] . '</div>';
-                                                        echo '</td>';
-                                                        echo '<td>';
-                                                            if ($merchandise['stock'] != 0) {
-                                                                echo '<div>' . $merchandise['stock'] . '</div>';
+                                                            if (empty($book['book_desc'])) {
+                                                                echo '<div style="color: red;">none</div>';
                                                             } else {
-                                                                echo '<div class="red-text">Out of Stock</div>';
-                                                            }
+                                                                echo '<div>' . $book['book_desc'] . '</div>';
+                                                            } 
                                                         echo '</td>';
+                                                        echo '<td>';
+                                                            echo '<div>RM' . $book['book_price'] . '</div>';
+                                                        echo '</td>';
+                                                        // echo '<td>';
+                                                        //     echo '<div>' . $book['size'] . '</div>';
+                                                        // echo '</td>';
                                                         echo '<td>';
                                                             echo '<div class="table-btn">';
-                                                                echo '<button onclick="redirectToEditPage('. $merchandise['id'] .')">';
+                                                                echo '<button onclick="redirectToEditPage('. $book['book_id'] .')">';
                                                                     echo '<span>Edit</span>';
                                                                 echo '</button>';
-                                                                echo '<form action="includes/deleteMerchandise.inc.php" method="post">';
-                                                                    echo '<input type="hidden" name="merchandiseId" value="'. $merchandise['id'] .'">';
+                                                                echo '<form action="includes/deleteBook.inc.php" method="post">';
+                                                                    echo '<input type="hidden" name="bookId" value="'. $book['book_id'] .'">';
                                                                     echo '<button class="delete-btn" type="submit">';
                                                                         echo '<span>Delete</span>';
                                                                     echo '</button>';
@@ -173,6 +182,10 @@
                                                         echo '</td>';
                                                     echo '</tr>';
                                                 }
+                                            } else {
+                                                echo '<tr>
+                                                        <th colspan="8" style="text-align: center; background: none;">There are no available book</th>
+                                                    </tr>';
                                             }
                                             $pdo = null; $stmt = null;
                                         } catch (PDOException $e) {
@@ -189,6 +202,6 @@
     </div>
     </section>
     
-    <script src="js/merchandise.list.js"></script>
+    <script src="js/book.list.js"></script>
     <script src="js/sidebar.js"></script>
 </body>

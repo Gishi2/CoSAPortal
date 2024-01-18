@@ -162,8 +162,8 @@
                                                 echo '<table class="content-box">';
                                                 echo '<thead>';
                                                     echo '<tr>';
-                                                        echo '<th colspan="2"><i class="bx bxs-user-circle"></i>'. $order['user'] .'</th>';
-                                                        echo '<th colspan="4" style="text-align: right;">Order ID: '. $order['id'] .'</th>';
+                                                        echo '<th colspan="3"><i class="bx bxs-user-circle"></i>'. $order['user'] .'</th>';
+                                                        echo '<th colspan="2" style="text-align: center;">Order ID: '. $order['id'] .'</th>';
                                                     echo '</tr>';
                                                 echo '</thead>';
                                             }
@@ -185,12 +185,14 @@
                                                         echo '</td width="20%">';
                                                         echo '<td>';
                                                             if ($order['status'] === '1') {
-                                                                echo '<div>Pending</div>';
+                                                                echo '<div class="red-text">Pending</div>';
                                                             }
                                                         echo '</td>';
                                                         echo '<td width="20%">';
                                                             echo '<div class="table-btn">';
-                                                                echo '<a href="">View Details</a>';
+                                                                echo '<div>';
+                                                                    echo '<a>View Details</a>';
+                                                                echo '</div>';
                                                             echo '</div>';
                                                         echo '</td>';
                                                     echo '</tr>';
