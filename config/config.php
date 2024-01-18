@@ -2,6 +2,8 @@
     // Define page links
     define('HOME_PAGE', '/index.php');
     define('PROGRAMME_PAGE', '/Homepage/php/fetch_programme_user.php');
+    define('PROGRAMME_ADMIN_PAGE', '/Homepage/php/fetch_programme_admin.php');
+    define('PROGRAMME_SUPERADMIN_PAGE', '/Homepage/php/fetch_programme_superadmin.php');
     define('MERCHANDISE_PAGE', '/Merchandise/merchandise.php');
     define('BOOK_PAGE', '/Book/book.php');
     define('SIGN_UP_PAGE', '/Login-system/signup.html');

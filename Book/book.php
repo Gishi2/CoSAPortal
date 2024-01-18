@@ -126,6 +126,7 @@
                                         echo '<h2 class="name">' .$book['book_title']. '</h2>';
                                         echo '<span class="price">RM' .$book['book_price']. '</span>';
                                         echo '<span class="description">' .$book['book_desc']. '</span>';
+                                        echo '<span class="description">' .$book['book_desc']. '</span>';
                                         echo '<div class="pop-up-btn">';
                                             // echo '<div class="button cart-btn" onclick="addToCartButton(' .$counter. ')">';
                                             //     echo '<button>';
