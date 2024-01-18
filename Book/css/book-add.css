@@ -55,19 +55,20 @@ body {
     margin-left: 3rem;
 }
 
-.checkbox-size {
+select {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    border-color: #e5e5e5;
+    border-radius: 0.2rem;
+    color: #333;
+    font-weight: 300;
+    font-size: 14px;
+    padding: 0 0.5rem;
+    width: 160px;
 }
 
-.checkbox {
-    display: flex;
-    padding-left: 0.5rem;
-}
-
-.checkbox > label {
-    padding-left: 0.5rem;
+select > option {
+    color: #333;
+    font-weight: 300;
 }
 
 .product-image {
@@ -203,6 +204,7 @@ body {
     border: 1px solid #e5e5e5;
     border-radius: 0.3rem;
     overflow: hidden;
+    /* transition: border-color 0.3s; */
 }
 
 .input-box:focus-within {

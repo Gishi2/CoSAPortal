@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root {
+    --primary: #0463FA;
+    --light-primary: #2579ff;
+    --light: #EFF5FF;
+    --grey: #f8f8f8;
+    --dark: #1B2C51;
+    --danger: #dc3545;
+    --disabled: #adb5bd;
+}
+
+body {
+    background: #f6f6f6;
+}
+
+.box-shadow {
+    box-shadow: 0px 0px 20px rgba(25, 25, 25, 0.5);
+}
+
+.sell-book-btn {
+    display: flex;
+    position: relative;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 12rem;
+    margin-left: 1rem;
+    background-color: var(--primary);
+    color: var(--light);
+    border-radius: 0.25rem;
+    height: 2.625rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.sell-book-btn:hover {
+    background-color: var(--light-primary);
+    color: var(--light);
+    transition: 0.2s ease;
+}
+
+.nav-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 3rem;
+    padding-left: 1.5rem;
+}
+
+.nav-cart:hover + .box-cart {
+    display: flex;
+}
+
+.nav-cart > i {
+    transform: scale(1.25);
+    cursor: pointer;
+    color: var(--dark);
+    transition: 0.5s ease;
+}
+
+.nav-cart > i:hover{
+    /* color: var(--primary); */
+    transition: 0.5s ease;
+}
+
+.box-cart {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 24rem;
+    height: fit-content;
+    top: 100%;
+    right: 1rem;
+    border-radius: 0.2rem;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    z-index: 1;
+}
+
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    width: 24rem;
+    min-height: 20rem;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.empty-cart > i {
+    transform: scale(3);
+}
+
+.box-cart > h3 {
+    display: flex;
+    width: 100%;
+    height: 2.5rem;
+    font-size: 1rem;
+    align-items: center;
+    margin: 0;
+    padding-left: 0.625rem;
+}
+
+.cart-item {
+    display: flex;
+    height: fit-content;
+    width: 100%;
+    padding: 0.625rem;
+}
+
+.cart-item:hover {
+    background-color: var(--grey);
+}
+
+.cart-item .box {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.cart-item .box > img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+.cart-item .text {
+    color: var(--dark);
+    padding-left: 0.625rem;
+    position: relative;
+    flex-grow: 1;
+}
+
+.cart-item .price {
+    color: var(--dark);
+}
+
+.cart-item .btn-delete {
+    display: none;
+    padding-left: 0.625rem;
+    transition: 0.5s ease;
+    font-weight: 500;
+    border: none;
+    background: none;
+}
+
+.cart-item .btn-delete:hover {
+    color: var(--danger);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cart-item:hover .btn-delete {
+    display: flex;
+}
+
+.shopping-cart-button {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: flex-end;
+    margin-top: auto;
+    padding: 0.625rem;
+}
+
+.shopping-cart-link > button {
+    padding: 0px 15px;
+    color: #fff;
+    height: 34px;
+    font-size: 14px;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 0.25rem;
+}
+
+.shopping-cart-link > button:hover {
+    background-color: var(--light-primary);
+}
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    /* background-color: rebeccapurple; */
+}
+
+main.container {
+    width: 1400px;
+    height: inherit;
+    margin-top: 6rem;
+    /* background-color: red; */
+}
+
+section.content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.content-container {
+    border: 1px solid transparent;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.section-a {
+    overflow: hidden;
+    max-width: 672px;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: inherit;
+    color: inherit;
+    transition: 0.5s ease;
+}
+
+.section-a:hover {
+    box-shadow: 0px 0px 25px rgba(25, 25, 25, 0.1);
+    background-color: rgba(25, 25, 25, 0.1);
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.content-box {
+    text-decoration: none;
+    color: rgba(0,0,0,.87);
+    display: block;
+    box-shadow: 0 0.0625rem 0.125rem 0 rgba(0,0,0,.1);
+    border-radius: .125rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+    position: relative;
+    overflow: visible;
+    cursor: pointer;
+    transition: transform .1s cubic-bezier(.4,0,.6,1),box-shadow .1s cubic-bezier(.4,0,.6,1);
+}
+
+.content-box .image {
+    max-height: 320px;
+    min-height: 236px;
+    background-color: #0463FA;
+}
+
+.content-box .image > img {
+    position: relative;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.content-box .details {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    overflow: hidden;
+    background-color: fff;
+    z-index: 2;
+}
+
+.content-box .details >span:first-child {
+    font-weight: 500;
+    font-size: 1.250rem;
+}
+
+.content-box .details > span:nth-child(2) {
+    font-weight: 500;
+    font-size: 1.250rem;
+    color: var(--primary);
+}
+
+/* POP up */
+.pop-up-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1040; /* navbar is 1030 */
+    opacity: 0; /* Start with opacity 0 */
+    transition: opacity 1s ease; /* Add transition property */
+}
+
+.pop-up {
+    display: none;
+    position: relative;
+    width: 800px;
+    height: 500px;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 25px rgba(25, 25, 25, 0.5);
+    transition: 1s ease;
+}
+
+.pop-up > span {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+.pop-up .pop-up-image {
+    width: 50%;
+    border-right: 0.2rem solid rgb(100, 100, 100)
+}
+
+.pop-up .pop-up-image > img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.pop-up-description {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.pop-up-description > h2 {
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.pop-up-description > span.price {
+    color:#1B2C51;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.pop-up-description > span.description {
+    padding-bottom: 1rem;
+}
+
+.pop-up-description > span.size {
+    padding-top: 1rem;
+    padding-bottom: 0.25rem;
+}
+
+.pop-up-description > span.quantity {
+    padding-bottom: 0.25rem;
+}
+
+.pop-up-description .pop-up-btn {
+    margin-top: auto;
+}
+
+.pop-up-description .pop-up-btn .button > button {
+    display: flex;
+    position: relative;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    border-radius: 0.25rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.pop-up-description .pop-up-btn .button.cart-btn > button {
+    border-color: var(--primary);
+    background: rgba(4, 99, 250, 0.3);
+    color: var(--primary);
+    transition: 0.2s ease;
+}
+
+.pop-up-description .pop-up-btn .button.cart-btn > button:hover {
+    background: var(--light);
+    transition: 0.2s ease;
+}
+
+.pop-up-description .pop-up-btn .button.buy-btn > button {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: var(--light);
+    transition: 0.2s ease;
+}
+
+.pop-up-description .pop-up-btn .button.buy-btn > button:hover {
+    background: var(--light-primary);
+    transition: 0.2s ease;
+}

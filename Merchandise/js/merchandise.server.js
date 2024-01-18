@@ -1,17 +1,3 @@
-let cart = [];
-
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('#sizeButtons .size-btn');
-    const sizeDiv = document.getElementById('sizeButtons');
-
-    var allDisabled = Array.from(buttons).every(function(button) {
-        return button.disabled;
-    });
-    
-    console.log('All buttons disabled:', allDisabled);
-    sizeDiv.style.display = allDisabled ? 'none' : 'flex';
-});
-
 function addToCartButton(counter) {
 
     const popUp = document.getElementById('pop-up-' + counter);
