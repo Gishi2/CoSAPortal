@@ -90,7 +90,7 @@ session_start();
              <span class="tooltip">Mainpage</span>
           </li>
           <li>
-            <a href="/Homepage/php/fetch_programme_user.php">
+            <a href="/Homepage/php/fetch_programme_superadmin.php">
               <i class='bx bx-grid-alt'></i>
               <span class="links_name">Programme Registration</span>
             </a>

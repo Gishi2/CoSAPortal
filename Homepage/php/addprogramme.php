@@ -55,7 +55,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 
     // Redirect after successful submission (change the URL as needed)
-    header("Location: /Homepage/php/fetch_programme_admin.php");
-    exit();
+    // header("Location: /Homepage/php/fetch_programme_admin.php");
+    // exit();
+    session_start(); // Start the session
+    $userType = $_SESSION['userType'];
+
+    // Determine the redirect URL based on the user type
+    if ($userType == 'normalUser') {
+        // Normal Member
+        header("Location: /Homepage/php/fetch_programme_normal_member.php");
+    } elseif ($userType == 'committeeMember') {
+        // Committee Member
+        header("Location: /Homepage/php/fetch_programme_admin.php");
+    } elseif ($userType == 'admin') {
+        // Admin
+        header("Location: /Homepage/php/fetch_programme_superadmin.php");
+    } else {
+        // Default redirect (you can change this)
+        header("Location: /Homepage/php/fetch_programme_default.php");
+    }
+
+    exit(); // Ensure that no other code is executed after the redirect
 }
 ?>

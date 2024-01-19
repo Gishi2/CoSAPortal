@@ -1,3 +1,9 @@
+<?php
+session_start();
+$matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the session
+echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -207,7 +213,7 @@
                                 <td> <img src="<?php 
                                         // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
                                         $posterPath = $row["posterPath"];
-                                        $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
+                                        $basePath = "C:/xampp/htdocs/CoSAPortal-1"; // The server-specific part you want to remove
 
                                         // Remove the server-specific part from the path
                                         $relativePath = str_replace($basePath, '', $posterPath);

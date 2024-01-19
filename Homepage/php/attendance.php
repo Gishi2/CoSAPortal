@@ -1,3 +1,9 @@
+<?php
+session_start();
+$matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the session
+echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

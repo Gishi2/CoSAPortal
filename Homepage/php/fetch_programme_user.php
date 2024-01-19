@@ -369,42 +369,47 @@ session_start();
             });
         </script>
 
-        <script>
-            $(document).ready(function() {
-                $('.add-cart-btn').click(function(event) {
-                    event.preventDefault(); // Prevent the default form submission behavior
+    <script>
+        $(document).ready(function() {
+            $('.add-cart-btn').click(function(event) {
+                event.preventDefault(); // Prevent the default form submission behavior
 
-                    // Retrieve the program ID associated with the clicked button
-                    var programId = $(this).data('program-id'); // Assuming 'data-program-id' attribute holds the program ID
-                    console.log("Program ID:", programId);
+                // Retrieve the program ID associated with the clicked button
+                var programId = $(this).data('program-id'); // Assuming 'data-program-id' attribute holds the program ID
+                console.log("Program ID:", programId);
 
-                    // AJAX request to the PHP endpoint
-                    $.ajax({
-                        type: 'POST',
-                        url: 'register_programme.php', // Replace with your PHP endpoint URL
-                        data: { programId: programId },
-                        success: function(response) {
-                            // Handle the response from the server after registration
-                            if (response === "Registration successful") {
-                                alert('Successfully registered to the program!');
-                                // You might want to refresh the page or update UI accordingly
-                            } else if (response === "Successfully registered back to the program!") {
-                                alert('Successfully registered back to the program!');
-                            } else if (response === "You are already registered for this programme!") {
-                                alert('You are already registered to this programme!');
-                            } else {
-                                alert('Unexpected response from the server' + response);
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            // Handle error cases here
-                            alert('Error occurred while registering to the program');
-                            console.error(error);
+                // AJAX request to the PHP endpoint
+                $.ajax({
+                    type: 'POST',
+                    url: 'register_programme.php', // Replace with your PHP endpoint URL
+                    data: { programId: programId },
+                    success: function(response) {
+                        // Handle the response from the server after registration
+                        if (response === "Registration successful") {
+                            alert('Successfully registered to the program!');
+                            // Refresh the page after displaying the alert
+                            window.location.reload(true);;
+                        } else if (response === "Successfully registered back to the program!") {
+                            alert('Successfully registered back to the program!');
+                            // Refresh the page after displaying the alert
+                            window.location.reload(true);
+                        } else if (response === "You are already registered for this programme!") {
+                            alert('You are already registered to this programme!');
+                            window.location.reload(true);
+                        } else {
+                            alert('Unexpected response from the server' + response);
                         }
-                    });
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error cases here
+                        alert('Error occurred while registering to the program');
+                        console.error(error);
+                    }
                 });
             });
-        </script>
+        });
+    </script>
+
         
         <script>
             $(document).ready(function() {
@@ -426,10 +431,13 @@ session_start();
                             if (response === "Program dropped successfully") {
                                 alert('Program dropped successfully!');
                                 // You might want to refresh the page or update UI accordingly
+                                window.location.reload(true);
                             } else if (response === "You are not registered for this programme") {
                                 alert('You are not registered for this programme');
+                                window.location.reload(true);
                             } else if (response === "You have already dropped from this programme") {
                                 alert('You have already dropped from this programme');
+                                window.location.reload(true);
                             } else {
                                 alert('Unexpected response from the server' + programId);
                             }
