@@ -177,10 +177,10 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
             <i class="bx bx-cart-alt text-size-60 text-white center margin-bottom-15"></i>
             <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Merchandise Management</h3>
           </a>
-          <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-blue">
+          <!-- <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-blue">
             <i class="bx bx-grid-alt text-size-60 text-white center margin-bottom-15"></i>
             <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">E-Book Shop</h3>
-          </a>
+          </a> -->
           
           <!-- Image-->
           <img class="m-12 l-6 l-row-2 margin-bottom" src="img/img-08.jpg">

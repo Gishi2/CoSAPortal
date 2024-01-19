@@ -25,7 +25,7 @@ session_start();
 
 <head>
     <meta charset="utf-8">
-    <title>Klinik - Clinic Website Template</title>
+    <title>CoSA Portal | Profile</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -104,7 +104,7 @@ session_start();
            <span class="tooltip">User</span>
          </li>
          <li>
-           <a href="#">
+           <a href="/Book/book.php">
              <i class='bx bx-folder' ></i>
              <span class="links_name">E-Book Shop</span>
            </a>
@@ -120,8 +120,14 @@ session_start();
 
          <li class="profile">
          <div class="name-job">
-            <div class="profile_name" style="color: #8D8E92">User's Name</div>
-            <div class="job">Matrix Id</div>
+            <div class="profile_name" style="color: #8D8E92"><?php 
+            echo $_SESSION['username'];
+            ?></div>
+            <div class="job">
+                <?php 
+                echo $_SESSION['matrixId'];
+                ?>
+            </div>
         </div>
              <i class='bx bx-log-out' id="log_out"></i>
          </li>
@@ -131,7 +137,7 @@ session_start();
           <!-- Top Navbar Start -->
         <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-      <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+      <a href="/Login-system/mainpage/mainpage_user.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
           <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
           <!-- <h1 class="m-0 text-primary">PORTAL</h1> -->
           <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
@@ -141,7 +147,7 @@ session_start();
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto p-4 p-lg-0">
-              <a href="homepage.html" class="nav  -item nav-link">Home</a>
+              <a href="/Login-system/mainpage/mainpage_user.php" class="nav  -item nav-link">Home</a>
               <!-- <a href="about.html" class="nav-item nav-link">About</a> -->
               <!-- <a href="service.html" class="nav-item nav-link">Service</a> -->
               <!-- <div class="nav-item dropdown">

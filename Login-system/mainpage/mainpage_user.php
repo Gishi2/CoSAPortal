@@ -1,7 +1,7 @@
 <?php
 session_start();
 $matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the session
-echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
+// echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
 ?>
 
 
@@ -10,7 +10,7 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
 
 <head>
     <meta charset="utf-8">
-    <title>Klinik - Clinic Website Template</title>
+    <title>CoSA Portal | Mainpage</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -131,7 +131,7 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
           <!-- Top Navbar Start -->
         <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-      <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+      <a href="mainpage_user.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
           <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
           <!-- <h1 class="m-0 text-primary">PORTAL</h1> -->
           <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
@@ -141,9 +141,9 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto p-4 p-lg-0">
-              <a href="homepage.html" class="nav  -item nav-link">Home</a>
+              <a href="mainpage_user.php" class="nav  -item nav-link">Home</a>
           </div>
-          <a href="/index.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
+          <a href="/Login-system/logout.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
       </div>
   </nav>
   <!-- Navbar End -->
@@ -177,7 +177,7 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
             <i class="bx bx-cart-alt text-size-60 text-white center margin-bottom-15"></i>
             <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Merchandise</h3>
           </a>
-          <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-blue">
+          <a href="/Book/book.php" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-blue">
             <i class="bx bx-grid-alt text-size-60 text-white center margin-bottom-15"></i>
             <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">E-Book Shop</h3>
           </a>

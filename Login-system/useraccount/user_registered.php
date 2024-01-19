@@ -176,7 +176,7 @@ session_start();
     <div class="container-xl px-4 mt-4">
         <nav class="nav nav-borders">
             <a class="nav-link" href="details_admin.php" target="__blank">Profile</a>
-            <a class="nav-link active ms-0" href="user_registered.php" target="__blank">Programme Registered History</a>
+            <a class="nav-link active ms-0" href="user_registered.php" target="__blank">User Registered</a>
             <!-- <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Merchandise History</a>
             <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page" target="__blank">E-Book Shop History</a> -->
         </nav>
