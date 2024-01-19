@@ -1,10 +1,4 @@
 <?php
-    session_start();
-
-    if (!isset($_SESSION['matrixId'])) {
-        header("Location: /Login-system/login.html");
-    }
-
     $server = "localhost";
     $username = "root";
     $password = "";

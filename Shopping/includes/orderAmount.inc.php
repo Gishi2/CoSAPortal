@@ -1,10 +1,4 @@
 <?php
-    session_start();
-
-    if (!isset($_SESSION['matrixId'])) {
-        header("Location: /Login-system/login.html");
-    }
-
     try {
         require_once "includes/dbh.inc.php";
 

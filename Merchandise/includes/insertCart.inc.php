@@ -1,10 +1,4 @@
 <?php
-    session_start();
-
-    if (!isset($_SESSION['matrixId'])) {
-        header("Location: /Login-system/login.html");
-    }
-
     $rawData = file_get_contents('php://input');
     $decodedData = json_decode($rawData, true);
     error_log('PHP script executed successfully');
