@@ -57,16 +57,61 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="<?php echo HOME_PAGE; ?>" class="nav  -item nav-link active">Home</a>
                 <!-- <a href="about.html" class="nav-item nav-link">About</a> -->
-                <div class="nav-item dropdown">
+                <?php 
+                if (!isset($_SESSION['matrixId'])) {
+                echo '
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                            <a href="' . PROGRAMME_PAGE . '" class="dropdown-item">Programme</a>
+                            <a href="' . MERCHANDISE_PAGE . '" class="dropdown-item">Merchandise</a>
+                            <a href="' . BOOK_PAGE . '" class="dropdown-item">E-Book</a>
+                        </div>
+                    </div>
+                ';
+                } else if ($_SESSION['userType'] == 'normalUser'){
+                    echo '
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                                <a href="' . PROGRAMME_PAGE . '" class="dropdown-item">Programme</a>
+                                <a href="' . MERCHANDISE_PAGE . '" class="dropdown-item">Merchandise</a>
+                                <a href="' . BOOK_PAGE . '" class="dropdown-item">E-Book</a>
+                            </div>
+                        </div>
+                    ';
+                } else if ($_SESSION['userType'] == 'committeeMember'){
+                    echo '
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                                <a href="' . PROGRAMME_ADMIN_PAGE . '" class="dropdown-item">Programme</a>
+                                <a href="' . MERCHANDISE_COMMITTEE_PAGE . '" class="dropdown-item">Merchandise</a>
+                                <a href="' . BOOK_COMMITTEE_PAGE . '" class="dropdown-item">E-Book</a>
+                            </div>
+                        </div>
+                    ';
+                } else if ($_SESSION['userType'] = 'admin'){
+                    echo '<a href="' . MANAGEMENT_PAGE . '" class="nav  -item nav-link">Back To Management</a>';
+                }
+                ?> 
+                <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
                         <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
                         <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
                     </div>
-                </div>
+                </div> -->
             </div>
-            <a href="<?php echo SIGN_UP_PAGE; ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a>
+            <?php 
+            if (!isset($_SESSION['matrixId'])) {
+                echo '<a href="' . SIGN_UP_PAGE . '" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a>';
+            } else {
+                echo '<a href="' . LOG_OUT . '" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>';
+            }
+            ?>            
+            <!-- <a href="<?php echo SIGN_UP_PAGE; ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a> -->
         </div>
     </nav>
     <!-- Navbar End -->

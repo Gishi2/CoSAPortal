@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         // User is not registered for the program; proceed with registration logic
-        $stmtInsertRegistration = $conn->prepare("INSERT INTO attendance (matrixId, programmeId, programeStatus) VALUES (?, ?, 1)");
+        $stmtInsertRegistration = $conn->prepare("INSERT INTO attendance (matrixId, programmeId, status) VALUES (?, ?, 0)");
         $stmtInsertRegistration->bind_param("ss", $matrixId, $programId);
 
         if ($stmtInsertRegistration->execute()) {

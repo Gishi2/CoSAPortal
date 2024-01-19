@@ -77,11 +77,6 @@ session_start();
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list" style="padding: 0;">
-          <!-- <li>
-             <i class='bx bx-search' ></i>
-             <input type="text" placeholder="Search...">
-             <span class="tooltip">Search</span>
-          </li> -->
           <li>
             <a href="/Login-system/mainpage/mainpage_user.php">
               <i class='bx bx-home'></i>
@@ -90,6 +85,13 @@ session_start();
              <span class="tooltip">Mainpage</span>
           </li>
           <li>
+           <a href="/Login-system/useraccount/details.php">
+             <i class='bx bx-user' ></i>
+             <span class="links_name">User</span>
+           </a>
+           <span class="tooltip">User</span>
+         </li>
+          <li> 
             <a href="/Homepage/php/fetch_programme_user.php">
               <i class='bx bx-grid-alt'></i>
               <span class="links_name">Programme Registration</span>
@@ -97,11 +99,11 @@ session_start();
              <span class="tooltip">Programme</span>
           </li>
           <li>
-           <a href="/Login-system/useraccount/details.php">
-             <i class='bx bx-user' ></i>
-             <span class="links_name">User</span>
+           <a href="/Merchandise/merchandise.php">
+             <i class='bx bx-cart-alt' ></i>
+             <span class="links_name">Merchandise</span>
            </a>
-           <span class="tooltip">User</span>
+           <span class="tooltip">Merchandise</span>
          </li>
          <li>
            <a href="/Book/book.php">
@@ -110,14 +112,6 @@ session_start();
            </a>
            <span class="tooltip">E-Book Shop</span>
          </li>
-         <li>
-           <a href="/Merchandise/merchandise.php">
-             <i class='bx bx-cart-alt' ></i>
-             <span class="links_name">Merchandise</span>
-           </a>
-           <span class="tooltip">Merchandise</span>
-         </li>
-
          <li class="profile">
          <div class="name-job">
             <div class="profile_name" style="color: #8D8E92"><?php 
@@ -129,7 +123,7 @@ session_start();
                 ?>
             </div>
         </div>
-             <i class='bx bx-log-out' id="log_out"></i>
+             <i class='bx' id="log_out"></i>
          </li>
         </ul>
       </div>
@@ -416,6 +410,7 @@ session_start();
                 },
                 success: function(response) {
                     alert('Changes saved successfully!');
+                    window.location.reload(true);
                 },
                 error: function(xhr, status, error) {
                     alert('Error occurred while saving changes');

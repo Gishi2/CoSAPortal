@@ -131,7 +131,7 @@ $matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the sessi
           <!-- Top Navbar Start -->
         <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
-      <a href="mainpage_user.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+      <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
           <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
           <!-- <h1 class="m-0 text-primary">PORTAL</h1> -->
           <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
@@ -141,7 +141,7 @@ $matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the sessi
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto p-4 p-lg-0">
-              <a href="mainpage_user.php" class="nav  -item nav-link">Home</a>
+              <a href="/index.php" class="nav  -item nav-link">Home</a>
           </div>
           <a href="/Login-system/logout.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
       </div>
@@ -181,9 +181,6 @@ $matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the sessi
             <i class="bx bx-grid-alt text-size-60 text-white center margin-bottom-15"></i>
             <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">E-Book Shop</h3>
           </a>
-          
-          <!-- Image-->
-          <img class="m-12 l-6 l-row-2 margin-bottom" src="img/img-08.jpg">
           
           <a href="/Homepage/php/fetch_programme_user.php" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-orange">
             <i class="icon-sli-diamond text-size-60 text-white center margin-bottom-15"></i>

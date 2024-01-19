@@ -83,24 +83,12 @@ session_start();
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list" style="padding: 0;">
-          <!-- <li>
-             <i class='bx bx-search' ></i>
-             <input type="text" placeholder="Search...">
-             <span class="tooltip">Search</span>
-          </li> -->
-          <li>
+        <li>
             <a href="/Login-system/mainpage/mainpage_user.php">
               <i class='bx bx-home'></i>
               <span class="links_name">Mainpage</span>
             </a>
              <span class="tooltip">Mainpage</span>
-          </li>
-          <li>
-            <a href="/Homepage/php/fetch_programme_user.php">
-              <i class='bx bx-grid-alt'></i>
-              <span class="links_name">Programme Registration</span>
-            </a>
-             <span class="tooltip">Programme</span>
           </li>
           <li>
            <a href="/Login-system/useraccount/details.php">
@@ -109,27 +97,39 @@ session_start();
            </a>
            <span class="tooltip">User</span>
          </li>
-         <li>
-           <a href="#">
-             <i class='bx bx-folder' ></i>
-             <span class="links_name">E-Book Shop</span>
-           </a>
-           <span class="tooltip">E-Book Shop</span>
-         </li>
-         <li>
+          <li> 
+            <a href="/Homepage/php/fetch_programme_user.php">
+              <i class='bx bx-grid-alt'></i>
+              <span class="links_name">Programme Registration</span>
+            </a>
+             <span class="tooltip">Programme</span>
+          </li>
+          <li>
            <a href="/Merchandise/merchandise.php">
              <i class='bx bx-cart-alt' ></i>
              <span class="links_name">Merchandise</span>
            </a>
            <span class="tooltip">Merchandise</span>
          </li>
-
+         <li>
+           <a href="/Book/book.php">
+             <i class='bx bx-folder' ></i>
+             <span class="links_name">E-Book Shop</span>
+           </a>
+           <span class="tooltip">E-Book Shop</span>
+         </li>
          <li class="profile">
          <div class="name-job">
-            <div class="profile_name" style="color: #8D8E92">User's Name</div>
-            <div class="job">Matrix Id</div>
+            <div class="profile_name" style="color: #8D8E92"><?php 
+            echo $_SESSION['username'];
+            ?></div>
+            <div class="job">
+                <?php 
+                echo $_SESSION['matrixId'];
+                ?>
+            </div>
         </div>
-             <i class='bx bx-log-out' id="log_out"></i>
+             <i class='bx' id="log_out"></i>
          </li>
         </ul>
       </div>
@@ -238,7 +238,7 @@ session_start();
                                             <td> <img src="<?php 
                                                     // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
                                                     $posterPath = $row["posterPath"];
-                                                    $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
+                                                    $basePath = "C:/xampp/htdocs/CoSAPortal-1"; // The server-specific part you want to remove
 
                                                     // Remove the server-specific part from the path
                                                     $relativePath = str_replace($basePath, '', $posterPath);
@@ -264,7 +264,7 @@ session_start();
                                                         <img src="<?php 
                                                         // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
                                                         $posterPath = $row["posterPath"];
-                                                        $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
+                                                        $basePath = "C:/xampp/htdocs/CoSAPortal-1"; // The server-specific part you want to remove
 
                                                         // Remove the server-specific part from the path
                                                         $relativePath = str_replace($basePath, '', $posterPath);
