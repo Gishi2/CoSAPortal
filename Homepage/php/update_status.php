@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = $_POST['status'];
 
     // Update the status in the database
-    $updateQuery = "UPDATE programme SET status = $status WHERE programmeId = $id";
+    $updateQuery = "UPDATE programme SET programmeStatus = $status WHERE programmeId = $id";
 
     // Execute the query
     // You might want to add error handling and security measures here
