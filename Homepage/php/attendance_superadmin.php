@@ -65,24 +65,17 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
         <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list" style="padding: 0;">
-    <li>
-          <a href="/Login-system/mainpage/mainpage_committee.php">
-            <i class='bx bx-home'></i>
-            <span class="links_name">Mainpage</span>
-          </a>
-           <span class="tooltip">Mainpage</span>
-        </li>
         <li>
-         <a href="/Login-system/useraccount/details_committee.php">
+         <a href="/Login-system/useraccount/details_admin.php">
            <i class='bx bx-user' ></i>
            <span class="links_name">User</span>
          </a>
          <span class="tooltip">User</span>
        </li>
         <li> 
-          <a href="/Homepage/php/fetch_programme_admin.php">
+          <a href="/Homepage/php/fetch_programme_superadmin.php">
             <i class='bx bx-grid-alt'></i>
-            <span class="links_name">Programme Management</span>
+            <span class="links_name">Programme</span>
           </a>
            <span class="tooltip">Programme</span>
         </li>
@@ -94,7 +87,7 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
          <span class="tooltip">Merchandise</span>
        </li>
        <li>
-         <a href="/Book/book.php">
+         <a href="/Book/book-list.php">
            <i class='bx bx-folder' ></i>
            <span class="links_name">E-Book Shop</span>
          </a>

@@ -75,7 +75,7 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
           <li>
             <a href="/Homepage/php/fetch_programme_superadmin.php">
               <i class='bx bx-grid-alt'></i>
-              <span class="links_name">Programme Management</span>
+              <span class="links_name">Programme</span>
             </a>
              <span class="tooltip">Programme</span>
           </li>
