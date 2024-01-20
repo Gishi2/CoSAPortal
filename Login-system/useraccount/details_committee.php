@@ -80,7 +80,7 @@ session_start();
           <li>
             <a href="/Login-system/mainpage/mainpage_user.php">
               <i class='bx bx-home'></i>
-              <span class="links_name">Mainpage</span>
+              <span class="links_name">Main</span>
             </a>
              <span class="tooltip">Mainpage</span>
           </li>
@@ -94,7 +94,7 @@ session_start();
           <li> 
             <a href="/Homepage/php/fetch_programme_user.php">
               <i class='bx bx-grid-alt'></i>
-              <span class="links_name">Programme Registration</span>
+              <span class="links_name">Programme</span>
             </a>
              <span class="tooltip">Programme</span>
           </li>

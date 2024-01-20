@@ -67,7 +67,7 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
         <li>
           <a href="/Login-system/mainpage/mainpage_committee.php">
             <i class='bx bx-home'></i>
-            <span class="links_name">Mainpage</span>
+            <span class="links_name">Main</span>
           </a>
            <span class="tooltip">Mainpage</span>
         </li>
@@ -81,7 +81,7 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
         <li> 
           <a href="/Homepage/php/fetch_programme_admin.php">
             <i class='bx bx-grid-alt'></i>
-            <span class="links_name">Programme Management</span>
+            <span class="links_name">Programme</span>
           </a>
            <span class="tooltip">Programme</span>
         </li>
