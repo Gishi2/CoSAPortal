@@ -91,7 +91,7 @@
                     <div class="edit-image">
                         <div class="text">
                             <span class="mandatory-icon">*</span>
-                            <span>1 : 1 Image</span>
+                            <span>1 : 1 Image</sp   n>
                         </div>
                         <div class="insert-image" onclick="triggerFileInput()">
                             <input type="file" name="file" accept="image/*" multiple="false" aspect="1" id="fileInput"> 

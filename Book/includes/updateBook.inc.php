@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     if (isset($_GET['id'])) {
         $bookId = $_GET['id'];
     }
@@ -82,7 +84,12 @@
             $stmt->execute();
 
             $pdo = null; $stmt = null;
-            header("Location: /Book/book-list.php?updatesuccessful");
+            if ($_SESSION['userType'] === 'committeeMember' || $_SESSION['userType'] === 'admin') {
+                header("Location: /Book/book-list.php?updatesuccessful");
+            } else if ($_SESSION['userType'] === 'normalUser') {
+                header("Location: /Book/book-list-user.php?updatesuccessful");
+            }
+            
             die();
         } catch (PDOException $e) {
             die("Query failed: " . $e->getMessage());

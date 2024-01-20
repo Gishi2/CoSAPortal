@@ -74,9 +74,13 @@
                         <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
                     </div>
                 </div>
-                <?php if($_SESSION['userType'] !== 'normalUser') {
-                    echo '<a class="sell-book-btn" href="/Book/book-list.php"><div>Book Overview</div></a>';
-                } ?>
+                <?php 
+                    if($_SESSION['userType'] !== 'normalUser') {
+                        echo '<a class="sell-book-btn" href="/Book/book-list.php"><div>Book Overview</div></a>';
+                    } else {
+                        echo '<a class="sell-book-btn" href="/Book/book-list-user.php"><div>My Book</div></a>';
+                    }
+                ?>
                 <a class="sell-book-btn" href="/Book/book-add.php"><div>Sell your Book</div></a>
                 <div class="nav-cart">
                     <i id="nav-cart-icon" class="fa-solid fa-cart-shopping" onclick="redirectToShopping()"></i>

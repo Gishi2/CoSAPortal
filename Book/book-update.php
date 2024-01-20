@@ -113,7 +113,7 @@
                 <h3>Basic Information</h3>
                 <div class="product-image">
                     <div class="edit-label">
-                        <span>Product Image</span>
+                        <span>Book Image</span>
                     </div> 
                     <div class="edit-image">
                         <div class="text">
@@ -146,7 +146,7 @@
                 <div class="product-stock">
                     <div class="edit-label">
                         <span class="mandatory-icon">*</span>
-                        <span>Product Subject</span>
+                        <span>Book Subject</span>
                     </div>
                     <input name="subject" id="subject" type="text" placeholder="Stock" size="large" resize="none"
                         value="<?php echo isset($bookSubject) ? $bookSubject : ''; ?>">
@@ -191,7 +191,7 @@
                 <div class="product-price">
                     <div class="edit-label">
                         <span class="mandatory-icon">*</span>
-                        <span>Product Price</span>
+                        <span>Book Price</span>
                     </div>
                     <div class="input-group">
                         <div class="input-box">
@@ -204,8 +204,7 @@
                 </div>
                 <div class="product-description">
                     <div class="edit-label">
-                        <!-- <span class="mandatory-icon">*</span> -->
-                        <span>Product Description</span>
+                        <span>Book Description</span>
                     </div>
                     <textarea name="description" id="description" type="textarea" resize="none" rows="2" minrows="9" maxrows="26" autosize="true"
                         maxlength="Infinity" restrictiontype="input" style="resize: none; min-height: 210px; height: 210px;"

@@ -5,6 +5,8 @@
         header("Location: /Login-system/login.html");
     }
 
+    $userId = $_SESSION['matrixId'];
+
     require_once '../config/config.php';
 ?>
 
@@ -43,41 +45,82 @@
 
 <body>
     <!-- Sidebar Start -->
-    <div class="sidebar">
-        <div class="logo-details">
-            <i class='bx bx-menu' id="btn" ></i>
-        </div>
-        <ul class="nav-list">
-            <li>
-                <a href="/Shopping/order-list.php">
-                <i class='bx bx-clipboard'></i>
-                    <span class="links_name">Order</span>
-                </a>
-                <span class="tooltip">Order</span>
-            </li>
-            <li>
-            <a href="/Merchandise/merchandise-list.php">
-                <i class='bx bx-cart-alt' ></i>
-                <span class="links_name">Merchandise</span>
-            </a>
-            <span class="tooltip">Merchandise</span>
-            </li>
-            <li>
-                <a href="/Book/book-list-user.php">
-                    <i class='bx bx-book'></i>
-                    <span class="links_name">My Book</span>
-                </a>
-                <span class="tooltip">Book</span>
-            </li>
-            <li>
-                <a href="/Book/book-list.php">
-                    <i class='bx bx-folder' ></i>
-                    <span class="links_name">Book List</span>
-                </a>
-                <span class="tooltip">Book</span>
-            </li>
-         </ul>
-    </div>
+
+    <?php 
+        if ($_SESSION['userType'] === 'normalUser') {
+            echo '<div class="sidebar">';
+                echo '<div class="logo-details">';
+                    echo '<i class=\'bx bx-menu\' id="btn"></i>';
+                echo '</div>';
+                echo '<ul class="nav-list">';
+                    echo '<li>';
+                        echo '<a href="/Login-system/useraccount/details.php">';
+                        echo '<i class=\'bx bx-user\'></i>';
+                        echo '<span class="links_name">My Account</span>';
+                        echo '</a>';
+                        echo '<span class="tooltip">Account</span>';
+                    echo '</li>';
+                    echo '<li>';
+                        echo '<a href="/Book/book-list-user.php">';
+                        echo '<i class=\'bx bx-book\'></i>';
+                        echo '<span class="links_name">My Book</span>';
+                        echo '</a>';
+                        echo '<span class="tooltip">Book</span>';
+                    echo '</li>';
+                    echo '<li>';
+                        echo '<a href="/Shopping/purchase-history.php">';
+                        echo '<i class=\'bx bx-clipboard\'></i>';
+                        echo '<span class="links_name">Purchase History</span>';
+                        echo '</a>';
+                        echo '<span class="tooltip">Purchase</span>';
+                    echo '</li>';
+                    echo '<li>';
+                        echo '<a href="/Shopping/shopping-cart.php">';
+                        echo '<i class=\'bx bx-cart-alt\'></i>';
+                        echo '<span class="links_name">Shopping Cart</span>';
+                        echo '</a>';
+                        echo '<span class="tooltip">Shopping Cart</span>';
+                    echo '</li>';
+                echo '</ul>';
+            echo '</div>';
+        } else {
+            echo '<div class="sidebar">';
+                echo '<div class="logo-details">';
+                    echo '<i class=\'bx bx-menu\' id="btn"></i>';
+                echo '</div>';
+                echo '<ul class="nav-list">';
+                    echo '<li>';
+                        echo '<a href="/Shopping/order-list.php">';
+                        echo '<i class=\'bx bx-clipboard\'></i>';
+                        echo '<span class="links_name">Order</span>';
+                        echo '</a>';
+                        echo '<span class="tooltip">Order</span>';
+                    echo '</li>';
+                    echo '<li>';
+                        echo '<a href="/Merchandise/merchandise-list.php">';
+                        echo '<i class=\'bx bx-cart-alt\'></i>';
+                        echo '<span class="links_name">Merchandise</span>';
+                        echo '</a>';
+                        echo '<span class="tooltip">Merchandise</span>';
+                    echo '</li>';
+                    echo '<li>';
+                        echo '<a href="/Book/book-list-user.php">';
+                        echo '<i class=\'bx bx-book\'></i>';
+                        echo '<span class="links_name">My Book</span>';
+                        echo '</a>';
+                        echo '<span class="tooltip">Book</span>';
+                    echo '</li>';
+                    echo '<li>';
+                        echo '<a href="/Book/book-list.php">';
+                        echo '<i class=\'bx bx-folder\'></i>';
+                        echo '<span class="links_name">Book List</span>';
+                        echo '</a>';
+                        echo '<span class="tooltip">Book</span>';
+                    echo '</li>';
+                echo '</ul>';
+            echo '</div>';
+        }
+    ?>
     <!-- Sidebar End -->
 
     <section class="content-section">
@@ -128,24 +171,9 @@
             <div class="page-content-main">
                 <div class="page-header">
                     <?php
-                       require_once "includes/dbh.inc.php";
-
-                       $query = "SELECT * FROM book";
-
-                        $stmt = $pdo->prepare($query);
-                        $stmt->execute();
-
-                        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                        $counter = count($results);
-
-                        if ($counter !== 0 && $counter !== 1) {
-                            echo '<h3>'.$counter.' Books</h3>';
-                        } else {
-                            echo '<h3>'.$counter.' Book</h3>';
-                        }
-                        
                     
                     echo '
+                    My Book
                         </div>
                         <div class="content-list-section">
                             <div class="content-list-container">
@@ -163,7 +191,16 @@
                                         </thead>
                                         <tbody>';
                                         try {
-                                            
+                                            require_once "includes/dbh.inc.php";
+
+                                            $query = "SELECT * FROM book
+                                            WHERE book.user_id = $userId";
+
+                                            $stmt = $pdo->prepare($query);
+                                            $stmt->execute();
+
+                                            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                            $counter = count($results);
 
                                             if (!empty($results)) {
                                                 foreach ($results as $book) {

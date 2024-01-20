@@ -65,7 +65,7 @@
             <span class="tooltip">Merchandise</span>
             </li>
             <li>
-                <a href="book-list.php">
+                <a href="/Book/book-list.php">
                     <i class='bx bx-book' ></i>
                     <span class="links_name">Book</span>
                 </a>

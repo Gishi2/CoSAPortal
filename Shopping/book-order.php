@@ -151,7 +151,7 @@
                                     echo '<input type="hidden" name="productId[]" value="'.$product['product_id'].'">';
                                     echo '<input type="hidden" name="size[]" value="'.$product['size'].'">';
                                     echo '<input type="hidden" name="quantity[]" value="'.$product['quantity'].'">';
-                                echo '</div>';
+                                echo '</div>';  
                             }
                         } else {
                             echo '<div style="text-align: center; font-weight: 500; padding: 1rem; font-size: 1rem;">There are currently no orders!</div>';

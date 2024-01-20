@@ -60,6 +60,13 @@
                 <span class="tooltip">Account</span>
             </li>
             <li>
+                <a href="/Book/book-list-user.php">
+                    <i class='bx bx-book'></i>
+                    <span class="links_name">My Book</span>
+                </a>
+                <span class="tooltip">Book</span>
+            </li>
+            <li>
                 <a href="/Shopping/purchase-history.php">
                 <i class='bx bx-clipboard'></i>
                     <span class="links_name">Purchase History</span>
