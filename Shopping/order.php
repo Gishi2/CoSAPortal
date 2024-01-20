@@ -100,8 +100,17 @@
                 <?php
                     try {
                         $cartIDsString = $_COOKIE['cartIDs'];
-                        $cartIDs = json_decode(urldecode($cartIDsString), true);
-                        $cartIDArray = implode(',', $cartIDs);
+                        $cartIDs = json_decode($cartIDsString, true);
+
+                        if ($cartIDs === null && json_last_error() !== JSON_ERROR_NONE) {
+                            $cartIDs = [$cartIDsString];
+                        }
+
+                        if (is_array($cartIDs)) {
+                            $cartIDArray = implode(',', $cartIDs);
+                        } else {
+                            $cartIDArray = $cartIDs;
+                        }
 
                         require_once 'includes/dbh.inc.php';
 
@@ -190,7 +199,7 @@
                 <div class="content-box-product">
                     <div class="footer">
                         <button class="cancel-btn" type="button" onclick="goBack()">Back</button>
-                        <button type="submit" name="submit" onclick="orderCheck()">Place Order</button>
+                        <button type="submit" name="submit">Place Order</button>
                     </div>
                 </div>
             </section>
