@@ -66,9 +66,9 @@
                             if ($_SESSION['userType'] === 'normalUser') {
                                 echo '<a href="'.PROGRAMME_PAGE.'" class="dropdown-item">Programme</a>';
                             } else if ($_SESSION['userType'] === 'committeeMember') {
-                                echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                                echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="dropdown-item">Programme</a>';
                             } else if ($_SESSION['userType'] === 'admin') {
-                                echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                                echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="dropdown-item">Programme</a>';
                             } 
                         ?>
                         <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
@@ -116,9 +116,10 @@
                                     echo '<div class="details">';
                                         echo '<span>'. $book['book_title'] .'</span>';
                                         echo '<span>RM'. $book['book_price'] .'</span>';
+                                        $modifiedCondition = str_replace("_", " ", $book['book_condition']);
+                                        echo '<span>Condition: '. $modifiedCondition .'</span>';
                                         echo '<div id="star-rating"></div>';
                                         echo '<input type="hidden" value="'. $book['book_condition'] .'" id="star-value"></input>';
-                                        echo '<span>Semester 3</span>';
                                     echo '</div>';
                                 echo '</div>';
                                 echo '</a>';
@@ -137,17 +138,13 @@
                                         echo '<h2 class="name">' .$book['book_title']. '</h2>';
                                         echo '<span class="price">RM' .$book['book_price']. '</span>';
                                         echo '<span class="description">' .$book['book_desc']. '</span>';
-                                        // echo '<span class="description">' .$book['book_desc']. '</span>';
+                                        $modifiedCondition = str_replace("_", " ", $book['book_condition']);
+                                        echo '<span>Condition: '. $modifiedCondition .'</span>';
                                         echo '<div class="pop-up-btn">';
-                                            // echo '<div class="button cart-btn" onclick="addToCartButton(' .$counter. ')">';
-                                            //     echo '<button>';
-                                            //         echo '<i class="fa-solid fa-cart-plus"></i>';
-                                            //     echo 'Add to Cart</button>';
-                                            // echo '</div>';
                                             echo '<div class="button buy-btn" onclick="buyNowButton(' .$counter. ')">';
                                             echo '<button>Buy Now</button>';
                                             echo '</div>';
-                                        echo '</div>';
+                                        echo '</div>';  
                                     echo '</div>';
                                 echo '</div>';
                             }

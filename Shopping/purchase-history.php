@@ -167,6 +167,7 @@
                                                 JOIN orders_items ON orders.order_id = orders_items.order_id
                                                 LEFT JOIN merchandise ON orders_items.product_id = merchandise.id
                                                 WHERE orders.user_id = $userId
+                                                AND merchandise.id IS NOT NULL 
                                                 GROUP BY orders_items.order_id
                                                 ORDER BY orders.ordered_date DESC";
 
@@ -209,7 +210,71 @@
                                                     echo '</tr>';
                                                 }
                                             }
-                                            $pdo = null; $stmtOrder = null;
+                                            $stmtOrder = null;
+                                        } catch (PDOException $e) {
+                                            die("Query failed: " . $e->getMessage());
+                                        }   
+                                    ?>
+
+                                    <?php
+                                        try {
+                                            $queryOrder2 = "SELECT 
+                                                orders.order_totalPrice AS totalPrice,
+                                                orders.order_status AS status,
+                                                orders.user_id AS user,
+                                                DATE_FORMAT(ordered_date, '%Y-%m-%d') AS order_date,
+                                                orders_items.order_quantity AS quantity,
+                                                orders_items.order_size AS size,
+                                                book.book_title AS title,
+                                                book.url_image AS image_url
+                                                FROM orders
+                                                JOIN orders_items ON orders.order_id = orders_items.order_id
+                                                LEFT JOIN book ON orders_items.product_id = book.book_id
+                                                WHERE orders.user_id = $userId
+                                                AND book.book_id IS NOT NULL 
+                                                GROUP BY orders_items.order_id
+                                                ORDER BY orders.ordered_date DESC";
+
+                                            $stmtOrder2 = $pdo->prepare($queryOrder2);
+                                            $stmtOrder2->execute();
+
+                                            $results = $stmtOrder2->fetchAll(PDO::FETCH_ASSOC);
+
+                                            if ($results > 0) {
+                                                foreach ($results as $order) {
+                                                    echo '<tr>';;   
+                                                        echo '<td>';
+                                                        echo '<div class="name-container">';
+                                                            echo '<div class="img-container">';
+                                                                echo '<img src="' . $order['image_url']. '">';
+                                                            echo '</div>';
+                                                            echo '<div class="text-container">';
+                                                                echo '<span>'. $order['title'] .'</span>';
+                                                                echo '<span>x'. $order['quantity'] .'</span>';
+                                                            echo '</div>';
+                                                        echo '</div>';
+                                                        echo '<td>';
+                                                            echo '<div class="center">' . $order['size'] . '</div>';
+                                                        echo '</td>';
+                                                        echo '<td>';
+                                                            echo '<div class="center">RM' . $order['totalPrice'] . '</div>';
+                                                        echo '</td>';
+                                                        echo '<td>';
+                                                            if ($order['status'] === '1') {
+                                                                echo '<div class="center red-text">Pending</div>';
+                                                            } else if ($order['status'] === '2') {
+                                                                echo '<div class="center red-text">Completed</div>';
+                                                            } else {
+                                                                echo '<div class="center red-text">Cancelled</div>';
+                                                            }
+                                                        echo '</td>';
+                                                        echo '<td>';
+                                                            echo '<div class="center">' . $order['order_date'] . '</div>';
+                                                        echo '</td>';
+                                                    echo '</tr>';
+                                                }
+                                            }
+                                            $pdo = null; $stmtOrder2 = null;
                                         } catch (PDOException $e) {
                                             die("Query failed: " . $e->getMessage());
                                         }   

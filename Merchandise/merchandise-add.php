@@ -177,8 +177,7 @@
 
         <div class="button-container">
             <div class="button">
-                <div class="button-div" onclick="triggerLink()">
-                    <a id="button-link" class="button-link" href="/Merchandise/merchandise.php"></a>
+                <div class="button-div" onclick="goBack()">
                     <span>Cancel</span>
                 </div>
                 <button class="save-btn" type="submit" id="submit" name="submit" disabled>

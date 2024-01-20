@@ -57,7 +57,6 @@
                         echo '<a href="'.ADMIN_USER_PAGE.'" class="nav-item nav-link">Home</a>';
                     } 
                 ?>
-                <!-- <a href="" class="nav-item nav-link">About</a> -->
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
@@ -65,9 +64,9 @@
                             if ($_SESSION['userType'] === 'normalUser') {
                                 echo '<a href="'.PROGRAMME_PAGE.'" class="dropdown-item">Programme</a>';
                             } else if ($_SESSION['userType'] === 'committeeMember') {
-                                echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                                echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="dropdown-item">Programme</a>';
                             } else if ($_SESSION['userType'] === 'admin') {
-                                echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                                echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="dropdown-item">Programme</a>';
                             } 
                         ?>
                         <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>

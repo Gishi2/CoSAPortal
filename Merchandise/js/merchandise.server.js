@@ -67,11 +67,18 @@ function sendProductToServer(product) {
     })
     .then(data => {
         console.log('Server Response:', data);
-
         document.cookie = "cartIDs=" + data.cartId + "; path=/Shopping/order.php";
     })
     .catch(error => {
         console.error('Error:', error);
+
+        if (error.response) {
+            console.error('Response:', error.response);
+        } else if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+            console.error('Network error. Check your internet connection or server availability.');
+        } else {
+            console.error('Unknown error occurred.');
+        }
     });
 }
 

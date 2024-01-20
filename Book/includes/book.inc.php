@@ -1,4 +1,12 @@
 <?php
+    session_start();
+
+    if (!isset($_SESSION['matrixId'])) {
+        header("Location: /Login-system/login.html");
+    }
+
+    $userId = $_SESSION['matrixId'];
+
     require_once '../../config/config.php';
 
     if (isset($_POST['submit'])) {

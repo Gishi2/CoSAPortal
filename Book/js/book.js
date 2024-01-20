@@ -24,7 +24,8 @@ function triggerFileInput() {
 }
 
 function buyNowButton(counter) {
-  window.location.href = '/Shopping/shopping-cart.php';
+  addToCartButton(counter, true);
+  window.location.href = '/Shopping/book-order.php';
 }
 
 function goBack() {

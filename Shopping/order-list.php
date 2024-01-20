@@ -131,7 +131,11 @@
 
                         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                        echo '<h3>'. count($results) .' Orders</h3>';
+                        if (count($results) === 0 || count($results) === 1) {
+                            echo '<h3>'. count($results) .' Order</h3>';
+                        } else {
+                            echo '<h3>'. count($results) .' Orders</h3>';
+                        }
 
                         $stmt = null;
                     ?>

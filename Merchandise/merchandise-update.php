@@ -204,7 +204,7 @@
 
         <div class="button-container">
             <div class="button">
-                <div class="button-div" onclick="triggerLink()">
+                <div class="button-div" onclick="goBack()">
                     <a id="button-link" class="button-link" href="/Merchandise/merchandise-edit.php"></a>
                     <span>Cancel</span>
                 </div>

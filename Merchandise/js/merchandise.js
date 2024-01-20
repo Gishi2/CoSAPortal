@@ -70,6 +70,10 @@ function triggerLink() {
   merchandiseLink.click();
 }
 
+function goBack() {
+  history.back();
+}
+
 function successCart() {
   var successPopup = document.getElementById('successPopup');
 
