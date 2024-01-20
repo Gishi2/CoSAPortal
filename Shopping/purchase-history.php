@@ -3,7 +3,9 @@
 
     if (!isset($_SESSION['matrixId'])) {
         header("Location: /Login-system/login.html");
-    }
+    } 
+
+    $userId = $_SESSION['matrixId'];
 
     require_once '../config/config.php';
 ?>
@@ -51,16 +53,16 @@
         </div>
         <ul class="nav-list">
             <li>
-                <a href="book-list.php">
-                    <i class='bx bx-book'></i> 
+                <a href="/Login-system/useraccount/details.php">
+                    <i class='bx bx-user'></i> 
                     <span class="links_name">My Account</span>
                 </a>
                 <span class="tooltip">Account</span>
             </li>
             <li>
-                <a href="/Shopping/purchase-list.php">
+                <a href="/Shopping/purchase-history.php">
                 <i class='bx bx-clipboard'></i>
-                    <span class="links_name">My Purchase</span>
+                    <span class="links_name">Purchase History</span>
                 </a>
                 <span class="tooltip">Purchase</span>
             </li>
@@ -146,7 +148,7 @@
                                                 orders.order_totalPrice AS totalPrice,
                                                 orders.order_status AS status,
                                                 orders.user_id AS user,
-                                                orders.ordered_date AS dates,
+                                                DATE_FORMAT(ordered_date, '%Y-%m-%d') AS order_date,
                                                 orders_items.order_quantity AS quantity,
                                                 GROUP_CONCAT(
                                                     CASE UPPER(TRIM(orders_items.order_size))
@@ -164,6 +166,7 @@
                                                 FROM orders
                                                 JOIN orders_items ON orders.order_id = orders_items.order_id
                                                 LEFT JOIN merchandise ON orders_items.product_id = merchandise.id
+                                                WHERE orders.user_id = $userId
                                                 GROUP BY orders_items.order_id
                                                 ORDER BY orders.ordered_date DESC";
 
@@ -201,28 +204,8 @@
                                                             }
                                                         echo '</td>';
                                                         echo '<td>';
-                                                            echo '<div class="center">' . $order['dates'] . '</div>';
+                                                            echo '<div class="center">' . $order['order_date'] . '</div>';
                                                         echo '</td>';
-                                                        // echo '<td>';
-                                                        //     if ($merchandise['stock'] != 0) {
-                                                        //         echo '<div>' . $merchandise['stock'] . '</div>';
-                                                        //     } else {
-                                                        //         echo '<div class="red-text">Out of Stock</div>';
-                                                        //     }
-                                                        // echo '</td>';
-                                                        // echo '<td>';
-                                                        //     echo '<div class="table-btn">';
-                                                        //         echo '<button onclick="redirectToEditPage('. $merchandise['id'] .')">';
-                                                        //             echo '<span>Edit</span>';
-                                                        //         echo '</button>';
-                                                        //         echo '<form action="includes/deleteMerchandise.inc.php" method="post">';
-                                                        //             echo '<input type="hidden" name="merchandiseId" value="'. $merchandise['id'] .'">';
-                                                        //             echo '<button class="delete-btn" type="submit">';
-                                                        //                 echo '<span>Delete</span>';
-                                                        //             echo '</button>';
-                                                        //         echo '</form>';
-                                                        //     echo '</div>';
-                                                        // echo '</td>';
                                                     echo '</tr>';
                                                 }
                                             }

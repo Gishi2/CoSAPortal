@@ -20,6 +20,7 @@ function validateForm() {
         alert('Please select a payment method.');
         return false;
     }
+    
     var confirmation = window.confirm("You've successfully placed an order!");
 
     if (confirmation) {

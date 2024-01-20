@@ -35,12 +35,20 @@ try {
     $stmt->bindParam(":sizes", $sizes);
     $stmt->execute();
 
-    $pdo = null; $stmt = null;
+    $cartId = $pdo->lastInsertId();
+
+    $pdo = null; $stmt = null;  
+
+    header('Content-Type: application/json');
+    echo json_encode(['status' => 'success', 'cartId' => $cartId]);
+
     die();
 } catch (PDOException $e) {
     error_log("Query failed: " . $e->getMessage());
+
+    header('Content-Type: application/json');
+    echo json_encode(['error' => 'Error inserting item.']);
     http_response_code(500);
-    echo "Error inserting item.";
     die();
 }    
 ?>

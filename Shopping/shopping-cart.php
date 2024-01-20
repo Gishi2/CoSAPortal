@@ -50,16 +50,16 @@
         </div>
         <ul class="nav-list">
             <li>
-                <a href="book-list.php">
+                <a href="/Login-system/useraccount/details.php">
                     <i class='bx bx-book'></i> 
                     <span class="links_name">My Account</span>
                 </a>
                 <span class="tooltip">Account</span>
             </li>
             <li>
-                <a href="/Shopping/purchase-list.php">
+                <a href="/Shopping/purchase-history.php">
                 <i class='bx bx-clipboard'></i>
-                    <span class="links_name">My Purchase</span>
+                    <span class="links_name">Purchase History</span>
                 </a>
                 <span class="tooltip">Purchase</span>
             </li>
@@ -230,6 +230,6 @@
     </div>
 </section>
 
-    <script src="js/sidebar.js"></script>
     <script src="js/shopping.js"></script>
+    <script src="js/sidebar.js"></script>
 </body>
