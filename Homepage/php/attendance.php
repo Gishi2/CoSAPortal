@@ -94,7 +94,7 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
            <span class="tooltip">Merchandise</span>
          </li>
          <li>
-           <a href="/Book/book.php">
+           <a href="/Book/book-list.php">
              <i class='bx bx-folder' ></i>
              <span class="links_name">E-Book Shop</span>
            </a>
