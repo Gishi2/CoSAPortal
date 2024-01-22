@@ -16,15 +16,15 @@ if (isset($_POST['submit'])) {
     // Assuming $user_type is defined somewhere in your code
     $user_type = 1;  // Replace with the actual value or logic to determine user type
 
-    // Check if the matrixId already exists
-    $stmtCheck = $conn->prepare("SELECT matrixId FROM student WHERE matrixId = ?");
-    $stmtCheck->bind_param("s", $matrix);
-    $stmtCheck->execute();
-    $stmtCheck->store_result();
+    // Check if the username already exists
+    $stmtCheckUsername = $conn->prepare("SELECT userName FROM student WHERE userName = ?");
+    $stmtCheckUsername->bind_param("s", $username);
+    $stmtCheckUsername->execute();
+    $stmtCheckUsername->store_result();
 
-    if ($stmtCheck->num_rows > 0) {
-        // MatrixId already exists, display error and refresh the page
-        echo "<script>alert('MatrixId already exists!');</script>";
+    if ($stmtCheckUsername->num_rows > 0) {
+        // Username already exists, display error and refresh the page
+        echo "<script>alert('This username already exists! Please choose a different username.');</script>";
         echo "<script>window.location = 'signup.html';</script>";
         exit();
     } else {
