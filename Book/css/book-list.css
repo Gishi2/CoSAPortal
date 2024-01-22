@@ -364,7 +364,7 @@ ul, li {
 
 .content-section {
     position: relative;
-    /* background: #E4E9F7; */
+    overflow-x: hidden;
     min-height: 100vh;
     top: 0;
     left: 78px;
@@ -486,6 +486,12 @@ th {
     font-weight: 300;
 }
 
+th:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 td {
     padding: 15px;
     color: #333;
@@ -532,30 +538,21 @@ td {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    /* cursor: pointer; */
+    justify-content: center;
+    align-items: center;
 }
 
 .table-btn > button {
-    background: none;
-    border: none;
-    padding: 0;
-    display: flex;
-    justify-content: flex-start;
+    background-color: var(--dark-primary);
+    border-color: var(--dark-primary);
+    width: 6rem;
+    height: 2rem;
+    border-radius: 1rem;
+    color: var(--light);
 }
 
-.delete-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.table-btn > span {
-    cursor: pointer;
-}
-
-.table-btn span:hover {
-    color: var(--danger);
+.table-btn > button:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
 }
 

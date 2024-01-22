@@ -261,7 +261,8 @@
                                                             echo '</div>';
                                                         echo '</div>';
                                                         echo '<td>';
-                                                            echo '<div class="center">' . $order['size'] . '</div>';
+                                                            $modifiedCondition = str_replace("_", " ", $order['size']);
+                                                            echo '<div class="center">' . $modifiedCondition . '</div>';
                                                         echo '</td>';
                                                         echo '<td>';
                                                             echo '<div class="center">RM' . $order['totalPrice'] . '</div>';

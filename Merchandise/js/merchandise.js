@@ -50,7 +50,6 @@ function buyNowButton(counter) {
 
   if (allButtonsDisabled) {
     addToCartButton(counter, true);
-    window.location.href = '/Shopping/order.php';
     // window.location.reload(true);
     return;
   }
@@ -60,7 +59,6 @@ function buyNowButton(counter) {
     return;
   } else {
     addToCartButton(counter, true);
-    window.location.href = '/Shopping/order.php';
     // window.location.reload(true);
   }
 }

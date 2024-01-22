@@ -298,3 +298,13 @@ select > option {
     padding: 0.25rem 0.625rem 0.25rem 0.625rem;
     transition: 0.3s ease;
 }
+
+.delete-btn {
+    min-width: 140px;
+    background-color: var(--danger);
+    border-color: var(--danger);
+    color: #fff;
+    border-radius: 0.2rem;
+    padding: 0.25rem 0.625rem 0.25rem 0.625rem;
+    transition: 0.3s ease;
+}

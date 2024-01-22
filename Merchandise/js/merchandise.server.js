@@ -67,7 +67,7 @@ function sendProductToServer(product) {
     })
     .then(data => {
         console.log('Server Response:', data);
-        document.cookie = "cartIDs=" + data.cartId + "; path=/Shopping/order.php";
+        window.location.href = "/Shopping/order.php?cartIds=" + data.cartId;
     })
     .catch(error => {
         console.error('Error:', error);
