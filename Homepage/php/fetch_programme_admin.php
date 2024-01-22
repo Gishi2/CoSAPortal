@@ -1,9 +1,31 @@
+<?php
+// session_start();
+// $matrixId = $_SESSION['matrixId']; // Assuming 'matrixId' is stored in the session
+// echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
+// echo "Current File: " . __FILE__ . "<br>";
+// echo "Current Directory: " . __DIR__ . "<br>";
+session_start();
+
+    // Check if the user is not logged in
+    if (!isset($_SESSION['matrixId'])) {
+        // Redirect to the login page
+        header("Location: /Login-system/login.html");
+        exit(); // Ensure that the script stops here
+    } else {
+        $matrixId = $_SESSION['matrixId'];
+        echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "');</script>";
+    }
+
+    // Now, include other necessary files or perform actions for the logged-in user
+    // require_once '../config/config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Klinik - Clinic Website Template</title>
+    <title>CoSA Portal | Programme Management</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -59,49 +81,58 @@
         <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list" style="padding: 0;">
-      <!-- <li>
-         <i class='bx bx-search' ></i>
-         <input type="text" placeholder="Search...">
-         <span class="tooltip">Search</span>
-      </li> -->
-      <li>
-        <a href="fetch_programme_user.php">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Programme Management</span>
-        </a>
-         <span class="tooltip">Programme Management</span>
-      </li>
-      <li>
-       <a href="#">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">User</span>
-       </a>
-       <span class="tooltip">User</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-folder' ></i>
-         <span class="links_name">E-Book Shop</span>
-       </a>
-       <span class="tooltip">E-Book Shop</span>
-     </li>
-     <li>
-       <a href="/Merchandise/merchandise.php">
-         <i class='bx bx-cart-alt' ></i>
-         <span class="links_name">Merchandise Management</span>
-       </a>
-       <span class="tooltip">Merchandise Management</span>
-     </li>
-     <li class="profile">
+    <li>
+            <a href="/Login-system/mainpage/mainpage_committee.php">
+              <i class='bx bx-home'></i>
+              <span class="links_name">Main</span>
+            </a>
+             <span class="tooltip">Mainpage</span>
+          </li>
+          <li>
+           <a href="/Login-system/useraccount/details_committee.php">
+             <i class='bx bx-user' ></i>
+             <span class="links_name">User</span>
+           </a>
+           <span class="tooltip">User</span>
+         </li>
+          <li> 
+            <a href="fetch_programme_admin.php">
+              <i class='bx bx-grid-alt'></i>
+              <span class="links_name">Programme</span>
+            </a>
+             <span class="tooltip">Programme</span>
+          </li>
+          <li>
+           <a href="/Merchandise/merchandise-list.php">
+             <i class='bx bx-cart-alt' ></i>
+             <span class="links_name">Merchandise</span>
+           </a>
+           <span class="tooltip">Merchandise</span>
+         </li>
+         <li>
+           <a href="/Book/book-list.php">
+             <i class='bx bx-folder' ></i>
+             <span class="links_name">E-Book Shop</span>
+           </a>
+           <span class="tooltip">E-Book Shop</span>
+         </li>
+
+         <li class="profile">
          <div class="name-job">
-            <div class="profile_name">Prem Shahi</div>
-            <div class="job">Web Desginer</div>
+            <div class="profile_name">
+                <?php 
+                echo $_SESSION['username'];
+                ?>
+            </div>
+            <div class="job">
+                <?php 
+                echo $_SESSION['matrixId'];
+                ?>
+            </div>
          </div>
-             <i class='bx bx-log-out' id="log_out"></i>
-     </li>
-     <!-- <li class="profile">
-         <i class='bx bx-log-out' id="log_out" ></i>
-     </li> -->
+             <!-- <i class='bx bx-log-out' id="log_out"></i> -->
+             <i class='bx' id="log_out"></i>
+         </li>
     </ul>
       </div>
       <section class="home-section">
@@ -110,29 +141,15 @@
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
         <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
-            <!-- <h1 class="m-0 text-primary">PORTAL</h1> -->
-            <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="homepage.html" class="nav  -item nav-link ">Home</a>
-                <!-- <a href="about.html" class="nav-item nav-link">About</a> -->
-                <!-- <a href="service.html" class="nav-item nav-link">Service</a> -->
-                <!-- <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 30px;">Pages</a>
-                    <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                         <a href="about.html" class="dropdown-item">About Us</a> 
-                        <a href="\potoub-html\course-registration.html" class="dropdown-item">Programme</a>
-                        <a href="\potoub-html\Merchandise\merchandise.html" class="dropdown-item">Merchandise</a>
-                        <a href="\potoub-html\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
-                    </div>
-                </div> -->
-                <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+                <a href="/index.php" class="nav  -item nav-link ">Home</a>
             </div>
-            <a href="/index.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
+            <a href="/Login-system/logout.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -141,10 +158,10 @@
         <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
-            <h1 class="display-3 text-black mb-3 animated slideInDown">Programme Registration</h1>
+            <h1 class="display-3 text-black mb-3 animated slideInDown">Programme Management</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb text-uppercase mb-0">
-                    <li class="breadcrumb-item"><a class="text-black" href="#">Join a program now</a></li>
+                    <li class="breadcrumb-item"><a class="text-black" href="#"></a></li>
                 </ol>
             </nav>
         </div>
@@ -157,12 +174,13 @@
         <main class="table">
           <section class="table__header">
               <h1>List of Programmes</h1>
-              <div class="input-group">
+              <!-- <div class="input-group">
                   <input type="search" placeholder="Search Data...">
-                  <!-- <img src="/images/search.png" alt=""> -->
-              </div>
+                  <img src="/images/search.png" alt="">
+              </div> -->
               <div class="add-button">
                 <a href="/Homepage/Programme/programme-committee-addprogramme.html" class="button3">Add a Programme</a>
+                <a href="/Homepage/php/attendance.php" class="button3">Attendance Check</a>
               </div>
           </section>
           <section class="table__body">
@@ -194,7 +212,7 @@
                     }
 
                     // SQL query to fetch data
-                    $sql = "SELECT * FROM programme WHERE status = 0";
+                    $sql = "SELECT * FROM programme WHERE programmeStatus = 0";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -205,7 +223,7 @@
                                 <td> <img src="<?php 
                                         // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
                                         $posterPath = $row["posterPath"];
-                                        $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
+                                        $basePath = "C:/xampp/htdocs/CoSAPortal-1"; // The server-specific part you want to remove
 
                                         // Remove the server-specific part from the path
                                         $relativePath = str_replace($basePath, '', $posterPath);
@@ -231,7 +249,7 @@
                                             <img src="<?php 
                                             // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
                                             $posterPath = $row["posterPath"];
-                                            $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
+                                            $basePath = "C:/xampp/htdocs/CoSAPortal-1"; // The server-specific part you want to remove
 
                                             // Remove the server-specific part from the path
                                             $relativePath = str_replace($basePath, '', $posterPath);
@@ -294,61 +312,7 @@
     </section>
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Address</h5>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Services</h5>
-                    <a class="btn btn-link" href="">Cardiology</a>
-                    <a class="btn btn-link" href="">Pulmonary</a>
-                    <a class="btn btn-link" href="">Neurology</a>
-                    <a class="btn btn-link" href="">Orthopedics</a>
-                    <a class="btn btn-link" href="">Laboratory</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Quick Links</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Newsletter</h5>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- Footer End -->
 
 

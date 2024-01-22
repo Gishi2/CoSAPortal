@@ -11,11 +11,11 @@
         $count = count($results);
 
         if ($count > 1) {
-            echo '<span>'. $count .' Merchandises</span>';
+            echo '<h3>'. $count .' Merchandises</h3>';
         } else if ($count == 0) {
-            echo '<span> No Available Merchandise</span>';
+            echo '<h3> No Available Merchandise</h3>';
         } else if ($count == 1) {
-            echo '<span>'. $count .' Merchandise</span>';
+            echo '<h3>'. $count .' Merchandise</h3>';
         }
 
         $pdo = null; $stmt = null;

@@ -56,17 +56,62 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="<?php echo HOME_PAGE; ?>" class="nav  -item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <div class="nav-item dropdown">
+                <!-- <a href="about.html" class="nav-item nav-link">About</a> -->
+                <?php 
+                if (!isset($_SESSION['matrixId'])) {
+                echo '
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                            <a href="' . PROGRAMME_PAGE . '" class="dropdown-item">Programme</a>
+                            <a href="' . MERCHANDISE_PAGE . '" class="dropdown-item">Merchandise</a>
+                            <a href="' . BOOK_PAGE . '" class="dropdown-item">E-Book</a>
+                        </div>
+                    </div>
+                ';
+                } else if ($_SESSION['userType'] == 'normalUser'){
+                    echo '
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                                <a href="' . PROGRAMME_PAGE . '" class="dropdown-item">Programme</a>
+                                <a href="' . MERCHANDISE_PAGE . '" class="dropdown-item">Merchandise</a>
+                                <a href="' . BOOK_PAGE . '" class="dropdown-item">E-Book</a>
+                            </div>
+                        </div>
+                    ';
+                } else if ($_SESSION['userType'] == 'committeeMember'){
+                    echo '
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                                <a href="' . PROGRAMME_ADMIN_PAGE . '" class="dropdown-item">Programme</a>
+                                <a href="' . MERCHANDISE_COMMITTEE_PAGE . '" class="dropdown-item">Merchandise</a>
+                                <a href="' . BOOK_COMMITTEE_PAGE . '" class="dropdown-item">E-Book</a>
+                            </div>
+                        </div>
+                    ';
+                } else if ($_SESSION['userType'] = 'admin'){
+                    echo '<a href="' . MANAGEMENT_PAGE . '" class="nav  -item nav-link">Back To Management</a>';
+                }
+                ?> 
+                <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                         <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
                         <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
                         <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
                     </div>
-                </div>
+                </div> -->
             </div>
-            <a href="<?php echo SIGN_UP_PAGE; ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a>
+            <?php 
+            if (!isset($_SESSION['matrixId'])) {
+                echo '<a href="' . SIGN_UP_PAGE . '" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a>';
+            } else {
+                echo '<a href="' . LOG_OUT . '" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>';
+            }
+            ?>            
+            <!-- <a href="<?php echo SIGN_UP_PAGE; ?>" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login / Sign Up<i class="fa fa-arrow-right ms-3"></i></a> -->
         </div>
     </nav>
     <!-- Navbar End -->
@@ -121,7 +166,7 @@
                             }
 
                             // Perform a query to get the number of registered students
-                            $sql = "SELECT COUNT(*) as studentCount FROM student WHERE userType = '1'";
+                            $sql = "SELECT COUNT(*) as studentCount FROM student WHERE userType IN ('1', '2')";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
@@ -283,7 +328,7 @@
                         <h1 class="text-white mb-4">OUR ACTIVITIES</h1>
                         <p class="text-white mb-4 pb-2" style="text-align: justify;">Explore the diverse range of programs offered by CoSA that cater to both academic and extracurricular interests. From tech-centric workshops and seminars to engaging social events, our Programs Segment is designed to enrich your academic journey and foster a sense of belonging within the CoSA community. Dive into a world of opportunities and make the most of your university experience with CoSA Programs.
                         </p>
-                        <a class="btn btn-activity rounded-pill py-3 px-5 mt-3" href="about.html">Read More</a>
+                        <!-- <a class="btn btn-activity rounded-pill py-3 px-5 mt-3" href="about.html">Read More</a> -->
                     </div>
                 </div>
                 <div class="col-lg-6 pe-lg-0 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
@@ -513,7 +558,7 @@
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">Chad Tommy and Nuranishah</a>
                     </div>
                 </div>
             </div>

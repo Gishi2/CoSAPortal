@@ -40,17 +40,38 @@ function triggerFileInput() {
 function buyNowButton(counter) {
   const popUp = document.getElementById('pop-up-' + counter);
   const selectedSizeButton = popUp.querySelector('.pop-up-size .size-btn.active');
+
+  const areAllSizeButtonsDisabled = () => {
+    const allSizeButtons = popUp.querySelectorAll('.pop-up-size .size-btn');
+    return Array.from(allSizeButtons).every(button => button.disabled);
+  }
+
+  const allButtonsDisabled = areAllSizeButtonsDisabled(); 
+
+  if (allButtonsDisabled) {
+    addToCartButton(counter, true);
+    window.location.href = '/Shopping/order.php';
+    // window.location.reload(true);
+    return;
+  }
+
   if (!selectedSizeButton) {
     alert('Please select a size before adding to the cart.');
     return;
   } else {
-    window.location.href = '/Shopping/shopping-cart.php';
+    addToCartButton(counter, true);
+    window.location.href = '/Shopping/order.php';
+    // window.location.reload(true);
   }
 }
 
 function triggerLink() {
   var merchandiseLink = document.getElementById('button-link');
   merchandiseLink.click();
+}
+
+function goBack() {
+  history.back();
 }
 
 function successCart() {

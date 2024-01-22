@@ -410,7 +410,8 @@ ul, li {
     border-radius: 4px;
     overflow: hidden;
     margin-top: 16px;
-    height: 800px;
+    height: fit-content;
+    padding-bottom: 24px;
 }
 
 .page-header {

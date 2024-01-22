@@ -2,10 +2,19 @@
     // Define page links
     define('HOME_PAGE', '/index.php');
     define('PROGRAMME_PAGE', '/Homepage/php/fetch_programme_user.php');
+    define('PROGRAMME_ADMIN_PAGE', '/Homepage/php/fetch_programme_admin.php');
+    define('PROGRAMME_SUPERADMIN_PAGE', '/Homepage/php/fetch_programme_superadmin.php');
     define('MERCHANDISE_PAGE', '/Merchandise/merchandise.php');
-    define('BOOK_PAGE', '/E-Book/book.php');
+    define('MERCHANDISE_COMMITTEE_PAGE', '/Merchandise/merchandise-list.php');
+    define('BOOK_PAGE', '/Book/book.php');
+    define('BOOK_COMMITTEE_PAGE', '/Book/book-list.php');
     define('SIGN_UP_PAGE', '/Login-system/signup.html');
-    define('SHOPPING-CART_PAGE', '/Shopping/shopping-cart.php')
+    define('SHOPPING-CART_PAGE', '/Shopping/shopping-cart.php');
+    define('NORMAL_USER_PAGE', '/Login-system/mainpage/mainpage_user.php');
+    define('COMMITTEE_USER_PAGE', '/Login-system/mainpage/mainpage_committee.php');
+    define('ADMIN_USER_PAGE', '/Login-system/mainpage/mainpage_admin.php');
+    define('LOG_OUT', '/Login-system/logout.php');
+    define('MANAGEMENT_PAGE', '/Login-system/useraccount/details_admin.php');
 
     // Only need to Change the link here if u want to change the nav bar href
     // 1. Applied to Homepage.php

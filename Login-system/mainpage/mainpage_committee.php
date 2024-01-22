@@ -10,7 +10,7 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
 
 <head>
     <meta charset="utf-8">
-    <title>Klinik - Clinic Website Template</title>
+    <title>CoSAPortal | Committee Mainpage</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -141,9 +141,9 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto p-4 p-lg-0">
-              <a href="homepage.html" class="nav  -item nav-link">Home</a>
+              <a href="/index.php" class="nav  -item nav-link">Home</a>
           </div>
-          <a href="/index.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
+          <a href="/Login-system/logout.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
       </div>
   </nav>
   <!-- Navbar End -->
@@ -156,15 +156,15 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
           <div class="s-12 margin-bottom carousel-fade-transition owl-carousel carousel-main carousel-nav-white carousel-hide-arrows background-dark">
           <div class="item background-image" style="background-image:url(img/img-07.jpg); background-position-y: -400px;">
               <p class="text-padding text-strong text-white text-s-size-30 text-size-60 text-uppercase background-blue">We are Future System Developers</p><br>
-              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Con nonummy sem integer interdum volutpat dis eget eligendi aliquip dolorum magnam.</p>
+              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Welcome back! <?php echo $_SESSION['username'];?></p>
             </div>
             <div class="item background-image" style="background-image:url(img/img-07.jpg); background-position-y: -400px;">
               <p class="text-padding text-strong text-white text-s-size-30 text-size-60 text-uppercase background-blue">Promoveo Ut Tech</p><br>
-              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Con nonummy sem integer interdum volutpat dis eget eligendi aliquip dolorum magnam.</p>
+              <p class="text-padding text-size-20 text-dark text-uppercase background-white">What would you like to do today?</p>
             </div>
             <div class="item background-image" style="background-image:url(img/img-07.jpg); background-position-y: -400px;">
               <p class="text-padding text-strong text-white text-s-size-30 text-size-60 text-uppercase background-blue">For the Future, CoSA Forever</p><br>
-              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Con nonummy sem integer interdum volutpat dis eget eligendi aliquip dolorum magnam.</p>
+              <p class="text-padding text-size-20 text-dark text-uppercase background-white">Manage CoSA through CoSAPortal to ease ur day!</p>
             </div>
           </div>  
     </section>
@@ -177,19 +177,17 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
             <i class="bx bx-cart-alt text-size-60 text-white center margin-bottom-15"></i>
             <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Merchandise Management</h3>
           </a>
-          <a href="/" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-blue">
+          <a href="/Book/book-list.php" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-blue">
             <i class="bx bx-grid-alt text-size-60 text-white center margin-bottom-15"></i>
             <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">E-Book Shop</h3>
           </a>
           
-          <!-- Image-->
-          <img class="m-12 l-6 l-row-2 margin-bottom" src="img/img-08.jpg">
           
           <a href="/Homepage/php/fetch_programme_admin.php" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-orange">
             <i class="icon-sli-diamond text-size-60 text-white center margin-bottom-15"></i>
             <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Programme Management</h3>
           </a>
-          <a href="/Login-system/useraccount/details.php" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-aqua">
+          <a href="/Login-system/useraccount/details_committee.php" class="s-12 m-6 l-3 padding-2x vertical-center margin-bottom background-aqua">
             <i class="icon-sli-share text-size-60 text-white center margin-bottom-15"></i>
             <h3 class="text-strong text-size-20 text-line-height-1 margin-bottom-30 text-uppercase">Account Details</h3>
           </a>

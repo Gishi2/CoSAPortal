@@ -58,7 +58,15 @@
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="color: #1B2C51; margin-right: 2rem;">PAGES</a>
             <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
+                <?php  
+                    if ($_SESSION['userType'] === 'normalUser') {
+                        echo '<a href="'.PROGRAMME_PAGE.'" class="dropdown-item">Programme</a>';
+                    } else if ($_SESSION['userType'] === 'committeeMember') {
+                        echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                    } else if ($_SESSION['userType'] === 'admin') {
+                        echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                    } 
+                ?>
                 <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
                 <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
             </div>
@@ -196,7 +204,7 @@
 
         <div class="button-container">
             <div class="button">
-                <div class="button-div" onclick="triggerLink()">
+                <div class="button-div" onclick="goBack()">
                     <a id="button-link" class="button-link" href="/Merchandise/merchandise-edit.php"></a>
                     <span>Cancel</span>
                 </div>

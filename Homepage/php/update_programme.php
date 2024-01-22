@@ -22,7 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE programme SET programmeName='$updatedName', programmeStartDate='$updatedStartDate', programmeEndDate='$updatedEndDate', programmeDesc='$updatedDescription' WHERE programmeId=$programmeId";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Program details updated successfully";
+        echo '<script>alert("Program details updated successfully");</script>';
+        header("Location: fetch_programme_admin.php");
+        exit(); // Ensure that no other code is executed after the redirect
     } else {
         echo "Error updating program details: " . $conn->error;
     }

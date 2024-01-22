@@ -25,7 +25,7 @@ session_start();
 
 <head>
     <meta charset="utf-8">
-    <title>Klinik - Clinic Website Template</title>
+    <title>CoSA Portal | Profile</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -77,24 +77,12 @@ session_start();
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list" style="padding: 0;">
-          <!-- <li>
-             <i class='bx bx-search' ></i>
-             <input type="text" placeholder="Search...">
-             <span class="tooltip">Search</span>
-          </li> -->
           <li>
             <a href="/Login-system/mainpage/mainpage_user.php">
               <i class='bx bx-home'></i>
-              <span class="links_name">Mainpage</span>
+              <span class="links_name">Main</span>
             </a>
              <span class="tooltip">Mainpage</span>
-          </li>
-          <li>
-            <a href="/Homepage/php/fetch_programme_user.php">
-              <i class='bx bx-grid-alt'></i>
-              <span class="links_name">Programme Registration</span>
-            </a>
-             <span class="tooltip">Programme</span>
           </li>
           <li>
            <a href="/Login-system/useraccount/details.php">
@@ -103,27 +91,39 @@ session_start();
            </a>
            <span class="tooltip">User</span>
          </li>
-         <li>
-           <a href="#">
-             <i class='bx bx-folder' ></i>
-             <span class="links_name">E-Book Shop</span>
-           </a>
-           <span class="tooltip">E-Book Shop</span>
-         </li>
-         <li>
+          <li> 
+            <a href="/Homepage/php/fetch_programme_user.php">
+              <i class='bx bx-grid-alt'></i>
+              <span class="links_name">Programme</span>
+            </a>
+             <span class="tooltip">Programme</span>
+          </li>
+          <li>
            <a href="/Merchandise/merchandise.php">
              <i class='bx bx-cart-alt' ></i>
              <span class="links_name">Merchandise</span>
            </a>
            <span class="tooltip">Merchandise</span>
          </li>
-
+         <li>
+           <a href="/Book/book.php">
+             <i class='bx bx-folder' ></i>
+             <span class="links_name">E-Book Shop</span>
+           </a>
+           <span class="tooltip">E-Book Shop</span>
+         </li>
          <li class="profile">
          <div class="name-job">
-            <div class="profile_name" style="color: #8D8E92">User's Name</div>
-            <div class="job">Matrix Id</div>
+            <div class="profile_name" style="color: #8D8E92"><?php 
+            echo $_SESSION['username'];
+            ?></div>
+            <div class="job">
+                <?php 
+                echo $_SESSION['matrixId'];
+                ?>
+            </div>
         </div>
-             <i class='bx bx-log-out' id="log_out"></i>
+             <i class='bx' id="log_out"></i>
          </li>
         </ul>
       </div>
@@ -133,27 +133,13 @@ session_start();
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
       <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
           <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
-          <!-- <h1 class="m-0 text-primary">PORTAL</h1> -->
-          <!-- <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Klinik</h1> -->
       </a>
       <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto p-4 p-lg-0">
-              <a href="homepage.html" class="nav  -item nav-link">Home</a>
-              <!-- <a href="about.html" class="nav-item nav-link">About</a> -->
-              <!-- <a href="service.html" class="nav-item nav-link">Service</a> -->
-              <!-- <div class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                  <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                      <a href="about.html" class="dropdown-item">About Us</a>
-                      <a href="\potoub-html\course-registration.html" class="dropdown-item">Programme</a>
-                      <a href="\potoub-html\Merchandise\merchandise.html" class="dropdown-item">Merchandise</a>
-                      <a href="\potoub-html\CoSA E-Book\ebook.html" class="dropdown-item">E-Book</a>
-                  </div>
-              </div> -->
-              <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+              <a href="/index.php" class="nav  -item nav-link">Home</a>
           </div>
           <a href="/Login-system/logout.php" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Log Out<i class="fa fa-arrow-right ms-3"></i></a>
       </div>
@@ -410,6 +396,7 @@ session_start();
                 },
                 success: function(response) {
                     alert('Changes saved successfully!');
+                    window.location.reload(true);
                 },
                 error: function(xhr, status, error) {
                     alert('Error occurred while saving changes');

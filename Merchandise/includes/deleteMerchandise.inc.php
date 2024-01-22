@@ -1,28 +1,27 @@
 <?php
+    try {
+        require_once "dbh.inc.php";
 
-try {
-    require_once "dbh.inc.php";
+        $id = isset($_POST['merchandiseId']) ? $_POST['merchandiseId'] : null;
 
-    $id = isset($_POST['merchandiseId']) ? $_POST['merchandiseId'] : null;
+        if ($id !== null) {
+            $query = "DELETE FROM merchandise WHERE id = :merchandiseId";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':merchandiseId', $id, PDO::PARAM_INT);
+            $stmt->execute();
 
-    if ($id !== null) {
-        $query = "DELETE FROM merchandise WHERE id = :merchandiseId";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(':merchandiseId', $id, PDO::PARAM_INT);
-        $stmt->execute();
+            echo "Merchandise deleted successfully";
+        } else {
+            echo "Invalid Merchandise ID";
+        }
 
-        echo "Merchandise deleted successfully";
-    } else {
-        echo "Invalid Merchandise ID";
+        $pdo = null; $stmt = null;
+        header("Location: /Merchandise/merchandise-list.php?deletesuccessful");
+        die();
+    } catch (PDOException $e) {
+        error_log("Query failed: " . $e->getMessage());
+        http_response_code(500);
+        echo "Error deleting item.";
     }
-
-    $pdo = null; $stmt = null;
-    header("Location: /Merchandise/merchandise-list.php?deletesuccessful");
-    die();
-} catch (PDOException $e) {
-    error_log("Query failed: " . $e->getMessage());
-    http_response_code(500);
-    echo "Error deleting item.";
-}
 
 ?>

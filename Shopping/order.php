@@ -1,4 +1,10 @@
 <?php
+    session_start();
+
+    if (!isset($_SESSION['matrixId'])) {
+        header("Location: /Login-system/login.html");
+    }
+
     require_once '../config/config.php';
 ?>
 
@@ -43,11 +49,27 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="<?php echo HOME_PAGE; ?>" class="nav-item nav-link">Home</a>
+                <?php  
+                    if ($_SESSION['userType'] === 'normalUser') {
+                        echo '<a href="'.NORMAL_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } else if ($_SESSION['userType'] === 'committeeMember') {
+                        echo '<a href="'.COMMITTEE_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } else if ($_SESSION['userType'] === 'admin') {
+                        echo '<a href="'.ADMIN_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } 
+                ?>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 50px;">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0" style="right: 1rem; box-shadow: 0 1px 4px 0 rgba(74,74,78,.12);">
-                        <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
+                        <?php  
+                            if ($_SESSION['userType'] === 'normalUser') {
+                                echo '<a href="'.PROGRAMME_PAGE.'" class="dropdown-item">Programme</a>';
+                            } else if ($_SESSION['userType'] === 'committeeMember') {
+                                echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                            } else if ($_SESSION['userType'] === 'admin') {
+                                echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="nav-item nav-link">Programme</a>';
+                            } 
+                        ?>
                         <a href="<?php echo MERCHANDISE_PAGE; ?>" class="dropdown-item">Merchandise</a>
                         <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
                     </div>
@@ -78,22 +100,30 @@
                 <?php
                     try {
                         $cartIDsString = $_COOKIE['cartIDs'];
-                        $cartIDs = json_decode(urldecode($cartIDsString), true);
-                        $cartIDArray = implode(',', $cartIDs);
+                        $cartIDs = json_decode($cartIDsString, true);
+
+                        if ($cartIDs === null && json_last_error() !== JSON_ERROR_NONE) {
+                            $cartIDs = [$cartIDsString];
+                        }
+
+                        if (is_array($cartIDs)) {
+                            $cartIDArray = implode(',', $cartIDs);
+                        } else {
+                            $cartIDArray = $cartIDs;
+                        }
 
                         require_once 'includes/dbh.inc.php';
 
-                        $query = "SELECT cart.cart_id, cart.product_id, cart.price, cart.quantity, merchandise.name, cart.size, merchandise.image_url FROM cart
+                        $query = "SELECT cart.cart_id, cart.quantity, cart.product_id, cart.price, cart.quantity, merchandise.name, cart.size, merchandise.image_url FROM cart
                         INNER JOIN merchandise ON cart.product_id = merchandise.id WHERE cart.cart_id IN ($cartIDArray)";
 
                         $stmt = $pdo->prepare($query);
                         $stmt->execute();
 
                         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                        $counter = count($results);
                         $orderTotal = 0;
 
-                        if ($counter > 0) {
+                        if (!empty($results)) {
                             foreach ($results as $product) {
                                 $totalPrice = (float)$product['price'] * (float)$product['quantity'];
                                 $formattedTotalPrice = number_format($totalPrice, 2, '.', '');
@@ -109,7 +139,7 @@
                                                 echo '<span>RM' .$product['price']. '</span>';
                                             echo '</div>';
                                             echo '<div class="quantity justify-right">';
-                                                echo '<span>1</span>';
+                                                echo '<span>' .$product['quantity']. '</span>';
                                             echo '</div>';
                                             echo '<div class="price justify-right">';
                                                 echo '<span>RM' .$formattedTotalPrice. '</span>';
@@ -122,6 +152,8 @@
                                     echo '<input type="hidden" name="quantity[]" value="'.$product['quantity'].'">';
                                 echo '</div>';
                             }
+                        } else {
+                            echo '<div style="text-align: center; font-weight: 500; padding: 1rem; font-size: 1rem;">There are currently no orders!</div>';
                         }
                         $formattedOrderPrice = number_format($orderTotal, 2, '.', '');
                         echo '<input type="hidden" name="orderTotal" value="'.$formattedOrderPrice.'">';
@@ -167,7 +199,7 @@
                 <div class="content-box-product">
                     <div class="footer">
                         <button class="cancel-btn" type="button" onclick="goBack()">Back</button>
-                        <button type="submit" name="submit" onclick="orderCheck()">Place Order</button>
+                        <button type="submit" name="submit">Place Order</button>
                     </div>
                 </div>
             </section>

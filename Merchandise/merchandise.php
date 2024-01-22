@@ -46,15 +46,29 @@
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>`
         </button>
-
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="<?php echo HOME_PAGE; ?>" class="nav-item nav-link">Home</a>
-                <!-- <a href="" class="nav-item nav-link">About</a> -->
+                <?php  
+                    if ($_SESSION['userType'] === 'normalUser') {
+                        echo '<a href="'.NORMAL_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } else if ($_SESSION['userType'] === 'committeeMember') {
+                        echo '<a href="'.COMMITTEE_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } else if ($_SESSION['userType'] === 'admin') {
+                        echo '<a href="'.ADMIN_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    } 
+                ?>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="<?php echo PROGRAMME_PAGE; ?>" class="dropdown-item">Programme</a>
+                        <?php  
+                            if ($_SESSION['userType'] === 'normalUser') {
+                                echo '<a href="'.PROGRAMME_PAGE.'" class="dropdown-item">Programme</a>';
+                            } else if ($_SESSION['userType'] === 'committeeMember') {
+                                echo '<a href="'.PROGRAMME_ADMIN_PAGE.'" class="dropdown-item">Programme</a>';
+                            } else if ($_SESSION['userType'] === 'admin') {
+                                echo '<a href="'.PROGRAMME_SUPERADMIN_PAGE.'" class="dropdown-item">Programme</a>';
+                            } 
+                        ?>
                         <a href="<?php echo BOOK_PAGE; ?>" class="dropdown-item">E-Book</a>
                     </div>
                 </div>
