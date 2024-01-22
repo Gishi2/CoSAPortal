@@ -243,7 +243,7 @@ session_start();
                                 <td><a class="delete-btn" data-id="<?php echo $row['programmeId']; ?>" onclick="handleDeleteClick(<?php echo $row['programmeId']; ?>)">Delete</a></td>
 
                                 <div class="popup-view">
-                                    <div class="popup-card">
+                                    <div class="popup-card" style="height: 700px;">
                                         <a><i class="fas fa-times close-btn"></i></a>
                                         <div class="product-img">
                                             <img src="<?php 
