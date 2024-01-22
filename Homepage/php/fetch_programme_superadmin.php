@@ -231,13 +231,13 @@ echo "<script>console.log('Session Matrix ID:', '" . $_SESSION['matrixId'] . "')
                                 <td><a class="delete-btn" data-id="<?php echo $row['programmeId']; ?>" onclick="handleDeleteClick(<?php echo $row['programmeId']; ?>)">Delete</a></td>
 
                                 <div class="popup-view">
-                                    <div class="popup-card">
+                                    <div class="popup-card" style="height: 700px;">
                                         <a><i class="fas fa-times close-btn"></i></a>
                                         <div class="product-img">
                                             <img src="<?php 
                                             // Assuming $row["posterPath"] contains the absolute path like "C:/xampp/htdocs/CoSAPortal/Homepage/php/uploads/WebDevelopmentBootCamp_Poster (12).png"
                                             $posterPath = $row["posterPath"];
-                                            $basePath = "C:/xampp/htdocs/CoSAPortal"; // The server-specific part you want to remove
+                                            $basePath = "C:/xampp/htdocs/CoSAPortal-1"; // The server-specific part you want to remove
 
                                             // Remove the server-specific part from the path
                                             $relativePath = str_replace($basePath, '', $posterPath);
