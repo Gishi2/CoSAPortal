@@ -58,9 +58,10 @@
             $stmtDeleteCart->bindParam(":cartId", $cartIds[$i]);
             $stmtDeleteCart->execute();
         }
+        
 
         $pdo = null; $stmtOrders = null; $stmtItems = null; $stmtDeleteCart = null;
-        header("Location: /Merchandise/merchandise.php");
+        header("Location: /Shopping/purchase-history.php");
         die();
     } catch (PDOException $e) {
         die("Insertion Failed: " . $e->getMessage());

@@ -82,6 +82,30 @@ function successCart() {
   }, 3000);
 }
 
+function confirmDelete() {
+  return confirm("Are you sure you want to delete?");
+}
+
+function submitFormWithAction(data) {
+  var confirmation = confirmDelete();
+
+  if (!confirmation) {
+    return;
+  }
+
+  $.ajax({
+      type: "POST",
+      url: "/Merchandise/includes/deleteMerchandise.inc.php",
+      data: data,
+      success: function(response) {
+          $("#responseMessage").html(response);
+      },
+      error: function(xhr, status, error) {
+          console.error("AJAX request failed: " + status + ", " + error);
+      }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const sizeButtons = document.querySelectorAll('.size-btn'); 
 

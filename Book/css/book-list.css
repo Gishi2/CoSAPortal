@@ -534,6 +534,20 @@ td {
     cursor: pointer;
 }
 
+.truncate {
+    max-width: 260px;
+    max-height: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.truncate:hover {
+    overflow: visible;
+    white-space: normal;
+    max-height: fit-content;
+}
+
 .table-btn {
     display: flex;
     flex-direction: column;

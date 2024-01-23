@@ -25,7 +25,6 @@ function triggerFileInput() {
 
 function buyNowButton(counter) {
   addToCartButton(counter, true);
-  window.location.href = '/Shopping/book-order.php';
 }
 
 function goBack() {

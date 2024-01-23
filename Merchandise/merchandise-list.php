@@ -63,9 +63,16 @@
             <span class="tooltip">Merchandise</span>
             </li>
             <li>
+                <a href="/Book/book-list-user.php">
+                    <i class='bx bx-book'></i>
+                    <span class="links_name">My Book</span>
+                </a>
+                <span class="tooltip">Book</span>
+            </li>
+            <li>
                 <a href="/Book/book-list.php">
-                    <i class='bx bx-book' ></i>
-                    <span class="links_name">Book</span>
+                    <i class='bx bx-folder' ></i>
+                    <span class="links_name">Book List</span>
                 </a>
                 <span class="tooltip">Book</span>
             </li>
@@ -76,7 +83,7 @@
     <section class="content-section">
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s" style="box-shadow: 0 1px 4px 0 rgba(74,74,78,.12);">
         <a href="<?php echo HOME_PAGE; ?>" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
         </a>
@@ -186,12 +193,6 @@
                                                                 echo '<button onclick="redirectToEditPage('. $merchandise['id'] .')">';
                                                                     echo '<span>Edit</span>';
                                                                 echo '</button>';
-                                                                echo '<form action="includes/deleteMerchandise.inc.php" method="post">';
-                                                                    echo '<input type="hidden" name="merchandiseId" value="'. $merchandise['id'] .'">';
-                                                                    echo '<button class="delete-btn" type="submit">';
-                                                                        echo '<span>Delete</span>';
-                                                                    echo '</button>';
-                                                                echo '</form>';
                                                             echo '</div>';
                                                         echo '</td>';
                                                     echo '</tr>';

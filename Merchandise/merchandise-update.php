@@ -43,7 +43,7 @@
 
 <body>
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s" style="box-shadow: 0 1px 4px 0 rgba(74,74,78,.12);">
         <a href="/index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
         </a>
@@ -208,6 +208,9 @@
                     <a id="button-link" class="button-link" href="/Merchandise/merchandise-edit.php"></a>
                     <span>Cancel</span>
                 </div>
+                <button class="delete-btn" type="button" onclick="submitFormWithAction(<?php $merchandiseId ?>)">
+                    <span>Delete</span>
+                </button>
                 <button class="save-btn" type="submit" id="submit" name="submit" disabled>
                     <span>Save and Publish</span>
                 </button>

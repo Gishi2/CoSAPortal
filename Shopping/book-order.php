@@ -99,23 +99,23 @@
                 </div>
                 <?php
                     try {
-                        $cartIDsString = $_COOKIE['cartIDs'];
-                        $cartIDs = json_decode($cartIDsString, true);
+                        if (isset($_GET['cartIds'])) {
+                            $cartId_Json = $_GET['cartIds'];
+                            $cartId_value = json_decode(urldecode($cartId_Json), true);
 
-                        if ($cartIDs === null && json_last_error() !== JSON_ERROR_NONE) {
-                            $cartIDs = [$cartIDsString];
-                        }
-
-                        if (is_array($cartIDs)) {
-                            $cartIDArray = implode(',', $cartIDs);
+                            if (is_array($cartId_value)) {
+                                $cartID = implode(',', $cartId_value);
+                            } else {
+                                $cartID = $cartId_value;
+                            }   
                         } else {
-                            $cartIDArray = $cartIDs;
+                            echo "Cart IDs not found!";
                         }
 
                         require_once 'includes/dbh.inc.php';
 
                         $query = "SELECT cart.cart_id, cart.quantity, cart.product_id, cart.price, cart.quantity, book.book_title, cart.size, book.url_image FROM cart
-                        INNER JOIN book ON cart.product_id = book.book_id WHERE cart.cart_id IN ($cartIDArray)";
+                        INNER JOIN book ON cart.product_id = book.book_id WHERE cart.cart_id IN ($cartID)";
 
                         $stmt = $pdo->prepare($query);
                         $stmt->execute();
@@ -151,6 +151,7 @@
                                     echo '<input type="hidden" name="productId[]" value="'.$product['product_id'].'">';
                                     echo '<input type="hidden" name="size[]" value="'.$product['size'].'">';
                                     echo '<input type="hidden" name="quantity[]" value="'.$product['quantity'].'">';
+                                    echo '<input type="hidden" name="cartId[]" value="'.$cartID.'">';
                                 echo '</div>';  
                             }
                         } else {

@@ -227,7 +227,7 @@
                                                             if (empty($book['book_desc'])) {
                                                                 echo '<div style="color: red;">none</div>';
                                                             } else {
-                                                                echo '<div>' . $book['book_desc'] . '</div>';
+                                                                echo '<div class="truncate">' . $book['book_desc'] . '</div>';
                                                             } 
                                                         echo '</td>';
                                                         echo '<td>';
