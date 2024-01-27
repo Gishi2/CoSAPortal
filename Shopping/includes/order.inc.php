@@ -6,13 +6,13 @@
     }
 
     if (isset($_POST['submit'])) {
-        // var_dump($_POST);
+        $cartIds = $_POST['cartId'];
         $userId = $_SESSION['matrixId'];
-        $productIds = $_POST['productId'];
+        $productIds = $_POST['productId']; // plural are arrays
         $sizes = $_POST['size'];
-        $quantities = $_POST['quantity'];
+        $quantities = $_POST['quantity']; 
         $payment_method = $_POST['activeButtonValue'];
-        $orderStatus = 1;
+        $orderStatus = 1; // 1 - Pending Status
         $orderNote = $_POST['message'];
         $orderTotal = $_POST['orderTotal'];
     }
@@ -51,13 +51,17 @@
             $stmtItems->execute();
         }   
 
-        // $queryDeleteCart = "DELETE FROM cart WHERE user_id = :userId AND order";
-        // $stmtDeleteCart = $pdo->prepare($queryDeleteCart);
-        // $stmtDeleteCart->bindParam(":userId", $userId);
-        // $stmtDeleteCart->execute();
+        for ($i = 0; $i < count($cartIds); $i++) {
+            $queryDeleteCart = "DELETE FROM cart WHERE user_id = :userId AND cart_id = :cartId";
+            $stmtDeleteCart = $pdo->prepare($queryDeleteCart);
+            $stmtDeleteCart->bindParam(":userId", $userId);
+            $stmtDeleteCart->bindParam(":cartId", $cartIds[$i]);
+            $stmtDeleteCart->execute();
+        }
+        
 
-        $pdo = null; $stmtOrder = null; $stmtItems = null;
-        header("Location: /Merchandise/merchandise.php");
+        $pdo = null; $stmtOrders = null; $stmtItems = null; $stmtDeleteCart = null;
+        header("Location: /Shopping/purchase-history.php");
         die();
     } catch (PDOException $e) {
         die("Insertion Failed: " . $e->getMessage());

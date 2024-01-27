@@ -218,6 +218,9 @@
                 <div class="button-div" onclick="goBack()">
                     <span>Cancel</span>
                 </div>
+                <button class="delete-btn" type="button" onclick="submitFormWithAction(<?php $bookId ?>)">
+                    <span>Delete</span>
+                </button>
                 <button class="save-btn" type="submit" id="submit" name="submit" disabled>
                     <span>Save and Publish</span>
                 </button>

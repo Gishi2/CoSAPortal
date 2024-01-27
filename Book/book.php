@@ -119,6 +119,7 @@
                                     echo '</div>';
                                     echo '<div class="details">';
                                         echo '<span>'. $book['book_title'] .'</span>';
+                                        echo '<span>'. $book['book_subject'] .'</span>';
                                         echo '<span>RM'. $book['book_price'] .'</span>';
                                         $modifiedCondition = str_replace("_", " ", $book['book_condition']);
                                         echo '<span>Condition: '. $modifiedCondition .'</span>';
@@ -131,7 +132,7 @@
 
                             echo '<div id="overlay" class="pop-up-overlay">'; $counter = 0;
 
-                            foreach ($results as $book) {
+                            foreach ($results as $book) {   
                                 $counter++;
                                 echo '<div id="pop-up-' .$counter. '" class="pop-up" data-book-id="' . $book['book_id'] . '">';
                                     echo '<div class="pop-up-image">';
@@ -143,7 +144,7 @@
                                         echo '<span class="price">RM' .$book['book_price']. '</span>';
                                         echo '<span class="description">' .$book['book_desc']. '</span>';
                                         $modifiedCondition = str_replace("_", " ", $book['book_condition']);
-                                        echo '<span>Condition: '. $modifiedCondition .'</span>';
+                                        echo '<span class="condition">Condition: '. $modifiedCondition .'</span>';
                                         echo '<div class="pop-up-btn">';
                                             echo '<div class="button buy-btn" onclick="buyNowButton(' .$counter. ')">';
                                             echo '<button>Buy Now</button>';

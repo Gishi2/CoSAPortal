@@ -57,6 +57,13 @@
                 <span class="tooltip">Account</span>
             </li>
             <li>
+                <a href="/Book/book-list-user.php">
+                    <i class='bx bx-book'></i>
+                    <span class="links_name">My Book</span>
+                </a>
+                <span class="tooltip">Book</span>
+            </li>
+            <li>
                 <a href="/Shopping/purchase-history.php">
                 <i class='bx bx-clipboard'></i>
                     <span class="links_name">Purchase History</span>
@@ -80,7 +87,7 @@
     <nav class="navbar navbar-expand-lg box-shadow bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s" style="box-shadow: 0 1px 4px 0 rgba(74,74,78,.12);">
         <a href="<?php echo HOME_PAGE; ?>" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="\Homepage\img\cosa\cosa_logo_inBlue.png">
-        </a>
+        </a>    
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>`
         </button>
@@ -205,25 +212,20 @@
 
             <?php 
                 if ($counter != 0) {
-                    echo '<div class="footer">';
-                        echo '<div class="total">';
-                                if ($counter != 1 && $counter != 0) {
-                                    $text = $counter . ' items';
-                                    echo '<span>Total ('. $text .'): </span>';
-                                    echo '<span id="total-price"></span>';
-                                } else if ($counter === 1) {
-                                    $text = $counter . ' item';
-                                    echo '<span>Total ('. $text .'): </span>';
-                                    echo '<span id="total-price"></span>';
-                                } 
+                    echo '<footer>';
+                        echo '<div class="footer">';
+                            echo '<div class="total">';
+                                echo '<span id="total-item"></span>';
+                                echo '<span id="total-price"></span>';
+                            echo '</div>';
+                            echo '<button class="cancel-btn" onclick="goBack()">';
+                                echo '<span>Back</span>';
+                            echo '</button>';
+                            echo '<button onclick="orderNow()">';
+                                echo '<span>Order Now</span>';
+                            echo '</button>';
                         echo '</div>';
-                        echo '<button class="cancel-btn" onclick="goBack()">';
-                            echo '<span>Back</span>';
-                        echo '</button>';
-                        echo '<button onclick="orderNow()">';
-                            echo '<span>Order Now</span>';
-                        echo '</button>';
-                    echo '</div>;';
+                    echo '</footer>';
                 }
             ?>
         </main>

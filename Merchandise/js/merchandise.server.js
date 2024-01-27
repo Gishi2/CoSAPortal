@@ -34,7 +34,7 @@ function addToCartButton(counter, fromBuyButton = false) {
     };
   
     closePopUp(counter);
-    sendProductToServer(selectedProduct)
+    sendProductToServer(selectedProduct, fromBuyButton)
         .then(() => {
             if (!fromBuyButton) {
                 successCart();
@@ -47,11 +47,12 @@ function addToCartButton(counter, fromBuyButton = false) {
             console.error('Error:', error, '/');
         });
 }
+
 function redirectToInsertSuccess() {
     window.location.href = '/Merchandise/merchandise.php?insertsuccessful';
 }
 
-function sendProductToServer(product) {
+function sendProductToServer(product, status) {
     return fetch('includes/insertCart.inc.php', {
         method: 'POST',
         headers: {
@@ -67,7 +68,9 @@ function sendProductToServer(product) {
     })
     .then(data => {
         console.log('Server Response:', data);
-        document.cookie = "cartIDs=" + data.cartId + "; path=/Shopping/order.php";
+        if (status) {
+            window.location.href = "/Shopping/order.php?cartIds=" + data.cartId;
+        }
     })
     .catch(error => {
         console.error('Error:', error);

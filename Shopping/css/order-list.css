@@ -13,6 +13,7 @@
 /*** Content ***/
 body {
     background: #f6f6f6;
+    overflow-x: hidden;
 }
 
 ul, li {
@@ -52,7 +53,6 @@ ul, li {
     flex: 1;
     margin: 0 auto;
     min-width: 0;
-    /* padding-bottom: 72px; */
 }
 
 .page-wrapper-content {
@@ -217,4 +217,30 @@ td:last-child {
     height: 100%;
     width: 100%;
     cursor: pointer;
+}
+
+.table-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-btn .details {
+    background-color: var(--dark-primary);
+    border-color: var(--dark-primary);
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    color: var(--light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-btn .details:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
 }

@@ -82,7 +82,6 @@
         <main class="content">
             <form method="POST" action="includes/order.inc.php" onsubmit="return validateForm()">
             <section class="content-box-0">
-
                 <div class="content-box-header">
                     <div class="product">
                         <span>Products Ordered</span>
@@ -99,23 +98,28 @@
                 </div>
                 <?php
                     try {
-                        $cartIDsString = $_COOKIE['cartIDs'];
-                        $cartIDs = json_decode($cartIDsString, true);
+                        // get cookie form shopping-cart.php
+                        /* $cartIDsString = $_COOKIE['cartIDs'];
+                        $cartIDs = json_decode($cartIDsString, true); */
 
-                        if ($cartIDs === null && json_last_error() !== JSON_ERROR_NONE) {
-                            $cartIDs = [$cartIDsString];
-                        }
+                        // Get CartID form url variable
+                        if (isset($_GET['cartIds'])) {
+                            $cartId_Json = $_GET['cartIds'];
+                            $cartId_value = json_decode(urldecode($cartId_Json), true);
 
-                        if (is_array($cartIDs)) {
-                            $cartIDArray = implode(',', $cartIDs);
+                            if (is_array($cartId_value)) {
+                                $cartID = implode(',', $cartId_value);
+                            } else {
+                                $cartID = $cartId_value;
+                            }   
                         } else {
-                            $cartIDArray = $cartIDs;
+                            echo "Cart IDs not found!";
                         }
 
                         require_once 'includes/dbh.inc.php';
 
                         $query = "SELECT cart.cart_id, cart.quantity, cart.product_id, cart.price, cart.quantity, merchandise.name, cart.size, merchandise.image_url FROM cart
-                        INNER JOIN merchandise ON cart.product_id = merchandise.id WHERE cart.cart_id IN ($cartIDArray)";
+                        INNER JOIN merchandise ON cart.product_id = merchandise.id WHERE cart.cart_id IN ($cartID)";
 
                         $stmt = $pdo->prepare($query);
                         $stmt->execute();
@@ -150,6 +154,7 @@
                                     echo '<input type="hidden" name="productId[]" value="'.$product['product_id'].'">';
                                     echo '<input type="hidden" name="size[]" value="'.$product['size'].'">';
                                     echo '<input type="hidden" name="quantity[]" value="'.$product['quantity'].'">';
+                                    echo '<input type="hidden" name="cartId[]" value="'.$cartID.'">';
                                 echo '</div>';
                             }
                         } else {

@@ -8,11 +8,11 @@
 
 body {
     background: #f6f6f6;
+    overflow-x: hidden;
 }
 
 .main-page {
     display: flex;
-    /* min-height: 1200px; */
     padding: 1rem 1rem 0 1rem;
     justify-content: center;
 }
@@ -291,6 +291,16 @@ body {
 .button .save-btn {
     background-color: var(--primary);
     border-color: var(--primary);
+    color: #fff;
+    border-radius: 0.2rem;
+    padding: 0.25rem 0.625rem 0.25rem 0.625rem;
+    transition: 0.3s ease;
+}
+
+.delete-btn {
+    min-width: 140px;
+    background-color: var(--danger);
+    border-color: var(--danger);
     color: #fff;
     border-radius: 0.2rem;
     padding: 0.25rem 0.625rem 0.25rem 0.625rem;

@@ -21,13 +21,11 @@ function validateForm() {
         return false;
     }
     
-    var confirmation = window.confirm("You've successfully placed an order!");
+    var confirmation = window.confirm("Are you sure to place an order?");
 
     if (confirmation) {
         window.location.href = '/Shopping/purchase-list.php';
     }
-
-    return confirmation;
 }
 
 function goBack() {

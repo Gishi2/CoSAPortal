@@ -202,7 +202,6 @@ main.container {
     height: inherit;
     margin-top: 6rem;
     overflow-x: hidden;
-    /* background-color: red; */
 }
 
 section.content {
@@ -286,7 +285,12 @@ section.content {
     font-size: 1.250rem;
 }
 
-.content-box .details > span:nth-child(2) {
+.content-box .details >span:nth-child(2) {
+    font-weight: 500;
+    font-size: 1.250rem;
+}
+
+.content-box .details > span:nth-child(3) {
     font-weight: 500;
     font-size: 1.250rem;
     color: var(--primary);
@@ -417,4 +421,17 @@ section.content {
 .pop-up-description .pop-up-btn .button.buy-btn > button:hover {
     background: var(--light-primary);
     transition: 0.2s ease;
+}
+
+.pop-up-description .description {
+    max-width: 320px;
+    max-height: 184px;
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.pop-up-description .condition {
+    color: var(--dark);
 }

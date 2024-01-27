@@ -83,7 +83,7 @@
     <section class="content-section">
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s" style="box-shadow: 0 1px 4px 0 rgba(74,74,78,.12);">
         <a href="<?php echo HOME_PAGE; ?>" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="header-logo" src="/Homepage/img/cosa/cosa_logo_inBlue.png">
         </a>
@@ -93,13 +93,14 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
             <?php  
-                if ($_SESSION['userType'] === 'normalUser') {
-                    echo '<a href="'.NORMAL_USER_PAGE.'" class="nav-item nav-link">Home</a>';
-                } else if ($_SESSION['userType'] === 'committeeMember') {
-                    echo '<a href="'.COMMITTEE_USER_PAGE.'" class="nav-item nav-link">Home</a>';
-                } else if ($_SESSION['userType'] === 'admin') {
-                    echo '<a href="'.ADMIN_USER_PAGE.'" class="nav-item nav-link">Home</a>';
-                } 
+                // if ($_SESSION['userType'] === 'normalUser') {
+                //     echo '<a href="'.NORMAL_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                // } else if ($_SESSION['userType'] === 'committeeMember') {
+                //     echo '<a href="'.COMMITTEE_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                // } else if ($_SESSION['userType'] === 'admin') {
+                //     echo '<a href="'.ADMIN_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                // } 
+                echo '<a href="'.HOME_PAGE.'" class="nav-item nav-link">Home</a>';
             ?>
             </div>
         </div>
@@ -146,22 +147,24 @@
                         
                     
                     echo '
-                        </div>
-                        <div class="content-list-section">
-                            <div class="content-list-container">
-                                <div class="content-table">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th style="text-align: center">ID</th>
-                                                <th>Title</th>
-                                                <th>Subject</th>
-                                                <th>Description</th>
-                                                <th>Price</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>';
+                        <a class="add-merchandise-btn" href="/Book/book-add.php">
+                        <i class=\'bx bx-plus\'></i>Sell a Book</a>
+                            </div>
+                            <div class="content-list-section">
+                                <div class="content-list-container">
+                                    <div class="content-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align: center">ID</th>
+                                                    <th>Title</th>
+                                                    <th>Subject</th>
+                                                    <th>Description</th>
+                                                    <th>Price</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>';
                                         try {
                                             
 
@@ -187,7 +190,7 @@
                                                             if (empty($book['book_desc'])) {
                                                                 echo '<div style="color: red;">none</div>';
                                                             } else {
-                                                                echo '<div>' . $book['book_desc'] . '</div>';
+                                                                echo '<div class="truncate">' . $book['book_desc'] . '</div>';
                                                             } 
                                                         echo '</td>';
                                                         echo '<td>';
@@ -201,12 +204,6 @@
                                                                 echo '<button onclick="redirectToEditPage('. $book['book_id'] .')">';
                                                                     echo '<span>Edit</span>';
                                                                 echo '</button>';
-                                                                echo '<form action="includes/deleteBook.inc.php" method="post">';
-                                                                    echo '<input type="hidden" name="bookId" value="'. $book['book_id'] .'">';
-                                                                    echo '<button class="delete-btn" type="submit">';
-                                                                        echo '<span>Delete</span>';
-                                                                    echo '</button>';
-                                                                echo '</form>';
                                                             echo '</div>';
                                                         echo '</td>';
                                                     echo '</tr>';

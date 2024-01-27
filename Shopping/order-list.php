@@ -65,9 +65,16 @@
             <span class="tooltip">Merchandise</span>
             </li>
             <li>
+                <a href="/Book/book-list-user.php">
+                    <i class='bx bx-book'></i>
+                    <span class="links_name">My Book</span>
+                </a>
+                <span class="tooltip">Book</span>
+            </li>
+            <li>
                 <a href="/Book/book-list.php">
-                    <i class='bx bx-book' ></i>
-                    <span class="links_name">Book</span>
+                    <i class='bx bx-folder' ></i>
+                    <span class="links_name">Book List</span>
                 </a>
                 <span class="tooltip">Book</span>
             </li>
@@ -88,13 +95,14 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <?php  
-                    if ($_SESSION['userType'] === 'normalUser') {
-                        echo '<a href="'.NORMAL_USER_PAGE.'" class="nav-item nav-link">Home</a>';
-                    } else if ($_SESSION['userType'] === 'committeeMember') {
-                        echo '<a href="'.COMMITTEE_USER_PAGE.'" class="nav-item nav-link">Home</a>';
-                    } else if ($_SESSION['userType'] === 'admin') {
-                        echo '<a href="'.ADMIN_USER_PAGE.'" class="nav-item nav-link">Home</a>';
-                    } 
+                    // if ($_SESSION['userType'] === 'normalUser') {
+                    //     echo '<a href="'.NORMAL_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    // } else if ($_SESSION['userType'] === 'committeeMember') {
+                    //     echo '<a href="'.COMMITTEE_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    // } else if ($_SESSION['userType'] === 'admin') {
+                    //     echo '<a href="'.ADMIN_USER_PAGE.'" class="nav-item nav-link">Home</a>';
+                    // } 
+                    echo '<a href="'.HOME_PAGE.'" class="nav-item nav-link">Home</a>';
                 ?>
             </div>
         </div>
@@ -165,10 +173,12 @@
                                         orders.user_id AS user,
                                         orders_items.order_quantity AS quantity,
                                         merchandise.name AS name,
-                                        merchandise.image_url AS image_url
+                                        COALESCE(merchandise.image_url, book.url_image) AS image_url,
+                                        UPPER(COALESCE(merchandise.name, book.book_title)) AS name
                                         FROM orders
                                         JOIN orders_items ON orders.order_id = orders_items.order_id
                                         LEFT JOIN merchandise ON orders_items.product_id = merchandise.id
+                                        LEFT JOIN book ON orders_items.product_id = book.book_id
                                         ORDER BY orders.order_id DESC";
 
                                     $stmtOrder = $pdo->prepare($queryOrder);
@@ -216,7 +226,7 @@
                                                         echo '</td>';
                                                         echo '<td width="20%">';
                                                             echo '<div class="table-btn">';
-                                                                echo '<div>';
+                                                                echo '<div class="details" onclick="viewDetails('. $order['id'] .')">';
                                                                     echo '<a>View Details</a>';
                                                                 echo '</div>';
                                                             echo '</div>';
@@ -224,11 +234,11 @@
                                                     echo '</tr>';
 
                                                     $currentOrderId = $order['id'];
-                                            }
+                                        }
                                                 echo '</tbody>';
                                             echo '</table>';
                                     } else {
-                                        echo '<div>There are currently no orders</div>';
+                                        echo '<div>There are currently no orders.</div>';
                                     }
                                     $pdo = null; $stmtOrder = null;
                                 } catch (PDOException $e) {
@@ -243,6 +253,6 @@
     </div>
     </section>
     
-    <script src="js/merchandise.list.js"></script>
+    <script src="js/order.list.js"></script>
     <script src="js/sidebar.js"></script>
 </body>

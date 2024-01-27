@@ -23,21 +23,41 @@ try {
 
     require_once "dbh.inc.php";
 
-    $query = "INSERT INTO cart (user_id, product_id, quantity, price, size) VALUES
-    (:userId, :productId, :quantity, :price, :sizes);";
+    // Check cart table
+    $checkQuery = "SELECT * FROM cart WHERE user_id = :userId AND product_id = :productId AND size = :sizes";
+    $checkStmt = $pdo->prepare($checkQuery);
+    $checkStmt->bindParam(":userId", $userId);
+    $checkStmt->bindParam(":productId", $productId);
+    $checkStmt->bindParam(":sizes", $sizes);
+    $checkStmt->execute();
+    $existingCartItem = $checkStmt->fetch(PDO::FETCH_ASSOC);
 
-    $stmt = $pdo->prepare($query);
+    if ($existingCartItem) {
+        // Item already exists, update the quantity
+        $updateQuery = "UPDATE cart SET quantity = quantity + :quantity WHERE cart_id = :cartId";
+        $updateStmt = $pdo->prepare($updateQuery);
+        $updateStmt->bindParam(":quantity", $quantity);
+        $updateStmt->bindParam(":cartId", $existingCartItem['cart_id']);
+        $updateStmt->execute();
+        $cartId = $existingCartItem['cart_id'];
+    } else {
+        // Item doesn't exist, insert a new record
+        $insertQuery = "INSERT INTO cart (user_id, product_id, quantity, price, size) VALUES
+        (:userId, :productId, :quantity, :price, :sizes)";
+        $insertStmt = $pdo->prepare($insertQuery);
+        $insertStmt->bindParam(":userId", $userId);
+        $insertStmt->bindParam(":productId", $productId);
+        $insertStmt->bindParam(":quantity", $quantity);
+        $insertStmt->bindParam(":price", $price);
+        $insertStmt->bindParam(":sizes", $sizes);
+        $insertStmt->execute();
+        $cartId = $pdo->lastInsertId();
+    }
 
-    $stmt->bindParam(":userId", $userId);
-    $stmt->bindParam(":productId", $productId);
-    $stmt->bindParam(":quantity", $quantity);
-    $stmt->bindParam(":price", $price);
-    $stmt->bindParam(":sizes", $sizes);
-    $stmt->execute();
-
-    $cartId = $pdo->lastInsertId();
-
-    $pdo = null; $stmt = null;  
+    $pdo = null;
+    $checkStmt = null;
+    $updateStmt = null;
+    $insertStmt = null;
 
     header('Content-Type: application/json');
     echo json_encode(['status' => 'success', 'cartId' => $cartId]);

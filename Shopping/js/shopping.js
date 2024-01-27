@@ -6,8 +6,8 @@ function redirectToOrder(cartIDs) {
     });
 
     if (atLeastOneChecked) {
-        document.cookie = "cartIDs=" + encodeURIComponent(JSON.stringify(cartIDs)) + "; path=/Shopping/order.php";
-        window.location.href = 'order.php';
+        window.location.href = "order.php?" + 
+                                "cartIds=" + encodeURIComponent(JSON.stringify(cartIDs));
     } else {
         alert('Please select at least one product before proceeding.');
     }
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     checkboxes.forEach((checkbox) => {
         checkbox.addEventListener('change', updateTotalPrice);
-    });
+    }); 
 
     parentCheckBox.addEventListener('change', () => {
         checkboxes.forEach((checkbox) => {
@@ -76,8 +76,10 @@ function updateTotalPrice() {
     var checkboxes = document.querySelectorAll('.product-checkbox');
     var subTotals = document.querySelectorAll('[id^="itemSubTotal"');
     var totalPriceText = document.getElementById('total-price');
+    var totalItemText = document.getElementById('total-item');
 
     var total = 0;
+    var counter = 0;
 
     checkboxes.forEach(function (checkbox, index) {
         if (checkbox.checked) {
@@ -86,10 +88,12 @@ function updateTotalPrice() {
             if (document.getElementById('itemSubTotal' + checkboxNumber)) {
                 total += parseFloat(subTotals[index].value);
             }
+            counter++;
         }
     });
 
     totalPriceText.innerText = 'RM' + total.toFixed(2);
+    totalItemText.innerText = 'Total (' + (counter) + ' item): '
 }
 
 function confirmSubmit() {

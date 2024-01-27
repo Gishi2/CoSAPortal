@@ -25,7 +25,6 @@ function triggerFileInput() {
 
 function buyNowButton(counter) {
   addToCartButton(counter, true);
-  window.location.href = '/Shopping/book-order.php';
 }
 
 function goBack() {
@@ -53,6 +52,45 @@ document.addEventListener('DOMContentLoaded', () => {
               button.classList.add('active');
           }
       });
+  });
+}); 
+
+function confirmDelete() {
+  return confirm("Are you sure you want to delete?");
+}
+
+function submitFormWithAction(data) {
+  var confirmation = confirmDelete();
+
+  if (!confirmation) {
+    return;
+  }
+
+  $.ajax({
+      type: "POST",
+      url: "/Book/includes/deleteBook.inc.php",
+      data: data,
+      success: function(response) {
+          $("#responseMessage").html(response);
+      },
+      error: function(xhr, status, error) {
+          console.error("AJAX request failed: " + status + ", " + error);
+      }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const cartIcon = document.getElementById('nav-cart-icon');
+  const cartBox = document.getElementById('cart-container');
+
+  cartIcon.addEventListener('mouseover', function () {
+    cartBox.style.display = 'flex';
+  });
+
+  cartBox.addEventListener('mouseout', function (e) {
+    if (!cartIcon.contains(e.relatedTarget) && !cartBox.contains(e.relatedTarget)) {
+        cartBox.style.display = 'none';
+    }
   });
 });
 
@@ -85,18 +123,3 @@ function renderStars(rating) {
       starRatingContainer.appendChild(star);
   }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-  const cartIcon = document.getElementById('nav-cart-icon');
-  const cartBox = document.getElementById('cart-container');
-
-  cartIcon.addEventListener('mouseover', function () {
-    cartBox.style.display = 'flex';
-  });
-
-  cartBox.addEventListener('mouseout', function (e) {
-    if (!cartIcon.contains(e.relatedTarget) && !cartBox.contains(e.relatedTarget)) {
-        cartBox.style.display = 'none';
-    }
-  });
-});
