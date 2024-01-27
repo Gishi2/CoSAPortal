@@ -13,6 +13,22 @@ if (isset($_POST['submit'])) {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $cpass = md5($_POST['cpassword']); // Keeping this for now, but should be updated for consistency
 
+    // Check if the matrix ID contains the '-' symbol
+    if (strpos($matrix, '-') !== false) {
+        // Matrix ID contains '-', display error and refresh the page
+        echo "<script>alert('Matrix ID cannot contain the symbol '-'. Please enter a valid Matrix ID.');</script>";
+        echo "<script>window.location = 'signup.html';</script>";
+        exit();
+    }
+
+    // Check if the email contains the '@' symbol
+    if (strpos($email, '@') === false) {
+        // Email doesn't contain '@' symbol, display error and refresh the page
+        echo "<script>alert('Please enter a valid email address.');</script>";
+        echo "<script>window.location = 'signup.html';</script>";
+        exit();
+    }
+
     // Assuming $user_type is defined somewhere in your code
     $user_type = 1;  // Replace with the actual value or logic to determine user type
 
